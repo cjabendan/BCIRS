@@ -6,7 +6,7 @@
 package USERS;
 
 import ADMIN.*;
-import bcirs.login_form;
+import Log_in.login_form;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,7 +45,7 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(127, 199, 217));
-        jLabel1.setText("ADMIN DASHBOARD");
+        jLabel1.setText("Welcome back!");
 
         jPanel3.setBackground(new java.awt.Color(127, 199, 217));
 
@@ -82,7 +82,7 @@ public class user_dashboard extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 551, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 617, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
