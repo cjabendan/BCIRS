@@ -191,7 +191,7 @@ public class login_form extends javax.swing.JFrame {
         reg.setBounds(270, 350, 50, 20);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Don't have an  account?");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(110, 350, 160, 20);

@@ -125,17 +125,17 @@ public class register_form extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 14, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel2.setForeground(new java.awt.Color(27, 55, 77));
         jLabel2.setText("First Name:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 105, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel3.setForeground(new java.awt.Color(27, 55, 77));
         jLabel3.setText("Last Name:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, 20));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
         jLabel4.setText("Email Address:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, 20));
 
@@ -150,7 +150,7 @@ public class register_form extends javax.swing.JFrame {
         jPanel2.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, 24));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel5.setForeground(new java.awt.Color(27, 55, 77));
         jLabel5.setText("Username:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 20));
 
@@ -165,7 +165,7 @@ public class register_form extends javax.swing.JFrame {
         jPanel2.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 24));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel6.setForeground(new java.awt.Color(27, 55, 77));
         jLabel6.setText("Password:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, 20));
 
@@ -180,7 +180,7 @@ public class register_form extends javax.swing.JFrame {
         jPanel2.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 120, 24));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel7.setForeground(new java.awt.Color(27, 55, 77));
         jLabel7.setText("User Type:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, 20));
 
@@ -210,7 +210,7 @@ public class register_form extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(234, 234, 234));
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Already have an account?");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
@@ -236,7 +236,7 @@ public class register_form extends javax.swing.JFrame {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText(" *By signing up, you agree to our");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
 
@@ -424,7 +424,7 @@ public class register_form extends javax.swing.JFrame {
 
         register_C rC = new register_C();
         
-        if(ln.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
+        if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
                 || usn.getText().isEmpty() || ps.getText().isEmpty())
         {
             
@@ -448,14 +448,7 @@ public class register_form extends javax.swing.JFrame {
                 + " VALUES ('"+ln.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
                 +ps.getText()+"','"+ut.getSelectedItem()+"','Pending')"))
         {
-            
-           
-            ln.setText("");
-            ln.setText("");
-            mail.setText("");
-            usn.setText("");
-            ps.setText("");
-            
+                        
             rC.setVisible(true);
             this.dispose();
             

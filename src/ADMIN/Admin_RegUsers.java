@@ -70,7 +70,7 @@ public class Admin_RegUsers extends javax.swing.JFrame {
         purokC = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         signout2 = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
@@ -253,6 +253,9 @@ public class Admin_RegUsers extends javax.swing.JFrame {
 
         purokC.setBackground(new java.awt.Color(255, 255, 255));
         purokC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                purokCMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 purokCMouseEntered(evt);
             }
@@ -267,8 +270,14 @@ public class Admin_RegUsers extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barangay_nF.png"))); // NOI18N
         jLabel6.setText(" Barangay");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel6MouseExited(evt);
             }
         });
 
@@ -310,10 +319,10 @@ public class Admin_RegUsers extends javax.swing.JFrame {
                             .addComponent(viewPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(purokPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(viewC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(purokC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dashC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(viewC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(purokC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dashC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(160, 160, 160))
                     .addGroup(adm_navLayout.createSequentialGroup()
                         .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,7 +356,7 @@ public class Admin_RegUsers extends javax.swing.JFrame {
                         .addComponent(viewPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(purokPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                 .addComponent(signout2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
@@ -355,14 +364,16 @@ public class Admin_RegUsers extends javax.swing.JFrame {
         jPanel1.add(adm_nav);
         adm_nav.setBounds(0, -10, 180, 450);
 
-        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
+        mainDk.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         jScrollPane1.setViewportView(userTbl);
 
-        jButton1.setText("jButton1");
+        jButton1.setBackground(new java.awt.Color(27, 55, 77));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Add new user");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -376,7 +387,7 @@ public class Admin_RegUsers extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -385,30 +396,27 @@ public class Admin_RegUsers extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
+        mainDk.setLayout(mainDkLayout);
+        mainDkLayout.setHorizontalGroup(
+            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        mainDkLayout.setVerticalGroup(
+            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jDesktopPane1);
-        jDesktopPane1.setBounds(180, 60, 720, 360);
+        jPanel1.add(mainDk);
+        mainDk.setBounds(180, 60, 720, 360);
 
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -448,7 +456,7 @@ public class Admin_RegUsers extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
 
         pack();
@@ -463,14 +471,6 @@ public class Admin_RegUsers extends javax.swing.JFrame {
       dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_dashPaneMouseExited
 
-    private void viewPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPaneMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewPaneMouseEntered
-
-    private void viewPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPaneMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewPaneMouseExited
-
     private void dashCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseEntered
        dashPane.setBackground(Panecolor);
     }//GEN-LAST:event_dashCMouseEntered
@@ -478,30 +478,6 @@ public class Admin_RegUsers extends javax.swing.JFrame {
     private void dashCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseExited
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_dashCMouseExited
-
-    private void viewCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseEntered
-        viewPane.setBackground(Panecolor);
-    }//GEN-LAST:event_viewCMouseEntered
-
-    private void viewCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseExited
-       
-    }//GEN-LAST:event_viewCMouseExited
-
-    private void purokPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokPaneMouseEntered
-        purokPane.setBackground(Panecolor);
-    }//GEN-LAST:event_purokPaneMouseEntered
-
-    private void purokPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokPaneMouseExited
-        purokPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_purokPaneMouseExited
-
-    private void purokCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseEntered
-         purokPane.setBackground(Panecolor);
-    }//GEN-LAST:event_purokCMouseEntered
-
-    private void purokCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseExited
-         purokPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_purokCMouseExited
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         admin_dashboard ads = new admin_dashboard();
@@ -516,16 +492,12 @@ public class Admin_RegUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_dashCMouseClicked
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
-         purokPane.setBackground(Panecolor);
+         dashPane.setBackground(Panecolor);
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_jLabel3MouseExited
-
-    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-       dashPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel6MouseEntered
 
     private void signout1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signout1MouseClicked
         login_form ads = new login_form();
@@ -544,8 +516,65 @@ public class Admin_RegUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_signout2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+      
+       Internal_NewUser nu = new Internal_NewUser ();
+       mainDk.add(nu).setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void viewPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPaneMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewPaneMouseExited
+
+    private void viewPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPaneMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewPaneMouseEntered
+
+    private void purokCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseExited
+        purokPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_purokCMouseExited
+
+    private void purokCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseEntered
+        purokPane.setBackground(Panecolor);
+    }//GEN-LAST:event_purokCMouseEntered
+
+    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
+        purokPane.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel6MouseEntered
+
+    private void purokPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokPaneMouseExited
+        purokPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_purokPaneMouseExited
+
+    private void purokPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokPaneMouseEntered
+        purokPane.setBackground(Panecolor);
+    }//GEN-LAST:event_purokPaneMouseEntered
+
+    private void viewCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseExited
+
+    }//GEN-LAST:event_viewCMouseExited
+
+    private void viewCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseEntered
+  
+    }//GEN-LAST:event_viewCMouseEntered
+
+    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
+      purokPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel6MouseExited
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+       
+       Internal_brgy ap = new Internal_brgy();
+       mainDk.add(ap).setVisible(true);
+       
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void purokCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseClicked
+        
+       Internal_brgy ap = new Internal_brgy();
+       mainDk.add(ap).setVisible(true);
+       
+    }//GEN-LAST:event_purokCMouseClicked
 
     /**
      * @param args the command line arguments
@@ -593,7 +622,6 @@ public class Admin_RegUsers extends javax.swing.JFrame {
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JButton jButton1;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -604,6 +632,7 @@ public class Admin_RegUsers extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JDesktopPane mainDk;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     private javax.swing.JLabel signout1;

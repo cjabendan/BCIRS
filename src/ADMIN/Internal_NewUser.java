@@ -9,12 +9,12 @@ package ADMIN;
  *
  * @author chris
  */
-public class Admin_barangay extends javax.swing.JInternalFrame {
+public class Internal_NewUser extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form admin_page
      */
-    public Admin_barangay() {
+    public Internal_NewUser() {
         initComponents();
     }
 
@@ -28,22 +28,9 @@ public class Admin_barangay extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(127, 199, 217));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/under_Conturcut.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 270, 236));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setText("THE DEVELOPER IS WORKING ON IT...");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, 35));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,8 +48,6 @@ public class Admin_barangay extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
