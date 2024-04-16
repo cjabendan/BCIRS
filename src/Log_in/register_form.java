@@ -6,6 +6,8 @@
 package Log_in;
 
 import config.dbConnector;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,45 @@ public class register_form extends javax.swing.JFrame {
         initComponents();
     }
 
+    public static String email, usname;
+    
+    public boolean dupCheck(){
+        
+        dbConnector dbc = new dbConnector();
+        
+        try{
+            
+            String query = "SELECT * FROM tbl_user  WHERE u_usn = '" + usn.getText() + "' OR u_email = '" + mail.getText() + "'";
+            ResultSet resultSet = dbc.getData(query);
+            
+            if(resultSet.next()){
+             
+                email = resultSet.getString("u_email");
+                if(email.equals(mail.getText())){
+                    JOptionPane.showMessageDialog(null,"Email is Already Used!");
+                    mail.setText("");
+                }
+                
+                usname = resultSet.getString("u_usn");
+                if(usname.equals(usn.getText())){
+                    JOptionPane.showMessageDialog(null,"Username is Already Used!");
+                    usn.setText("");
+                }
+                
+                return true;
+                
+            }else{
+                return false;
+            }
+            
+        }catch(SQLException ex){
+            
+            System.out.println(""+ex);
+            return false;
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,10 +74,8 @@ public class register_form extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        fn = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ln = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         mail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -46,207 +85,328 @@ public class register_form extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         ut = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        fn = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        mail1 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        usn1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        ps1 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        ut1 = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        ln = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(127, 199, 217));
+        jPanel1.setBackground(new java.awt.Color(27, 55, 77));
+        jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(127, 199, 217));
-        jLabel1.setText("Register to BCRIS!");
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel1.setText("Register");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 14, -1, -1));
 
-        fn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(100, 115, 122));
         jLabel2.setText("First Name:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 105, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(100, 115, 122));
         jLabel3.setText("Last Name:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, 20));
 
-        ln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel4.setText("Email Address:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, 20));
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel4.setText("Email:");
-
+        mail.setBackground(new java.awt.Color(245, 246, 248));
+        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        mail.setForeground(new java.awt.Color(153, 153, 153));
         mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mailActionPerformed(evt);
             }
         });
+        jPanel2.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, 24));
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(100, 115, 122));
         jLabel5.setText("Username:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 20));
 
+        usn.setBackground(new java.awt.Color(245, 246, 248));
+        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        usn.setForeground(new java.awt.Color(153, 153, 153));
         usn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usnActionPerformed(evt);
             }
         });
+        jPanel2.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 24));
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(100, 115, 122));
         jLabel6.setText("Password:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, 20));
 
+        ps.setBackground(new java.awt.Color(245, 246, 248));
+        ps.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ps.setForeground(new java.awt.Color(153, 153, 153));
         ps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 psActionPerformed(evt);
             }
         });
+        jPanel2.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 120, 24));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(100, 115, 122));
         jLabel7.setText("User Type:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, 20));
 
+        ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ut.setForeground(new java.awt.Color(153, 153, 153));
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
         ut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 utActionPerformed(evt);
             }
         });
+        jPanel2.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 120, 24));
 
-        jButton1.setBackground(new java.awt.Color(127, 199, 217));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jButton1.setText("Register User");
+        jButton1.setBackground(new java.awt.Color(27, 55, 77));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Resgiter Account");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 237, 35));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(127, 199, 217));
-        jLabel8.setText("Cancel and return to Log in?");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel9.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setText("Already have an account?");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+
+        jLabel10.setBackground(new java.awt.Color(245, 246, 248));
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 15)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel10.setText("Sign in");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                jLabel10MouseClicked(evt);
             }
         });
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(97, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(fn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ln, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(usn, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ps, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(ut, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(106, 106, 106))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(133, 133, 133))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ln, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ps, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(ut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        jLabel11.setBackground(new java.awt.Color(27, 55, 77));
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jLabel11.setText("Please register to log in.");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 61, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 403, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel8.setText("Terms & Conditions");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setText(" *By signing up, you agree to our");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel13.setText("Register");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 14, -1, -1));
+
+        fn.setBackground(new java.awt.Color(245, 246, 248));
+        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        fn.setForeground(new java.awt.Color(153, 153, 153));
+        fn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 120, 24));
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel14.setText("First Name:");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 105, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel15.setText("Last Name:");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, 20));
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel16.setText("Email Address:");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, 20));
+
+        mail1.setBackground(new java.awt.Color(245, 246, 248));
+        mail1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        mail1.setForeground(new java.awt.Color(153, 153, 153));
+        mail1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mail1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(mail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, 24));
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel17.setText("Username:");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 20));
+
+        usn1.setBackground(new java.awt.Color(245, 246, 248));
+        usn1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        usn1.setForeground(new java.awt.Color(153, 153, 153));
+        usn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usn1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(usn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 24));
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel18.setText("Password:");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, 20));
+
+        ps1.setBackground(new java.awt.Color(245, 246, 248));
+        ps1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ps1.setForeground(new java.awt.Color(153, 153, 153));
+        ps1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ps1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ps1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 120, 24));
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(100, 115, 122));
+        jLabel19.setText("User Type:");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, 20));
+
+        ut1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ut1.setForeground(new java.awt.Color(153, 153, 153));
+        ut1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
+        ut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ut1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 120, 24));
+
+        jButton2.setBackground(new java.awt.Color(27, 55, 77));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Resgiter Account");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setOpaque(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 237, 35));
+
+        jLabel20.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setText("Already have an account?");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
+
+        jLabel21.setBackground(new java.awt.Color(245, 246, 248));
+        jLabel21.setFont(new java.awt.Font("Yu Gothic UI", 1, 15)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel21.setText("Sign in");
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
+        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
+
+        jLabel22.setBackground(new java.awt.Color(27, 55, 77));
+        jLabel22.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jLabel22.setText("Please register to log in.");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 61, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel23.setText("Terms & Conditions");
+        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel24.setText(" *By signing up, you agree to our");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+
+        ln.setBackground(new java.awt.Color(245, 246, 248));
+        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ln.setForeground(new java.awt.Color(153, 153, 153));
+        ln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 120, 24));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(280, 0, 370, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnActionPerformed
 
     private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lnActionPerformed
-
-    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailActionPerformed
 
     private void usnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usnActionPerformed
         // TODO add your handling code here:
@@ -260,26 +420,94 @@ public class register_form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_utActionPerformed
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-         login_form ads = new login_form();
- 
-        ads.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        dbConnector dbc = new dbConnector();
+        register_C rC = new register_C();
         
-        if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status) VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"+ps.getText()+"','"+ut.getSelectedItem()+"','Pending')"))
+        if(ln.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
+                || usn.getText().isEmpty() || ps.getText().isEmpty())
         {
-            JOptionPane.showMessageDialog(null,"Inserted Successfully!");  
-        }else
-        {
-            JOptionPane.showMessageDialog(null,"Connection Error!");   
+            
+            JOptionPane.showMessageDialog(null,"All fields are required!");
+            
+        }else if(ps.getText().length() < 8){
+            
+            JOptionPane.showMessageDialog(null,"Password should be 8 above!");
+            ps.setText("");
+            
+        }else if(dupCheck()){
+            
+            System.out.println("Duplicate Exist!");
+            
         }
-                    
+        else{
+            
+             dbConnector dbc = new dbConnector();
+        
+        if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status)"
+                + " VALUES ('"+ln.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
+                +ps.getText()+"','"+ut.getSelectedItem()+"','Pending')"))
+        {
+            
+           
+            ln.setText("");
+            ln.setText("");
+            mail.setText("");
+            usn.setText("");
+            ps.setText("");
+            
+            rC.setVisible(true);
+            this.dispose();
+            
+        }
+        else
+            {
+            
+            JOptionPane.showMessageDialog(null,"Connection Error!"); 
+            
+        }
+            
+        }
+                      
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mailActionPerformed
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        login_form log = new login_form();
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnActionPerformed
+
+    private void mail1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mail1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mail1ActionPerformed
+
+    private void usn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usn1ActionPerformed
+
+    private void ps1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ps1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ps1ActionPerformed
+
+    private void ut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ut1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ut1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel21MouseClicked
 
     /**
      * @param args the command line arguments
@@ -320,20 +548,42 @@ public class register_form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField fn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField ln;
     private javax.swing.JTextField mail;
+    private javax.swing.JTextField mail1;
     private javax.swing.JTextField ps;
+    private javax.swing.JTextField ps1;
     private javax.swing.JTextField usn;
+    private javax.swing.JTextField usn1;
     private javax.swing.JComboBox<String> ut;
+    private javax.swing.JComboBox<String> ut1;
     // End of variables declaration//GEN-END:variables
 }
