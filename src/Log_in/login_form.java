@@ -7,6 +7,7 @@ package Log_in;
 
 import ADMIN.admin_dashboard;
 import USERS.user_dashboard;
+import config.Session;
 import config.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,11 +28,11 @@ public class login_form extends javax.swing.JFrame {
 
     static String status;
     static String type;
-    static String fname;
-    static String lname;
+   
     
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
+        
         try{
             String query = "SELECT * FROM tbl_user  WHERE u_usn = '" + username + "' AND u_pass = '" + password + "'";
             ResultSet resultSet = connector.getData(query);
@@ -40,9 +41,15 @@ public class login_form extends javax.swing.JFrame {
                 
                 status = resultSet.getString("u_status");
                 type = resultSet.getString("u_type");
-                fname = resultSet.getString("u_fname");
-                lname = resultSet.getString("u_lname");
-                 
+                Session sess = Session.getInstance();
+                sess.setUid(resultSet.getInt("u_id"));
+                sess.setFname(resultSet.getString("u_fname"));
+                sess.setLname(resultSet.getString("u_lname"));
+                sess.setEmail(resultSet.getString("u_email"));
+                sess.setUsername(resultSet.getString("u_usn"));
+                sess.setType(resultSet.getString("u_type"));
+                sess.setStatus(resultSet.getString("u_status"));
+                
                 return true;
             }else{
                 return false;
@@ -232,21 +239,26 @@ public class login_form extends javax.swing.JFrame {
                 if(type.equals("Admin")){                 
                       JOptionPane.showMessageDialog(null, "Log in successfully.");
                       admin_dashboard ads = new admin_dashboard();
-                      ads.admin_name.setText(" "+""+fname);
+                      
                       ads.setVisible(true);
                       this.dispose();                    
                 }else if(type.equals("User")){                  
                        JOptionPane.showMessageDialog(null, "Log in successfully.");
                        user_dashboard uds = new  user_dashboard();
-                       uds.userName.setText(" "+""+fname);
+                       
                        uds.setVisible(true);
                        this.dispose();                     
                  }else{
-                        JOptionPane.showMessageDialog(null, "Account does not exist.");
+                        JOptionPane.showMessageDialog(null, "Account does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
                     }     
                }            
-        }else{          
-            JOptionPane.showMessageDialog(null, "User does not exist!");
+        }
+         else if(pass.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Please enter your password! ","Notice", JOptionPane.ERROR_MESSAGE);
+         }
+         
+            else{          
+            JOptionPane.showMessageDialog(null, "User does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
         }       
     }//GEN-LAST:event_jButton1ActionPerformed
 

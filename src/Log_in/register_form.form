@@ -244,9 +244,10 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Admin"/>
-                    <StringItem index="1" value="User"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="Select Type"/>
+                    <StringItem index="1" value="Admin"/>
+                    <StringItem index="2" value="User"/>
                   </StringArray>
                 </Property>
               </Properties>

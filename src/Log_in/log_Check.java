@@ -112,7 +112,7 @@ public class log_Check extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(280, 0, 370, 483);
+        jPanel2.setBounds(250, 0, 370, 491);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -6,6 +6,7 @@
 package ADMIN;
 
 import Log_in.login_form;
+import config.Session;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -48,6 +49,10 @@ public class admin_dashboard extends javax.swing.JFrame {
         purokC = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         signout2 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lbl = new javax.swing.JLabel();
+        admin_name = new javax.swing.JLabel();
+        admin_usn = new javax.swing.JLabel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -57,9 +62,13 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        admin_name = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -263,7 +272,7 @@ public class admin_dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        signout2.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        signout2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
         signout2.setForeground(new java.awt.Color(27, 55, 77));
         signout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (1).png"))); // NOI18N
         signout2.setText(" SIGN OUT");
@@ -273,15 +282,31 @@ public class admin_dashboard extends javax.swing.JFrame {
             }
         });
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235), 2));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 15)); // NOI18N
+        lbl.setForeground(new java.awt.Color(27, 55, 77));
+        lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-user (3).png"))); // NOI18N
+        jPanel5.add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        admin_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        admin_name.setForeground(new java.awt.Color(27, 55, 77));
+        admin_name.setText("Admin name");
+        jPanel5.add(admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 20));
+
+        admin_usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        admin_usn.setForeground(new java.awt.Color(100, 115, 122));
+        admin_usn.setText("username");
+        jPanel5.add(admin_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 60, 30));
+
         javax.swing.GroupLayout adm_navLayout = new javax.swing.GroupLayout(adm_nav);
         adm_nav.setLayout(adm_navLayout);
         adm_navLayout.setHorizontalGroup(
             adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adm_navLayout.createSequentialGroup()
                 .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(adm_navLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
                     .addGroup(adm_navLayout.createSequentialGroup()
                         .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dashPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,10 +317,13 @@ public class admin_dashboard extends javax.swing.JFrame {
                             .addComponent(viewC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(purokC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dashC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(adm_navLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(signout2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(168, 168, 168)
+                        .addContainerGap()
+                        .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(signout2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(200, 200, 200)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -319,9 +347,11 @@ public class admin_dashboard extends javax.swing.JFrame {
                         .addComponent(viewPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(purokPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
-                .addComponent(signout2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(signout2)
+                .addGap(30, 30, 30))
         );
 
         jPanel1.add(adm_nav);
@@ -339,7 +369,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/chat-arrow-down.png"))); // NOI18N
-        jLabel4.setText(" 48+ added");
+        jLabel4.setText(" 0+ added");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 90, 20));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -349,7 +379,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("31 258");
+        jLabel10.setText("0");
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 130, 40));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
@@ -379,11 +409,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText(" Admin Dashboard");
-
-        admin_name.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        admin_name.setForeground(new java.awt.Color(27, 55, 77));
-        admin_name.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-user (3).png"))); // NOI18N
+        jLabel1.setText("  Admin Dashboard");
 
         javax.swing.GroupLayout adm_headerLayout = new javax.swing.GroupLayout(adm_header);
         adm_header.setLayout(adm_headerLayout);
@@ -391,18 +417,13 @@ public class admin_dashboard extends javax.swing.JFrame {
             adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adm_headerLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
-                .addComponent(admin_name, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(563, Short.MAX_VALUE))
         );
         adm_headerLayout.setVerticalGroup(
             adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_headerLayout.createSequentialGroup()
-                .addGroup(adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(admin_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(adm_headerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
@@ -519,6 +540,21 @@ public class admin_dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_signout2MouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       Session sess = Session.getInstance();
+       
+       if(sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null, "No Account, Log in First! ","Notice", JOptionPane.ERROR_MESSAGE);
+            login_form lgf = new login_form();
+            lgf.setVisible(true);
+            this.dispose();
+       }else{
+            admin_name.setText(sess.getFname());
+            admin_usn.setText(sess.getUsername());
+       }
+      
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -557,7 +593,8 @@ public class admin_dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
-    public javax.swing.JLabel admin_name;
+    private javax.swing.JLabel admin_name;
+    private javax.swing.JLabel admin_usn;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel jLabel1;
@@ -573,6 +610,8 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    public javax.swing.JLabel lbl;
     public javax.swing.JDesktopPane mainDk;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;

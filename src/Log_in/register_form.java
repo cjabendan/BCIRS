@@ -186,7 +186,7 @@ public class register_form extends javax.swing.JFrame {
 
         ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         ut.setForeground(new java.awt.Color(153, 153, 153));
-        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
+        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User" }));
         ut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 utActionPerformed(evt);

@@ -112,7 +112,7 @@ public class register_C extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(280, 0, 370, 475);
+        jPanel2.setBounds(260, 0, 370, 485);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
