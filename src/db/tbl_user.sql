@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2024 at 07:50 AM
+-- Generation Time: Apr 23, 2024 at 06:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,9 +43,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pass`, `u_type`, `u_status`) VALUES
-(1001, 'christian', 'abendan', 'chan@gmail.com', 'unichan', 'dasai2004', 'Admin', 'Active'),
-(1002, 'david', 'villondo', 'david@gmail.com', 'dasai', '2123', 'Admin', 'Active'),
-(1011, 'test', 'testt', 'testttt', 'test1', '12345678', 'User', 'Active');
+(1015, 'abendan', 'abendan', 'chrisbend2004@gmail.com', 'channix', '3c7ef747ce6f3e1c28d1c277088080e14e661f379d297ffe1d', 'Admin', 'Active'),
+(1016, 'test1', 'test1', 'test1', 'test1', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff12265', 'User', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +64,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1012;
+  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1017;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

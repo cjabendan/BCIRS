@@ -5,6 +5,7 @@
  */
 package Log_in;
 
+import config.PasswordHasher;
 import config.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -141,7 +142,7 @@ public class register_form extends javax.swing.JFrame {
 
         mail.setBackground(new java.awt.Color(245, 246, 248));
         mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        mail.setForeground(new java.awt.Color(153, 153, 153));
+        mail.setForeground(new java.awt.Color(100, 115, 122));
         mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mailActionPerformed(evt);
@@ -156,7 +157,7 @@ public class register_form extends javax.swing.JFrame {
 
         usn.setBackground(new java.awt.Color(245, 246, 248));
         usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        usn.setForeground(new java.awt.Color(153, 153, 153));
+        usn.setForeground(new java.awt.Color(100, 115, 122));
         usn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usnActionPerformed(evt);
@@ -171,7 +172,7 @@ public class register_form extends javax.swing.JFrame {
 
         ps.setBackground(new java.awt.Color(245, 246, 248));
         ps.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        ps.setForeground(new java.awt.Color(153, 153, 153));
+        ps.setForeground(new java.awt.Color(100, 115, 122));
         ps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 psActionPerformed(evt);
@@ -185,7 +186,7 @@ public class register_form extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, 20));
 
         ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        ut.setForeground(new java.awt.Color(153, 153, 153));
+        ut.setForeground(new java.awt.Color(100, 115, 122));
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User" }));
         ut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +251,7 @@ public class register_form extends javax.swing.JFrame {
 
         fn.setBackground(new java.awt.Color(245, 246, 248));
         fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        fn.setForeground(new java.awt.Color(153, 153, 153));
+        fn.setForeground(new java.awt.Color(100, 115, 122));
         fn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnActionPerformed(evt);
@@ -376,7 +377,7 @@ public class register_form extends javax.swing.JFrame {
 
         ln.setBackground(new java.awt.Color(245, 246, 248));
         ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        ln.setForeground(new java.awt.Color(153, 153, 153));
+        ln.setForeground(new java.awt.Color(100, 115, 122));
         ln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnActionPerformed(evt);
@@ -424,6 +425,10 @@ public class register_form extends javax.swing.JFrame {
 
         register_C rC = new register_C();
         
+        PasswordHasher pH = new PasswordHasher();
+        
+        String password = pH.hashPassword(ps.getText());
+        
         if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
                 || usn.getText().isEmpty() || ps.getText().isEmpty())
         {
@@ -446,7 +451,7 @@ public class register_form extends javax.swing.JFrame {
         
         if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status)"
                 + " VALUES ('"+ln.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
-                +ps.getText()+"','"+ut.getSelectedItem()+"','Pending')"))
+                +password+"','"+ut.getSelectedItem()+"','Pending')"))
         {
                         
             rC.setVisible(true);

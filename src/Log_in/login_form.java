@@ -7,11 +7,16 @@ package Log_in;
 
 import ADMIN.admin_dashboard;
 import USERS.user_dashboard;
+import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
+import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -61,6 +66,18 @@ public class login_form extends javax.swing.JFrame {
 
     }
     
+    class customTextField extends JTextField {
+
+        public customTextField(String pathName) {
+            JLabel label = new JLabel();
+            label.setIcon(new ImageIcon(getClass().getResource(pathName)));
+            setLayout(new BorderLayout());
+            add(label, BorderLayout.EAST);
+
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,7 +137,7 @@ public class login_form extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(100, 115, 122));
         jLabel2.setText("Lirum mipsum este la dirres tues jaer fella tesje.");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(100, 100, 245, 16);
+        jLabel2.setBounds(100, 100, 248, 16);
 
         jPanel2.setBackground(new java.awt.Color(27, 55, 77));
 
@@ -222,13 +239,14 @@ public class login_form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passActionPerformed
 
-    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-         if(loginAcc(user.getText(),pass.getText()))
+
+        
+         PasswordHasher pH = new PasswordHasher();
+        
+        String password = pH.hashPassword(pass.getText());
+        
+         if(loginAcc(user.getText(),password))
          {            
              if(!status.equals("Active")){            
                     log_Check lc = new log_Check();
@@ -268,6 +286,10 @@ public class login_form extends javax.swing.JFrame {
         regf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regMouseClicked
+
+    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userActionPerformed
 
     /**
      * @param args the command line arguments

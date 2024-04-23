@@ -33,6 +33,8 @@ public class Session {
         }
         return instance;
     }
+    
+    
 
     public static boolean isInstanceEmpty() {
         return instance == null;
