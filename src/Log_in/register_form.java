@@ -430,7 +430,7 @@ public class register_form extends javax.swing.JFrame {
         String password = pH.hashPassword(ps.getText());
         
         if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
-                || usn.getText().isEmpty() || ps.getText().isEmpty())
+                || usn.getText().isEmpty() || ps.getText().isEmpty() || ut.getSelectedIndex() == 0)
         {
             
             JOptionPane.showMessageDialog(null,"All fields are required!");

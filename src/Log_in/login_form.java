@@ -242,7 +242,7 @@ public class login_form extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         
-         PasswordHasher pH = new PasswordHasher();
+        PasswordHasher pH = new PasswordHasher();
         
         String password = pH.hashPassword(pass.getText());
         

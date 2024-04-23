@@ -145,7 +145,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("ACCOUNT SETTINGS");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 38));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 38));
 
         user_Settings.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
 
