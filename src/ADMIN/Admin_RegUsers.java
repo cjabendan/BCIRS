@@ -547,6 +547,7 @@ public class Admin_RegUsers extends javax.swing.JFrame {
       
        Admin_RegUsers_Add adU = new Admin_RegUsers_Add ();
        adU.edit.setEnabled(false);
+       adU.add.setEnabled(false);
        adU.setVisible(true);
        this.dispose(); 
        
@@ -638,19 +639,18 @@ public class Admin_RegUsers extends javax.swing.JFrame {
             
                 if(rs.next()){
                     
-                     Admin_RegUsers_Add ru = new Admin_RegUsers_Add();
+                     Admin_RegUsers_Update ru = new Admin_RegUsers_Update();
                      ru.uID.setText(""+rs.getInt("u_id"));
                      ru.fn.setText(""+rs.getString("u_fname"));
                      ru.ln.setText(""+rs.getString("u_lname"));
                      ru.usn.setText(""+rs.getString("u_usn"));
                      ru.mail.setText(""+rs.getString("u_email"));
-                     ru.ps.setText(""+rs.getString("u_pass"));
                      ru.ut.setSelectedItem(""+rs.getString("u_type"));
                      ru.st.setSelectedItem(""+rs.getString("u_status"));
                      ru.add.setEnabled(false);
-                     ru.addBT.setEnabled(false);
                      ru.cancel.setEnabled(true);
                      ru.update.setEnabled(true);
+                     ru.edit.setEnabled(false);
                      ru.setVisible(true);
                      this.dispose();
                 }

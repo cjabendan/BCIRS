@@ -28,7 +28,9 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         
     }
     
-
+    Color Red = new Color(255,0,0);
+    Color MainC = new Color(57,55,77);
+    
     Color Panecolor = new Color(57,55,77);
     Color PaneNcolor = new Color(255,255,255);
     
@@ -70,47 +72,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         }
     }
         
-          public boolean updateCheck(){
-        
-        dbConnector dbc = new dbConnector();
-        
-        try{
-            
-            String query = "SELECT * FROM tbl_user WHERE (u_usn = '" + usn.getText() 
-                    + "' OR u_email = '" + mail.getText() 
-                    + "') AND u_id != '" + uID.getText() + "'";
-    
-            ResultSet resultSet = dbc.getData(query);
-            
-            if(resultSet.next()){
-             
-                email = resultSet.getString("u_email");
-                if(email.equals(mail.getText())){
-                    JOptionPane.showMessageDialog(null,"Email is Already Used!");
-                    mail.setText("");
-                }
-                
-                usname = resultSet.getString("u_usn");
-                if(usname.equals(usn.getText())){
-                    JOptionPane.showMessageDialog(null,"Username is Already Used!");
-                    usn.setText("");
-                }
-                
-                return true;
-                
-            }else{
-                return false;
-            }
-            
-        }catch(SQLException ex){
-            
-            System.out.println(""+ex);
-            return false;
-        }
-        
-    }
-          
-    
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,11 +123,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        uID = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        cancel = new javax.swing.JButton();
-        update = new javax.swing.JButton();
         edit = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -490,77 +449,82 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         fn.setBackground(new java.awt.Color(245, 246, 248));
         fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         fn.setForeground(new java.awt.Color(100, 115, 122));
+        fn.setBorder(null);
         fn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnActionPerformed(evt);
             }
         });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 120, 24));
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, 24));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 55, 77));
         jLabel4.setText("First Name:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         ln.setBackground(new java.awt.Color(245, 246, 248));
         ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         ln.setForeground(new java.awt.Color(100, 115, 122));
+        ln.setBorder(null);
         ln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnActionPerformed(evt);
             }
         });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 120, 24));
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 120, 24));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(27, 55, 77));
         jLabel7.setText("Last Name:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, 20));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, 20));
 
         usn.setBackground(new java.awt.Color(245, 246, 248));
         usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         usn.setForeground(new java.awt.Color(100, 115, 122));
+        usn.setBorder(null);
         usn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usnActionPerformed(evt);
             }
         });
-        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 120, 24));
+        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 24));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
         jLabel8.setText("Username:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(27, 55, 77));
         jLabel9.setText("Password:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, 20));
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, 20));
 
         ps.setBackground(new java.awt.Color(245, 246, 248));
         ps.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         ps.setForeground(new java.awt.Color(100, 115, 122));
+        ps.setBorder(null);
         ps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 psActionPerformed(evt);
             }
         });
-        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 120, 24));
+        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 120, 24));
 
         mail.setBackground(new java.awt.Color(245, 246, 248));
         mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         mail.setForeground(new java.awt.Color(100, 115, 122));
+        mail.setBorder(null);
         mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mailActionPerformed(evt);
             }
         });
-        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 120, 24));
+        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 120, 24));
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 55, 77));
         jLabel10.setText("Email Address:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 20));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 20));
 
         ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         ut.setForeground(new java.awt.Color(100, 115, 122));
@@ -570,17 +534,17 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 utActionPerformed(evt);
             }
         });
-        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 120, 24));
+        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 120, 24));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 55, 77));
         jLabel11.setText("User Type:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, -1, 20));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, 20));
 
         addBT.setBackground(new java.awt.Color(27, 55, 77));
         addBT.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         addBT.setForeground(new java.awt.Color(255, 255, 255));
-        addBT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-add (2).png"))); // NOI18N
+        addBT.setText(" Add User");
         addBT.setBorder(null);
         addBT.setBorderPainted(false);
         addBT.setOpaque(false);
@@ -589,7 +553,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 addBTActionPerformed(evt);
             }
         });
-        jPanel3.add(addBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 30, 30));
+        jPanel3.add(addBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 120, 30));
 
         st.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         st.setForeground(new java.awt.Color(100, 115, 122));
@@ -599,12 +563,12 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 stActionPerformed(evt);
             }
         });
-        jPanel3.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 120, 24));
+        jPanel3.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 120, 24));
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(27, 55, 77));
         jLabel13.setText("Account Status");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 20));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, 20));
 
         jPanel6.setBackground(new java.awt.Color(27, 55, 77));
 
@@ -622,7 +586,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -635,55 +599,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 340, 270));
-
-        uID.setBackground(new java.awt.Color(245, 246, 248));
-        uID.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        uID.setForeground(new java.awt.Color(100, 115, 122));
-        uID.setEnabled(false);
-        uID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uIDActionPerformed(evt);
-            }
-        });
-        jPanel3.add(uID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 70, 24));
-
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel16.setText("User ID:");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 40, 20));
-
-        cancel.setBackground(new java.awt.Color(255, 0, 0));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel.setForeground(new java.awt.Color(255, 255, 255));
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-        jPanel3.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 30, 30));
-
-        update.setBackground(new java.awt.Color(27, 55, 77));
-        update.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        update.setForeground(new java.awt.Color(255, 255, 255));
-        update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/refresh.png"))); // NOI18N
-        update.setEnabled(false);
-        update.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateMouseClicked(evt);
-            }
-        });
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 30, 30));
 
         edit.setBackground(new java.awt.Color(27, 55, 77));
         edit.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -701,6 +616,27 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             }
         });
 
+        cancel.setBackground(new java.awt.Color(57, 55, 77));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -708,20 +644,25 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addContainerGap())
@@ -747,7 +688,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText(" Registered User Settings");
+        jLabel1.setText(" Users Panel");
 
         javax.swing.GroupLayout adm_headerLayout = new javax.swing.GroupLayout(adm_header);
         adm_header.setLayout(adm_headerLayout);
@@ -908,10 +849,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usnActionPerformed
 
-    private void psActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psActionPerformed
-
     private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mailActionPerformed
@@ -929,8 +866,9 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         
        String password = pH.hashPassword(ps.getText());
        
-        if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
-                || usn.getText().isEmpty() || ps.getText().isEmpty())
+        if (fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
+        || usn.getText().isEmpty() || ps.getText().isEmpty() 
+        || ut.getSelectedIndex() == 0 || st.getSelectedIndex() == 0)
         {
             
             JOptionPane.showMessageDialog(null,"All fields are required!");
@@ -975,10 +913,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_stActionPerformed
 
-    private void uIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_uIDActionPerformed
-
     private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
 
     }//GEN-LAST:event_editMouseClicked
@@ -1003,45 +937,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateMouseClicked
-
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
-          if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
-                || usn.getText().isEmpty() || ps.getText().isEmpty())
-        {
-            
-            JOptionPane.showMessageDialog(null,"All fields are required!");
-            
-        }else if(ps.getText().length() < 8){
-            
-            JOptionPane.showMessageDialog(null,"Password should be 8 above!");
-            ps.setText("");
-            
-        }else if(updateCheck()){
-            
-            System.out.println("Duplicate Exist!");
-            
-        }
-        else{
-             
-        dbConnector dbc = new dbConnector();
-        
-        dbc.updateData("UPDATE tbl_user SET u_fname = '" + fn.getText() + "', u_lname = '" + ln.getText()
-                + "', u_email = '" + mail.getText() + "', u_usn = '" + usn.getText()
-                + "', u_pass = '" + ps.getText() + "', u_type = '" + ut.getSelectedItem()
-                + "', u_status = '" + st.getSelectedItem() + "' WHERE u_id = '" + uID.getText() + "'");
-
-        Admin_RegUsers ru = new Admin_RegUsers();
-        ru.setVisible(true);
-        this.dispose();
-        
-        }
-          
-    }//GEN-LAST:event_updateActionPerformed
-
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         login_form ads = new login_form();
 
@@ -1049,6 +944,18 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void psActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_psActionPerformed
+
+    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
+        cancel.setBackground(Red);
+    }//GEN-LAST:event_cancelMouseEntered
+
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+         cancel.setBackground(MainC);
+    }//GEN-LAST:event_cancelMouseExited
 
     /**
      * @param args the command line arguments
@@ -1111,7 +1018,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1135,8 +1041,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     public javax.swing.JComboBox<String> st;
-    public javax.swing.JTextField uID;
-    public javax.swing.JButton update;
     public javax.swing.JTextField usn;
     public javax.swing.JComboBox<String> ut;
     private javax.swing.JPanel viewC;

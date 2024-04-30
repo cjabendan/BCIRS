@@ -13,9 +13,12 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -110,6 +113,8 @@ public class user_dashboard extends javax.swing.JFrame {
         newpass = new javax.swing.JPasswordField();
         jLabel29 = new javax.swing.JLabel();
         confirmpass = new javax.swing.JPasswordField();
+        oldpass = new javax.swing.JPasswordField();
+        jLabel28 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -137,6 +142,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         user_Settings.setBackground(new java.awt.Color(255, 255, 255));
+        user_Settings.setName(""); // NOI18N
         user_Settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(27, 55, 77));
@@ -273,7 +279,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Update Information");
-        jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 38));
+        jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 38));
 
         resetPass.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
 
@@ -285,14 +291,13 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("New Password:");
-        jPanel10.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 30));
+        jLabel27.setText("New Password");
+        jPanel10.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, 30));
 
         update1.setBackground(new java.awt.Color(27, 55, 77));
-        update1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        update1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         update1.setForeground(new java.awt.Color(255, 255, 255));
-        update1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/refresh.png"))); // NOI18N
-        update1.setText(" Reset Password");
+        update1.setText("Reset Password");
         update1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 update1MouseClicked(evt);
@@ -303,14 +308,20 @@ public class user_dashboard extends javax.swing.JFrame {
                 update1ActionPerformed(evt);
             }
         });
-        jPanel10.add(update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 170, 30));
-        jPanel10.add(newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 310, -1));
+        jPanel10.add(update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 140, 30));
+        jPanel10.add(newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 230, -1));
 
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Confirm Password:");
-        jPanel10.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
-        jPanel10.add(confirmpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 310, -1));
+        jLabel29.setText("Confirm Password");
+        jPanel10.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, 30));
+        jPanel10.add(confirmpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 230, -1));
+        jPanel10.add(oldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 230, -1));
+
+        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText("Old Password");
+        jPanel10.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
 
         jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 370, 250));
 
@@ -545,8 +556,8 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText("  Dashboard");
-        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 60));
+        jLabel1.setText("   Dashboard");
+        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
 
         user_usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         user_usn.setForeground(new java.awt.Color(100, 115, 122));
@@ -706,7 +717,13 @@ public class user_dashboard extends javax.swing.JFrame {
                 System.out.println(""+ex);
             }                
           
-        JOptionPane.showMessageDialog(null,user_Settings,"", JOptionPane.PLAIN_MESSAGE);
+        Object[] options = {};
+        
+        
+        JOptionPane.showOptionDialog(null, user_Settings, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, null);
+        
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
@@ -738,53 +755,24 @@ public class user_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_update1MouseClicked
 
     private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
-        
-         PasswordHasher pH = new PasswordHasher();
-                           
-        if(newpass.getText().isEmpty() || confirmpass.getText().isEmpty())
-        {
-            
-            JOptionPane.showMessageDialog(null,"All fields are required!");
-            
-        }else if(newpass.getText().length() < 8){
-            
-            JOptionPane.showMessageDialog(null,"Password should be 8 above!");
-            newpass.setText("");
-                  
-    }else if(!newpass.getText().equals(confirmpass.getText())){
-            
-             JOptionPane.showMessageDialog(null,"Password does not match!");
-        }
-        else{
-        
-        String password = pH.hashPassword(newpass.getText());
-  
-        dbConnector dbc = new dbConnector();
-        
-        dbc.updateData("UPDATE tbl_user SET u_pass = '" + password+ "' WHERE u_id = '" + uID.getText() + "'");
 
-        user_dashboard ru = new user_dashboard();
-        ru.setVisible(true);
-        this.dispose();
         
-        }
+   
+        Object[] options = {};
+        
+        JOptionPane.showOptionDialog(null,user_Settings, "",
+        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, null);
+     
     }//GEN-LAST:event_update1ActionPerformed
 
     private void resPsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resPsMouseClicked
-                 
-        Session sess = Session.getInstance();      
-       
-        try{
-                dbConnector dbc = new dbConnector();
-               
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
-                
-                
-            }catch(SQLException ex){
-                System.out.println(""+ex);
-            }                
-        JOptionPane.showMessageDialog(null,resetPass,"", JOptionPane.PLAIN_MESSAGE);
+
+        Object[] options = {};
         
+        JOptionPane.showOptionDialog(null,resetPass, "",
+         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, null);
     }//GEN-LAST:event_resPsMouseClicked
 
     /**
@@ -841,6 +829,7 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -864,6 +853,7 @@ public class user_dashboard extends javax.swing.JFrame {
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mail;
     private javax.swing.JPasswordField newpass;
+    private javax.swing.JPasswordField oldpass;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     private javax.swing.JLabel resPs;

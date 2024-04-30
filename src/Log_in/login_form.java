@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 /**
  *
@@ -30,6 +31,9 @@ public class login_form extends javax.swing.JFrame {
     public login_form() {
         initComponents();
     }
+    
+    Color Hover = new Color(0,102,255);
+    Color Release = new Color(57,55,77);
 
     static String status;
     static String type;
@@ -96,7 +100,7 @@ public class login_form extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        forgotps = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -173,11 +177,19 @@ public class login_form extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(450, 0, 450, 420);
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel3.setText("Forgot pasword?");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(261, 282, 87, 17);
+        forgotps.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        forgotps.setForeground(new java.awt.Color(27, 55, 77));
+        forgotps.setText("Forgot pasword?");
+        forgotps.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                forgotpsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                forgotpsMouseExited(evt);
+            }
+        });
+        jPanel1.add(forgotps);
+        forgotps.setBounds(261, 282, 87, 17);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 55, 77));
@@ -205,20 +217,26 @@ public class login_form extends javax.swing.JFrame {
 
         reg.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         reg.setForeground(new java.awt.Color(27, 55, 77));
-        reg.setText("Sign up");
+        reg.setText(" Sign up");
         reg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 regMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                regMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                regMouseExited(evt);
+            }
         });
         jPanel1.add(reg);
-        reg.setBounds(270, 350, 50, 20);
+        reg.setBounds(270, 350, 60, 20);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Don't have an  account?");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(110, 350, 160, 20);
+        jLabel9.setBounds(120, 350, 151, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,6 +309,22 @@ public class login_form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userActionPerformed
 
+    private void regMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regMouseEntered
+     reg.setForeground(Hover);
+    }//GEN-LAST:event_regMouseEntered
+
+    private void regMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regMouseExited
+     reg.setForeground(Release);
+    }//GEN-LAST:event_regMouseExited
+
+    private void forgotpsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpsMouseEntered
+      forgotps.setForeground(Hover);
+    }//GEN-LAST:event_forgotpsMouseEntered
+
+    private void forgotpsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpsMouseExited
+      forgotps.setForeground(Release);  
+    }//GEN-LAST:event_forgotpsMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -327,10 +361,10 @@ public class login_form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel forgotps;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
