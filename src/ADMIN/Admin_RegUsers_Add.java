@@ -29,7 +29,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     }
     
     Color Red = new Color(255,0,0);
-    Color MainC = new Color(57,55,77);
+    Color MainC = new Color(27,55,77);
     
     Color Panecolor = new Color(57,55,77);
     Color PaneNcolor = new Color(255,255,255);
@@ -616,7 +616,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             }
         });
 
-        cancel.setBackground(new java.awt.Color(57, 55, 77));
+        cancel.setBackground(new java.awt.Color(27, 55, 77));
         cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         cancel.setForeground(new java.awt.Color(255, 255, 255));
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
