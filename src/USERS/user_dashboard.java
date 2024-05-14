@@ -13,12 +13,16 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
-import java.security.NoSuchAlgorithmException;
+import java.awt.Window;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -31,50 +35,14 @@ public class user_dashboard extends javax.swing.JFrame {
      */
     public user_dashboard() {
         initComponents();
+        nps.setBorder(new EmptyBorder(0,10,0,0));
+        cps.setBorder(new EmptyBorder(0,10,0,0));
+        cnps.setBorder(new EmptyBorder(0,10,0,0));
     }
 
     Color Panecolor = new Color(57,55,77);
     Color PaneNcolor = new Color(255,255,255);
     
-     public boolean updateCheck(){
-        
-        dbConnector dbc = new dbConnector();
-        
-        try{
-            
-            String query = "SELECT * FROM tbl_user WHERE (u_usn = '" + usn.getText() 
-                    + "' OR u_email = '" + type.getText() 
-                    + "') AND u_id != '" + uID.getText() + "'";
-    
-            ResultSet resultSet = dbc.getData(query);
-            
-            if(resultSet.next()){
-             
-                email = resultSet.getString("u_email");
-                if(email.equals(type.getText())){
-                    JOptionPane.showMessageDialog(null,"Email is Already Used!");
-                    type.setText("");
-                }
-                
-                usname = resultSet.getString("u_usn");
-                if(usname.equals(usn.getText())){
-                    JOptionPane.showMessageDialog(null,"Username is Already Used!");
-                    usn.setText("");
-                }
-                
-                return true;
-                
-            }else{
-                return false;
-            }
-            
-        }catch(SQLException ex){
-            
-            System.out.println(""+ex);
-            return false;
-        }
-        
-     }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,36 +53,33 @@ public class user_dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        user_Settings = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        ln = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        type = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        uID = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        fn = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        usn = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        resPs = new javax.swing.JLabel();
-        mail = new javax.swing.JTextField();
-        resetPass = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        update1 = new javax.swing.JButton();
-        newpass = new javax.swing.JPasswordField();
-        jLabel29 = new javax.swing.JLabel();
-        confirmpass = new javax.swing.JPasswordField();
-        oldpass = new javax.swing.JPasswordField();
-        jLabel28 = new javax.swing.JLabel();
+        userSettings = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        type = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        fullname = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        umail = new javax.swing.JLabel();
+        resPs1 = new javax.swing.JLabel();
+        resetPS = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        a1 = new javax.swing.JLabel();
+        cps = new javax.swing.JPasswordField();
+        jLabel30 = new javax.swing.JLabel();
+        nps = new javax.swing.JPasswordField();
+        cnps = new javax.swing.JPasswordField();
+        jLabel31 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        a3 = new javax.swing.JLabel();
+        a2 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -141,193 +106,145 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        user_Settings.setBackground(new java.awt.Color(255, 255, 255));
-        user_Settings.setName(""); // NOI18N
-        user_Settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        userSettings.setBackground(new java.awt.Color(27, 55, 77));
+        userSettings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Type:");
+        userSettings.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, 20));
+        userSettings.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 420, 10));
 
-        jLabel9.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("ACCOUNT SETTINGS");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, -1, 38));
+        jLabel19.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Account Information");
+        jLabel19.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
+        userSettings.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
 
-        user_Settings.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
+        type.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        type.setForeground(new java.awt.Color(255, 255, 255));
+        type.setText("User ID:");
+        userSettings.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 70, 20));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel20.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Full Name:");
+        userSettings.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 90, 30));
 
-        jPanel7.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Username:");
+        userSettings.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 90, 30));
 
-        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        ln.setForeground(new java.awt.Color(100, 115, 122));
-        ln.setEnabled(false);
-        ln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnActionPerformed(evt);
-            }
-        });
-        jPanel7.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 120, 24));
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Email:");
+        userSettings.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 90, 30));
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Email Address:");
-        jPanel7.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, 20));
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("ID no:");
+        userSettings.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 60, 30));
 
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Type:");
-        jPanel7.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, 20));
+        id.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        id.setForeground(new java.awt.Color(255, 255, 255));
+        id.setText("User ID:");
+        userSettings.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 100, 30));
 
-        type.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        type.setForeground(new java.awt.Color(100, 115, 122));
-        type.setEnabled(false);
-        type.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeActionPerformed(evt);
-            }
-        });
-        jPanel7.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 80, 24));
+        fullname.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        fullname.setForeground(new java.awt.Color(255, 255, 255));
+        fullname.setText("User ID:");
+        userSettings.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 230, 30));
 
-        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("User ID:");
-        jPanel7.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, 20));
+        username.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        username.setForeground(new java.awt.Color(255, 255, 255));
+        username.setText("User ID:");
+        userSettings.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 230, 30));
 
-        uID.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        uID.setForeground(new java.awt.Color(100, 115, 122));
-        uID.setEnabled(false);
-        uID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uIDActionPerformed(evt);
-            }
-        });
-        jPanel7.add(uID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 70, 24));
+        umail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        umail.setForeground(new java.awt.Color(255, 255, 255));
+        umail.setText("User ID:");
+        userSettings.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("First Name:");
-        jPanel7.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 20));
-
-        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        fn.setForeground(new java.awt.Color(100, 115, 122));
-        fn.setBorder(null);
-        fn.setEnabled(false);
-        fn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnActionPerformed(evt);
-            }
-        });
-        jPanel7.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 120, 24));
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Username:");
-        jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, 20));
-
-        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        usn.setForeground(new java.awt.Color(100, 115, 122));
-        usn.setBorder(null);
-        usn.setEnabled(false);
-        usn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usnActionPerformed(evt);
-            }
-        });
-        jPanel7.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 24));
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Last Name:");
-        jPanel7.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, 20));
-
-        resPs.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        resPs.setForeground(new java.awt.Color(255, 255, 255));
-        resPs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/comment-info.png"))); // NOI18N
-        resPs.setText(" Change password?");
-        resPs.addMouseListener(new java.awt.event.MouseAdapter() {
+        resPs1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        resPs1.setForeground(new java.awt.Color(255, 255, 255));
+        resPs1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        resPs1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/lock.png"))); // NOI18N
+        resPs1.setText(" Change your password");
+        resPs1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                resPsMouseClicked(evt);
+                resPs1MouseClicked(evt);
             }
         });
-        jPanel7.add(resPs, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, 20));
+        userSettings.add(resPs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 420, 20));
 
-        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        mail.setForeground(new java.awt.Color(100, 115, 122));
-        mail.setBorder(null);
-        mail.setEnabled(false);
-        mail.addActionListener(new java.awt.event.ActionListener() {
+        resetPS.setBackground(new java.awt.Color(27, 55, 77));
+        resetPS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        resetPS.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 420, 10));
+
+        jLabel25.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
+        resetPS.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 20));
+
+        a1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        resetPS.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 160, 20));
+
+        cps.setBackground(new java.awt.Color(242, 242, 242));
+        cps.setBorder(null);
+        resetPS.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 230, 20));
+
+        jLabel30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Current Password:");
+        resetPS.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 110, 20));
+
+        nps.setBackground(new java.awt.Color(242, 242, 242));
+        nps.setBorder(null);
+        resetPS.add(nps, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 230, 20));
+
+        cnps.setBackground(new java.awt.Color(242, 242, 242));
+        cnps.setBorder(null);
+        resetPS.add(cnps, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 230, 20));
+
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("Confirm  Password:");
+        resetPS.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 20));
+
+        jButton1.setBackground(new java.awt.Color(27, 55, 77));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Update Password");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mailActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel7.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 120, 24));
+        resetPS.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 120, 30));
 
-        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 370, 250));
+        a3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        resetPS.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 160, 20));
 
-        user_Settings.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 370, 250));
+        a2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        resetPS.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 160, 20));
 
-        resetPass.setBackground(new java.awt.Color(255, 255, 255));
-        resetPass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel8.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel17.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("Update Information");
-        jPanel8.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 38));
-
-        resetPass.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 60));
-
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel10.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("New Password");
-        jPanel10.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, 30));
-
-        update1.setBackground(new java.awt.Color(27, 55, 77));
-        update1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        update1.setForeground(new java.awt.Color(255, 255, 255));
-        update1.setText("Reset Password");
-        update1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                update1MouseClicked(evt);
-            }
-        });
-        update1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                update1ActionPerformed(evt);
-            }
-        });
-        jPanel10.add(update1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 140, 30));
-        jPanel10.add(newpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 230, -1));
-
-        jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Confirm Password");
-        jPanel10.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, 30));
-        jPanel10.add(confirmpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 230, -1));
-        jPanel10.add(oldpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 230, -1));
-
-        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Old Password");
-        jPanel10.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 30));
-
-        jPanel9.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 370, 250));
-
-        resetPass.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 370, 250));
+        jLabel32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("New Password:");
+        resetPS.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 90, 20));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -421,7 +338,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(27, 55, 77));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_nF.png"))); // NOI18N
-        jLabel5.setText(" Polulace");
+        jLabel5.setText(" Citizen");
 
         javax.swing.GroupLayout viewCLayout = new javax.swing.GroupLayout(viewC);
         viewC.setLayout(viewCLayout);
@@ -501,7 +418,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(27, 55, 77));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barangay_nF.png"))); // NOI18N
-        jLabel6.setText(" Purok's");
+        jLabel6.setText(" Purok");
 
         javax.swing.GroupLayout purokCLayout = new javax.swing.GroupLayout(purokC);
         purokC.setLayout(purokCLayout);
@@ -530,7 +447,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
-        jToggleButton2.setText(" SIGN OUT");
+        jToggleButton2.setText(" LOG OUT");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
@@ -547,14 +464,14 @@ public class user_dashboard extends javax.swing.JFrame {
         user_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         user_name.setForeground(new java.awt.Color(27, 55, 77));
         user_name.setText("User's name");
-        adm_header.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, 30));
+        adm_header.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, -1, 30));
 
         lbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 15)); // NOI18N
         lbl.setForeground(new java.awt.Color(27, 55, 77));
         lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-user (3).png"))); // NOI18N
-        adm_header.add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 40, 40));
+        adm_header.add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 40, 40));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
         jLabel1.setText("   Dashboard");
         adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
@@ -562,7 +479,7 @@ public class user_dashboard extends javax.swing.JFrame {
         user_usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         user_usn.setForeground(new java.awt.Color(100, 115, 122));
         user_usn.setText("username");
-        adm_header.add(user_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 60, 40));
+        adm_header.add(user_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 20, 60, 40));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-ellipsis.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -580,14 +497,16 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(127, 199, 217));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/maintenance.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 29, 270, 236));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 29, 710, 236));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("USER PAGE IS UNDER MAINTENANCE");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 281, -1, 35));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 281, 730, 35));
 
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -702,14 +621,12 @@ public class user_dashboard extends javax.swing.JFrame {
                 ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
             
                 if(rs.next()){
-                    
-                  
-                     uID.setText(""+rs.getInt("u_id"));
-                     fn.setText(""+rs.getString("u_fname"));
-                     ln.setText(""+rs.getString("u_lname"));
-                     mail.setText(""+rs.getString("u_email"));
-                     usn.setText(""+rs.getString("u_usn"));               
-                     type.setText(""+rs.getString("u_type"));             
+                                     
+              id.setText(rs.getString("u_id"));
+              fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+              username.setText(rs.getString("u_usn"));
+              umail.setText(rs.getString("u_email"));
+              type.setText(rs.getString("u_type"));           
                                                          
                 }
                  
@@ -720,60 +637,86 @@ public class user_dashboard extends javax.swing.JFrame {
         Object[] options = {};
         
         
-        JOptionPane.showOptionDialog(null, user_Settings, "",
+        JOptionPane.showOptionDialog(null, userSettings, "",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, null);
         
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnActionPerformed
+    private void resPs1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resPs1MouseClicked
 
-    private void usnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usnActionPerformed
-
-    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnActionPerformed
-
-    private void uIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_uIDActionPerformed
-
-    private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeActionPerformed
-
-    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailActionPerformed
-
-    private void update1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_update1MouseClicked
-
-    private void update1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update1ActionPerformed
-
-        
-   
-        Object[] options = {};
-        
-        JOptionPane.showOptionDialog(null,user_Settings, "",
+       Object[] options = {};
+    int result = JOptionPane.showOptionDialog(null, resetPS, "",
         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, null);
-     
-    }//GEN-LAST:event_update1ActionPerformed
-
-    private void resPsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resPsMouseClicked
-
-        Object[] options = {};
+        null, options, null);
+    
+    if (result == -1) {
+    // Perform the action to "close" the dialog, if necessary
+    // Since the dialog is already closed, you might want to perform cleanup or other actions here
+}
         
-        JOptionPane.showOptionDialog(null,resetPass, "",
-         JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, null);
-    }//GEN-LAST:event_resPsMouseClicked
+    }//GEN-LAST:event_resPs1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+       a1.setText("");
+       a2.setText("");
+       a3.setText("");
+        
+       dbConnector dbc = new dbConnector();
+       Session sess = Session.getInstance();
+       PasswordHasher pH = new PasswordHasher();
+
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_id = '" + sess.getUid() + "'";
+            ResultSet resultSet = dbc.getData(query);
+    
+     if (resultSet.next()) {
+        String oldpass = resultSet.getString("u_pass");
+        String cpass = pH.hashPassword(cps.getText());
+
+       if(cps.getText().isEmpty() || nps.getText().isEmpty() || cnps.getText().isEmpty()){
+           
+        if (cps.getText().isEmpty()) {
+            a1.setText(" * Field required!");
+        }
+        if (nps.getText().isEmpty()) {
+            a2.setText(" * Field required!");
+        }else if(nps.getText().length() < 8){        
+            a2.setText(" * Password must be 8 characters above!");
+            nps.setText("");
+        }
+            if(cnps.getText().isEmpty()){
+                a3.setText(" * Field required!");    
+            }
+       }else if(nps.getText().length() < 8){        
+            a2.setText(" * Password must be 8 characters above!");
+            nps.setText("");
+            cnps.setText("");
+       }else if(!cpass.equals(oldpass)){
+            a1.setText("Password is incorrect!");
+            cps.setText("");
+       }else if (!nps.getText().equals(cnps.getText())) {
+            a2.setText(" * Password does not match!");
+            a3.setText(" * Password does not match!");
+            nps.setText("");
+            cnps.setText("");
+       }else{
+               Window window = SwingUtilities.getWindowAncestor(resetPS);
+               window.dispose();
+                String npass = pH.hashPassword(nps.getText());
+                dbc.updateData("UPDATE tbl_user SET u_pass = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");               
+                user_dashboard usd = new user_dashboard();
+                usd.setVisible(true);
+                this.dispose();
+                 }
+              }
+ 
+    } catch (SQLException ex) {
+     System.out.println("" + ex);
+    }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -812,59 +755,56 @@ public class user_dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel a1;
+    private javax.swing.JLabel a2;
+    private javax.swing.JLabel a3;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
-    private javax.swing.JPasswordField confirmpass;
+    private javax.swing.JPasswordField cnps;
+    private javax.swing.JPasswordField cps;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
-    public javax.swing.JTextField fn;
+    private javax.swing.JLabel fullname;
+    private javax.swing.JLabel id;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JToggleButton jToggleButton2;
     public javax.swing.JLabel lbl;
-    public javax.swing.JTextField ln;
-    public javax.swing.JTextField mail;
-    private javax.swing.JPasswordField newpass;
-    private javax.swing.JPasswordField oldpass;
+    private javax.swing.JPasswordField nps;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
-    private javax.swing.JLabel resPs;
-    private javax.swing.JPanel resetPass;
-    public javax.swing.JTextField type;
-    public javax.swing.JTextField uID;
-    public javax.swing.JButton update1;
-    private javax.swing.JPanel user_Settings;
+    private javax.swing.JLabel resPs1;
+    private javax.swing.JPanel resetPS;
+    private javax.swing.JLabel type;
+    private javax.swing.JLabel umail;
+    private javax.swing.JPanel userSettings;
     private javax.swing.JLabel user_name;
     private javax.swing.JLabel user_usn;
-    public javax.swing.JTextField usn;
+    private javax.swing.JLabel username;
     private javax.swing.JPanel viewC;
     private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables

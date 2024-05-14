@@ -10,9 +10,23 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -25,17 +39,79 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
      */
     public Admin_RegUsers_Add() {
         initComponents();
-        
+        fn.setBorder(new EmptyBorder(0,10,0,0));
+        ln.setBorder(new EmptyBorder(0,10,0,0));
+        mail.setBorder(new EmptyBorder(0,10,0,0));
+        usn.setBorder(new EmptyBorder(0,10,0,0));
+        ps.setBorder(new EmptyBorder(0,10,0,0));
     }
     
     Color Red = new Color(255,0,0);
-    Color MainC = new Color(57,55,77);
+    Color MainC = new Color(27,55,77);
     
-    Color Panecolor = new Color(57,55,77);
+    Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
     
       public static String email, usname;
+      
+      public String destination = "";
+      File selectedFile;
+      public String path;
+      public String oldpath;
     
+   public int FileExistenceChecker(String path){
+        File file = new File(path);
+        String fileName = file.getName();
+        
+        Path filePath = Paths.get("src/u_images", fileName);
+        boolean fileExists = Files.exists(filePath);
+        
+        if (fileExists) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+   public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+        try {
+            // Read the image file
+            File imageFile = new File(imagePath);
+            BufferedImage image = ImageIO.read(imageFile);
+            
+            // Get the original width and height of the image
+            int originalWidth = image.getWidth();
+            int originalHeight = image.getHeight();
+            
+            // Calculate the new height based on the desired width and the aspect ratio
+            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
+            
+            return newHeight;
+        } catch (IOException ex) {
+            System.out.println("No image found!");
+        }
+        
+        return -1;
+    }
+   
+   public  ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = null;
+        if(ImagePath !=null){
+            MyImage = new ImageIcon(ImagePath);
+        }else{
+            MyImage = new ImageIcon(pic);
+        }
+        
+    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+}
+
+   
+      
     public boolean dupCheck(){
         
         dbConnector dbc = new dbConnector();
@@ -101,9 +177,11 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         admin_name1 = new javax.swing.JLabel();
         admin_usn = new javax.swing.JLabel();
         jToggleButton2 = new javax.swing.JToggleButton();
+        logs = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        logsPane = new javax.swing.JPanel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        add = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         fn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -111,26 +189,26 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         usn = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        ps = new javax.swing.JTextField();
         mail = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         ut = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         addBT = new javax.swing.JButton();
-        st = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        edit = new javax.swing.JButton();
-        cancel = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        remove = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
+        addProfile = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        ps = new javax.swing.JPasswordField();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        cancel = new javax.swing.JButton();
 
         customField1.setText("customField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -142,13 +220,16 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
         adm_nav.setBackground(new java.awt.Color(255, 255, 255));
         adm_nav.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235), 2));
+        adm_nav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        adm_nav.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 2, -1, 446));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(27, 55, 77));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
         jLabel2.setText("ARQUSTATS");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 17, -1, 45));
 
         dashPane.setBackground(new java.awt.Color(255, 255, 255));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,6 +251,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             dashPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 38, Short.MAX_VALUE)
         );
+
+        adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 78, -1, -1));
 
         dashC.setBackground(new java.awt.Color(255, 255, 255));
         dashC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,6 +300,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 147, -1));
+
         viewC.setBackground(new java.awt.Color(255, 255, 255));
         viewC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -249,6 +334,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, -1, -1));
+
         viewPane.setBackground(new java.awt.Color(27, 55, 77));
         viewPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -270,6 +357,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
+        adm_nav.add(viewPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 125, -1, -1));
+
         purokPane.setBackground(new java.awt.Color(255, 255, 255));
         purokPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -290,6 +379,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             purokPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 38, Short.MAX_VALUE)
         );
+
+        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 172, -1, -1));
 
         purokC.setBackground(new java.awt.Color(255, 255, 255));
         purokC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -337,6 +428,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 172, -1, -1));
+
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -346,7 +439,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-user (3).png"))); // NOI18N
         jPanel5.add(lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        admin_name1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        admin_name1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         admin_name1.setForeground(new java.awt.Color(27, 55, 77));
         admin_name1.setText("Admin name");
         jPanel5.add(admin_name1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 20));
@@ -355,6 +448,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         admin_usn.setForeground(new java.awt.Color(100, 115, 122));
         admin_usn.setText("username");
         jPanel5.add(admin_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 60, 30));
+
+        adm_nav.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 330, 176, 53));
 
         jToggleButton2.setBackground(new java.awt.Color(27, 55, 77));
         jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
@@ -366,63 +461,78 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
+        adm_nav.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 392, 116, 30));
 
-        javax.swing.GroupLayout adm_navLayout = new javax.swing.GroupLayout(adm_nav);
-        adm_nav.setLayout(adm_navLayout);
-        adm_navLayout.setHorizontalGroup(
-            adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adm_navLayout.createSequentialGroup()
-                .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_navLayout.createSequentialGroup()
-                        .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dashPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(viewPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(purokPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(viewC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(purokC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dashC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(160, 160, 160))
-                    .addGroup(adm_navLayout.createSequentialGroup()
-                        .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(adm_navLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel2))
-                            .addGroup(adm_navLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        logs.setBackground(new java.awt.Color(255, 255, 255));
+        logs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logsMouseExited(evt);
+            }
+        });
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open.png"))); // NOI18N
+        jLabel12.setText("  Logs");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel12MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout logsLayout = new javax.swing.GroupLayout(logs);
+        logs.setLayout(logsLayout);
+        logsLayout.setHorizontalGroup(
+            logsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logsLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
-        adm_navLayout.setVerticalGroup(
-            adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_navLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dashPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dashC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(adm_navLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(adm_navLayout.createSequentialGroup()
-                        .addComponent(viewC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(purokC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(adm_navLayout.createSequentialGroup()
-                        .addComponent(viewPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(purokPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+        logsLayout.setVerticalGroup(
+            logsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logsLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        logsPane.setBackground(new java.awt.Color(255, 255, 255));
+        logsPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logsPaneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logsPaneMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout logsPaneLayout = new javax.swing.GroupLayout(logsPane);
+        logsPane.setLayout(logsPaneLayout);
+        logsPaneLayout.setHorizontalGroup(
+            logsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 9, Short.MAX_VALUE)
+        );
+        logsPaneLayout.setVerticalGroup(
+            logsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
+        );
+
+        adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
         jPanel1.add(adm_nav);
         adm_nav.setBounds(0, -10, 180, 450);
@@ -430,17 +540,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         mainDk.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        add.setBackground(new java.awt.Color(27, 55, 77));
-        add.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        add.setForeground(new java.awt.Color(255, 255, 255));
-        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-add (2).png"))); // NOI18N
-        add.setText("Add");
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
@@ -455,12 +555,12 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 fnActionPerformed(evt);
             }
         });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 120, 24));
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 190, 24));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel4.setText("First Name:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        jLabel4.setText("First Name");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
 
         ln.setBackground(new java.awt.Color(245, 246, 248));
         ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -471,12 +571,12 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 lnActionPerformed(evt);
             }
         });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 120, 24));
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 190, 24));
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel7.setText("Last Name:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, 20));
+        jLabel7.setText("Last Name");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, 20));
 
         usn.setBackground(new java.awt.Color(245, 246, 248));
         usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -487,28 +587,12 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 usnActionPerformed(evt);
             }
         });
-        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 120, 24));
+        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 190, 24));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel8.setText("Username:");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 20));
-
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel9.setText("Password:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, 20));
-
-        ps.setBackground(new java.awt.Color(245, 246, 248));
-        ps.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        ps.setForeground(new java.awt.Color(100, 115, 122));
-        ps.setBorder(null);
-        ps.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                psActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 120, 24));
+        jLabel8.setText("Username");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 60, 20));
 
         mail.setBackground(new java.awt.Color(245, 246, 248));
         mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -519,13 +603,14 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 mailActionPerformed(evt);
             }
         });
-        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 120, 24));
+        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 190, 24));
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel10.setText("Email Address:");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 20));
+        jLabel10.setText("Email");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 40, 20));
 
+        ut.setBackground(new java.awt.Color(245, 246, 248));
         ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         ut.setForeground(new java.awt.Color(100, 115, 122));
         ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User" }));
@@ -534,12 +619,12 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 utActionPerformed(evt);
             }
         });
-        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 120, 24));
+        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 190, 24));
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel11.setText("User Type:");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, 20));
+        jLabel11.setText("Authorization ");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 70, 20));
 
         addBT.setBackground(new java.awt.Color(27, 55, 77));
         addBT.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -553,120 +638,60 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 addBTActionPerformed(evt);
             }
         });
-        jPanel3.add(addBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 120, 30));
-
-        st.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        st.setForeground(new java.awt.Color(100, 115, 122));
-        st.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Active", "Pending" }));
-        st.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stActionPerformed(evt);
-            }
-        });
-        jPanel3.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 120, 24));
-
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel13.setText("Account Status");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, 20));
+        jPanel3.add(addBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 100, 30));
 
         jPanel6.setBackground(new java.awt.Color(27, 55, 77));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_223PX.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel14))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 340, 270));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 50));
 
-        edit.setBackground(new java.awt.Color(27, 55, 77));
-        edit.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        edit.setForeground(new java.awt.Color(255, 255, 255));
-        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/pen-circle.png"))); // NOI18N
-        edit.setText(" Edit");
-        edit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editMouseClicked(evt);
-            }
-        });
-        edit.addActionListener(new java.awt.event.ActionListener() {
+        jPanel7.setBackground(new java.awt.Color(245, 246, 248));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        remove.setBackground(new java.awt.Color(255, 0, 0));
+        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
+        remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editActionPerformed(evt);
+                removeActionPerformed(evt);
             }
         });
+        jPanel7.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 30, 30));
+        jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 170));
 
-        cancel.setBackground(new java.awt.Color(57, 55, 77));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel.setForeground(new java.awt.Color(255, 255, 255));
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancelMouseExited(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
+        addProfile.setBackground(new java.awt.Color(255, 255, 255));
+        addProfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        addProfile.setText("Add user profile");
+        addProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
+                addProfileActionPerformed(evt);
             }
         });
+        jPanel7.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 170, 30));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32))))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(edit, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 210, 240));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel13.setText("Password");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 50, 20));
+
+        ps.setBackground(new java.awt.Color(245, 246, 248));
+        ps.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        ps.setForeground(new java.awt.Color(100, 115, 122));
+        ps.setBorder(null);
+        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 190, 24));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 340));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -686,22 +711,51 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText(" Users Panel");
+        jLabel1.setText(" Register New User");
+
+        cancel.setBackground(new java.awt.Color(27, 55, 77));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/undo-alt.png"))); // NOI18N
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout adm_headerLayout = new javax.swing.GroupLayout(adm_header);
         adm_header.setLayout(adm_headerLayout);
         adm_headerLayout.setHorizontalGroup(
             adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(adm_headerLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(496, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
+                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         adm_headerLayout.setVerticalGroup(
-            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(adm_headerLayout.createSequentialGroup()
+                .addGroup(adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(adm_headerLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11))
         );
 
         jPanel1.add(adm_header);
@@ -758,14 +812,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_jLabel3MouseExited
 
-    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-      
-       Admin_RegUsers_Add adU = new Admin_RegUsers_Add ();
-       adU.setVisible(true);
-       this.dispose(); 
-        
-    }//GEN-LAST:event_addActionPerformed
-
     private void viewPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewPaneMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_viewPaneMouseExited
@@ -808,15 +854,17 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
        
-       Internal_brgy ap = new Internal_brgy();
-       mainDk.add(ap).setVisible(true);
+      Admin_Barangay ab = new Admin_Barangay();
+       ab.setVisible(true);
+       this.dispose();
        
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void purokCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseClicked
         
-       Internal_brgy ap = new Internal_brgy();
-       mainDk.add(ap).setVisible(true);
+       Admin_Barangay ab = new Admin_Barangay();
+       ab.setVisible(true);
+       this.dispose();
        
     }//GEN-LAST:event_purokCMouseClicked
 
@@ -859,7 +907,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     private void addBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTActionPerformed
 
-      Admin_RegUsers aR = new  Admin_RegUsers();
       Admin_RegUsers_Add rA = new Admin_RegUsers_Add();
        
        PasswordHasher pH = new PasswordHasher();
@@ -868,7 +915,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
        
         if (fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
         || usn.getText().isEmpty() || ps.getText().isEmpty() 
-        || ut.getSelectedIndex() == 0 || st.getSelectedIndex() == 0)
+        || ut.getSelectedIndex() == 0)
         {
             
             JOptionPane.showMessageDialog(null,"All fields are required!");
@@ -885,57 +932,30 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         }
         else{
             
-             dbConnector dbc = new dbConnector();
+        dbConnector dbc = new dbConnector();
         
-        if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status)"
+        if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image, destination)"
                 + " VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
-                +password+"','"+ut.getSelectedItem()+"','"+st.getSelectedItem()+"')"))
+                +password+"','"+ut.getSelectedItem()+"','Active','"+destination+"')"))
         {
-           
-            JOptionPane.showMessageDialog(null,"User added successfully!");
-            rA.edit.setEnabled(true);
+            try{
+                
+            Files.copy(selectedFile.toPath(), new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
+            JOptionPane.showMessageDialog(null,"User added successfully!");  
+            Admin_RegUsers aR = new  Admin_RegUsers();
             aR.setVisible(true);
             this.dispose();
             
-        }
-        else
-            {
-            
+            }catch(IOException ex){
+                    System.out.println("Insert Image Error: "+ex);
+                    }  
+        }else{   
             JOptionPane.showMessageDialog(null,"Connection Error!"); 
             
+             }
         }
-            
-        }
-
-    }//GEN-LAST:event_addBTActionPerformed
-
-    private void stActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stActionPerformed
-
-    private void editMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseClicked
-
-    }//GEN-LAST:event_editMouseClicked
-
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-
-         Admin_RegUsers ru = new Admin_RegUsers();             
-         ru.setVisible(true);
-         this.dispose();
-               
-    }//GEN-LAST:event_editActionPerformed
-
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-
-        Admin_RegUsers ru = new Admin_RegUsers();
-        ru.setVisible(true);
-        this.dispose();
         
-    }//GEN-LAST:event_cancelActionPerformed
+    }//GEN-LAST:event_addBTActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         login_form ads = new login_form();
@@ -945,17 +965,97 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void psActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_psActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_psActionPerformed
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+
+    }//GEN-LAST:event_cancelMouseClicked
 
     private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
         cancel.setBackground(Red);
     }//GEN-LAST:event_cancelMouseEntered
 
     private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
-         cancel.setBackground(MainC);
+        cancel.setBackground(MainC);
     }//GEN-LAST:event_cancelMouseExited
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+
+       admin_dashboard ad = new admin_dashboard();
+        ad.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        Admin_Logs al = new Admin_Logs();
+       al.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
+      logsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel12MouseEntered
+
+    private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
+       logsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel12MouseExited
+
+    private void logsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseEntered
+        logsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_logsMouseEntered
+
+    private void logsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseExited
+        logsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_logsMouseExited
+
+    private void logsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsPaneMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logsPaneMouseEntered
+
+    private void logsPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsPaneMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logsPaneMouseExited
+
+    private void logsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseClicked
+         Admin_Logs al = new Admin_Logs();
+       al.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_logsMouseClicked
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        remove.setEnabled(false);
+        addProfile.setText("Add user profile");
+        image.setIcon(null);
+        destination = "";
+        path = "";
+    }//GEN-LAST:event_removeActionPerformed
+
+    private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
+       
+        JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        selectedFile = fileChooser.getSelectedFile();
+                        destination = "src/u_images/" + selectedFile.getName();
+                        path  = selectedFile.getAbsolutePath();
+                        
+                        
+                        if(FileExistenceChecker(path) == 1){
+                          JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
+                            destination = "";
+                            path="";
+                        }else{
+                            image.setIcon(ResizeImage(path, null, image));
+                            addProfile.setText("Edit Profile");
+                            remove.setEnabled(true);
+                        }
+                    } catch (Exception ex) {
+                        System.out.println("File Error!");
+                    }
+                }
+
+
+    }//GEN-LAST:event_addProfileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1000,8 +1100,8 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton add;
     public javax.swing.JButton addBT;
+    private javax.swing.JButton addProfile;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JLabel admin_name1;
@@ -1010,14 +1110,13 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     private config.customField customField1;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
-    public javax.swing.JButton edit;
     public javax.swing.JTextField fn;
+    public javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1025,22 +1124,24 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JToggleButton jToggleButton2;
     public javax.swing.JLabel lbl;
     public javax.swing.JTextField ln;
+    private javax.swing.JPanel logs;
+    private javax.swing.JPanel logsPane;
     public javax.swing.JTextField mail;
     private javax.swing.JDesktopPane mainDk;
-    public javax.swing.JTextField ps;
+    private javax.swing.JPasswordField ps;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
-    public javax.swing.JComboBox<String> st;
+    private javax.swing.JButton remove;
     public javax.swing.JTextField usn;
     public javax.swing.JComboBox<String> ut;
     private javax.swing.JPanel viewC;

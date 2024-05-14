@@ -7,6 +7,7 @@ package Log_in;
 
 import ADMIN.admin_dashboard;
 import USERS.user_dashboard;
+import com.formdev.flatlaf.FlatLightLaf;
 import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
@@ -18,6 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -30,14 +34,18 @@ public class login_form extends javax.swing.JFrame {
      */
     public login_form() {
         initComponents();
+        user.setBorder(new EmptyBorder(0,10,0,0));
+        pass.setBorder(new EmptyBorder(0,10,0,0));
     }
     
+
+    Color Red = new Color(255,0,0);
     Color Hover = new Color(0,102,255);
     Color Release = new Color(57,55,77);
 
     static String status;
     static String type;
-   
+    static String hspass; 
     
     public static boolean loginAcc(String username, String password){
         dbConnector connector = new dbConnector();
@@ -50,6 +58,7 @@ public class login_form extends javax.swing.JFrame {
                 
                 status = resultSet.getString("u_status");
                 type = resultSet.getString("u_type");
+                hspass =  resultSet.getString("u_pass");
                 Session sess = Session.getInstance();
                 sess.setUid(resultSet.getInt("u_id"));
                 sess.setFname(resultSet.getString("u_fname"));
@@ -106,8 +115,11 @@ public class login_form extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         reg = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        xps = new javax.swing.JLabel();
+        nousn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -119,6 +131,8 @@ public class login_form extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(120, 50, 210, 41);
 
+        user.setBackground(new java.awt.Color(242, 242, 242));
+        user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         user.setForeground(new java.awt.Color(57, 55, 77));
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +142,8 @@ public class login_form extends javax.swing.JFrame {
         jPanel1.add(user);
         user.setBounds(95, 162, 253, 35);
 
+        pass.setBackground(new java.awt.Color(242, 242, 242));
+        pass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passActionPerformed(evt);
@@ -141,7 +157,7 @@ public class login_form extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(100, 115, 122));
         jLabel2.setText("Lirum mipsum este la dirres tues jaer fella tesje.");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(100, 100, 248, 16);
+        jLabel2.setBounds(100, 100, 245, 16);
 
         jPanel2.setBackground(new java.awt.Color(27, 55, 77));
 
@@ -236,7 +252,19 @@ public class login_form extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Don't have an  account?");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(120, 350, 151, 20);
+        jLabel9.setBounds(120, 350, 148, 20);
+
+        xps.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        xps.setForeground(new java.awt.Color(255, 0, 0));
+        xps.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel1.add(xps);
+        xps.setBounds(180, 210, 170, 20);
+
+        nousn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        nousn.setForeground(new java.awt.Color(255, 0, 0));
+        nousn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel1.add(nousn);
+        nousn.setBounds(180, 140, 170, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,12 +287,23 @@ public class login_form extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        nousn.setText("");
+        xps.setText("");
         
-        PasswordHasher pH = new PasswordHasher();
         
+        PasswordHasher pH = new PasswordHasher();       
         String password = pH.hashPassword(pass.getText());
-        
-         if(loginAcc(user.getText(),password))
+       
+         if(user.getText().isEmpty() || pass.getText().equals("")){
+             if(user.getText().isEmpty()){
+                nousn.setText("Field Required");  
+             }
+             if(pass.getText().equals(""))
+                xps.setText("Field Required"); 
+        }
+         else{
+                    
+                      if(loginAcc(user.getText(),password))
          {            
              if(!status.equals("Active")){            
                     log_Check lc = new log_Check();
@@ -284,18 +323,22 @@ public class login_form extends javax.swing.JFrame {
                        
                        uds.setVisible(true);
                        this.dispose();                     
-                 }else{
+                 }
+                else{
                         JOptionPane.showMessageDialog(null, "Account does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
                     }     
                }            
         }
-         else if(pass.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Please enter your password! ","Notice", JOptionPane.ERROR_MESSAGE);
-         }
-         
-            else{          
-            JOptionPane.showMessageDialog(null, "User does not exist! ","Notice", JOptionPane.ERROR_MESSAGE);
+       
+           else{          
+             nousn.setText("Invalid Username."); 
+             xps.setText("Invalid Password.");
+             user.setText("");
+             pass.setText("");
         }       
+                                 
+                }
+             
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void regMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regMouseClicked
@@ -317,13 +360,13 @@ public class login_form extends javax.swing.JFrame {
      reg.setForeground(Release);
     }//GEN-LAST:event_regMouseExited
 
-    private void forgotpsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpsMouseEntered
-      forgotps.setForeground(Hover);
-    }//GEN-LAST:event_forgotpsMouseEntered
-
     private void forgotpsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpsMouseExited
-      forgotps.setForeground(Release);  
+        forgotps.setForeground(Release);
     }//GEN-LAST:event_forgotpsMouseExited
+
+    private void forgotpsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpsMouseEntered
+        forgotps.setForeground(Hover);
+    }//GEN-LAST:event_forgotpsMouseEntered
 
     /**
      * @param args the command line arguments
@@ -335,21 +378,11 @@ public class login_form extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login_form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login_form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login_form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login_form.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel( new FlatLightLaf() );
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
         }
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -373,8 +406,10 @@ public class login_form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel nousn;
     private javax.swing.JPasswordField pass;
     private javax.swing.JLabel reg;
     private javax.swing.JTextField user;
+    private javax.swing.JLabel xps;
     // End of variables declaration//GEN-END:variables
 }

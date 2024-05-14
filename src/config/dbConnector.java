@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class dbConnector {
     
-    Connection connect;
+    public Connection connect;
     
      public dbConnector(){
             try{
@@ -68,12 +68,10 @@ public class dbConnector {
         } 
         
     // Function to delete data
-    public boolean deleteData(String sql) 
-    {
-        try(PreparedStatement pst = connect.prepareStatement(sql)) 
-        {
-         int rowsDeleted = pst.executeUpdate();
-            if (rowsDeleted > 0) {
+   public boolean deleteData(String sql) {
+    try (PreparedStatement pst = connect.prepareStatement(sql)) {
+        int rowsDeleted = pst.executeUpdate();
+        if (rowsDeleted > 0) {
             JOptionPane.showMessageDialog(null, "Row deleted successfully!");
             return true;
         } else {
@@ -84,6 +82,8 @@ public class dbConnector {
         JOptionPane.showMessageDialog(null, "Error occurred while deleting the row: " + ex.getMessage());
         return false;
     }
-}  
-        
+   }
+   
+   
+
 }
