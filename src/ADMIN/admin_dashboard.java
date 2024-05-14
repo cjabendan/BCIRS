@@ -846,7 +846,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
 
-        Admin_RegUsers_Add adU = new Admin_RegUsers_Add ();
+        Admin_RegUsers_Add adU = new Admin_RegUsers_Add();
         adU.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addActionPerformed

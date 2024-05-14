@@ -10,7 +10,9 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,21 +20,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author SCC-COLLEGE
  */
-public class Admin_RegUsers_Add extends javax.swing.JFrame {
+    public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     /**
      * Creates new form admin_dashboard
@@ -110,6 +115,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     return image;
 }
 
+
    
       
     public boolean dupCheck(){
@@ -147,8 +153,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             return false;
         }
     }
-        
-       
+         
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,7 +163,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        customField1 = new config.customField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -178,34 +182,32 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         admin_usn = new javax.swing.JLabel();
         jToggleButton2 = new javax.swing.JToggleButton();
         logs = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         logsPane = new javax.swing.JPanel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        fn = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        ln = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        Add = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
         usn = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        fn = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        ut = new javax.swing.JComboBox<>();
         mail = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        ut = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        addBT = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
+        ln = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         remove = new javax.swing.JButton();
         image = new javax.swing.JLabel();
         addProfile = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         ps = new javax.swing.JPasswordField();
+        jLabel12 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
-
-        customField1.setText("customField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -455,7 +457,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
-        jToggleButton2.setText(" SIGN OUT");
+        jToggleButton2.setText(" LOG OUT");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
@@ -476,20 +478,20 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open.png"))); // NOI18N
-        jLabel12.setText("  Logs");
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open.png"))); // NOI18N
+        jLabel9.setText("  Logs");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
+                jLabel9MouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel12MouseEntered(evt);
+                jLabel9MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel12MouseExited(evt);
+                jLabel9MouseExited(evt);
             }
         });
 
@@ -499,14 +501,14 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             logsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logsLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         logsLayout.setVerticalGroup(
             logsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logsLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
@@ -546,37 +548,36 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fn.setBackground(new java.awt.Color(245, 246, 248));
-        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        fn.setForeground(new java.awt.Color(100, 115, 122));
-        fn.setBorder(null);
-        fn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnActionPerformed(evt);
+        Add.setBackground(new java.awt.Color(27, 55, 77));
+        Add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        Add.setForeground(new java.awt.Color(255, 255, 255));
+        Add.setText("Add User");
+        Add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMouseClicked(evt);
             }
         });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 190, 24));
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel4.setText("First Name");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
-
-        ln.setBackground(new java.awt.Color(245, 246, 248));
-        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        ln.setForeground(new java.awt.Color(100, 115, 122));
-        ln.setBorder(null);
-        ln.addActionListener(new java.awt.event.ActionListener() {
+        Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnActionPerformed(evt);
+                AddActionPerformed(evt);
             }
         });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 190, 24));
+        jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 140, 30));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel7.setText("Last Name");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, 20));
+        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 690, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 50));
 
         usn.setBackground(new java.awt.Color(245, 246, 248));
         usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -587,28 +588,33 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 usnActionPerformed(evt);
             }
         });
-        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 190, 24));
+        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 190, 24));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel8.setText("Username");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 60, 20));
+        jLabel8.setText("Password");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 60, 20));
 
-        mail.setBackground(new java.awt.Color(245, 246, 248));
-        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        mail.setForeground(new java.awt.Color(100, 115, 122));
-        mail.setBorder(null);
-        mail.addActionListener(new java.awt.event.ActionListener() {
+        fn.setBackground(new java.awt.Color(245, 246, 248));
+        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        fn.setForeground(new java.awt.Color(100, 115, 122));
+        fn.setBorder(null);
+        fn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mailActionPerformed(evt);
+                fnActionPerformed(evt);
             }
         });
-        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 190, 24));
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 190, 24));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel10.setText("Email");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 40, 20));
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel4.setText("First Name");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel11.setText("Authorization ");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 70, 20));
 
         ut.setBackground(new java.awt.Color(245, 246, 248));
         ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -619,41 +625,39 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 utActionPerformed(evt);
             }
         });
-        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 190, 24));
+        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 190, 24));
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel11.setText("Authorization ");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 70, 20));
-
-        addBT.setBackground(new java.awt.Color(27, 55, 77));
-        addBT.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        addBT.setForeground(new java.awt.Color(255, 255, 255));
-        addBT.setText(" Add User");
-        addBT.setBorder(null);
-        addBT.setBorderPainted(false);
-        addBT.setOpaque(false);
-        addBT.addActionListener(new java.awt.event.ActionListener() {
+        mail.setBackground(new java.awt.Color(245, 246, 248));
+        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        mail.setForeground(new java.awt.Color(100, 115, 122));
+        mail.setBorder(null);
+        mail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBTActionPerformed(evt);
+                mailActionPerformed(evt);
             }
         });
-        jPanel3.add(addBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 100, 30));
+        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 190, 24));
 
-        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel10.setText("Email");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 40, 20));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        ln.setBackground(new java.awt.Color(245, 246, 248));
+        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        ln.setForeground(new java.awt.Color(100, 115, 122));
+        ln.setBorder(null);
+        ln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 190, 24));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 50));
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel7.setText("Last Name");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, 20));
 
         jPanel7.setBackground(new java.awt.Color(245, 246, 248));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -668,29 +672,10 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         jPanel7.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 30, 30));
         jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 170));
 
-<<<<<<< HEAD
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        addProfile.setText("Add user profile");
+        addProfile.setText("Add Profile");
         addProfile.addActionListener(new java.awt.event.ActionListener() {
-=======
-        cancel.setBackground(new java.awt.Color(27, 55, 77));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel.setForeground(new java.awt.Color(255, 255, 255));
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancelMouseExited(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
->>>>>>> 3e3260027855ef25c4a8abc5185151c1deb878fb
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addProfileActionPerformed(evt);
             }
@@ -699,18 +684,15 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 210, 240));
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel13.setText("Password");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 50, 20));
-
         ps.setBackground(new java.awt.Color(245, 246, 248));
-        ps.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        ps.setForeground(new java.awt.Color(100, 115, 122));
-        ps.setBorder(null);
-        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 190, 24));
+        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 190, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 340));
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel12.setText("Username");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 60, 20));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 0, 681, 344));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -767,14 +749,14 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
         adm_headerLayout.setVerticalGroup(
-            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(adm_headerLayout.createSequentialGroup()
-                .addGroup(adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(adm_headerLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(11, 11, 11))
+            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_headerLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_headerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel1.add(adm_header);
@@ -873,7 +855,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
        
-      Admin_Barangay ab = new Admin_Barangay();
+     Admin_Barangay ab = new Admin_Barangay();
        ab.setVisible(true);
        this.dispose();
        
@@ -881,7 +863,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     private void purokCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseClicked
         
-       Admin_Barangay ab = new Admin_Barangay();
+     Admin_Barangay ab = new Admin_Barangay();
        ab.setVisible(true);
        this.dispose();
        
@@ -889,7 +871,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
-          Session sess = Session.getInstance();
+       Session sess = Session.getInstance();
        
        if(sess.getUid() == 0){
             JOptionPane.showMessageDialog(null, "No Account, Log in First! ","Notice", JOptionPane.ERROR_MESSAGE);
@@ -904,30 +886,12 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowActivated
 
-    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
+    private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_fnActionPerformed
+    }//GEN-LAST:event_AddMouseClicked
 
-    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnActionPerformed
-
-    private void usnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usnActionPerformed
-
-    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailActionPerformed
-
-    private void utActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_utActionPerformed
-
-    private void addBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBTActionPerformed
-
-      Admin_RegUsers_Add rA = new Admin_RegUsers_Add();
-       
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+        
        PasswordHasher pH = new PasswordHasher();
         
        String password = pH.hashPassword(ps.getText());
@@ -953,28 +917,28 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
             
         dbConnector dbc = new dbConnector();
         
-        if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image, destination)"
-                + " VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
-                +password+"','"+ut.getSelectedItem()+"','Active','"+destination+"')"))
-        {
-            try{
-                
-            Files.copy(selectedFile.toPath(), new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
-            JOptionPane.showMessageDialog(null,"User added successfully!");  
-            Admin_RegUsers aR = new  Admin_RegUsers();
-            aR.setVisible(true);
-            this.dispose();
-            
-            }catch(IOException ex){
-                    System.out.println("Insert Image Error: "+ex);
-                    }  
-        }else{   
-            JOptionPane.showMessageDialog(null,"Connection Error!"); 
-            
-             }
-        }
+        String imageDestination = (selectedFile != null) ? destination : "";
         
-    }//GEN-LAST:event_addBTActionPerformed
+ if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image)"
+        + " VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
+        +password+"','"+ut.getSelectedItem()+"','Active','"+imageDestination+"')"))
+        {
+             if(selectedFile != null) {
+            try{
+            Files.copy(selectedFile.toPath(), new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
+            }catch(IOException ex){
+            System.out.println("Insert Image Error: "+ex);
+                    }
+             }
+             JOptionPane.showMessageDialog(null,"User Registered Successfully!");   
+             Admin_RegUsers au = new Admin_RegUsers();
+             au.setVisible(true);
+             this.dispose();
+         }else{   
+            JOptionPane.showMessageDialog(null,"Connection Error!"); 
+            }    
+        }   
+    }//GEN-LAST:event_AddActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         login_form ads = new login_form();
@@ -998,32 +962,31 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
 
-       admin_dashboard ad = new admin_dashboard();
-        ad.setVisible(true);
+        Admin_RegUsers ru = new Admin_RegUsers();
+        ru.setVisible(true);
         this.dispose();
-
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         Admin_Logs al = new Admin_Logs();
        al.setVisible(true);
        this.dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    }//GEN-LAST:event_jLabel9MouseClicked
 
-    private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
-      logsPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel12MouseEntered
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+       logsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel9MouseEntered
 
-    private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
-       logsPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel12MouseExited
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
+        logsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel9MouseExited
 
     private void logsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseEntered
-        logsPane.setBackground(Panecolor);
+      logsPane.setBackground(Panecolor);
     }//GEN-LAST:event_logsMouseEntered
 
     private void logsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseExited
-        logsPane.setBackground(PaneNcolor);
+      logsPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_logsMouseExited
 
     private void logsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsPaneMouseEntered
@@ -1035,10 +998,30 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     }//GEN-LAST:event_logsPaneMouseExited
 
     private void logsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseClicked
-         Admin_Logs al = new Admin_Logs();
+       Admin_Logs al = new Admin_Logs();
        al.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_logsMouseClicked
+
+    private void usnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usnActionPerformed
+
+    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnActionPerformed
+
+    private void utActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_utActionPerformed
+
+    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mailActionPerformed
+
+    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lnActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
         remove.setEnabled(false);
@@ -1049,10 +1032,10 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     }//GEN-LAST:event_removeActionPerformed
 
     private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
-       
-        JFileChooser fileChooser = new JFileChooser();
-                int returnValue = fileChooser.showOpenDialog(null);
-                if (returnValue == JFileChooser.APPROVE_OPTION) {
+
+       JFileChooser fileChooser = new JFileChooser();
+             int returnValue = fileChooser.showOpenDialog(null);
+             if (returnValue == JFileChooser.APPROVE_OPTION) {
                     try {
                         selectedFile = fileChooser.getSelectedFile();
                         destination = "src/u_images/" + selectedFile.getName();
@@ -1072,7 +1055,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
                         System.out.println("File Error!");
                     }
                 }
-
 
     }//GEN-LAST:event_addProfileActionPerformed
 
@@ -1109,6 +1091,126 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1119,14 +1221,13 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton addBT;
-    private javax.swing.JButton addProfile;
+    public javax.swing.JButton Add;
+    public javax.swing.JButton addProfile;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JLabel admin_name1;
     private javax.swing.JLabel admin_usn;
     public javax.swing.JButton cancel;
-    private config.customField customField1;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     public javax.swing.JTextField fn;
@@ -1135,7 +1236,6 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1143,6 +1243,7 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

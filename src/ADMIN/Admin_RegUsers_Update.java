@@ -51,10 +51,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
     }
     
     Color Red = new Color(255,0,0);
-<<<<<<< HEAD
     Color BlueBT = new Color(89,182,255);
-=======
->>>>>>> 3e3260027855ef25c4a8abc5185151c1deb878fb
     Color MainC = new Color(27,55,77);
     
     Color Panecolor = new Color(242,242,242);
