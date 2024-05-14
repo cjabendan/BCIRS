@@ -668,10 +668,29 @@ public class Admin_RegUsers_Add extends javax.swing.JFrame {
         jPanel7.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 30, 30));
         jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 170));
 
+<<<<<<< HEAD
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addProfile.setText("Add user profile");
         addProfile.addActionListener(new java.awt.event.ActionListener() {
+=======
+        cancel.setBackground(new java.awt.Color(27, 55, 77));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> 3e3260027855ef25c4a8abc5185151c1deb878fb
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addProfileActionPerformed(evt);
             }
