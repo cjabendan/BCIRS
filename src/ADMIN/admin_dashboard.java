@@ -6,9 +6,11 @@
 package ADMIN;
 
 import Log_in.login_form;
+import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -16,6 +18,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 
@@ -128,6 +131,33 @@ public class admin_dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        userSettings = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        type = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        fullname = new javax.swing.JLabel();
+        username = new javax.swing.JLabel();
+        umail = new javax.swing.JLabel();
+        resPs1 = new javax.swing.JLabel();
+        resetPS = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        a1 = new javax.swing.JLabel();
+        cps = new javax.swing.JPasswordField();
+        jLabel30 = new javax.swing.JLabel();
+        nps = new javax.swing.JPasswordField();
+        cnps = new javax.swing.JPasswordField();
+        jLabel31 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        a3 = new javax.swing.JLabel();
+        a2 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -146,10 +176,11 @@ public class admin_dashboard extends javax.swing.JFrame {
         admin_name = new javax.swing.JLabel();
         admin_usn = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
         logs = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         logsPane = new javax.swing.JPanel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         panelUcount = new javax.swing.JPanel();
@@ -174,6 +205,143 @@ public class admin_dashboard extends javax.swing.JFrame {
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
+
+        userSettings.setBackground(new java.awt.Color(27, 55, 77));
+        userSettings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Type:");
+        userSettings.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, 20));
+        userSettings.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 420, 10));
+
+        jLabel20.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Account Information");
+        jLabel20.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
+        userSettings.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
+
+        type.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        type.setForeground(new java.awt.Color(255, 255, 255));
+        type.setText("User ID:");
+        userSettings.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 70, 20));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Full Name:");
+        userSettings.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 90, 30));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Username:");
+        userSettings.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 90, 30));
+
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Email:");
+        userSettings.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 90, 30));
+
+        jLabel24.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("ID no:");
+        userSettings.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 60, 30));
+
+        id.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        id.setForeground(new java.awt.Color(255, 255, 255));
+        id.setText("User ID:");
+        userSettings.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 100, 30));
+
+        fullname.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        fullname.setForeground(new java.awt.Color(255, 255, 255));
+        fullname.setText("User ID:");
+        userSettings.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 230, 30));
+
+        username.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        username.setForeground(new java.awt.Color(255, 255, 255));
+        username.setText("User ID:");
+        userSettings.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 230, 30));
+
+        umail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        umail.setForeground(new java.awt.Color(255, 255, 255));
+        umail.setText("User ID:");
+        userSettings.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 230, 30));
+
+        resPs1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        resPs1.setForeground(new java.awt.Color(255, 255, 255));
+        resPs1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        resPs1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/lock.png"))); // NOI18N
+        resPs1.setText(" Change your password");
+        resPs1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resPs1MouseClicked(evt);
+            }
+        });
+        userSettings.add(resPs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 420, 20));
+
+        resetPS.setBackground(new java.awt.Color(27, 55, 77));
+        resetPS.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        resetPS.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 420, 10));
+
+        jLabel26.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
+        resetPS.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 20));
+
+        a1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        resetPS.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 160, 20));
+
+        cps.setBackground(new java.awt.Color(242, 242, 242));
+        cps.setBorder(null);
+        resetPS.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 230, 20));
+
+        jLabel30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel30.setText("Current Password:");
+        resetPS.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 110, 20));
+
+        nps.setBackground(new java.awt.Color(242, 242, 242));
+        nps.setBorder(null);
+        resetPS.add(nps, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 230, 20));
+
+        cnps.setBackground(new java.awt.Color(242, 242, 242));
+        cnps.setBorder(null);
+        resetPS.add(cnps, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 230, 20));
+
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("Confirm  Password:");
+        resetPS.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 120, 20));
+
+        jButton1.setBackground(new java.awt.Color(27, 55, 77));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Update Password");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        resetPS.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 120, 30));
+
+        a3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        resetPS.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 160, 20));
+
+        a2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        resetPS.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 160, 20));
+
+        jLabel32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("New Password:");
+        resetPS.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 90, 20));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -412,12 +580,12 @@ public class admin_dashboard extends javax.swing.JFrame {
         admin_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         admin_name.setForeground(new java.awt.Color(27, 55, 77));
         admin_name.setText("Admin name");
-        jPanel5.add(admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 20));
+        jPanel5.add(admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, 20));
 
         admin_usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         admin_usn.setForeground(new java.awt.Color(100, 115, 122));
         admin_usn.setText("username");
-        jPanel5.add(admin_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 60, 30));
+        jPanel5.add(admin_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 90, 30));
 
         adm_nav.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 326, 177, 53));
 
@@ -431,18 +599,6 @@ public class admin_dashboard extends javax.swing.JFrame {
             }
         });
         adm_nav.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 210, 30, 30));
-
-        jToggleButton2.setBackground(new java.awt.Color(27, 55, 77));
-        jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
-        jToggleButton2.setText(" LOG OUT");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-        adm_nav.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 388, 115, 30));
 
         logs.setBackground(new java.awt.Color(255, 255, 255));
         logs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -515,6 +671,23 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
+        jToggleButton2.setBackground(new java.awt.Color(27, 55, 77));
+        jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
+        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
+        jToggleButton2.setBorder(null);
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        adm_nav.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 30, 30));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel4.setText(" Settings");
+        adm_nav.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 80, 50));
+
         jPanel1.add(adm_nav);
         adm_nav.setBounds(0, -10, 180, 450);
 
@@ -571,6 +744,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         add.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         add.setForeground(new java.awt.Color(27, 57, 77));
         add.setText(" Add User");
+        add.setBorder(null);
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -602,17 +776,17 @@ public class admin_dashboard extends javax.swing.JFrame {
         active.setText("0");
         jPanel6.add(active, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 150, 60));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, 100));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 100));
 
         jLabel15.setBackground(new java.awt.Color(27, 57, 77));
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(27, 57, 77));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/donut-chart.png"))); // NOI18N
         jLabel15.setText(" Data Daily Report Analytics as of :");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 360, 60));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 360, 70));
 
-        date.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        date.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         date.setForeground(new java.awt.Color(27, 57, 77));
         date.setText("jLabel12");
         date.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -623,7 +797,7 @@ public class admin_dashboard extends javax.swing.JFrame {
                 dateMouseExited(evt);
             }
         });
-        jPanel2.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 140, 40));
+        jPanel2.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 150, 70));
 
         jPanel8.setBackground(new java.awt.Color(250, 250, 250));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -642,7 +816,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         pending.setText("0");
         jPanel8.add(pending, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 150, 60));
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, 100));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, 100));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -670,7 +844,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         time.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         time.setText("jLabel12");
-        adm_header.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 120, 20));
+        adm_header.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 110, 20));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 730, 60);
@@ -707,7 +881,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_viewPaneMouseExited
 
     private void dashCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseEntered
-          dashPane.setBackground(Panecolor);
+       
     }//GEN-LAST:event_dashCMouseEntered
 
     private void dashCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseExited
@@ -800,14 +974,6 @@ public class admin_dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        login_form ads = new login_form();
-
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
-        ads.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
        Admin_Logs al = new Admin_Logs();
        al.setVisible(true);
@@ -859,6 +1025,87 @@ public class admin_dashboard extends javax.swing.JFrame {
        date.setForeground(darktxt);
     }//GEN-LAST:event_dateMouseExited
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        a1.setText("");
+        a2.setText("");
+        a3.setText("");
+
+        dbConnector dbc = new dbConnector();
+        Session sess = Session.getInstance();
+        PasswordHasher pH = new PasswordHasher();
+
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_id = '" + sess.getUid() + "'";
+            ResultSet resultSet = dbc.getData(query);
+
+            if (resultSet.next()) {
+                String oldpass = resultSet.getString("u_pass");
+                String cpass = pH.hashPassword(cps.getText());
+
+                if(cps.getText().isEmpty() || nps.getText().isEmpty() || cnps.getText().isEmpty()){
+
+                    if (cps.getText().isEmpty()) {
+                        a1.setText(" * Field required!");
+                    }
+                    if (nps.getText().isEmpty()) {
+                        a2.setText(" * Field required!");
+                    }else if(nps.getText().length() < 8){
+                        a2.setText(" * Password must be 8 characters above!");
+                        nps.setText("");
+                    }
+                    if(cnps.getText().isEmpty()){
+                        a3.setText(" * Field required!");
+                    }
+                }else if(nps.getText().length() < 8){
+                    a2.setText(" * Password must be 8 characters above!");
+                    nps.setText("");
+                    cnps.setText("");
+                }else if(!cpass.equals(oldpass)){
+                    a1.setText("Password is incorrect!");
+                    cps.setText("");
+                }else if (!nps.getText().equals(cnps.getText())) {
+                    a2.setText(" * Password does not match!");
+                    a3.setText(" * Password does not match!");
+                    nps.setText("");
+                    cnps.setText("");
+                }else{
+                    Window window = SwingUtilities.getWindowAncestor(resetPS);
+                    window.dispose();
+                    String npass = pH.hashPassword(nps.getText());
+                    dbc.updateData("UPDATE tbl_user SET u_pass = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
+                    admin_dashboard ads = new admin_dashboard();
+                    ads.setVisible(true);
+                    this.dispose();
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void resPs1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resPs1MouseClicked
+
+        Object[] options = {};
+        int result = JOptionPane.showOptionDialog(null, resetPS, "",
+            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+            null, options, null);
+
+        if (result == -1) {
+            // Perform the action to "close" the dialog, if necessary
+            // Since the dialog is already closed, you might want to perform cleanup or other actions here
+        }
+    }//GEN-LAST:event_resPs1MouseClicked
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        login_form ads = new login_form();
+
+        JOptionPane.showMessageDialog(null,"Log out successfully!");
+        ads.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -895,15 +1142,23 @@ public class admin_dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel a1;
+    private javax.swing.JLabel a2;
+    private javax.swing.JLabel a3;
     private javax.swing.JLabel active;
     public javax.swing.JButton add;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JLabel admin_name;
     private javax.swing.JLabel admin_usn;
+    private javax.swing.JPasswordField cnps;
+    private javax.swing.JPasswordField cps;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel date;
+    private javax.swing.JLabel fullname;
+    private javax.swing.JLabel id;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -913,8 +1168,21 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -933,12 +1201,19 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
     public javax.swing.JDesktopPane mainDk;
+    private javax.swing.JPasswordField nps;
     public javax.swing.JPanel panelUcount;
     private javax.swing.JLabel pending;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
+    private javax.swing.JLabel resPs1;
+    private javax.swing.JPanel resetPS;
     private javax.swing.JLabel time;
+    private javax.swing.JLabel type;
+    private javax.swing.JLabel umail;
     private javax.swing.JLabel userCount;
+    private javax.swing.JPanel userSettings;
+    private javax.swing.JLabel username;
     private javax.swing.JPanel viewC;
     private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables

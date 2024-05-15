@@ -30,6 +30,9 @@ public class Admin_Barangay extends javax.swing.JFrame {
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
     
+    Color darktxt = new Color(27,57,77);
+    Color Bluetxt = new Color(89,182,255);
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,10 +60,11 @@ public class Admin_Barangay extends javax.swing.JFrame {
         admin_name = new javax.swing.JLabel();
         admin_usn = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
         logs = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         logsPane = new javax.swing.JPanel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jLabel4 = new javax.swing.JLabel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -313,12 +317,12 @@ public class Admin_Barangay extends javax.swing.JFrame {
         admin_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         admin_name.setForeground(new java.awt.Color(27, 55, 77));
         admin_name.setText("Admin name");
-        jPanel5.add(admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, 20));
+        jPanel5.add(admin_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 90, 20));
 
         admin_usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         admin_usn.setForeground(new java.awt.Color(100, 115, 122));
         admin_usn.setText("username");
-        jPanel5.add(admin_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 60, 30));
+        jPanel5.add(admin_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 90, 30));
 
         adm_nav.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 326, 177, 53));
 
@@ -332,18 +336,6 @@ public class Admin_Barangay extends javax.swing.JFrame {
             }
         });
         adm_nav.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 210, 30, 30));
-
-        jToggleButton2.setBackground(new java.awt.Color(27, 55, 77));
-        jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
-        jToggleButton2.setText(" SIGN OUT");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-        adm_nav.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 388, 115, 30));
 
         logs.setBackground(new java.awt.Color(255, 255, 255));
         logs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -416,6 +408,23 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
 
+        jToggleButton2.setBackground(new java.awt.Color(27, 55, 77));
+        jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
+        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
+        jToggleButton2.setBorder(null);
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        adm_nav.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 30, 30));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel4.setText(" Settings");
+        adm_nav.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 80, 50));
+
         jPanel1.add(adm_nav);
         adm_nav.setBounds(0, -10, 180, 450);
 
@@ -427,7 +436,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(27, 55, 77));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 110));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -435,7 +444,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         mainDk.setLayout(mainDkLayout);
         mainDkLayout.setHorizontalGroup(
             mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         mainDkLayout.setVerticalGroup(
             mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -578,14 +587,6 @@ public class Admin_Barangay extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        login_form ads = new login_form();
-
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
-        ads.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         Admin_Logs al = new Admin_Logs();
        al.setVisible(true);
@@ -638,6 +639,14 @@ public class Admin_Barangay extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_logsMouseClicked
 
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        login_form ads = new login_form();
+
+        JOptionPane.showMessageDialog(null,"Log out successfully!");
+        ads.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -684,6 +693,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;

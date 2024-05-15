@@ -5,10 +5,13 @@
         <group>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_RegUsers_Update.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_Logs.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_RegUsers_Add.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_RegUsers.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/Log_in/login_form.java</file>
-            <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_RegUsers_Add.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_Barangay.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/config/Session.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/USERS/user_dashboard.java</file>
+            <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/config/dbConnector.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/admin_dashboard.java</file>
         </group>
     </open-files>

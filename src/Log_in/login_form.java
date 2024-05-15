@@ -320,7 +320,7 @@ public class login_form extends javax.swing.JFrame {
                 }else if(type.equals("User")){                  
                        JOptionPane.showMessageDialog(null, "Log in successfully.");
                        user_dashboard uds = new  user_dashboard();
-                       
+
                        uds.setVisible(true);
                        this.dispose();                     
                  }
