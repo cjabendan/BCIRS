@@ -933,6 +933,17 @@ public class admin_dashboard extends javax.swing.JFrame {
         pending.setForeground(new java.awt.Color(27, 57, 77));
         pending.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pending.setText("0");
+        pending.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pendingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pendingMouseExited(evt);
+            }
+        });
         jPanel8.add(pending, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 150, 60));
 
         jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, 100));
@@ -1283,6 +1294,20 @@ public class admin_dashboard extends javax.swing.JFrame {
     private void logoffbgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffbgMouseExited
          logoff.setBackground(PaneNcolor);
     }//GEN-LAST:event_logoffbgMouseExited
+
+    private void pendingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseClicked
+        Admin_RegUsers ar = new Admin_RegUsers();
+        ar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pendingMouseClicked
+
+    private void pendingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseEntered
+        pending.setForeground(Bluetxt);
+    }//GEN-LAST:event_pendingMouseEntered
+
+    private void pendingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseExited
+        pending.setForeground(darktxt);
+    }//GEN-LAST:event_pendingMouseExited
 
     /**
      * @param args the command line arguments

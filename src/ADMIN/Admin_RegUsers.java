@@ -61,7 +61,7 @@ DefaultListModel listModel = new DefaultListModel();
     public void displayData(){
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname,u_type FROM tbl_user");
+            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname,u_type, u_status FROM tbl_user");
             userTbl.setModel(DbUtils.resultSetToTableModel(rs));
             
             JTableHeader th = userTbl.getTableHeader();
@@ -70,11 +70,13 @@ DefaultListModel listModel = new DefaultListModel();
             TableColumn tc1 = tcm.getColumn(1);
             TableColumn tc2 = tcm.getColumn(2);
             TableColumn tc3 = tcm.getColumn(3);
+            TableColumn tc4 = tcm.getColumn(4);
             
             tc.setHeaderValue("ID");
             tc1.setHeaderValue("First Name");
             tc2.setHeaderValue("Last Name");
             tc3.setHeaderValue("Roles");
+            tc4.setHeaderValue("Status");
             
             
              rs.close();
@@ -1405,53 +1407,53 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
      
-    if(nameField.getText().isEmpty()){
-    JOptionPane.showMessageDialog(null, "Please name the pdf first to generate");
-    return;
-}
-String name = nameField.getText() + ".pdf";
-String location = System.getProperty("user.home") + "/OneDrive/Desktop/";
+            if(nameField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please name the pdf first to generate");
+            return;
+        }
+        String name = nameField.getText() + ".pdf";
+        String location = System.getProperty("user.home") + "/Documents/";
 
-try {
-    dbConnector dbc = new dbConnector();
-    String query = "SELECT u_id, u_fname, u_lname, u_email, u_usn FROM tbl_user";
-    ResultSet resultSet = dbc.getData(query);
+        try {
+            dbConnector dbc = new dbConnector();
+            String query = "SELECT u_id, u_fname, u_lname, u_email, u_usn FROM tbl_user";
+            ResultSet resultSet = dbc.getData(query);
 
-    com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A5.rotate());
-    PdfWriter.getInstance(document, new FileOutputStream(location + name));
-    document.open();
+            com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A5.rotate());
+            PdfWriter.getInstance(document, new FileOutputStream(location + name));
+            document.open();
 
-    PdfPTable pdfPTable = new PdfPTable(5);
+            PdfPTable pdfPTable = new PdfPTable(5);
 
-    pdfPTable.addCell("ID");
-    pdfPTable.addCell("Firstname");
-    pdfPTable.addCell("Lastname");
-    pdfPTable.addCell("Email");
-    pdfPTable.addCell("Username");
+            pdfPTable.addCell("ID");
+            pdfPTable.addCell("Firstname");
+            pdfPTable.addCell("Lastname");
+            pdfPTable.addCell("Email");
+            pdfPTable.addCell("Username");
 
-    // Check if the result set has data and process the first row
-    if (resultSet.next()) {
-        do {
-            // Retrieve each column by name and add to the table
-            pdfPTable.addCell(resultSet.getString("u_id"));
-            pdfPTable.addCell(resultSet.getString("u_fname"));
-            pdfPTable.addCell(resultSet.getString("u_lname"));
-            pdfPTable.addCell(resultSet.getString("u_email"));
-            pdfPTable.addCell(resultSet.getString("u_usn"));
-        } while (resultSet.next()); // Continue with the rest of the rows
-    }
+            // Check if the result set has data and process the first row
+            if (resultSet.next()) {
+                do {
+                    // Retrieve each column by name and add to the table
+                    pdfPTable.addCell(resultSet.getString("u_id"));
+                    pdfPTable.addCell(resultSet.getString("u_fname"));
+                    pdfPTable.addCell(resultSet.getString("u_lname"));
+                    pdfPTable.addCell(resultSet.getString("u_email"));
+                    pdfPTable.addCell(resultSet.getString("u_usn"));
+                } while (resultSet.next()); // Continue with the rest of the rows
+            }
 
-    document.add(pdfPTable);
-    document.close();
-    Window window = SwingUtilities.getWindowAncestor(exportData);
-    window.dispose();
-    JOptionPane.showMessageDialog(null, "Successfully Generated");
-    nameField.setText("");
-} catch (DocumentException | FileNotFoundException e) {
-    System.err.println(e);
-} catch (SQLException ex) {
-    System.out.println("" + ex);
-}
+            document.add(pdfPTable);
+            document.close();
+            Window window = SwingUtilities.getWindowAncestor(exportData);
+            window.dispose();
+            JOptionPane.showMessageDialog(null, "Successfully Generated");
+            nameField.setText("");
+        } catch (DocumentException | FileNotFoundException e) {
+            System.err.println(e);
+        } catch (SQLException ex) {
+            System.out.println("" + ex);
+        }
 
 
     }//GEN-LAST:event_pdfActionPerformed
