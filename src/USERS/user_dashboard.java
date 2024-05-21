@@ -93,14 +93,14 @@ public class user_dashboard extends javax.swing.JFrame {
         reportsPane = new javax.swing.JPanel();
         logs = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        lbl1 = new javax.swing.JLabel();
-        user_name = new javax.swing.JLabel();
-        user_usn = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        settings = new javax.swing.JButton();
+        settingsBg = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        settingsPane = new javax.swing.JPanel();
+        logoff = new javax.swing.JPanel();
+        logoffbg = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        user_name = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -527,59 +527,147 @@ public class user_dashboard extends javax.swing.JFrame {
 
         adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl1.setFont(new java.awt.Font("Yu Gothic UI", 0, 15)); // NOI18N
-        lbl1.setForeground(new java.awt.Color(27, 55, 77));
-        lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-user (3).png"))); // NOI18N
-        jPanel6.add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        user_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        user_name.setForeground(new java.awt.Color(27, 55, 77));
-        user_name.setText("User name");
-        jPanel6.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 100, 20));
-
-        user_usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        user_usn.setForeground(new java.awt.Color(100, 115, 122));
-        user_usn.setText("username");
-        jPanel6.add(user_usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 100, 30));
-
-        adm_nav.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 326, 177, 53));
-
-        jToggleButton2.setBackground(new java.awt.Color(27, 55, 77));
-        jToggleButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
-        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
-        jToggleButton2.setBorder(null);
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+        settingsBg.setBackground(new java.awt.Color(255, 255, 255));
+        settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsBgMouseClicked(evt);
             }
-        });
-        adm_nav.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 30, 30));
-
-        settings.setBackground(new java.awt.Color(27, 55, 77));
-        settings.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        settings.setForeground(new java.awt.Color(255, 255, 255));
-        settings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (2).png"))); // NOI18N
-        settings.setText("Settings");
-        settings.setBorder(null);
-        settings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                settingsMouseEntered(evt);
+                settingsBgMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                settingsMouseExited(evt);
+                settingsBgMouseExited(evt);
             }
         });
-        settings.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                settingsActionPerformed(evt);
+
+        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setText(" Settings");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel27MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel27MouseExited(evt);
             }
         });
-        adm_nav.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 100, 30));
+
+        javax.swing.GroupLayout settingsBgLayout = new javax.swing.GroupLayout(settingsBg);
+        settingsBg.setLayout(settingsBgLayout);
+        settingsBgLayout.setHorizontalGroup(
+            settingsBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(settingsBgLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        settingsBgLayout.setVerticalGroup(
+            settingsBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, settingsBgLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        settingsPane.setBackground(new java.awt.Color(255, 255, 255));
+        settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsPaneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsPaneMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout settingsPaneLayout = new javax.swing.GroupLayout(settingsPane);
+        settingsPane.setLayout(settingsPaneLayout);
+        settingsPaneLayout.setHorizontalGroup(
+            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        settingsPaneLayout.setVerticalGroup(
+            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
+        );
+
+        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 10, -1));
+
+        logoff.setBackground(new java.awt.Color(255, 255, 255));
+        logoff.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoffMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoffMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout logoffLayout = new javax.swing.GroupLayout(logoff);
+        logoff.setLayout(logoffLayout);
+        logoffLayout.setHorizontalGroup(
+            logoffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 9, Short.MAX_VALUE)
+        );
+        logoffLayout.setVerticalGroup(
+            logoffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
+        );
+
+        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
+
+        logoffbg.setBackground(new java.awt.Color(255, 255, 255));
+        logoffbg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoffbgMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoffbgMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoffbgMouseExited(evt);
+            }
+        });
+
+        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (3).png"))); // NOI18N
+        jLabel28.setText(" Log out");
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel28MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel28MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout logoffbgLayout = new javax.swing.GroupLayout(logoffbg);
+        logoffbg.setLayout(logoffbgLayout);
+        logoffbgLayout.setHorizontalGroup(
+            logoffbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(logoffbgLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        logoffbgLayout.setVerticalGroup(
+            logoffbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoffbgLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         jPanel1.add(adm_nav);
         adm_nav.setBounds(0, -10, 180, 450);
@@ -587,10 +675,10 @@ public class user_dashboard extends javax.swing.JFrame {
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
         adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText("   Dashboard");
-        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 60));
+        user_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        user_name.setForeground(new java.awt.Color(27, 55, 77));
+        user_name.setText("Dashboard");
+        adm_header.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 60));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 730, 60);
@@ -677,8 +765,8 @@ public class user_dashboard extends javax.swing.JFrame {
             lgf.setVisible(true);
             this.dispose();
        }else{
-            user_name.setText(sess.getFname());
-            user_usn.setText(sess.getUsername());
+            String firstName = sess.getFname().split(" ")[0]; 
+            user_name.setText(firstName + "'s Dashboard");
        }
     }//GEN-LAST:event_formWindowActivated
 
@@ -829,52 +917,75 @@ public class user_dashboard extends javax.swing.JFrame {
       purokPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_jLabel6MouseExited
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        User_Settings as = new User_Settings();
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseEntered
+        settingsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel27MouseEntered
+
+    private void jLabel27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseExited
+        settingsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel27MouseExited
+
+    private void settingsBgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsBgMouseClicked
+
+    private void settingsBgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseEntered
+        settingsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_settingsBgMouseEntered
+
+    private void settingsBgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseExited
+        settingsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_settingsBgMouseExited
+
+    private void settingsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsPaneMouseEntered
+
+    private void settingsPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsPaneMouseExited
+
+    private void logoffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoffMouseEntered
+
+    private void logoffMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoffMouseExited
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
         login_form ads = new login_form();
 
         JOptionPane.showMessageDialog(null,"Log out successfully!");
         ads.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_jLabel28MouseClicked
 
-    private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered
-        settings.setBackground(Bluetxt);
-    }//GEN-LAST:event_settingsMouseEntered
+    private void jLabel28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseEntered
+        logoff.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel28MouseEntered
 
-    private void settingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseExited
-        settings.setBackground(darktxt);
-    }//GEN-LAST:event_settingsMouseExited
+    private void jLabel28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseExited
+        logoff.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel28MouseExited
 
-    private void settingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsActionPerformed
-           Session sess = Session.getInstance();      
-       
-        try{
-                dbConnector dbc = new dbConnector();
-               
-                ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
-            
-                if(rs.next()){
-                                     
-              id.setText(rs.getString("u_id"));
-              fullname.setText(rs.getString("u_fname") + " " + rs.getString("u_lname"));
-              username.setText(rs.getString("u_usn"));
-              umail.setText(rs.getString("u_email"));
-              type.setText(rs.getString("u_type"));           
-                                                         
-                }
-                 
-            }catch(SQLException ex){
-                System.out.println(""+ex);
-            }                
-          
-        Object[] options = {};
-        
-        
-        JOptionPane.showOptionDialog(null, userSettings, "",
-        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, null);
-        
-    }//GEN-LAST:event_settingsActionPerformed
+    private void logoffbgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffbgMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoffbgMouseClicked
+
+    private void logoffbgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffbgMouseEntered
+        logoff.setBackground(Panecolor);
+    }//GEN-LAST:event_logoffbgMouseEntered
+
+    private void logoffbgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffbgMouseExited
+        logoff.setBackground(PaneNcolor);
+    }//GEN-LAST:event_logoffbgMouseExited
 
     /**
      * @param args the command line arguments
@@ -927,7 +1038,6 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel id;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -938,6 +1048,8 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
@@ -950,9 +1062,8 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JToggleButton jToggleButton2;
-    public javax.swing.JLabel lbl1;
+    private javax.swing.JPanel logoff;
+    private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
     private javax.swing.JPasswordField nps;
     private javax.swing.JPanel purokC;
@@ -960,12 +1071,12 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel reportsPane;
     private javax.swing.JLabel resPs1;
     private javax.swing.JPanel resetPS;
-    private javax.swing.JButton settings;
+    private javax.swing.JPanel settingsBg;
+    private javax.swing.JPanel settingsPane;
     private javax.swing.JLabel type;
     private javax.swing.JLabel umail;
     private javax.swing.JPanel userSettings;
     private javax.swing.JLabel user_name;
-    private javax.swing.JLabel user_usn;
     private javax.swing.JLabel username;
     private javax.swing.JPanel viewC;
     // End of variables declaration//GEN-END:variables

@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 public class PasswordHasher {
     
     private static final String HASH_ALGORITHM = "SHA-512";
-    private static final int MAX_HASH_LENGTH = 50;
+    private static final int MAX_HASH_LENGTH = 150;
     
     public static String hashPassword(String plainPassword) {
         try {

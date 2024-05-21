@@ -236,7 +236,7 @@ public class register_form extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText(" By signing up, you agree to our");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, 10));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, -1, 30));
 
         mail.setBackground(new java.awt.Color(242, 242, 242));
         mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N

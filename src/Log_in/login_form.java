@@ -8,6 +8,7 @@ package Log_in;
 import ADMIN.admin_dashboard;
 import USERS.user_dashboard;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
@@ -19,7 +20,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Color;
-import javax.swing.Icon;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
@@ -333,8 +333,6 @@ public class login_form extends javax.swing.JFrame {
            else{          
              nousn.setText("Invalid Username."); 
              xps.setText("Invalid Password.");
-             user.setText("");
-             pass.setText("");
         }       
                                  
                 }
@@ -372,6 +370,7 @@ public class login_form extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        FlatMacLightLaf.setup();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
