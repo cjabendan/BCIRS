@@ -729,13 +729,18 @@
                 <Container class="javax.swing.JPanel" name="jPanel5">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+<<<<<<< HEAD
                       <AbsoluteConstraints x="300" y="180" width="120" height="-1"/>
+=======
+                      <AbsoluteConstraints x="20" y="60" width="140" height="120"/>
+>>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
                     </Constraint>
                   </Constraints>
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                           <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -864,6 +869,16 @@
                           <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
+=======
+                          <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+>>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
                   </Layout>
                 </Container>
               </SubComponents>

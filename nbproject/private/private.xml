@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/Log_in/log_Check.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_Settings_Account.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_RegUsers.java</file>
@@ -21,6 +22,39 @@
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/Admin_Privacy.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/USERS/User_Settings.java</file>
             <file>file:/C:/Users/chris/OneDrive/Desktop/BCIRS/src/ADMIN/admin_dashboard.java</file>
+=======
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_RegUsers.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/admin_dashboard.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/u_images/chan2.jpg</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/bcirs/BCIRS.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Log_in/forgotpass_form.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Reset%20password-cuate%20(7).png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_RegUsers_Add.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/USERS/User_Settings_Account.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_Logs.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Untitled%20design%20(2).png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/USERS/User_Settings.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Log_in/terms.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/USERS/User_Security.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Log_in/login_form.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/PrintUserDets.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Untitled%20design%20(3).png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Log_in/log_Check.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_RegUsers_Update.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Privacy%20policy-pana%20(1).png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_Barangay.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_Security.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/USERS/User_Privacy.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/PendingPX180.png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_Settings_Account.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Reset%20password-amico%20(1).png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/USERS/user_dashboard.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Log_in/register_C.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Log_in/register_form.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/ADMIN/Admin_Settings.java</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Reg_C180PX.png</file>
+            <file>file:/C:/Users/SCC-COLLEGE/Desktop/BCIRS/src/Images/Untitled%20design%20(2)%20(1).png</file>
+>>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
         </group>
     </open-files>
 </project-private>

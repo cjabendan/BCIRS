@@ -939,7 +939,22 @@ public class admin_dashboard extends javax.swing.JFrame {
         pending.setForeground(new java.awt.Color(27, 57, 77));
         pending.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pending.setText("0");
+<<<<<<< HEAD
         jPanel14.add(pending, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 140, 60));
+=======
+        pending.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pendingMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pendingMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pendingMouseExited(evt);
+            }
+        });
+        jPanel8.add(pending, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 150, 60));
+>>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
 
         jPanel2.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, 110));
 
@@ -1291,6 +1306,7 @@ public class admin_dashboard extends javax.swing.JFrame {
          logoff.setBackground(PaneNcolor);
     }//GEN-LAST:event_logoffbgMouseExited
 
+<<<<<<< HEAD
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
 
         Admin_RegUsers_Add adU = new Admin_RegUsers_Add();
@@ -1298,6 +1314,21 @@ public class admin_dashboard extends javax.swing.JFrame {
         adU.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_addActionPerformed
+=======
+    private void pendingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseClicked
+        Admin_RegUsers ar = new Admin_RegUsers();
+        ar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pendingMouseClicked
+
+    private void pendingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseEntered
+        pending.setForeground(Bluetxt);
+    }//GEN-LAST:event_pendingMouseEntered
+
+    private void pendingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseExited
+        pending.setForeground(darktxt);
+    }//GEN-LAST:event_pendingMouseExited
+>>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
 
     /**
      * @param args the command line arguments
