@@ -67,8 +67,8 @@ public class Admin_Logs extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        logsTbl = new javax.swing.JTable();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -538,17 +538,20 @@ public class Admin_Logs extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(127, 199, 217));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/maintenance.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 270, 236));
+        logsTbl.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
+        logsTbl.setGridColor(new java.awt.Color(136, 136, 136));
+        logsTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logsTblMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                logsTblMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(logsTbl);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("SYSTEM LOGS IS UNDER MAINTENANCE");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 281, 720, 35));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 700, 340));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -820,6 +823,14 @@ public class Admin_Logs extends javax.swing.JFrame {
         logoff.setBackground(PaneNcolor);
     }//GEN-LAST:event_logoffbgMouseExited
 
+    private void logsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsTblMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logsTblMouseClicked
+
+    private void logsTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsTblMousePressed
+
+    }//GEN-LAST:event_logsTblMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -868,19 +879,19 @@ public class Admin_Logs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
+    private javax.swing.JTable logsTbl;
     public javax.swing.JDesktopPane mainDk;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;

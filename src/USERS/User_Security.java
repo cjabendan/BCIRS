@@ -49,7 +49,6 @@ public class User_Security extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel6 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -85,17 +84,6 @@ public class User_Security extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         d = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -778,7 +766,6 @@ public class User_Security extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JToggleButton jToggleButton1;
     public javax.swing.JDesktopPane mainDk;
     private javax.swing.JPasswordField nps;

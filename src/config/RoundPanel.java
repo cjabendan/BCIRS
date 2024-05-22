@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class RoundPanel extends JPanel {
     
-    private Color backgroundColor = new Color(27, 57, 77); //DIRI IBUTANG ANG COLOR CODE
+    private Color backgroundColor = new Color(27, 57,77); //DIRI IBUTANG ANG COLOR CODE
 
     public Color getBackgroundColor() {
         return backgroundColor;
@@ -25,7 +25,7 @@ public class RoundPanel extends JPanel {
         
         int width = getWidth();
         int height = getHeight();
-        int cornerRadius = 25; 
+        int cornerRadius = 30; 
         g2d.setColor(backgroundColor);
         g2d.fillRoundRect(0, 0, width, height, cornerRadius, cornerRadius);
         

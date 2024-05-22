@@ -879,7 +879,7 @@ DefaultListModel listModel = new DefaultListModel();
                 exportActionPerformed(evt);
             }
         });
-        jPanel2.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 180, 30));
+        jPanel2.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 220, 30));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -902,8 +902,8 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText(" Registered Users");
-        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 155, 62));
+        jLabel1.setText(" Registered System Users");
+        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 62));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, -10, 730, 70);
@@ -1410,7 +1410,7 @@ DefaultListModel listModel = new DefaultListModel();
     return;
 }
 String name = nameField.getText() + ".pdf";
-String location = System.getProperty("user.home") + "/OneDrive/Desktop/";
+String location = System.getProperty("user.home") + "/Documents/";
 
 try {
     dbConnector dbc = new dbConnector();
@@ -1429,7 +1429,7 @@ try {
     pdfPTable.addCell("Email");
     pdfPTable.addCell("Username");
 
-    // Check if the result set has data and process the first row
+    
     if (resultSet.next()) {
         do {
             // Retrieve each column by name and add to the table

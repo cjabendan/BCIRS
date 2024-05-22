@@ -1332,7 +1332,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="510" y="310" width="180" height="30"/>
+                      <AbsoluteConstraints x="490" y="310" width="220" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -1364,11 +1364,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4d" green="37" red="1b" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Registered Users"/>
+                <Property name="text" type="java.lang.String" value=" Registered System Users"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="10" width="155" height="62"/>
+                  <AbsoluteConstraints x="10" y="10" width="220" height="62"/>
                 </Constraint>
               </Constraints>
             </Component>
