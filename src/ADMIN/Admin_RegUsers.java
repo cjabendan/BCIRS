@@ -1407,21 +1407,18 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
      
-<<<<<<< HEAD
+
     if(nameField.getText().isEmpty()){
     JOptionPane.showMessageDialog(null, "Please name the pdf first to generate");
     return;
 }
-String name = nameField.getText() + ".pdf";
-String location = System.getProperty("user.home") + "/Documents/";
-=======
+       String name = nameField.getText() + ".pdf";
+       String location = System.getProperty("user.home") + "/Documents/";
+
             if(nameField.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Please name the pdf first to generate");
             return;
         }
-        String name = nameField.getText() + ".pdf";
-        String location = System.getProperty("user.home") + "/Documents/";
->>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
 
         try {
             dbConnector dbc = new dbConnector();
@@ -1439,8 +1436,6 @@ String location = System.getProperty("user.home") + "/Documents/";
             pdfPTable.addCell("Lastname");
             pdfPTable.addCell("Email");
             pdfPTable.addCell("Username");
-
-<<<<<<< HEAD
     
     if (resultSet.next()) {
         do {
@@ -1452,7 +1447,6 @@ String location = System.getProperty("user.home") + "/Documents/";
             pdfPTable.addCell(resultSet.getString("u_usn"));
         } while (resultSet.next()); // Continue with the rest of the rows
     }
-=======
             // Check if the result set has data and process the first row
             if (resultSet.next()) {
                 do {
@@ -1464,7 +1458,7 @@ String location = System.getProperty("user.home") + "/Documents/";
                     pdfPTable.addCell(resultSet.getString("u_usn"));
                 } while (resultSet.next()); // Continue with the rest of the rows
             }
->>>>>>> 0f24a28acaa88d4d0e9d7c33c806775f87f2f0c2
+
 
             document.add(pdfPTable);
             document.close();
