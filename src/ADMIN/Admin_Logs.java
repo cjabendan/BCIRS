@@ -5,7 +5,7 @@
  */
 package ADMIN;
 
-import Log_in.login_form;
+import bcirs.login_form;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
@@ -55,16 +55,16 @@ public class Admin_Logs extends javax.swing.JFrame {
         purokPane = new javax.swing.JPanel();
         purokC = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         logs = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         logsPane = new javax.swing.JPanel();
-        settingsBg = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        settingsPane = new javax.swing.JPanel();
         logoff = new javax.swing.JPanel();
         logoffbg = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
+        settingsBg = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        dot = new javax.swing.JLabel();
+        settingsPane = new javax.swing.JPanel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -92,9 +92,10 @@ public class Admin_Logs extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
         jLabel2.setText(" ARQUSTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 17, -1, 45));
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 17, 180, 45));
 
         dashPane.setBackground(new java.awt.Color(255, 255, 255));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,7 +118,7 @@ public class Admin_Logs extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 78, -1, -1));
+        adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         dashC.setBackground(new java.awt.Color(255, 255, 255));
         dashC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,7 +166,7 @@ public class Admin_Logs extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 147, -1));
+        adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 147, -1));
 
         viewC.setBackground(new java.awt.Color(255, 255, 255));
         viewC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,7 +214,7 @@ public class Admin_Logs extends javax.swing.JFrame {
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, -1, -1));
+        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         viewPane.setBackground(new java.awt.Color(255, 255, 255));
         viewPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -236,7 +237,7 @@ public class Admin_Logs extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(viewPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 125, -1, -1));
+        adm_nav.add(viewPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         purokPane.setBackground(new java.awt.Color(255, 255, 255));
         purokPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,7 +260,7 @@ public class Admin_Logs extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 172, -1, -1));
+        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         purokC.setBackground(new java.awt.Color(255, 255, 255));
         purokC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -307,18 +308,7 @@ public class Admin_Logs extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 172, -1, -1));
-
-        jToggleButton1.setBackground(new java.awt.Color(27, 55, 77));
-        jToggleButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 10)); // NOI18N
-        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (2).png"))); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        adm_nav.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 210, 30, 30));
+        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         logs.setBackground(new java.awt.Color(255, 255, 255));
         logs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -363,7 +353,7 @@ public class Admin_Logs extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         logsPane.setBackground(new java.awt.Color(27, 55, 77));
         logsPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -386,78 +376,7 @@ public class Admin_Logs extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
-
-        settingsBg.setBackground(new java.awt.Color(255, 255, 255));
-        settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                settingsBgMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                settingsBgMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                settingsBgMouseExited(evt);
-            }
-        });
-
-        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
-        jLabel27.setText(" Settings");
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel27MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel27MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout settingsBgLayout = new javax.swing.GroupLayout(settingsBg);
-        settingsBg.setLayout(settingsBgLayout);
-        settingsBgLayout.setHorizontalGroup(
-            settingsBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(settingsBgLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        settingsBgLayout.setVerticalGroup(
-            settingsBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, settingsBgLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        settingsPane.setBackground(new java.awt.Color(255, 255, 255));
-        settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                settingsPaneMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                settingsPaneMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout settingsPaneLayout = new javax.swing.GroupLayout(settingsPane);
-        settingsPane.setLayout(settingsPaneLayout);
-        settingsPaneLayout.setHorizontalGroup(
-            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
-        );
-        settingsPaneLayout.setVerticalGroup(
-            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
-        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
+        adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         logoff.setBackground(new java.awt.Color(255, 255, 255));
         logoff.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -480,7 +399,7 @@ public class Admin_Logs extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
+        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         logoffbg.setBackground(new java.awt.Color(255, 255, 255));
         logoffbg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -528,10 +447,71 @@ public class Admin_Logs extends javax.swing.JFrame {
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        settingsBg.setBackground(new java.awt.Color(255, 255, 255));
+        settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsBgMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsBgMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsBgMouseExited(evt);
+            }
+        });
+        settingsBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setText(" Settings");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel27MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel27MouseExited(evt);
+            }
+        });
+        settingsBg.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 0, 96, 38));
+
+        dot.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        dot.setForeground(new java.awt.Color(255, 0, 0));
+        settingsBg.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 40, 20));
+
+        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 140, -1));
+
+        settingsPane.setBackground(new java.awt.Color(255, 255, 255));
+        settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsPaneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsPaneMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout settingsPaneLayout = new javax.swing.GroupLayout(settingsPane);
+        settingsPane.setLayout(settingsPaneLayout);
+        settingsPaneLayout.setHorizontalGroup(
+            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        settingsPaneLayout.setVerticalGroup(
+            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
+        );
+
+        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 10, -1));
 
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(0, -10, 180, 450);
+        adm_nav.setBounds(-10, -10, 190, 450);
 
         mainDk.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -682,7 +662,7 @@ public class Admin_Logs extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseExited
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-       Session sess = Session.getInstance();
+     Session sess = Session.getInstance();
        
        if(sess.getUid() == 0){
             JOptionPane.showMessageDialog(null, "No Account, Log in First! ","Notice", JOptionPane.ERROR_MESSAGE);
@@ -690,18 +670,28 @@ public class Admin_Logs extends javax.swing.JFrame {
             lgf.setVisible(true);
             this.dispose();
        }else{
-          
+           
+    try{
+           dbConnector dbc = new dbConnector();
+           ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
+           
+           if(rs.next()){
+                String code = rs.getString("u_code");
+                if(code.equals("")){
+                    dot.setText("•");
+                }else{
+                     dot.setText("");
+                }
+           }
+   
+            }catch(SQLException ex){
+                 System.out.println(""+ex);
+                           
+                 }
+         
        }
-      
+       
     }//GEN-LAST:event_formWindowActivated
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        login_form ads = new login_form();
-
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
-        ads.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         // TODO add your handling code here:
@@ -753,40 +743,6 @@ public class Admin_Logs extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_purokCMouseClicked
 
-    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-       Admin_Settings as = new Admin_Settings();
-       as.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jLabel27MouseClicked
-
-    private void jLabel27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseEntered
-        settingsPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel27MouseEntered
-
-    private void jLabel27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseExited
-        settingsPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel27MouseExited
-
-    private void settingsBgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_settingsBgMouseClicked
-
-    private void settingsBgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseEntered
-        settingsPane.setBackground(Panecolor);
-    }//GEN-LAST:event_settingsBgMouseEntered
-
-    private void settingsBgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseExited
-        settingsPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_settingsBgMouseExited
-
-    private void settingsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_settingsPaneMouseEntered
-
-    private void settingsPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_settingsPaneMouseExited
-
     private void logoffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_logoffMouseEntered
@@ -831,6 +787,40 @@ public class Admin_Logs extends javax.swing.JFrame {
 
     }//GEN-LAST:event_logsTblMousePressed
 
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        Admin_Settings as = new Admin_Settings();
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseEntered
+        settingsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel27MouseEntered
+
+    private void jLabel27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseExited
+        settingsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel27MouseExited
+
+    private void settingsBgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsBgMouseClicked
+
+    private void settingsBgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseEntered
+        settingsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_settingsBgMouseEntered
+
+    private void settingsBgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseExited
+        settingsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_settingsBgMouseExited
+
+    private void settingsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsPaneMouseEntered
+
+    private void settingsPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsPaneMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -874,6 +864,7 @@ public class Admin_Logs extends javax.swing.JFrame {
     private javax.swing.JPanel adm_nav;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
+    private javax.swing.JLabel dot;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
@@ -886,7 +877,6 @@ public class Admin_Logs extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;

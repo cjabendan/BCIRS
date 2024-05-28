@@ -5,13 +5,12 @@
  */
 package ADMIN;
 
-import Log_in.login_form;
+import bcirs.login_form;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import config.PanelPrinter;
 import config.Session;
 import config.dbConnector;
@@ -24,10 +23,7 @@ import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -152,11 +148,11 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel17 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        excel = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         pdf = new javax.swing.JButton();
+        a1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -173,12 +169,13 @@ DefaultListModel listModel = new DefaultListModel();
         logs = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         logsPane = new javax.swing.JPanel();
-        settingsBg = new javax.swing.JPanel();
-        jLabel27 = new javax.swing.JLabel();
-        settingsPane = new javax.swing.JPanel();
         logoff = new javax.swing.JPanel();
         logoffbg = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
+        settingsBg = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        dot = new javax.swing.JLabel();
+        settingsPane = new javax.swing.JPanel();
         mainDk = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -322,18 +319,6 @@ DefaultListModel listModel = new DefaultListModel();
         jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
 
         exportData.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
-
-        excel.setBackground(new java.awt.Color(0, 204, 51));
-        excel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        excel.setForeground(new java.awt.Color(255, 255, 255));
-        excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-excel.png"))); // NOI18N
-        excel.setText("EXCEL");
-        excel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excelActionPerformed(evt);
-            }
-        });
-        exportData.add(excel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 110, 30));
         exportData.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 290, 30));
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
@@ -357,7 +342,13 @@ DefaultListModel listModel = new DefaultListModel();
                 pdfActionPerformed(evt);
             }
         });
-        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 110, 30));
+        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 110, 30));
+
+        a1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a1.setText("*");
+        exportData.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 190, 20));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -379,9 +370,10 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
         jLabel2.setText("ARQUSTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 17, -1, 45));
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 17, 180, 45));
 
         dashPane.setBackground(new java.awt.Color(255, 255, 255));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,7 +396,7 @@ DefaultListModel listModel = new DefaultListModel();
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 78, -1, -1));
+        adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         dashC.setBackground(new java.awt.Color(255, 255, 255));
         dashC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -452,7 +444,7 @@ DefaultListModel listModel = new DefaultListModel();
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 78, 147, -1));
+        adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 147, -1));
 
         viewC.setBackground(new java.awt.Color(255, 255, 255));
         viewC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -491,7 +483,7 @@ DefaultListModel listModel = new DefaultListModel();
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, -1, -1));
+        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         viewPane.setBackground(new java.awt.Color(27, 55, 77));
         viewPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -514,7 +506,7 @@ DefaultListModel listModel = new DefaultListModel();
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(viewPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 125, -1, -1));
+        adm_nav.add(viewPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         purokPane.setBackground(new java.awt.Color(255, 255, 255));
         purokPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -537,7 +529,7 @@ DefaultListModel listModel = new DefaultListModel();
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 172, -1, -1));
+        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         purokC.setBackground(new java.awt.Color(255, 255, 255));
         purokC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -575,8 +567,8 @@ DefaultListModel listModel = new DefaultListModel();
             purokCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(purokCLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         purokCLayout.setVerticalGroup(
             purokCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -585,7 +577,7 @@ DefaultListModel listModel = new DefaultListModel();
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 172, -1, -1));
+        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         logs.setBackground(new java.awt.Color(255, 255, 255));
         logs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -633,7 +625,7 @@ DefaultListModel listModel = new DefaultListModel();
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         logsPane.setBackground(new java.awt.Color(255, 255, 255));
         logsPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -656,78 +648,7 @@ DefaultListModel listModel = new DefaultListModel();
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, -1));
-
-        settingsBg.setBackground(new java.awt.Color(255, 255, 255));
-        settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                settingsBgMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                settingsBgMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                settingsBgMouseExited(evt);
-            }
-        });
-
-        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
-        jLabel27.setText(" Settings");
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel27MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel27MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout settingsBgLayout = new javax.swing.GroupLayout(settingsBg);
-        settingsBg.setLayout(settingsBgLayout);
-        settingsBgLayout.setHorizontalGroup(
-            settingsBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(settingsBgLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        settingsBgLayout.setVerticalGroup(
-            settingsBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, settingsBgLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-
-        settingsPane.setBackground(new java.awt.Color(255, 255, 255));
-        settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                settingsPaneMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                settingsPaneMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout settingsPaneLayout = new javax.swing.GroupLayout(settingsPane);
-        settingsPane.setLayout(settingsPaneLayout);
-        settingsPaneLayout.setHorizontalGroup(
-            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
-        );
-        settingsPaneLayout.setVerticalGroup(
-            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
-        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, -1, -1));
+        adm_nav.add(logsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         logoff.setBackground(new java.awt.Color(255, 255, 255));
         logoff.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -750,7 +671,7 @@ DefaultListModel listModel = new DefaultListModel();
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, -1, -1));
+        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
 
         logoffbg.setBackground(new java.awt.Color(255, 255, 255));
         logoffbg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -798,10 +719,71 @@ DefaultListModel listModel = new DefaultListModel();
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        settingsBg.setBackground(new java.awt.Color(255, 255, 255));
+        settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsBgMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsBgMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsBgMouseExited(evt);
+            }
+        });
+        settingsBg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setText(" Settings");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel27MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel27MouseExited(evt);
+            }
+        });
+        settingsBg.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 0, 96, 38));
+
+        dot.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        dot.setForeground(new java.awt.Color(255, 0, 0));
+        settingsBg.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 40, 20));
+
+        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 140, -1));
+
+        settingsPane.setBackground(new java.awt.Color(255, 255, 255));
+        settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsPaneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsPaneMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout settingsPaneLayout = new javax.swing.GroupLayout(settingsPane);
+        settingsPane.setLayout(settingsPaneLayout);
+        settingsPaneLayout.setHorizontalGroup(
+            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        settingsPaneLayout.setVerticalGroup(
+            settingsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 38, Short.MAX_VALUE)
+        );
+
+        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 10, -1));
 
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(0, -10, 180, 450);
+        adm_nav.setBounds(-10, -10, 190, 450);
 
         mainDk.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -862,19 +844,19 @@ DefaultListModel listModel = new DefaultListModel();
         });
         jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-search.png"))); // NOI18N
-        jLabel8.setText("Search");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 20));
+        jLabel8.setText(" Search user");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 220, 300));
 
         export.setBackground(new java.awt.Color(27, 57, 77));
-        export.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         export.setForeground(new java.awt.Color(255, 255, 255));
-        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-download.png"))); // NOI18N
-        export.setText("Export Users Data");
+        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-download-alt.png"))); // NOI18N
+        export.setText(" Export all users data");
         export.setBorder(null);
         export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -904,7 +886,7 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText(" Registered System Users");
+        jLabel1.setText(" Registered users");
         adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 62));
 
         jPanel1.add(adm_header);
@@ -918,7 +900,7 @@ DefaultListModel listModel = new DefaultListModel();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
         );
 
         pack();
@@ -1019,7 +1001,7 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
-       Session sess = Session.getInstance();
+          Session sess = Session.getInstance();
        
        if(sess.getUid() == 0){
             JOptionPane.showMessageDialog(null, "No Account, Log in First! ","Notice", JOptionPane.ERROR_MESSAGE);
@@ -1027,10 +1009,27 @@ DefaultListModel listModel = new DefaultListModel();
             lgf.setVisible(true);
             this.dispose();
        }else{
-            
+           
+            try{
+           dbConnector dbc = new dbConnector();
+           ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
+           
+           if(rs.next()){
+                String code = rs.getString("u_code");
+                if(code.equals("")){
+                    dot.setText("•");
+                }else{
+                     dot.setText("");
+                }
+           }
+   
+            }catch(SQLException ex){
+                 System.out.println(""+ex);
+                           
+                 }
+         
        }
       
-        
     }//GEN-LAST:event_formWindowActivated
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
@@ -1283,40 +1282,6 @@ DefaultListModel listModel = new DefaultListModel();
        this.dispose();
     }//GEN-LAST:event_logsMouseClicked
 
-    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        Admin_Settings as = new Admin_Settings();
-          as.setVisible(true);
-          this.dispose();
-    }//GEN-LAST:event_jLabel27MouseClicked
-
-    private void jLabel27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseEntered
-        settingsPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel27MouseEntered
-
-    private void jLabel27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseExited
-        settingsPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel27MouseExited
-
-    private void settingsBgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_settingsBgMouseClicked
-
-    private void settingsBgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseEntered
-        settingsPane.setBackground(Panecolor);
-    }//GEN-LAST:event_settingsBgMouseEntered
-
-    private void settingsBgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseExited
-        settingsPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_settingsBgMouseExited
-
-    private void settingsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_settingsPaneMouseEntered
-
-    private void settingsPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_settingsPaneMouseExited
-
     private void logoffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_logoffMouseEntered
@@ -1357,7 +1322,7 @@ DefaultListModel listModel = new DefaultListModel();
         
         JPanel myPanel = new JPanel();
         
-        
+  
          try {
              dbConnector dbc = new dbConnector();
              ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '" + id.getText() + "'");
@@ -1401,15 +1366,12 @@ DefaultListModel listModel = new DefaultListModel();
             
     }//GEN-LAST:event_exportActionPerformed
 
-    private void excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelActionPerformed
-    
-    }//GEN-LAST:event_excelActionPerformed
-
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
      
 
     if(nameField.getText().isEmpty()){
-    JOptionPane.showMessageDialog(null, "Please name the pdf first to generate");
+    a1.setText("File name required");
+    
     return;
 }
        String name = nameField.getText() + ".pdf";
@@ -1471,9 +1433,41 @@ DefaultListModel listModel = new DefaultListModel();
         } catch (SQLException ex) {
             System.out.println("" + ex);
         }
-
-
     }//GEN-LAST:event_pdfActionPerformed
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        Admin_Settings as = new Admin_Settings();
+        as.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseEntered
+        settingsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_jLabel27MouseEntered
+
+    private void jLabel27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseExited
+        settingsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_jLabel27MouseExited
+
+    private void settingsBgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsBgMouseClicked
+
+    private void settingsBgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseEntered
+        settingsPane.setBackground(Panecolor);
+    }//GEN-LAST:event_settingsBgMouseEntered
+
+    private void settingsBgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsBgMouseExited
+        settingsPane.setBackground(PaneNcolor);
+    }//GEN-LAST:event_settingsBgMouseExited
+
+    private void settingsPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsPaneMouseEntered
+
+    private void settingsPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsPaneMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_settingsPaneMouseExited
 
     /**
      * @param args the command line arguments
@@ -1489,12 +1483,13 @@ DefaultListModel listModel = new DefaultListModel();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel a1;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
+    private javax.swing.JLabel dot;
     private javax.swing.JMenuItem editItem;
-    private javax.swing.JButton excel;
     private javax.swing.JButton export;
     private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;

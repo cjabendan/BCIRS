@@ -42,7 +42,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Color blue="4d" green="39" red="1b" type="rgb"/>
         </Property>
       </Properties>
 
@@ -70,8 +70,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" pref="530" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="530" max="-2" attributes="0"/>
-                  <Component id="jLabel4" min="-2" pref="530" max="-2" attributes="0"/>
                   <Component id="date" min="-2" pref="530" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" pref="530" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -95,6 +95,7 @@
                                   <Component id="type" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jLabel6" min="-2" pref="430" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -106,17 +107,17 @@
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="date" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
+                              <Component id="date" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel4" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="image" min="-2" pref="170" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -147,6 +148,8 @@
                               </Group>
                           </Group>
                       </Group>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -333,6 +336,15 @@
                   <Color blue="4d" green="39" red="1b" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Role:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel6">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                    <MatteColorBorder bottom="1" left="0" right="0" top="0"/>
+                  </Border>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

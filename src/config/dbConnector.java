@@ -5,6 +5,7 @@
  */
 package config;
 
+import Extra_Frames.Connection_Error;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,6 +27,8 @@ public class dbConnector {
                 connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/abendandb", "root", "");
             }catch(SQLException ex){
                     System.out.println("Can't connect to database: "+ex.getMessage());
+                    Connection_Error ce = new Connection_Error();
+                    ce.setVisible(true);
             }
         }
     
@@ -46,6 +49,9 @@ public class dbConnector {
                return true;
             }catch(SQLException ex){
                 System.out.println("Connection Error: "+ex);
+                 Connection_Error ce = new Connection_Error();
+                 ce.setVisible(true);
+
                return false;
             }
         }
@@ -56,13 +62,15 @@ public class dbConnector {
                 PreparedStatement pst = connect.prepareStatement(sql);
                     int rowsUpdated = pst.executeUpdate();
                         if(rowsUpdated > 0){
-                            JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
+                           // JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
                         }else{
                             System.out.println("Data Update Failed!");
                         }
                         pst.close();
             }catch(SQLException ex){
                 System.out.println("Connection Error: "+ex);
+                 Connection_Error ce = new Connection_Error();
+                 ce.setVisible(true);
             }
         
         } 
@@ -72,15 +80,19 @@ public class dbConnector {
     try (PreparedStatement pst = connect.prepareStatement(sql)) {
         int rowsDeleted = pst.executeUpdate();
         if (rowsDeleted > 0) {
-            JOptionPane.showMessageDialog(null, "Row deleted successfully!");
+         //   JOptionPane.showMessageDialog(null, "Row deleted successfully!");
             return true;
         } else {
             System.out.println("No row found with the specified ID.");
             return false;
         }
     } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error occurred while deleting the row: " + ex.getMessage());
+        
+        System.out.println("Error occurred while deleting the row: "+ ex);
+        Connection_Error ce = new Connection_Error();
+        ce.setVisible(true);
         return false;
+        
     }
    }
    
