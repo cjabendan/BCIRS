@@ -9,13 +9,20 @@ import bcirs.login_form;
 import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
+import enhancer.CustomHeaderRenderer;
 import java.awt.Color;
 import java.awt.Window;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -28,6 +35,8 @@ public class User_Reports extends javax.swing.JFrame {
      */
     public User_Reports() {
         initComponents(); 
+        reqData();
+        DefaultTableModel model = (DefaultTableModel) reqTbl.getModel();
     }
 
     Color darktxt = new Color(27,57,77);
@@ -35,7 +44,49 @@ public class User_Reports extends javax.swing.JFrame {
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
     
-  
+  public void reqData() {
+    Session sess = Session.getInstance();
+    int userId = sess.getUid();
+
+    try {
+        dbConnector dbc = new dbConnector();
+        String query = "SELECT * FROM tbl_request";
+        
+        try (PreparedStatement pst = dbc.connect.prepareStatement(query)) {
+            pst.setInt(1, userId);
+            
+            try (ResultSet rs = pst.executeQuery()) {
+                reqTbl.setModel(DbUtils.resultSetToTableModel(rs));
+
+                JTableHeader th = reqTbl.getTableHeader();
+                TableColumnModel tcm = th.getColumnModel();
+                TableColumn tc0 = tcm.getColumn(0);
+                TableColumn tc1 = tcm.getColumn(1);
+                TableColumn tc2 = tcm.getColumn(2);
+                TableColumn tc3 = tcm.getColumn(3);
+                TableColumn tc4 = tcm.getColumn(4);
+                TableColumn tc5 = tcm.getColumn(5);
+
+                tc0.setHeaderValue("Request ID");
+                tc1.setHeaderValue("Document Type");
+                tc2.setHeaderValue("Date Issued");
+                tc3.setHeaderValue("Purpose");
+                tc4.setHeaderValue("Status");
+                tc5.setHeaderValue("Action");
+
+                
+                th.setDefaultRenderer(new CustomHeaderRenderer());
+                
+                reqTbl.removeColumn(tc5);
+                th.repaint();
+            }
+        }
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
+
+
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,8 +124,12 @@ public class User_Reports extends javax.swing.JFrame {
         sa = new javax.swing.JLabel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        d1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reqTbl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -157,7 +212,7 @@ public class User_Reports extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(27, 55, 77));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_nF.png"))); // NOI18N
-        jLabel5.setText(" Citizen");
+        jLabel5.setText(" Residents");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -176,8 +231,8 @@ public class User_Reports extends javax.swing.JFrame {
             viewCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewCLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                .addContainerGap())
         );
         viewCLayout.setVerticalGroup(
             viewCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,18 +582,43 @@ public class User_Reports extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(127, 199, 217));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/maintenance.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 29, 710, 236));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("REPORT PAGE IS UNDER MAINTENANCE");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 281, 730, 35));
+        jPanel4.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Request Certifacate");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 40));
+
+        d1.setBackground(new java.awt.Color(244, 244, 244));
+        d1.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        d1.setForeground(new java.awt.Color(204, 204, 204));
+        d1.setText("All requests are subject to approval by an administrator.");
+        jPanel4.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 40));
+
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
+
+        reqTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(reqTbl);
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 680, 280));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 340));
 
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -830,6 +910,62 @@ public class User_Reports extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -843,6 +979,7 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JPanel citizenPane;
+    public javax.swing.JLabel d1;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
@@ -854,17 +991,20 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     private javax.swing.JPanel reportsPane;
+    private javax.swing.JTable reqTbl;
     private javax.swing.JLabel sa;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;

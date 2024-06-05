@@ -18,8 +18,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -142,14 +147,12 @@ import javax.swing.border.EmptyBorder;
              
                 email = resultSet.getString("u_email");
                 if(email.equals(mail.getText())){
-                    JOptionPane.showMessageDialog(null,"Email is Already Used!");
-                    mail.setText("");
+                     a4.setText("Email exist");
                 }
                 
                 usname = resultSet.getString("u_usn");
                 if(usname.equals(usn.getText())){
-                    JOptionPane.showMessageDialog(null,"Username is Already Used!");
-                    usn.setText("");
+                    a3.setText("Username exist");
                 }
                 
                 return true;
@@ -192,7 +195,7 @@ import javax.swing.border.EmptyBorder;
         logsPane = new javax.swing.JPanel();
         logoff = new javax.swing.JPanel();
         logoffbg = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
+        logout = new javax.swing.JLabel();
         settingsBg = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
@@ -559,20 +562,20 @@ import javax.swing.border.EmptyBorder;
             }
         });
 
-        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (3).png"))); // NOI18N
-        jLabel28.setText(" Log out");
-        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+        logout.setBackground(new java.awt.Color(255, 255, 255));
+        logout.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        logout.setForeground(new java.awt.Color(57, 55, 77));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (3).png"))); // NOI18N
+        logout.setText(" Log out");
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel28MouseClicked(evt);
+                logoutMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel28MouseEntered(evt);
+                logoutMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel28MouseExited(evt);
+                logoutMouseExited(evt);
             }
         });
 
@@ -582,14 +585,14 @@ import javax.swing.border.EmptyBorder;
             logoffbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logoffbgLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         logoffbgLayout.setVerticalGroup(
             logoffbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoffbgLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
@@ -1071,6 +1074,9 @@ import javax.swing.border.EmptyBorder;
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         
+        Session sess = Session.getInstance();
+        
+        int adminID = sess.getUid();
         
         a1.setText("");
         a2.setText("");
@@ -1078,16 +1084,14 @@ import javax.swing.border.EmptyBorder;
         a4.setText("");
         a5.setText("");
         a6.setText("");
-        
-       PasswordHasher pH = new PasswordHasher();
-        
-       String password = pH.hashPassword(ps.getText());
-       
+
+        PasswordHasher pH = new PasswordHasher();
+        String password = pH.hashPassword(ps.getText());
+
         if (fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
-        || usn.getText().isEmpty() || ps.getText().isEmpty() 
-        || ut.getSelectedIndex() == 0)
-        {
-            
+                || usn.getText().isEmpty() || ps.getText().isEmpty() 
+                || ut.getSelectedIndex() == 0) {
+
             if(fn.getText().isEmpty()){
                a1.setText("Field Required");
            }
@@ -1103,47 +1107,58 @@ import javax.swing.border.EmptyBorder;
            if(ps.getText().isEmpty()){
                a5.setText("Field Required");
            }
-           else if(ps.getText().length()<8){
+           else if(ps.getText().length() < 8){
                a5.setText("Password is too short!");
            }        
            if(ut.getSelectedIndex() == 0){
                a6.setText("Field Required");
            }
-            
+
         } else if(!isValidEmail(mail.getText())) {
            a4.setText("Invalid Email Address!");
-       } else if(ps.getText().length()<8){
+        } else if(ps.getText().length() < 8){
            a5.setText("Password is too short!"); 
-        }else if(dupCheck()){
-            
+        } else if(dupCheck()) {
             System.out.println("Duplicate Exist!");
-            
-        }
-        else{
-            
-        dbConnector dbc = new dbConnector();
-        
-        String imageDestination = (selectedFile != null) ? destination : "src/u_default/blank_pfp.jpg";
-        
-    if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image, u_code)"
-           + " VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
-           +password+"','"+ut.getSelectedItem()+"','Active','"+imageDestination+"','')"))
-           {
-                if(selectedFile != null) {
-               try{
-               Files.copy(selectedFile.toPath(), new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
-               }catch(IOException ex){
-               System.out.println("Insert Image Error: "+ex);
-                       }
+        } else {
+            dbConnector dbc = new dbConnector();
+            String imageDestination = (selectedFile != null) ? destination : "src/u_default/blank_pfp.jpg";
+
+            if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image, u_code)"
+                    + " VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
+                    +password+"','"+ut.getSelectedItem()+"','Active','"+imageDestination+"','')")) {
+
+                try {
+                    // Fetch the newly registered user's ID
+                    ResultSet resultSet = dbc.getData("SELECT u_id FROM tbl_user WHERE u_usn = '" + usn.getText() + "'");
+                    if (resultSet.next()) {
+                        
+                        String newUserId = resultSet.getString("u_id");
+                        
+                        // Log the registration event with admin's ID
+                        logEvent(adminID, "ADMIN_USER_REGISTRATION", "New user registered. User ID: " + newUserId);
+                        
+                        if(selectedFile != null) {
+                            try {
+                                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                            } catch(IOException ex) {
+                                System.out.println("Insert Image Error: " + ex);
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "User Registered Successfully!");
+                        Admin_RegUsers au = new Admin_RegUsers();
+                        au.setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error fetching new user ID!");
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Admin_RegUsers_Add.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(null,"User Registered Successfully!");   
-                Admin_RegUsers au = new Admin_RegUsers();
-                au.setVisible(true);
-                this.dispose();
-            }else{   
-               JOptionPane.showMessageDialog(null,"Connection Error!"); 
-               }    
-           }   
+            } else {   
+               JOptionPane.showMessageDialog(null, "Connection Error!"); 
+            }    
+        }
     }//GEN-LAST:event_AddActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
@@ -1270,21 +1285,27 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_logoffMouseExited
 
-    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        login_form ads = new login_form();
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+       Session sess = Session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
 
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
+       
+        login_form ads = new login_form();
+        JOptionPane.showMessageDialog(null, "Log out successfully!");
         ads.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel28MouseClicked
+    }//GEN-LAST:event_logoutMouseClicked
 
-    private void jLabel28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseEntered
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
         logoff.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel28MouseEntered
+    }//GEN-LAST:event_logoutMouseEntered
 
-    private void jLabel28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseExited
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
         logoff.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel28MouseExited
+    }//GEN-LAST:event_logoutMouseExited
 
     private void logoffbgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffbgMouseClicked
         // TODO add your handling code here:
@@ -1332,6 +1353,28 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_settingsPaneMouseExited
 
+      public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -1517,7 +1560,6 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1534,6 +1576,7 @@ import javax.swing.border.EmptyBorder;
     public javax.swing.JTextField ln;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
+    private javax.swing.JLabel logout;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
     public javax.swing.JTextField mail;

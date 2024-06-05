@@ -11,12 +11,17 @@ import bcirs.login_form;
 import config.PasswordHasher;
 import config.dbConnector;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  *
@@ -91,6 +96,30 @@ public class register_form extends javax.swing.JFrame {
             return false;
         }
         
+    }
+    
+     public void logEvent(String userId, String event, String description) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        try {
+          
+
+           dbConnector dbc = new dbConnector();
+
+            String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+            pstmt = dbc.connect.prepareStatement(sql);
+            pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+            pstmt.setString(2, event);
+            pstmt.setString(3, userId);
+            pstmt.setString(4, description);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+           
+        }
     }
     
     /**
@@ -364,57 +393,89 @@ public class register_form extends javax.swing.JFrame {
         a6.setText("");
 
         PasswordHasher pH = new PasswordHasher();
-
         String password = pH.hashPassword(ps.getText());
 
         register_C rC = new register_C();
 
-        if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
+        if (fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
                 || usn.getText().isEmpty() || ps.getText().isEmpty()) {
-            if(fn.getText().isEmpty()){
+            if (fn.getText().isEmpty()) {
                 a1.setText("Field Required");
             }
-            if(ln.getText().isEmpty()){
+            if (ln.getText().isEmpty()) {
                 a2.setText("Field Required");
             }
-            if(mail.getText().isEmpty()){
+            if (mail.getText().isEmpty()) {
                 a4.setText("Field Required");
             }
-            if(usn.getText().isEmpty()){
+            if (usn.getText().isEmpty()) {
                 a3.setText("Field Required");
             }
-            if(ps.getText().isEmpty()){
+            if (ps.getText().isEmpty()) {
                 a5.setText("Field Required");
-            } else if(ps.getText().length() < 8){
+            } else if (ps.getText().length() < 8) {
                 a5.setText("Password is too short!");
-            } else if(!ps.getText().equals(cps.getText())){
+            } else if (!ps.getText().equals(cps.getText())) {
                 a5.setText("Password does not match!");
                 a6.setText("Password does not match!");
             }         
-            if(cps.getText().isEmpty()){
+            if (cps.getText().isEmpty()) {
                 a6.setText("Field Required");
             }
-        } else if(!isValidEmail(mail.getText())) {
+        } else if (!isValidEmail(mail.getText())) {
             a4.setText("Invalid Email Address!");
-        } else if(ps.getText().length() < 8){
+        } else if (ps.getText().length() < 8) {
             a5.setText("Password is too short!");
-        } else if(!ps.getText().equals(cps.getText())){
+        } else if (!ps.getText().equals(cps.getText())) {
             a5.setText("Password does not match!");
             a6.setText("Password does not match!");
-        } else if(dupCheck()){
+        } else if (dupCheck()) {
             System.out.println("Duplicate Exist");
         } else {
             dbConnector dbc = new dbConnector();
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
 
-            if(dbc.insertData("INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image, u_code) "
-                    + "VALUES ('"+fn.getText()+"','"+ln.getText()+"','"+mail.getText()+"','"+usn.getText()+"','"
-                    + password + "','User','Pending','"+destination+"','')")) {
-                rC.setVisible(true);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null,"Connection Error!"); 
+            try {
+            
+                String sql = "INSERT INTO tbl_user (u_fname, u_lname, u_email, u_usn, u_pass, u_type, u_status, u_image, u_code) VALUES (?, ?, ?, ?, ?, 'User', 'Pending', ?, ?)";
+                pstmt = dbc.connect.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+                pstmt.setString(1, fn.getText());
+                pstmt.setString(2, ln.getText());
+                pstmt.setString(3, mail.getText());
+                pstmt.setString(4, usn.getText());
+                pstmt.setString(5, password);
+                pstmt.setString(6, destination);
+                pstmt.setString(7, ""); 
+
+                int affectedRows = pstmt.executeUpdate();
+
+                if (affectedRows > 0) {
+                    rs = pstmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        String userId = rs.getString(1); 
+                       
+                        logEvent(userId, "USER_REGISTRATION", "User registered successfully");
+                    }
+                    rC.setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Connection Error!");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                if (rs != null) {
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+               
             }
         }
+  
 
     }//GEN-LAST:event_registerBTActionPerformed
 

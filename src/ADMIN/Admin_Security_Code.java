@@ -77,6 +77,7 @@ public class Admin_Security_Code extends javax.swing.JFrame {
         d2 = new javax.swing.JLabel();
         d3 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
+        cancel = new javax.swing.JButton();
         d = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         d4 = new javax.swing.JLabel();
@@ -376,16 +377,16 @@ public class Admin_Security_Code extends javax.swing.JFrame {
                 saveCodeActionPerformed(evt);
             }
         });
-        jPanel5.add(saveCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 170, 30));
+        jPanel5.add(saveCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 140, 30));
 
         a1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel5.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 140, 20));
+        jPanel5.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 140, 20));
 
         jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel23.setText("Confirm password");
+        jLabel23.setText("Enter your password");
         jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel23MouseClicked(evt);
@@ -395,11 +396,11 @@ public class Admin_Security_Code extends javax.swing.JFrame {
 
         sc.setBackground(new java.awt.Color(242, 242, 242));
         sc.setBorder(null);
-        jPanel5.add(sc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 280, 30));
+        jPanel5.add(sc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 390, 30));
 
         cps.setBackground(new java.awt.Color(242, 242, 242));
         cps.setBorder(null);
-        jPanel5.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 280, 30));
+        jPanel5.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 390, 30));
 
         jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(27, 55, 77));
@@ -414,7 +415,7 @@ public class Admin_Security_Code extends javax.swing.JFrame {
         a2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         a2.setForeground(new java.awt.Color(255, 0, 0));
         a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel5.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 140, 20));
+        jPanel5.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 140, 20));
 
         d2.setBackground(new java.awt.Color(244, 244, 244));
         d2.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
@@ -425,15 +426,31 @@ public class Admin_Security_Code extends javax.swing.JFrame {
         d3.setBackground(new java.awt.Color(244, 244, 244));
         d3.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         d3.setForeground(new java.awt.Color(27, 57, 77));
-        d3.setText("Code must be numbers and letters.");
-        jPanel5.add(d3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 170, 30));
+        d3.setText("At least 6 and must contain numbers and letters.");
+        jPanel5.add(d3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 250, 30));
 
         dot.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         dot.setForeground(new java.awt.Color(255, 0, 0));
         dot.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel5.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 10, 30));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 330, 260));
+        cancel.setBackground(new java.awt.Color(255, 255, 255));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        cancel.setForeground(new java.awt.Color(27, 57, 77));
+        cancel.setText("Cancel");
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 100, 30));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 430, 260));
 
         d.setBackground(new java.awt.Color(244, 244, 244));
         d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
@@ -442,7 +459,7 @@ public class Admin_Security_Code extends javax.swing.JFrame {
         jPanel2.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 360, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Secure Server-amico (2).png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 240, 190));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 230, 190));
 
         d4.setBackground(new java.awt.Color(244, 244, 244));
         d4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
@@ -615,6 +632,7 @@ public class Admin_Security_Code extends javax.swing.JFrame {
                      dot.setText("");
                      saveCode.setEnabled(false);
                      saveCode.setText("Code already set");
+                     cancel.setText("Back");
                      sc.setEnabled(false);
                      cps.setEnabled(false);
                 }
@@ -707,6 +725,17 @@ public class Admin_Security_Code extends javax.swing.JFrame {
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+
+        Admin_Security ru = new Admin_Security();
+        ru.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -812,6 +841,7 @@ public class Admin_Security_Code extends javax.swing.JFrame {
     private javax.swing.JPanel accPane;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
+    public javax.swing.JButton cancel;
     private javax.swing.JPasswordField cps;
     public javax.swing.JLabel d;
     public javax.swing.JLabel d1;

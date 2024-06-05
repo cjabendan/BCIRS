@@ -177,8 +177,6 @@ import javax.swing.border.EmptyBorder;
         religion = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         a9 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -292,8 +290,8 @@ import javax.swing.border.EmptyBorder;
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel7.setText("Date of Birth");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 80, 30));
+        jLabel7.setText("Date of Birth ( yy--mm--day )");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 140, 30));
 
         jPanel7.setBackground(new java.awt.Color(245, 246, 248));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -498,26 +496,6 @@ import javax.swing.border.EmptyBorder;
         a9.setText("*");
         jPanel3.add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 140, 30));
 
-        jLabel25.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel25.setText(" Add here");
-        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel25MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 70, 20));
-
-        jLabel26.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel26.setText("Can't find household?");
-        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel26MouseClicked(evt);
-            }
-        });
-        jPanel3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 140, 20));
-
         jPanel1.add(jPanel3);
         jPanel3.setBounds(0, 50, 900, 370);
 
@@ -582,126 +560,134 @@ import javax.swing.border.EmptyBorder;
     }//GEN-LAST:event_AddMouseClicked
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        
-        
-a1.setText("");
-a2.setText("");
-a3.setText("");
-a4.setText("");
-a5.setText("");
-a6.setText("");
-a7.setText("");
-a8.setText("");
-a9.setText("");
-a10.setText("");
+                
+    a1.setText("");
+    a2.setText("");
+    a3.setText("");
+    a4.setText("");
+    a5.setText("");
+    a6.setText("");
+    a7.setText("");
+    a8.setText("");
+    a9.setText("");
+    a10.setText("");
 
-if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty() 
-    || address.getText().isEmpty() || occupation.getText().isEmpty() 
-    || religion.getText().isEmpty() || dob.getDate() == null
-    || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 
-    || household.getSelectedIndex() == 0) {
+    if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty() 
+        || address.getText().isEmpty() || occupation.getText().isEmpty() 
+        || religion.getText().isEmpty() || dob.getDate() == null
+        || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 
+        || household.getSelectedIndex() == 0) {
 
-    if(ln.getText().isEmpty()){
-        a1.setText("Field Required");
-    }
-    if(fn.getText().isEmpty()){
-        a2.setText("Field Required");
-    }
-    if(mn.getText().isEmpty()){
-        a3.setText("Field Required");
-    }
-    if(address.getText().isEmpty()){
-        a4.setText("Field Required");
-    } 
-    if(occupation.getText().isEmpty()){
-        a5.setText("Field Required");
-    }  
-    if(religion.getText().isEmpty()){
-        a6.setText("Field Required");
-    }
-    if(dob.getDate() == null){
-        a7.setText("Field Required");
-    }
-    if(sex.getSelectedIndex() == 0){
-        a8.setText("Field Required");
-    }
-    if(status.getSelectedIndex() == 0){
-        a9.setText("Field Required");
-    }
-    if(household.getSelectedIndex() == 0){
-        a10.setText("Field Required");
-    }
+        if (ln.getText().isEmpty()) {
+            a1.setText("*");
+        }
+        if (fn.getText().isEmpty()) {
+            a2.setText("*");
+        }
+        if (mn.getText().isEmpty()) {
+            a3.setText("*");
+        }
+        if (address.getText().isEmpty()) {
+            a4.setText("*");
+        } 
+        if (occupation.getText().isEmpty()) {
+            a5.setText("*");
+        }  
+        if (religion.getText().isEmpty()) {
+            a6.setText("*");
+        }
+        if (dob.getDate() == null) {
+            a7.setText("*");
+        }
+        if (sex.getSelectedIndex() == 0) {
+            a8.setText("*");
+        }
+        if (status.getSelectedIndex() == 0) {
+            a9.setText("*");
+        }
+        if (household.getSelectedIndex() == 0) {
+            a10.setText("*");
+        }
 
-} else {
-
-    dbConnector dbc = new dbConnector();
-
-    String imageDestination = (selectedFile != null) ? destination : "src/u_default/blank_pfp.jpg";
-    String selectedHousehold = household.getSelectedItem().toString();
-
-    if (selectedHousehold.equals("Select household")) {
-        a10.setText("Select a valid household");
     } else {
-        try {
-            String query = "SELECT h_id FROM tbl_household WHERE h_name = ?";
-            PreparedStatement pst = dbc.connect.prepareStatement(query);
-            pst.setString(1, selectedHousehold);
-            ResultSet rs = pst.executeQuery();
 
-            if (rs.next()) {
-                int householdId = rs.getInt("h_id");
+        dbConnector dbc = new dbConnector();
 
-                try (PreparedStatement insertPst = dbc.connect.prepareStatement(
-                    "INSERT INTO tbl_residents (r_lname, r_fname, r_mname, r_address, r_sex, r_dob, r_civilstatus, r_occupation, r_religion, h_id, r_image) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+        String imageDestination = (selectedFile != null) ? destination : "src/u_default/blank_pfp.jpg";
+        String selectedHousehold = household.getSelectedItem().toString();
 
-                    insertPst.setString(1, ln.getText());
-                    insertPst.setString(2, fn.getText());
-                    insertPst.setString(3, mn.getText());
-                    insertPst.setString(4, address.getText());
-                    insertPst.setString(5, sex.getSelectedItem().toString());
-                    insertPst.setString(6, new SimpleDateFormat("yyyy-MM-dd").format(dob.getDate()));
-                    insertPst.setString(7, status.getSelectedItem().toString());
-                    insertPst.setString(8, occupation.getText());
-                    insertPst.setString(9, religion.getText());
-                    insertPst.setInt(10, householdId);
-                    insertPst.setString(11, imageDestination);
+        if (selectedHousehold.equals("Select household")) {
+            a10.setText("Select a valid household");
+        } else {
+            try {
+                String query = "SELECT h_id FROM tbl_household WHERE h_name = ?";
+                PreparedStatement pst = dbc.connect.prepareStatement(query);
+                pst.setString(1, selectedHousehold);
 
-                    int rowsInserted = insertPst.executeUpdate();
+                ResultSet rs = pst.executeQuery();
 
-                    if (rowsInserted > 0) {
-                        if (selectedFile != null) {
-                            try {
-                                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                            } catch (IOException ex) {
-                                System.out.println("Insert Image Error: " + ex);
+                if (rs.next()) {
+
+                    int householdId = rs.getInt("h_id");
+
+                    try (PreparedStatement insertPst = dbc.connect.prepareStatement(
+                        "INSERT INTO tbl_residents (r_lname, r_fname, r_mname, r_address, r_sex, r_dob, r_civilstatus, r_occupation, r_religion, h_id, r_image) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+
+                        insertPst.setString(1, ln.getText());
+                        insertPst.setString(2, fn.getText());
+                        insertPst.setString(3, mn.getText());
+                        insertPst.setString(4, address.getText());
+                        insertPst.setString(5, sex.getSelectedItem().toString());
+                        insertPst.setString(6, new SimpleDateFormat("yyyy-MM-dd").format(dob.getDate()));
+                        insertPst.setString(7, status.getSelectedItem().toString());
+                        insertPst.setString(8, occupation.getText());
+                        insertPst.setString(9, religion.getText());
+                        insertPst.setInt(10, householdId);
+                        insertPst.setString(11, imageDestination);
+
+                        int rowsInserted = insertPst.executeUpdate();
+
+                        if (rowsInserted > 0) {
+                            if (selectedFile != null) {
+                                try {
+                                    Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                                } catch (IOException ex) {
+                                    System.out.println("Insert Image Error: " + ex);
+                                }
                             }
+
+
+                            String updateQuery = "UPDATE tbl_barangay SET b_population = b_population + 1 WHERE b_id = ?";
+                            PreparedStatement updatePst = dbc.connect.prepareStatement(updateQuery);
+                            updatePst.setInt(1, 1001);
+                            updatePst.executeUpdate();
+                            updatePst.close();
+
+                            JOptionPane.showMessageDialog(null, "Resident Registered Successfully!");
+                            User_Residents au = new User_Residents();
+                            au.setVisible(true);
+                            this.dispose();
+                        } else {
+                            System.out.println("Error inserting data");
                         }
 
-                        JOptionPane.showMessageDialog(null, "Resident Registered Successfully!");
-                        User_Residents au = new User_Residents();
-                        au.setVisible(true);
-                        this.dispose();
-                    } else {
-                        System.out.println("Error inserting data");
+                    } catch (SQLException ex) {
+                        System.out.println("Database Error: " + ex.getMessage());
                     }
 
-                } catch (SQLException ex) {
-                    System.out.println("Database Error: " + ex.getMessage());
+                } else {
+                    a10.setText("Invalid Household Selection");
                 }
 
-            } else {
-                a10.setText("Invalid Household Selection");
+                rs.close();
+                pst.close();
+
+            } catch (SQLException ex) {
+                System.out.println("Database Error: " + ex.getMessage());
             }
-
-            rs.close();
-            pst.close();
-
-        } catch (SQLException ex) {
-            System.out.println("Database Error: " + ex.getMessage());
         }
     }
-}
 
     }//GEN-LAST:event_AddActionPerformed
 
@@ -756,7 +742,7 @@ if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty()
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             try {
                 selectedFile = fileChooser.getSelectedFile();
-                destination = "src/u_images/" + selectedFile.getName();
+                destination = "src/r_images/" + selectedFile.getName();
                 path  = selectedFile.getAbsolutePath();
 
                 if(FileExistenceChecker(path) == 1){
@@ -801,14 +787,6 @@ if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty()
     private void religionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_religionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_religionActionPerformed
-
-    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
-       
-    }//GEN-LAST:event_jLabel25MouseClicked
-
-    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel26MouseClicked
 
     /**
      * @param args the command line arguments
@@ -877,8 +855,6 @@ if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty()
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;

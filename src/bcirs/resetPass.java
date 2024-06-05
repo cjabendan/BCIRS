@@ -15,6 +15,8 @@ import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
@@ -202,17 +204,17 @@ public class resetPass extends javax.swing.JFrame {
     private void cBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBtActionPerformed
 
         a1.setText("");
-        a1.setText("");
+        a2.setText("");
 
         dbConnector dbc = new dbConnector();
         PasswordHasher pH = new PasswordHasher();
 
+        
         try {
             String query = "SELECT * FROM tbl_user WHERE u_id = '" + id.getText() + "'";
             ResultSet resultSet = dbc.getData(query);
 
             if (resultSet.next()) {
-    
                 if (nps.getText().isEmpty() || cnps.getText().isEmpty()) {
                     if (nps.getText().isEmpty()) {
                         a1.setText("Field required!");
@@ -220,15 +222,18 @@ public class resetPass extends javax.swing.JFrame {
                     if (cnps.getText().isEmpty()) {
                         a1.setText("Field required!");
                     }
-               }else if(nps.getText().length() < 8){
-                    a2.setText("At leaset 8 characters");
-       
-                }else if (!nps.getText().equals(cnps.getText())) {
+                } else if (nps.getText().length() < 8) {
+                    a2.setText("At least 8 characters");
+                } else if (!nps.getText().equals(cnps.getText())) {
                     a1.setText("Password does not match!");
                     a2.setText("Password does not match!");
-                }else{
+                } else {
                     String password = pH.hashPassword(nps.getText());
                     dbc.updateData("UPDATE tbl_user SET u_pass = '" + password + "' WHERE u_id = '" + id.getText() + "'");
+
+                    // Log the password reset event
+                    logEvent(id.getText(), "PASSWORD_RESET", "User password has been reset");
+
                     resetPass_C rpc = new resetPass_C();
                     rpc.setVisible(true);
                     this.dispose();
@@ -243,6 +248,29 @@ public class resetPass extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cBtActionPerformed
 
+      public void logEvent(String userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setString(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+}
+    
     /**
      * @param args the command line arguments
      */

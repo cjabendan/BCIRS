@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ADMIN;
 
 import bcirs.login_form;
@@ -14,6 +10,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 import config.PanelPrinter;
 import config.Session;
 import config.dbConnector;
+import enhancer.CustomHeaderRenderer;
+import enhancer.NoBorderDialog;
+import enhancer.StatusCellRenderer;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Window;
@@ -23,7 +22,9 @@ import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -54,33 +55,41 @@ DefaultListModel listModel = new DefaultListModel();
         DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
     }
  
-    public void displayData(){
-        try{
-            dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT u_id, u_fname, u_lname,u_type, u_status FROM tbl_user");
-            userTbl.setModel(DbUtils.resultSetToTableModel(rs));
-            
-            JTableHeader th = userTbl.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            TableColumn tc = tcm.getColumn(0);
-            TableColumn tc1 = tcm.getColumn(1);
-            TableColumn tc2 = tcm.getColumn(2);
-            TableColumn tc3 = tcm.getColumn(3);
-            TableColumn tc4 = tcm.getColumn(4);
-            
-            tc.setHeaderValue("ID");
-            tc1.setHeaderValue("First Name");
-            tc2.setHeaderValue("Last Name");
-            tc3.setHeaderValue("Roles");
-            tc4.setHeaderValue("Status");
-            
-            
-             rs.close();
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
+   public void displayData() {
+    try {
+        dbConnector dbc = new dbConnector();
+        String query = "SELECT u_id, u_fname, u_lname, u_type, u_status FROM tbl_user WHERE u_status IN ('Active', 'Pending')";
+        ResultSet rs = dbc.getData(query);
+        userTbl.setModel(DbUtils.resultSetToTableModel(rs));
         
-        }
+        JTableHeader th = userTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        
+        TableColumn tc = tcm.getColumn(0);
+        TableColumn tc1 = tcm.getColumn(1);
+        TableColumn tc2 = tcm.getColumn(2);
+        TableColumn tc3 = tcm.getColumn(3);
+        TableColumn tc4 = tcm.getColumn(4);
+        
+        tc.setHeaderValue("ID");
+        tc1.setHeaderValue("First Name");
+        tc2.setHeaderValue("Last Name");
+        tc3.setHeaderValue("Roles");
+        tc4.setHeaderValue("Status");
+        
+        // Apply the custom renderer to the status column
+        tc4.setCellRenderer(new StatusCellRenderer());
+        th.setDefaultRenderer(new CustomHeaderRenderer());
+
+        
+        
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
     }
+}
+
+
     
    
     Color Panecolor = new Color(242,242,242);
@@ -96,20 +105,20 @@ DefaultListModel listModel = new DefaultListModel();
    public ImageIcon resizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
         Image originalImage = originalIcon.getImage();
 
-        // Calculate the appropriate height based on the aspect ratio
+        
         int newHeight = getHeightFromWidth(originalImage, targetWidth);
 
-        // Create a new BufferedImage with the desired dimensions
+        
         BufferedImage resizedImage = new BufferedImage(targetWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
 
-        // Get the graphics context of the resized image
+        
         resizedImage.createGraphics().drawImage(originalImage, 0, 0, targetWidth, newHeight, null);
 
-        // Convert the resized BufferedImage back to an ImageIcon
+        
         return new ImageIcon(resizedImage);
 }
 
-// Function to calculate height from width maintaining aspect ratio
+
     public int getHeightFromWidth(Image image, int desiredWidth) {
         int originalWidth = image.getWidth(null);
         int originalHeight = image.getHeight(null);
@@ -140,6 +149,7 @@ DefaultListModel listModel = new DefaultListModel();
         imagePanel = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        cancel = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
@@ -148,11 +158,13 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel17 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
+        cancel1 = new javax.swing.JButton();
         nameField = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         pdf = new javax.swing.JButton();
         a1 = new javax.swing.JLabel();
+        excel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -171,7 +183,7 @@ DefaultListModel listModel = new DefaultListModel();
         logsPane = new javax.swing.JPanel();
         logoff = new javax.swing.JPanel();
         logoffbg = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
+        logout = new javax.swing.JLabel();
         settingsBg = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
@@ -210,87 +222,110 @@ DefaultListModel listModel = new DefaultListModel();
         popUp.add(editItem);
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
+        viewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         viewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 57, 77));
         jLabel4.setText("Status:");
-        viewPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 80, 20));
-        viewPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 470, 10));
+        viewPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 80, 20));
+        viewPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 470, 20));
 
         stats.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         stats.setForeground(new java.awt.Color(27, 57, 77));
         stats.setText("User ID:");
-        viewPanel.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 70, 20));
+        viewPanel.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 70, 20));
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(27, 57, 77));
         jLabel9.setText("Name:");
-        viewPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 60, 20));
+        viewPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 60, 20));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 57, 77));
         jLabel10.setText("User:");
-        viewPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 70, 20));
+        viewPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 70, 20));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 57, 77));
         jLabel11.setText("Email:");
-        viewPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 60, 20));
+        viewPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 60, 20));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(27, 57, 77));
         jLabel12.setText("User ID:");
-        viewPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 50, 20));
+        viewPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 50, 20));
 
         id.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         id.setForeground(new java.awt.Color(27, 57, 77));
         id.setText("Id number");
-        viewPanel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 90, 20));
+        viewPanel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 90, 20));
 
         fullname.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         fullname.setForeground(new java.awt.Color(27, 57, 77));
         fullname.setText("User ID:");
-        viewPanel.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 170, 20));
+        viewPanel.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 170, 20));
 
         username.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         username.setForeground(new java.awt.Color(27, 57, 77));
         username.setText("User ID:");
-        viewPanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 170, 20));
+        viewPanel.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 170, 20));
 
         umail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         umail.setForeground(new java.awt.Color(27, 57, 77));
         umail.setText("User ID:");
-        viewPanel.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 170, 20));
+        viewPanel.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 170, 20));
 
         imagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         imagePanel.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
 
-        viewPanel.add(imagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 170, 170));
+        viewPanel.add(imagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, 170));
 
         jPanel5.setBackground(new java.awt.Color(27, 57, 77));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cancel.setBackground(new java.awt.Color(255, 0, 0));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel.setBorder(null);
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 30, 30));
+
         jLabel14.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/show.png"))); // NOI18N
         jLabel14.setText(" View User Details");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 50));
 
-        viewPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+        viewPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 50));
 
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(27, 57, 77));
         jLabel15.setText("Role:");
-        viewPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 80, 20));
+        viewPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 80, 20));
 
         type.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         type.setForeground(new java.awt.Color(27, 57, 77));
         type.setText("User ID:");
-        viewPanel.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 70, 20));
+        viewPanel.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 70, 20));
 
         print.setBackground(new java.awt.Color(27, 57, 77));
         print.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -302,11 +337,12 @@ DefaultListModel listModel = new DefaultListModel();
                 printActionPerformed(evt);
             }
         });
-        viewPanel.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 130, 30));
+        viewPanel.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 120, 30));
 
         exportData.setBackground(new java.awt.Color(255, 255, 255));
+        exportData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         exportData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        exportData.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 320, 10));
+        exportData.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 470, 10));
 
         jPanel6.setBackground(new java.awt.Color(27, 57, 77));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -314,23 +350,45 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel22.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users-alt.png"))); // NOI18N
         jLabel22.setText(" System Users Data");
-        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
+        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 50));
 
-        exportData.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 60));
-        exportData.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 290, 30));
+        cancel1.setBackground(new java.awt.Color(255, 0, 0));
+        cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel1.setForeground(new java.awt.Color(255, 255, 255));
+        cancel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel1.setBorder(null);
+        cancel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel1MouseExited(evt);
+            }
+        });
+        cancel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel1ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 30, 30));
+
+        exportData.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, -1));
+        exportData.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 290, 30));
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Download reports as:");
-        exportData.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 290, 30));
+        exportData.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 290, 40));
 
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(27, 57, 77));
         jLabel18.setText("File name:");
-        exportData.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 20));
+        exportData.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, 20));
 
         pdf.setBackground(new java.awt.Color(255, 102, 102));
         pdf.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -342,13 +400,25 @@ DefaultListModel listModel = new DefaultListModel();
                 pdfActionPerformed(evt);
             }
         });
-        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 110, 30));
+        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 110, 30));
 
         a1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a1.setText("*");
-        exportData.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 190, 20));
+        exportData.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 190, 20));
+
+        excel.setBackground(new java.awt.Color(38, 154, 56));
+        excel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        excel.setForeground(new java.awt.Color(255, 255, 255));
+        excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-pdf.png"))); // NOI18N
+        excel.setText(" EXCEL");
+        excel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excelActionPerformed(evt);
+            }
+        });
+        exportData.add(excel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 110, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -686,20 +756,20 @@ DefaultListModel listModel = new DefaultListModel();
             }
         });
 
-        jLabel28.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (3).png"))); // NOI18N
-        jLabel28.setText(" Log out");
-        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+        logout.setBackground(new java.awt.Color(255, 255, 255));
+        logout.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        logout.setForeground(new java.awt.Color(57, 55, 77));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exit (3).png"))); // NOI18N
+        logout.setText(" Log out");
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel28MouseClicked(evt);
+                logoutMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel28MouseEntered(evt);
+                logoutMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel28MouseExited(evt);
+                logoutMouseExited(evt);
             }
         });
 
@@ -709,14 +779,14 @@ DefaultListModel listModel = new DefaultListModel();
             logoffbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logoffbgLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         logoffbgLayout.setVerticalGroup(
             logoffbgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoffbgLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
@@ -790,7 +860,7 @@ DefaultListModel listModel = new DefaultListModel();
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        userTbl.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
+        userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
         userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1085,12 +1155,12 @@ DefaultListModel listModel = new DefaultListModel();
               
              }
          
-                
+                        
             Object[] options = {};
-            JOptionPane.showOptionDialog(null, viewPanel, "",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                    null, options, null);
-        
+            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
+            dialog.setVisible(true);
+
+          
             }catch(SQLException ex){
                 System.out.println(""+ex);
             }                    
@@ -1290,21 +1360,27 @@ DefaultListModel listModel = new DefaultListModel();
         // TODO add your handling code here:
     }//GEN-LAST:event_logoffMouseExited
 
-    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        login_form ads = new login_form();
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        Session sess = Session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
 
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
+       
+        login_form ads = new login_form();
+        JOptionPane.showMessageDialog(null, "Log out successfully!");
         ads.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel28MouseClicked
+    }//GEN-LAST:event_logoutMouseClicked
 
-    private void jLabel28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseEntered
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
         logoff.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel28MouseEntered
+    }//GEN-LAST:event_logoutMouseEntered
 
-    private void jLabel28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseExited
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
         logoff.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel28MouseExited
+    }//GEN-LAST:event_logoutMouseExited
 
     private void logoffbgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffbgMouseClicked
         // TODO add your handling code here:
@@ -1321,7 +1397,7 @@ DefaultListModel listModel = new DefaultListModel();
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
         
         JPanel myPanel = new JPanel();
-        
+         Session sess = Session.getInstance();
   
          try {
              dbConnector dbc = new dbConnector();
@@ -1349,7 +1425,15 @@ DefaultListModel listModel = new DefaultListModel();
                   
                 PanelPrinter pPrint = new PanelPrinter(pud.page);
                 pPrint.printPanel();
+                
+            int userID = sess.getUid();
+            
+            logEvent(userID, "EXPORT_USER_DATA", "Admin exported User: "+id.getText()+" data.");
+                
              }
+             
+            Window window = SwingUtilities.getWindowAncestor(viewPanel);
+            window.dispose();
          
             }catch(SQLException ex){
                 System.out.println(""+ex);
@@ -1359,15 +1443,15 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
         
-        Object[] options = {};
-            JOptionPane.showOptionDialog(null, exportData, "",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                    null, options, null);
+         Object[] options = {};
+            NoBorderDialog dialog = new NoBorderDialog(null, exportData);
+            dialog.setVisible(true);
             
     }//GEN-LAST:event_exportActionPerformed
 
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
      
+     Session sess = Session.getInstance();
 
     if(nameField.getText().isEmpty()){
     a1.setText("File name required");
@@ -1387,6 +1471,7 @@ DefaultListModel listModel = new DefaultListModel();
             String query = "SELECT u_id, u_fname, u_lname, u_email, u_usn FROM tbl_user";
             ResultSet resultSet = dbc.getData(query);
 
+            
             com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A5.rotate());
             PdfWriter.getInstance(document, new FileOutputStream(location + name));
             document.open();
@@ -1400,14 +1485,18 @@ DefaultListModel listModel = new DefaultListModel();
             pdfPTable.addCell("Username");
     
     if (resultSet.next()) {
+        
         do {
-            // Retrieve each column by name and add to the table
+       
             pdfPTable.addCell(resultSet.getString("u_id"));
             pdfPTable.addCell(resultSet.getString("u_fname"));
             pdfPTable.addCell(resultSet.getString("u_lname"));
             pdfPTable.addCell(resultSet.getString("u_email"));
             pdfPTable.addCell(resultSet.getString("u_usn"));
-        } while (resultSet.next()); // Continue with the rest of the rows
+            
+         
+
+        } while (resultSet.next());
     }
             // Check if the result set has data and process the first row
             if (resultSet.next()) {
@@ -1418,7 +1507,8 @@ DefaultListModel listModel = new DefaultListModel();
                     pdfPTable.addCell(resultSet.getString("u_lname"));
                     pdfPTable.addCell(resultSet.getString("u_email"));
                     pdfPTable.addCell(resultSet.getString("u_usn"));
-                } while (resultSet.next()); // Continue with the rest of the rows
+                } while (resultSet.next()); 
+                
             }
 
 
@@ -1428,6 +1518,11 @@ DefaultListModel listModel = new DefaultListModel();
             window.dispose();
             JOptionPane.showMessageDialog(null, "Successfully Generated");
             nameField.setText("");
+            
+            int userID = sess.getUid();
+            
+            logEvent(userID, "EXPORT_USERS_DATA", "Admin exported all system user data to PDF: " + name);
+            
         } catch (DocumentException | FileNotFoundException e) {
             System.err.println(e);
         } catch (SQLException ex) {
@@ -1469,6 +1564,73 @@ DefaultListModel listModel = new DefaultListModel();
         // TODO add your handling code here:
     }//GEN-LAST:event_settingsPaneMouseExited
 
+    private void excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_excelActionPerformed
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
+        
+    }//GEN-LAST:event_cancelMouseEntered
+
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+       
+    }//GEN-LAST:event_cancelMouseExited
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+
+         Window window = SwingUtilities.getWindowAncestor(viewPanel);
+         window.dispose();
+       
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void cancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel1MouseClicked
+
+    private void cancel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel1MouseEntered
+
+    private void cancel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel1MouseExited
+
+    private void cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel1ActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(exportData);
+        window.dispose();
+    }//GEN-LAST:event_cancel1ActionPerformed
+
+    
+     public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+}
+     
+     
+     
+    
     /**
      * @param args the command line arguments
      */
@@ -1486,10 +1648,13 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel a1;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
+    public javax.swing.JButton cancel;
+    public javax.swing.JButton cancel1;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
     private javax.swing.JMenuItem editItem;
+    private javax.swing.JButton excel;
     private javax.swing.JButton export;
     private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;
@@ -1509,7 +1674,6 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1528,6 +1692,7 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JList<String> list;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
+    private javax.swing.JLabel logout;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
     private javax.swing.JDesktopPane mainDk;

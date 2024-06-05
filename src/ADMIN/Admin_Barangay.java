@@ -9,10 +9,19 @@ import bcirs.login_form;
 import config.RoundPanel;
 import config.Session;
 import config.dbConnector;
+import enhancer.CustomHeaderRenderer;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -26,6 +35,9 @@ public class Admin_Barangay extends javax.swing.JFrame {
     public Admin_Barangay() {
         initComponents();
         barangayPanel();
+        countDis();
+        reqData();
+        DefaultTableModel model = (DefaultTableModel) reqTbl.getModel();
     }
     
      private void barangayPanel(){
@@ -36,9 +48,92 @@ public class Admin_Barangay extends javax.swing.JFrame {
         barangayPanel.add(rounded);
         barangayPanel.repaint();
         barangayPanel.revalidate();
-    
+ 
   }
-  
+     
+     private void countDis(){
+         
+         try{
+             
+             dbConnector dbc = new dbConnector();
+         
+             ResultSet rs1 = dbc.getData("SELECT b_population FROM tbl_barangay WHERE b_id = 1001");
+             ResultSet rs2 = dbc.getData("SELECT COUNT(*) AS total_household FROM tbl_household");
+             ResultSet rs3 = dbc.getData("SELECT COUNT(*) AS total_male FROM tbl_residents WHERE r_sex = 'Male'");
+             ResultSet rs4 = dbc.getData("SELECT COUNT(*) AS total_fem FROM tbl_residents WHERE r_sex = 'Female'");
+             
+             if (rs1.next()) {
+                 int ttl_u = rs1.getInt("b_population");
+                 populationCount.setText(" " + ttl_u);
+             }
+
+             
+             if (rs2.next()) {
+                 int ttl_h = rs2.getInt("total_household");
+                 household.setText(" " + ttl_h);
+             }
+             
+              if (rs3.next()) {
+                 int ttl_m = rs3.getInt("total_male");
+                 male.setText(" " + ttl_m);
+             }
+             
+               if (rs4.next()) {
+                 int ttl_f = rs4.getInt("total_fem");
+                 fem.setText(" " + ttl_f);
+             }
+             
+            rs1.close();
+             rs2.close();
+             rs3.close();
+             rs4.close();
+         } catch (SQLException ex) {
+             System.out.println("Errors: " + ex.getMessage());
+         }
+         
+     }
+        
+    public void reqData() {
+    try {
+        dbConnector dbc = new dbConnector();
+        String query = "SELECT * FROM tbl_request";
+        
+        try (PreparedStatement pst = dbc.connect.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
+            
+            reqTbl.setModel(DbUtils.resultSetToTableModel(rs));
+
+            JTableHeader th = reqTbl.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            TableColumn tc0 = tcm.getColumn(0);
+            TableColumn tc1 = tcm.getColumn(1);
+            TableColumn tc2 = tcm.getColumn(2);
+            TableColumn tc3 = tcm.getColumn(3);
+            TableColumn tc4 = tcm.getColumn(4);
+            TableColumn tc5 = tcm.getColumn(5);
+            TableColumn tc6 = tcm.getColumn(6);
+            TableColumn tc7 = tcm.getColumn(7);
+                
+            tc0.setHeaderValue("Request ID");
+            tc1.setHeaderValue("Document Type");
+            tc2.setHeaderValue("Issued by");
+            tc3.setHeaderValue("Issued to");
+            tc4.setHeaderValue("Date Issued");
+            tc5.setHeaderValue("Purpose");
+            tc6.setHeaderValue("Status");
+            tc7.setHeaderValue("Action");
+
+         
+            th.setDefaultRenderer(new CustomHeaderRenderer());
+
+           reqTbl.removeColumn(tc7); 
+
+            th.repaint();
+        }
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
   
      
     Color Panecolor = new Color(242,242,242);
@@ -84,13 +179,22 @@ public class Admin_Barangay extends javax.swing.JFrame {
         barangayPanel = new javax.swing.JPanel();
         populationCount = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        housePanel = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        household = new javax.swing.JLabel();
+        housePanel1 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        male = new javax.swing.JLabel();
+        housePanel2 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        fem = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reqTbl = new javax.swing.JTable();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -546,14 +650,108 @@ public class Admin_Barangay extends javax.swing.JFrame {
         barangayPanel.setBackground(new java.awt.Color(27, 57, 77));
         barangayPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        populationCount.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        populationCount.setFont(new java.awt.Font("SansSerif", 1, 40)); // NOI18N
         populationCount.setForeground(new java.awt.Color(255, 255, 255));
-        barangayPanel.add(populationCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 90, 50));
+        populationCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        populationCount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user (1)_1.png"))); // NOI18N
+        populationCount.setText(" 0");
+        barangayPanel.add(populationCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 160, 80));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Total Residents");
-        barangayPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 20));
+        barangayPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 50));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        barangayPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 3, 100));
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Population Overview");
+        barangayPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, 40));
+
+        housePanel.setBackground(new java.awt.Color(255, 255, 255));
+        housePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("Total Household");
+        housePanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        household.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        household.setForeground(new java.awt.Color(27, 57, 77));
+        household.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        household.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/home (2).png"))); // NOI18N
+        household.setText(" 0");
+        housePanel.add(household, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
+
+        barangayPanel.add(housePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 110, 70));
+
+        housePanel1.setBackground(new java.awt.Color(255, 255, 255));
+        housePanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel16.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Male Resident");
+        housePanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        male.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        male.setForeground(new java.awt.Color(27, 57, 77));
+        male.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        male.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/avatar.png"))); // NOI18N
+        male.setText(" 0");
+        housePanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
+
+        barangayPanel.add(housePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 110, 70));
+
+        housePanel2.setBackground(new java.awt.Color(255, 255, 255));
+        housePanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel17.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("Female Resident");
+        housePanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        fem.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        fem.setForeground(new java.awt.Color(27, 57, 77));
+        fem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/woman-avatar.png"))); // NOI18N
+        fem.setText(" 0");
+        housePanel2.add(fem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
+
+        barangayPanel.add(housePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 110, 70));
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        barangayPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 30, 40));
+
+        jButton1.setText("Download");
+        barangayPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 110, -1));
 
         jPanel2.add(barangayPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 120));
 
@@ -561,37 +759,23 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(27, 57, 77));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Purok");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 50, 50));
+        jLabel15.setText("Document Request");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 160, 50));
 
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 130, 120));
+        reqTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
 
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 130, 120));
+            }
+        ));
+        jScrollPane1.setViewportView(reqTbl);
 
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 130, 120));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 550, 50));
-
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel11.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 130, 120));
-
-        jPanel2.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 130, 120));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 680, 170));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -603,7 +787,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         );
         mainDkLayout.setVerticalGroup(
             mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.add(mainDk);
@@ -734,13 +918,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
             try {
              dbConnector dbc = new dbConnector();
              ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '" + sess.getUid() + "'");
-             ResultSet rs1 = dbc.getData("SELECT COUNT(*) AS total_residents FROM tbl_residents");
-
-             if (rs1.next()) {
-                 int ttl_u = rs1.getInt("total_residents");
-                 populationCount.setText(" " + ttl_u);
-             }
-
+            
+             
              if (rs.next()) {
                  String code = rs.getString("u_code");
 
@@ -752,7 +931,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
              }
 
              rs.close();
-             rs1.close();
+            
          } catch (SQLException ex) {
              System.out.println("Errors: " + ex.getMessage());
          }
@@ -792,9 +971,15 @@ public class Admin_Barangay extends javax.swing.JFrame {
     }//GEN-LAST:event_logoffMouseExited
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        login_form ads = new login_form();
+        Session sess = Session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
 
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
+       
+        login_form ads = new login_form();
+        JOptionPane.showMessageDialog(null, "Log out successfully!");
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel28MouseClicked
@@ -889,6 +1074,36 @@ public class Admin_Barangay extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_settingsPaneMouseExited
 
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        Admin_Barangay_Purok abp = new Admin_Barangay_Purok();
+        abp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+      public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+      
+    }
+}
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -938,8 +1153,19 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
+    private javax.swing.JLabel fem;
+    private javax.swing.JPanel housePanel;
+    private javax.swing.JPanel housePanel1;
+    private javax.swing.JPanel housePanel2;
+    private javax.swing.JLabel household;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -949,22 +1175,20 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
     public javax.swing.JDesktopPane mainDk;
+    private javax.swing.JLabel male;
     private javax.swing.JLabel populationCount;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
+    private javax.swing.JTable reqTbl;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
     private javax.swing.JPanel viewC;

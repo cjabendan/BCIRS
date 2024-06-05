@@ -22,9 +22,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
+
+import java.sql.Timestamp;
+import java.util.Date;
 /**
  *
  * @author SCC-COLLEGE
@@ -80,6 +84,72 @@ public class login_form extends javax.swing.JFrame {
         }
 
     }
+    
+      public String getUserId(String username) {
+       
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String userId = null;
+
+        try {
+       
+
+      
+            String sql = "SELECT u_id FROM tbl_user WHERE u_usn = ?";
+            pstmt = dbc.connect.prepareStatement(sql);
+            pstmt.setString(1, username);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                userId = rs.getString("u_id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+           
+       
+        }
+        return userId;
+    }
+    
+    public void logEvent(String userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setString(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        
+    }
+}
+    
     
     class customTextField extends JTextField {
 
@@ -281,54 +351,64 @@ public class login_form extends javax.swing.JFrame {
         nousn.setText("");
         xps.setText("");
         
-        
         PasswordHasher pH = new PasswordHasher();       
         String password = pH.hashPassword(pass.getText());
-       
-         if(user.getText().isEmpty() || pass.getText().equals("")){
-             if(user.getText().isEmpty()){
+
+        if (user.getText().isEmpty() || pass.getText().equals("")) {
+            if (user.getText().isEmpty()) {
                 nousn.setText("Field Required");  
-             }
-             if(pass.getText().equals(""))
-                xps.setText("Field Required"); 
-        }
-         else{
-                    
-                if(loginAcc(user.getText(),password))
-         {            
-             if(!status.equals("Active")){            
+            }
+            if (pass.getText().equals("")) {
+                xps.setText("Field Required");
+            }
+        } else {
+            String username = user.getText(); // assuming this is the username
+            String userId = getUserId(username); // Fetch the u_id from the database
+            String event;
+            String description;
+
+            if (loginAcc(username, password)) {
+                if (!status.equals("Active")) {            
                     log_Check lc = new log_Check();
                     lc.setVisible(true);
                     this.dispose();
-         }          
-            else{         
-                if(type.equals("Admin")){                 
-                      JOptionPane.showMessageDialog(null, "Log in successfully.");
-                      admin_dashboard ads = new admin_dashboard();
-                      
-                      ads.setVisible(true);
-                      this.dispose();                    
-                }else if(type.equals("User")){                  
-                       JOptionPane.showMessageDialog(null, "Log in successfully.");
-                       user_dashboard uds = new  user_dashboard();
-
-                       uds.setVisible(true);
-                       this.dispose();                     
-                 }
-                else{
+                    event = "LOGIN_ATTEMPT";
+                    description = "Login successful but user status is not active";
+                    logEvent(userId, event, description);
+                } else {         
+                    if (type.equals("Admin")) {                 
+                        JOptionPane.showMessageDialog(null, "Log in successfully.");
+                        admin_dashboard ads = new admin_dashboard();
+                        ads.setVisible(true);
+                        this.dispose();
+                        event = "LOGIN_SUCCESS";
+                        description = "Admin logged in successfully";
+                        logEvent(userId, event, description);
+                    } else if (type.equals("User")) {                  
+                        JOptionPane.showMessageDialog(null, "Log in successfully.");
+                        user_dashboard uds = new user_dashboard();
+                        uds.setVisible(true);
+                        this.dispose();
+                        event = "LOGIN_SUCCESS";
+                        description = "User logged in successfully";
+                        logEvent(userId, event, description);
+                    } else {
                         Connection_Error ce = new Connection_Error();
                         ce.setVisible(true);
                         this.dispose();
+                        event = "LOGIN_ATTEMPT";
+                        description = "Connection error";
+                        logEvent(userId, event, description);
                     }     
-               }            
+                }            
+            } else {          
+                nousn.setText("Invalid Username."); 
+                xps.setText("Invalid Password.");
+                event = "LOGIN_FAILURE";
+                description = "Invalid username or password";
+                logEvent(userId, event, description);
+            }       
         }
-       
-           else{          
-             nousn.setText("Invalid Username."); 
-             xps.setText("Invalid Password.");
-        }       
-                                 
-                }
              
     }//GEN-LAST:event_jButton1ActionPerformed
 
