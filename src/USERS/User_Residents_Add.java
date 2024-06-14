@@ -5,10 +5,6 @@
  */
 package USERS;
 
-import ADMIN.*;
-import bcirs.login_form;
-import config.AgeCalculator;
-import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
@@ -24,10 +20,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -560,7 +555,12 @@ import javax.swing.border.EmptyBorder;
     }//GEN-LAST:event_AddMouseClicked
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-                
+
+        
+    Session sess = Session.getInstance();
+
+    int userID = sess.getUid();    
+        
     a1.setText("");
     a2.setText("");
     a3.setText("");
@@ -631,8 +631,8 @@ import javax.swing.border.EmptyBorder;
                     int householdId = rs.getInt("h_id");
 
                     try (PreparedStatement insertPst = dbc.connect.prepareStatement(
-                        "INSERT INTO tbl_residents (r_lname, r_fname, r_mname, r_address, r_sex, r_dob, r_civilstatus, r_occupation, r_religion, h_id, r_image) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+                        "INSERT INTO tbl_residents (r_lname, r_fname, r_mname, r_address, r_sex, r_dob, r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
 
                         insertPst.setString(1, ln.getText());
                         insertPst.setString(2, fn.getText());
@@ -645,9 +645,16 @@ import javax.swing.border.EmptyBorder;
                         insertPst.setString(9, religion.getText());
                         insertPst.setInt(10, householdId);
                         insertPst.setString(11, imageDestination);
+                        insertPst.setString(12, "Active");
 
                         int rowsInserted = insertPst.executeUpdate();
-
+                        
+                        ResultSet generatedKeys = pst.getGeneratedKeys();
+                            if (generatedKeys.next()) {
+                                int newResidentId = generatedKeys.getInt(1);
+                                logEvent(userID, "IMPORT_NEW_RESIDENT", "Resident ID: " + newResidentId + " is added by user.");
+                            }
+                        
                         if (rowsInserted > 0) {
                             if (selectedFile != null) {
                                 try {
@@ -788,6 +795,30 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_religionActionPerformed
 
+     public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new java.util.Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
+    
     /**
      * @param args the command line arguments
      */

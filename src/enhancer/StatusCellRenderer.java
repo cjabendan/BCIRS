@@ -20,7 +20,9 @@ public class StatusCellRenderer extends DefaultTableCellRenderer {
                 cellComponent.setForeground(new Color(0, 128, 0)); // Darker green
             } else if ("Pending".equalsIgnoreCase(status)) {
                 cellComponent.setForeground(new Color(255, 140, 0)); // Darker orange
-            } else {
+            }else if("Archived".equalsIgnoreCase(status)){
+                 cellComponent.setForeground(new Color(255, 140, 0));
+            }else {
                 cellComponent.setForeground(Color.BLACK); // Default color
             }
         }

@@ -7,6 +7,9 @@ package USERS;
 
 import ADMIN.Admin_RegUsers_Update;
 import bcirs.login_form;
+import certs.Bgy_Clearance;
+import certs.Bgy_Residency;
+import config.PanelPrinter;
 import config.Session;
 import config.dbConnector;
 import enhancer.CustomHeaderRenderer;
@@ -22,6 +25,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,6 +55,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 /**
  *
@@ -110,14 +116,16 @@ public class User_Residents extends javax.swing.JFrame {
         }
     }
 
-    public void displayData() {
+   public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
         String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
                      + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                      + "r.r_sex, h.h_name "
                      + "FROM tbl_residents r "
-                     + "JOIN tbl_household h ON r.h_id = h.h_id";
+                     + "JOIN tbl_household h ON r.h_id = h.h_id "
+                     + "WHERE r.r_status = 'Active' "
+                     + "ORDER BY r.r_id DESC";
         ResultSet rs = dbc.getData(query);
         userTbl.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -137,7 +145,6 @@ public class User_Residents extends javax.swing.JFrame {
         tc4.setHeaderValue("Sex");
         tc5.setHeaderValue("Household");
 
-       
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
 
@@ -146,6 +153,7 @@ public class User_Residents extends javax.swing.JFrame {
         System.out.println("Errors: " + ex.getMessage());
     }
 }
+
 
 public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
     try {
@@ -259,6 +267,20 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         purok1 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         print2 = new javax.swing.JButton();
+        gendoc = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        cancel2 = new javax.swing.JButton();
+        print1 = new javax.swing.JButton();
+        docs = new javax.swing.JComboBox<>();
+        purpose = new javax.swing.JTextField();
+        a2 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        a3 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        resname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -486,7 +508,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         print.setBackground(new java.awt.Color(27, 57, 77));
         print.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         print.setForeground(new java.awt.Color(255, 255, 255));
-        print.setText("Document Request");
+        print.setText("Request Document");
         print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printActionPerformed(evt);
@@ -579,7 +601,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText(" View Resident Details");
-        jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 50));
+        jPanel8.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
 
         cancel1.setBackground(new java.awt.Color(255, 0, 0));
         cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -728,6 +750,116 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
             }
         });
         viewPanel1.add(print2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
+
+        gendoc.setBackground(new java.awt.Color(255, 255, 255));
+        gendoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        gendoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        gendoc.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 550, 10));
+
+        jPanel10.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel40.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Generate Document");
+        jPanel10.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        cancel2.setBackground(new java.awt.Color(255, 0, 0));
+        cancel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel2.setForeground(new java.awt.Color(255, 255, 255));
+        cancel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel2.setBorder(null);
+        cancel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel2MouseExited(evt);
+            }
+        });
+        cancel2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel2ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 30, 30));
+
+        gendoc.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        print1.setBackground(new java.awt.Color(27, 57, 77));
+        print1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        print1.setForeground(new java.awt.Color(255, 255, 255));
+        print1.setText("Continue");
+        print1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                print1ActionPerformed(evt);
+            }
+        });
+        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
+
+        docs.setBackground(new java.awt.Color(245, 246, 248));
+        docs.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        docs.setForeground(new java.awt.Color(27, 57, 77));
+        docs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please select", "Barangay Clearance", "Barangay Residency", "Certifcate of Indigency", "Certificate of Solo Parent", "Certificate of Senior Citizen", " " }));
+        docs.setBorder(null);
+        docs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                docsActionPerformed(evt);
+            }
+        });
+        gendoc.add(docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 24));
+
+        purpose.setBackground(new java.awt.Color(245, 246, 248));
+        purpose.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        purpose.setForeground(new java.awt.Color(100, 115, 122));
+        purpose.setBorder(null);
+        purpose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purposeActionPerformed(evt);
+            }
+        });
+        gendoc.add(purpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, 24));
+
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a2.setText("*");
+        gendoc.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 200, 30));
+
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel37.setText("Document");
+        gendoc.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 70, 20));
+
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel38.setText("Issued to:");
+        gendoc.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 100, 20));
+
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a3.setText("*");
+        gendoc.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 170, 30));
+
+        jLabel39.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel39.setText("Purpose");
+        gendoc.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 20));
+
+        resname.setBackground(new java.awt.Color(245, 246, 248));
+        resname.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        resname.setForeground(new java.awt.Color(27, 57, 77));
+        resname.setBorder(null);
+        resname.setEnabled(false);
+        resname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resnameActionPerformed(evt);
+            }
+        });
+        gendoc.add(resname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, 24));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1556,7 +1688,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
                image.setIcon(resizedIcon);
 
                id.setText(rs.getString("r_id"));
-               fullname.setText(rs.getString("r_lname") + ", " + rs.getString("r_fname") + ", " + rs.getString("r_mname"));
+               fullname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
                address.setText(rs.getString("r_address"));
                dob.setText(rs.getString("r_dob"));
                age.setText(rs.getString("r_age"));
@@ -1612,7 +1744,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         uru.fn.setText(rs.getString("r_fname"));
         uru.mn.setText(rs.getString("r_mname"));
         uru.address.setText(rs.getString("r_address"));
-
+        uru.ACCOUNT_NAME.setText(rs.getString("r_fname") + " " + rs.getString("r_lname"));   
         java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
         uru.dob.setDate(date);
 
@@ -1621,7 +1753,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         uru.occupation.setText(rs.getString("r_occupation"));
         uru.religion.setText(rs.getString("r_religion"));
 
-        // Populate the JComboBox and set the selected item
+       
         uru.populateHouseholdComboBox(uru.household);
 
         String hName = rs.getString("h_name");
@@ -1692,7 +1824,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
                 image1.setIcon(resizedIcon);
 
                 id1.setText(rs.getString("r_id"));
-                fullname1.setText(rs.getString("r_lname") + ", " + rs.getString("r_fname") + ", " + rs.getString("r_mname"));
+                fullname1.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + ", " + rs.getString("r_lname"));
                 address1.setText(rs.getString("r_address"));
                 dob1.setText(rs.getString("r_dob"));
                 age1.setText(rs.getString("r_age"));
@@ -1733,7 +1865,9 @@ if (!searchField.getText().isEmpty()) {
 
     dbConnector dbc = new dbConnector();
 
-    try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?")) {
+    try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?"
+             + "AND (r_status = 'Active')")){
+        
         String name = searchField.getText();
         pst.setString(1, "%" + name + "%");
         ResultSet rs = pst.executeQuery();
@@ -1756,7 +1890,9 @@ if (!searchField.getText().isEmpty()) {
 
     private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
 
-    
+       Object[] options = {};
+       NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
+       dialog.setVisible(true);
 
     }//GEN-LAST:event_printActionPerformed
 
@@ -1777,70 +1913,79 @@ if (!searchField.getText().isEmpty()) {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    
+
+       
+    Session sess = Session.getInstance();
+
+    int userID = sess.getUid();
+
     int result = fileChooser.showOpenDialog(null);
     if (result == JFileChooser.APPROVE_OPTION) {
-    selectedFile = fileChooser.getSelectedFile();
-    
+        selectedFile = fileChooser.getSelectedFile();
+
     dbConnector dbc = new dbConnector();
-    
-    
+
     try {
-        
         workbook = new XSSFWorkbook(selectedFile);
         Sheet sheet = workbook.getSheetAt(0);
         int newResidentsCount = 0;
-        
-        try (PreparedStatement pst = dbc.connect.prepareCall("INSERT INTO tbl_residents(r_lname, r_fname, r_mname, r_address, r_sex, r_dob, "
-                + "r_civilstatus, r_occupation, r_religion, h_id, r_image) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-            
-            
-             Iterator<Row> iterator = sheet.iterator();
-                    if (iterator.hasNext()) {
-                        iterator.next(); // Skip the header row
-                    }
-                    
-                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                     
-                    while (iterator.hasNext()) {
-                        Row row = iterator.next();
 
-                        for (int i = 0; i < 9; i++) {
-                            if (row.getCell(i) == null) {
-                                System.out.println("Cell " + i + " in row " + row.getRowNum() + " is null.");
-                            }
-                        }
-            
+        try (PreparedStatement pst = dbc.connect.prepareStatement(
+                "INSERT INTO tbl_residents(r_lname, r_fname, r_mname, r_address, r_sex, r_dob, "
+                + "r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                Statement.RETURN_GENERATED_KEYS)) {
+
+            Iterator<Row> iterator = sheet.iterator();
+            if (iterator.hasNext()) {
+                iterator.next(); 
+            }
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            while (iterator.hasNext()) {
+                Row row = iterator.next();
+
+                for (int i = 0; i < 9; i++) {
+                    if (row.getCell(i) == null) {
+                        System.out.println("Cell " + i + " in row " + row.getRowNum() + " is null.");
+                    }
+                }
+
                 pst.setString(1, row.getCell(0).getStringCellValue());
                 pst.setString(2, row.getCell(1).getStringCellValue());
                 pst.setString(3, row.getCell(2).getStringCellValue());
                 pst.setString(4, row.getCell(3).getStringCellValue());
                 pst.setString(5, row.getCell(4).getStringCellValue());
-                
-           
+
                 java.util.Date date = row.getCell(5).getDateCellValue();
                 String formattedDate = dateFormat.format(date);
                 pst.setString(6, formattedDate);
-                
+
                 pst.setString(7, row.getCell(6).getStringCellValue());
                 pst.setString(8, row.getCell(7).getStringCellValue());
                 pst.setString(9, row.getCell(8).getStringCellValue());
                 pst.setDouble(10, row.getCell(9).getNumericCellValue());
                 pst.setString(11, "src/u_default/blank_pfp.jpg");
-                
+                pst.setString(12, "Active");
+
                 pst.executeUpdate();
                 newResidentsCount++;
+
+                ResultSet generatedKeys = pst.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int newResidentId = generatedKeys.getInt(1);
+                    logEvent(userID, "IMPORT_NEW_RESIDENT", "Resident ID: " + newResidentId + " is added by user.");
+                }
             }
-                    
+
             String updateQuery = "UPDATE tbl_barangay SET b_population = b_population + ? WHERE b_id = ?";
             PreparedStatement updatePst = dbc.connect.prepareStatement(updateQuery);
             updatePst.setInt(1, newResidentsCount);
-            updatePst.setInt(2, 1001); // Replace with your actual b_id value
+            updatePst.setInt(2, 1001); 
             updatePst.executeUpdate();
             updatePst.close();
-       
-                    
-            JOptionPane.showMessageDialog(null, "Successfully Import!");
+
+            JOptionPane.showMessageDialog(null, "Successfully Imported!");
             displayData();
         } catch (Exception e) {
             System.out.println(e);
@@ -1888,75 +2033,147 @@ if (!searchField.getText().isEmpty()) {
       window.dispose();
     }//GEN-LAST:event_cancel1ActionPerformed
 
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-        
-    dbConnector dbc = new dbConnector();
-        String rid = id1.getText();
-    
-    try{
-        
-    String query = "SELECT r.*, h.h_name, p.p_name, "
-                 + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
-                 + "FROM tbl_residents r "
-                 + "JOIN tbl_household h ON r.h_id = h.h_id "
-                 + "JOIN tbl_purok p ON h.p_id = p.p_id "
-                 + "WHERE r.r_id = ?";
-
-    PreparedStatement pst = dbc.connect.prepareStatement(query);
-    pst.setString(1, rid);
-    ResultSet rs = pst.executeQuery();
-
-    if (rs.next()) {
-        String imagePath = rs.getString("r_image");
-        ImageIcon originalIcon = new ImageIcon(imagePath);
-        ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
-
-        User_Residents_Update uru = new User_Residents_Update();
-
-        uru.image.setIcon(resizedIcon);
-
-        uru.id.setText(rs.getString("r_id"));
-        uru.ln.setText(rs.getString("r_lname"));
-        uru.fn.setText(rs.getString("r_fname"));
-        uru.mn.setText(rs.getString("r_mname"));
-        uru.address.setText(rs.getString("r_address"));
-
-        java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
-        uru.dob.setDate(date);
-
-        uru.status.setSelectedItem(rs.getString("r_civilstatus"));
-        uru.sex.setSelectedItem(rs.getString("r_sex"));
-        uru.occupation.setText(rs.getString("r_occupation"));
-        uru.religion.setText(rs.getString("r_religion"));
-
-        // Populate the JComboBox and set the selected item
-        uru.populateHouseholdComboBox(uru.household);
-
-        String hName = rs.getString("h_name");
-        uru.household.setSelectedItem(hName);
-        
-        Window window = SwingUtilities.getWindowAncestor(viewPanel1);
-        window.dispose();
-        uru.setVisible(true);
-        this.dispose();
-    }
-
-    rs.close();
-    pst.close();
-   
-} catch (SQLException ex) {
-    System.out.println("Error: " + ex.getMessage());
-} catch (ParseException ex) {
-    Logger.getLogger(User_Residents.class.getName()).log(Level.SEVERE, null, ex);
-}
-        
-        
-    }//GEN-LAST:event_editActionPerformed
-
     private void print2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print2ActionPerformed
-        // TODO add your handling code here:
+       Object[] options = {};
+       NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
+       dialog.setVisible(true);
     }//GEN-LAST:event_print2ActionPerformed
 
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+
+        dbConnector dbc = new dbConnector();
+        String rid = id1.getText();
+
+        try{
+
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, rid);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+
+                User_Residents_Update uru = new User_Residents_Update();
+
+                uru.image.setIcon(resizedIcon);
+
+                uru.id.setText(rs.getString("r_id"));
+                uru.ln.setText(rs.getString("r_lname"));
+                uru.fn.setText(rs.getString("r_fname"));
+                uru.mn.setText(rs.getString("r_mname"));
+                uru.address.setText(rs.getString("r_address"));
+
+                java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
+                uru.dob.setDate(date);
+
+                uru.status.setSelectedItem(rs.getString("r_civilstatus"));
+                uru.sex.setSelectedItem(rs.getString("r_sex"));
+                uru.occupation.setText(rs.getString("r_occupation"));
+                uru.religion.setText(rs.getString("r_religion"));
+
+                // Populate the JComboBox and set the selected item
+                uru.populateHouseholdComboBox(uru.household);
+
+                String hName = rs.getString("h_name");
+                uru.household.setSelectedItem(hName);
+
+                Window window = SwingUtilities.getWindowAncestor(viewPanel1);
+                window.dispose();
+                uru.setVisible(true);
+                this.dispose();
+            }
+
+            rs.close();
+            pst.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(User_Residents.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_editActionPerformed
+
+    private void cancel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel2MouseClicked
+
+    private void cancel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel2MouseEntered
+
+    private void cancel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel2MouseExited
+
+    private void cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel2ActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(gendoc);
+        window.dispose();
+    }//GEN-LAST:event_cancel2ActionPerformed
+
+    private void print1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print1ActionPerformed
+
+        a1.setText("");
+        a2.setText("");
+
+        if (purpose.getText().isEmpty() || docs.getSelectedIndex() == 0) {
+            if (purpose.getText().isEmpty()) {
+                a1.setText("Field required");
+            }
+            if (docs.getSelectedIndex() == 0) {
+                a2.setText("Field required");
+            }
+        } else {
+           
+        }
+    }//GEN-LAST:event_print1ActionPerformed
+
+    private void docsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_docsActionPerformed
+
+    private void purposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purposeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_purposeActionPerformed
+
+    private void resnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resnameActionPerformed
+
+     public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -2009,6 +2226,8 @@ if (!searchField.getText().isEmpty()) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel a1;
+    private javax.swing.JLabel a2;
+    private javax.swing.JLabel a3;
     private javax.swing.JLabel address;
     private javax.swing.JLabel address1;
     private javax.swing.JPanel adm_header;
@@ -2017,17 +2236,20 @@ if (!searchField.getText().isEmpty()) {
     private javax.swing.JLabel age1;
     public javax.swing.JButton cancel;
     public javax.swing.JButton cancel1;
+    public javax.swing.JButton cancel2;
     private javax.swing.JPanel citizenPane;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dob;
     private javax.swing.JLabel dob1;
+    public javax.swing.JComboBox<String> docs;
     private javax.swing.JLabel dot;
     private javax.swing.JButton edit;
     private javax.swing.JMenuItem editItem;
     private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;
     private javax.swing.JLabel fullname1;
+    private javax.swing.JPanel gendoc;
     private javax.swing.JLabel household;
     private javax.swing.JLabel household1;
     private javax.swing.JLabel id;
@@ -2067,7 +2289,12 @@ if (!searchField.getText().isEmpty()) {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2075,6 +2302,7 @@ if (!searchField.getText().isEmpty()) {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2094,14 +2322,17 @@ if (!searchField.getText().isEmpty()) {
     private javax.swing.JButton pdf;
     private javax.swing.JPopupMenu popUp;
     private javax.swing.JButton print;
+    private javax.swing.JButton print1;
     private javax.swing.JButton print2;
     private javax.swing.JLabel purok;
     private javax.swing.JLabel purok1;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
+    public javax.swing.JTextField purpose;
     private javax.swing.JLabel reg;
     private javax.swing.JLabel reg1;
     private javax.swing.JPanel reportsPane;
+    public javax.swing.JTextField resname;
     private javax.swing.JLabel sa;
     private javax.swing.JTextField searchField;
     private javax.swing.JPanel settingsBg;

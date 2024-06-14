@@ -90,9 +90,9 @@ public class admin_dashboard extends javax.swing.JFrame {
     
        RoundPanel rounded = new RoundPanel(new Color(40,82,115), 20);
        rounded.setBounds(0, 0, 110, 80);
-       archivePanel.add(rounded);
-       archivePanel.repaint();
-       archivePanel.revalidate();
+    //   archivePanel.add(rounded);
+    //   archivePanel.repaint();
+    //   archivePanel.revalidate();
     
   }
   
@@ -175,11 +175,11 @@ public class admin_dashboard extends javax.swing.JFrame {
         }
         rs1.close();
         
-        ResultSet rs2 = dbc.getData("SELECT COUNT(*) AS TotalAc FROM tbl_user WHERE u_status = 'Archive'");
+        ResultSet rs2 = dbc.getData("SELECT COUNT(*) AS TotalAc FROM tbl_user WHERE u_status = 'Archived'");
         
         if (rs2.next()) {
             int userAc = rs2.getInt("TotalAc");
-             archive.setText(" " + userAc);
+         //    archive.setText(" " + userAc);
         } else {
             System.out.println("No users found!");
         }
@@ -277,11 +277,8 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel36 = new javax.swing.JLabel();
         pending = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        archivePanel = new javax.swing.JPanel();
-        jLabel37 = new javax.swing.JLabel();
-        archive = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         adm_header = new javax.swing.JPanel();
         admin_name = new javax.swing.JLabel();
 
@@ -1019,8 +1016,8 @@ public class admin_dashboard extends javax.swing.JFrame {
         pendingPanelLayout.setVerticalGroup(
             pendingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pendingPanelLayout.createSequentialGroup()
-                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(pending, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1030,69 +1027,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 130, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 330, 130));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 350, 40));
-
-        archivePanel.setBackground(new java.awt.Color(40, 82, 115));
-
-        jLabel37.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
-        jLabel37.setText(" ARCHIVE");
-        jLabel37.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
-
-        archive.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        archive.setForeground(new java.awt.Color(255, 255, 255));
-        archive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        archive.setText("0");
-        archive.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                archiveMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                archiveMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                archiveMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout archivePanelLayout = new javax.swing.GroupLayout(archivePanel);
-        archivePanel.setLayout(archivePanelLayout);
-        archivePanelLayout.setHorizontalGroup(
-            archivePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-            .addComponent(archive, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        archivePanelLayout.setVerticalGroup(
-            archivePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(archivePanelLayout.createSequentialGroup()
-                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(archive, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel2.add(archivePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 110, 80));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 440, 130));
 
         jLabel28.setBackground(new java.awt.Color(27, 57, 77));
         jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -1100,6 +1042,18 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("Reports");
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 70, 60));
+
+        jButton2.setBackground(new java.awt.Color(27, 57, 77));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
+        jButton2.setText(" Archives");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 110, 30));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1477,17 +1431,11 @@ public class admin_dashboard extends javax.swing.JFrame {
        
     }//GEN-LAST:event_pendingMouseExited
 
-    private void archiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_archiveMouseClicked
-
-    private void archiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_archiveMouseEntered
-
-    private void archiveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_archiveMouseExited
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       Archived_Users au = new Archived_Users();
+       au.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
  public void logEvent(int userId, String event, String description) {
    
@@ -1559,8 +1507,6 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JLabel admin_name;
-    private javax.swing.JLabel archive;
-    private javax.swing.JPanel archivePanel;
     private javax.swing.JPasswordField cnps;
     private javax.swing.JPasswordField cps;
     private javax.swing.JPanel dashC;
@@ -1570,6 +1516,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel id;
     private javax.swing.JPanel illusPanel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1593,7 +1540,6 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1603,7 +1549,6 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JLabel logout;

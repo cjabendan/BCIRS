@@ -84,7 +84,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="390" y="330" width="120" height="33"/>
+                  <AbsoluteConstraints x="390" y="340" width="120" height="33"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -104,7 +104,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="300" width="900" height="-1"/>
+                  <AbsoluteConstraints x="0" y="300" width="900" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -117,7 +117,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="900" height="210"/>
+                  <AbsoluteConstraints x="0" y="0" width="900" height="230"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -130,11 +130,11 @@
                   <Color blue="4d" green="37" red="1b" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Page not found"/>
+                <Property name="text" type="java.lang.String" value="ERROR 404"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="220" width="900" height="40"/>
+                  <AbsoluteConstraints x="0" y="220" width="900" height="60"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -147,11 +147,11 @@
                   <Color blue="73" green="52" red="28" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="ERROR 404"/>
+                <Property name="text" type="java.lang.String" value="Page not found"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="260" width="900" height="40"/>
+                  <AbsoluteConstraints x="0" y="260" width="900" height="60"/>
                 </Constraint>
               </Constraints>
             </Component>

@@ -351,7 +351,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText(" System Users Data");
-        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 50));
+        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 50));
 
         cancel1.setBackground(new java.awt.Color(255, 0, 0));
         cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -1218,31 +1218,33 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
        
-       listModel.removeAllElements();
+      listModel.removeAllElements();
 
         if(!searchField.getText().equals("")){
-        list.setSize(200,210);
+            list.setSize(200,210);
 
-        dbConnector dbc = new dbConnector();
+            dbConnector dbc = new dbConnector();
 
-        try(PreparedStatement pst = dbc.connect.prepareStatement("SELECT * FROM tbl_user WHERE u_fname LIKE ? OR u_lname LIKE ?")){
+            try(PreparedStatement pst = dbc.connect.prepareStatement("SELECT * FROM tbl_user WHERE (u_fname LIKE ? OR u_lname LIKE ?) "
+                    + "AND (u_status = 'Pending' OR u_status = 'Active')")){
 
-            String name = searchField.getText();
-            pst.setString(1,"%"+name+"%");
-            pst.setString(2,"%"+name+"%");
-            ResultSet rs = pst.executeQuery();
-        
-         while(rs.next()){
-             listModel.addElement(rs.getString("u_fname") + " " + rs.getString("u_lname"));
-         }
+                String name = searchField.getText();
+                pst.setString(1, "%" + name + "%");
+                pst.setString(2, "%" + name + "%");
+                ResultSet rs = pst.executeQuery();
 
-            }catch(SQLException ex){
-                 System.out.println("Errors: "+ex.getMessage());
-         }                   
+                while(rs.next()){
+                    listModel.addElement(rs.getString("u_fname") + " " + rs.getString("u_lname"));
+                }
 
-        }else{
-             list.setSize(200,0);
+            } catch(SQLException ex){
+                System.out.println("Errors: " + ex.getMessage());
             }
+
+        } else {
+            list.setSize(200, 0);
+        }
+
 
     }//GEN-LAST:event_searchFieldKeyReleased
 

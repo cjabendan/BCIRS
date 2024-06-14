@@ -35,7 +35,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4d" green="39" red="1b" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Address:"/>
+            <Property name="text" type="java.lang.String" value="Address"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -51,7 +51,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4d" green="39" red="1b" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Purok:"/>
+            <Property name="text" type="java.lang.String" value="Purok"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -67,7 +67,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="4d" green="39" red="1b" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Household:"/>
+            <Property name="text" type="java.lang.String" value="Household"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1459,7 +1459,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="440" y="130" width="270" height="220"/>
+                      <AbsoluteConstraints x="440" y="130" width="270" height="210"/>
                     </Constraint>
                   </Constraints>
                 </Component>

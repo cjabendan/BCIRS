@@ -17,7 +17,9 @@ import java.awt.Window;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -289,17 +291,17 @@ public class User_Purok extends javax.swing.JFrame {
 
         jLabel33.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel33.setText("Address:");
+        jLabel33.setText("Address");
         houseAdd.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 60, 20));
 
         jLabel34.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel34.setText("Purok:");
+        jLabel34.setText("Purok");
         houseAdd.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 70, 20));
 
         jLabel36.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel36.setText("Household:");
+        jLabel36.setText("Household");
         houseAdd.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 20));
 
         jPanel6.setBackground(new java.awt.Color(27, 57, 77));
@@ -1055,7 +1057,7 @@ public class User_Purok extends javax.swing.JFrame {
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Building-rafiki (1) (1).png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 270, 220));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 270, 210));
 
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1338,6 +1340,10 @@ public class User_Purok extends javax.swing.JFrame {
 
     private void addHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHouseActionPerformed
 
+       Session sess = Session.getInstance();
+        
+        int userID = sess.getUid();
+       
         a1.setText("");
         a2.setText("");
         a3.setText("");
@@ -1371,12 +1377,16 @@ public class User_Purok extends javax.swing.JFrame {
                 if (rowsInserted > 0) {
                     JOptionPane.showMessageDialog(null, "Household Registered Successfully!");
 
+                   logEvent(userID, "NEW_HOUSEHOLD", "Household: "+hname.getText()+" is added by user.");
+                    
                     Window window = SwingUtilities.getWindowAncestor(houseAdd);
                     window.dispose();
                     
                     hname.setText("");
                     address.setText("");
                     purok.setSelectedIndex(0);
+                    
+                    
                     
                     displayData();
                     purokCount();
@@ -1405,6 +1415,31 @@ public class User_Purok extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_hnameActionPerformed
 
+     public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
+    
+    
     /**
      * @param args the command line arguments
      */

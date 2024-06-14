@@ -61,30 +61,30 @@ public class Connection_Error extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 120, 33));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 120, 33));
 
         jLabel9.setBackground(new java.awt.Color(234, 234, 234));
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(27, 55, 77));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Oops... Looks like there is a connection error.");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 900, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 900, 40));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/404 Error Page not Found with people connecting a plug-amico (4) (1).png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 210));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 230));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Page not found");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 900, 40));
+        jLabel8.setText("ERROR 404");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 900, 60));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(40, 82, 115));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ERROR 404");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 900, 40));
+        jLabel1.setText("Page not found");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 900, 60));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 31, 900, 390);

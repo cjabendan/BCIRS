@@ -68,11 +68,7 @@ import javax.swing.border.EmptyBorder;
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
     
-    
- //  public String destination = "";
-  // File selectedFile;
-  // public String path;
- //  public String oldpath;
+   
 
 public String destination = "";
 public String path = "";
@@ -227,7 +223,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         ACCOUNT_NAME.setForeground(new java.awt.Color(89, 182, 255));
         ACCOUNT_NAME.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ACCOUNT_NAME.setText("SAMPLE");
-        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 30));
+        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 420, 60));
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(27, 57, 77));
@@ -253,7 +249,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 cancelBTActionPerformed(evt);
             }
         });
-        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 110, 30));
+        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 110, 30));
 
         yesBT.setBackground(new java.awt.Color(27, 57, 77));
         yesBT.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -273,7 +269,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 yesBTActionPerformed(evt);
             }
         });
-        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 110, 30));
+        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 110, 30));
 
         jPanel5.setBackground(new java.awt.Color(27, 57, 77));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -687,84 +683,85 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         
       int adminID = sess.getUid();
         
-a1.setText("");
-a2.setText("");
-a3.setText("");
-a4.setText("");
-a5.setText("");
-a6.setText("");
-a7.setText("");
-a8.setText("");
-a9.setText("");
-a10.setText("");
+        a1.setText("");
+        a2.setText("");
+        a3.setText("");
+        a4.setText("");
+        a5.setText("");
+        a6.setText("");
+        a7.setText("");
+        a8.setText("");
+        a9.setText("");
+        a10.setText("");
 
-if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty() 
-    || address.getText().isEmpty() || occupation.getText().isEmpty() 
-    || religion.getText().isEmpty() || dob.getDate() == null
-    || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 
-    || household.getSelectedIndex() == 0) {
-    
-    if (ln.getText().isEmpty()) {
-        a1.setText("*");
-    }
-    if (fn.getText().isEmpty()) {
-        a2.setText("*");
-    }
-    if (mn.getText().isEmpty()) {
-        a3.setText("*");
-    }
-    if (address.getText().isEmpty()) {
-        a4.setText("*");
-    } 
-    if (occupation.getText().isEmpty()) {
-        a5.setText("*");
-    }  
-    if (religion.getText().isEmpty()) {
-        a6.setText("*");
-    }
-    if (dob.getDate() == null) {
-        a7.setText("*");
-    }
-    if (sex.getSelectedIndex() == 0) {
-        a8.setText("*");
-    }
-    if (status.getSelectedIndex() == 0) {
-        a9.setText("*");
-    }
-    if (household.getSelectedIndex() == 0) {
-        a10.setText("*");
-    }
-} else {
-    dbConnector dbc = new dbConnector();
+        if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty() 
+            || address.getText().isEmpty() || occupation.getText().isEmpty() 
+            || religion.getText().isEmpty() || dob.getDate() == null
+            || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 
+            || household.getSelectedIndex() == 0) {
 
-    String imagePathToUpdate = (destination == null || destination.isEmpty()) ? oldpath : destination;
+            if (ln.getText().isEmpty()) {
+                a1.setText("*");
+            }
+            if (fn.getText().isEmpty()) {
+                a2.setText("*");
+            }
+            if (mn.getText().isEmpty()) {
+                a3.setText("*");
+            }
+            if (address.getText().isEmpty()) {
+                a4.setText("*");
+            } 
+            if (occupation.getText().isEmpty()) {
+                a5.setText("*");
+            }  
+            if (religion.getText().isEmpty()) {
+                a6.setText("*");
+            }
+            if (dob.getDate() == null) {
+                a7.setText("*");
+            }
+            if (sex.getSelectedIndex() == 0) {
+                a8.setText("*");
+            }
+            if (status.getSelectedIndex() == 0) {
+                a9.setText("*");
+            }
+            if (household.getSelectedIndex() == 0) {
+                a10.setText("*");
+            }
+        } else {
+            dbConnector dbc = new dbConnector();
 
-    dbc.updateData("UPDATE tbl_residents SET "
-        + "r_lname = '" + ln.getText() + "', "
-        + "r_fname = '" + fn.getText() + "', "
-        + "r_mname = '" + mn.getText() + "', "
-        + "r_address = '" + address.getText() + "', "
-        + "r_sex = '" + sex.getSelectedItem() + "', "
-        + "r_dob = '" + new SimpleDateFormat("yyyy-MM-dd").format(dob.getDate()) + "', "
-        + "r_civilstatus = '" + status.getSelectedItem() + "', "
-        + "r_occupation = '" + occupation.getText() + "', "
-        + "r_religion = '" + religion.getText() + "', "
-        + "h_id = (SELECT h_id FROM tbl_household WHERE h_name = '" + household.getSelectedItem().toString() + "'), "
-        + "r_image = '" + imagePathToUpdate + "' "
-        + "WHERE r_id = '" + id.getText() + "'");
+            String imagePathToUpdate = (destination == null || destination.isEmpty()) ? oldpath : destination;
 
-   
-        if (!(oldpath.equals(path))) {
-            imageUpdater(oldpath, path);
-        }
-    
-        
-         logEvent(adminID, "RESIDENT_DATA_UPDATE", "Resident: "+id.getText()+" data is updated by admin");
+            dbc.updateData("UPDATE tbl_residents SET "
+                + "r_lname = '" + ln.getText() + "', "
+                + "r_fname = '" + fn.getText() + "', "
+                + "r_mname = '" + mn.getText() + "', "
+                + "r_address = '" + address.getText() + "', "
+                + "r_sex = '" + sex.getSelectedItem() + "', "
+                + "r_dob = '" + new SimpleDateFormat("yyyy-MM-dd").format(dob.getDate()) + "', "
+                + "r_civilstatus = '" + status.getSelectedItem() + "', "
+                + "r_occupation = '" + occupation.getText() + "', "
+                + "r_religion = '" + religion.getText() + "', "
+                + "h_id = (SELECT h_id FROM tbl_household WHERE h_name = '" + household.getSelectedItem().toString() + "'), "
+                + "r_image = '" + imagePathToUpdate + "' "
+                + "WHERE r_id = '" + id.getText() + "'");
 
-    JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
-    Admin_Barangay_Purok ru = new Admin_Barangay_Purok();
-    ru.setVisible(true);
-    this.dispose();
+
+                if (!(oldpath.equals(path))) {
+                    imageUpdater(oldpath, path);
+                }
+
+
+                 logEvent(adminID, "RESIDENT_DATA_UPDATE", "Resident: "+id.getText()+" data is updated by admin");
+
+            JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
+            Admin_Barangay_Purok ru = new Admin_Barangay_Purok();
+            ru.setVisible(true);
+            this.dispose();
+            
 }
 
     }//GEN-LAST:event_AddActionPerformed
@@ -911,25 +908,32 @@ if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty()
 
     private void yesBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTActionPerformed
 
+        Session sess = Session.getInstance();
+        
+        int adminID = sess.getUid();
+        
         dbConnector dbc = new dbConnector();
-        String stats = "Archive";
+        String stats = "Archived";
 
-        // Corrected SQL query with placeholder for parameterization
-        String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
+        String sql = "UPDATE tbl_residents SET r_status = ? WHERE r_id = ?";
 
         try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
-            // Set the parameters using PreparedStatement
-            pst.setString(1, stats); // Set status
-            pst.setString(2, id.getText()); // Set user ID
+           
+            pst.setString(1, stats);
+            pst.setString(2, id.getText()); 
             int rowsAffected = pst.executeUpdate();
 
             if (rowsAffected > 0) {
                 Window window = SwingUtilities.getWindowAncestor(confirmDel);
                 window.dispose();
-                JOptionPane.showMessageDialog(null, "User data archived.");
-                Admin_RegUsers u = new Admin_RegUsers();
+                JOptionPane.showMessageDialog(null, "Resident data archived.");
+                
+                  logEvent(adminID, "RESIDENT_ARCHIVED", "User: "+id.getText()+" data is archived by admin.");
+                
+                Admin_Barangay_Purok u = new Admin_Barangay_Purok();
                 u.setVisible(true);
                 this.dispose();
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No records found to delete.");
             }

@@ -61,6 +61,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
              ResultSet rs2 = dbc.getData("SELECT COUNT(*) AS total_household FROM tbl_household");
              ResultSet rs3 = dbc.getData("SELECT COUNT(*) AS total_male FROM tbl_residents WHERE r_sex = 'Male'");
              ResultSet rs4 = dbc.getData("SELECT COUNT(*) AS total_fem FROM tbl_residents WHERE r_sex = 'Female'");
+             ResultSet rs5 = dbc.getData("SELECT COUNT(*) AS total_a FROM tbl_residents WHERE r_status = 'Archived'");
              
              if (rs1.next()) {
                  int ttl_u = rs1.getInt("b_population");
@@ -82,11 +83,18 @@ public class Admin_Barangay extends javax.swing.JFrame {
                  int ttl_f = rs4.getInt("total_fem");
                  fem.setText(" " + ttl_f);
              }
+               
+               
+               if (rs5.next()) {
+                 int ttl_ar = rs5.getInt("total_a");
+                 arch.setText(" " + ttl_ar);
+             }
              
-            rs1.close();
+             rs1.close();
              rs2.close();
              rs3.close();
              rs4.close();
+             rs5.close();
          } catch (SQLException ex) {
              System.out.println("Errors: " + ex.getMessage());
          }
@@ -190,8 +198,16 @@ public class Admin_Barangay extends javax.swing.JFrame {
         housePanel2 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         fem = new javax.swing.JLabel();
+        housePanel3 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        fem1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        housePanel4 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        arch = new javax.swing.JLabel();
+        housePanel5 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        fem3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         reqTbl = new javax.swing.JTable();
@@ -681,8 +697,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Population Overview");
-        barangayPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, 40));
+        jLabel13.setText("Barangay Overview");
+        barangayPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 150, 40));
 
         housePanel.setBackground(new java.awt.Color(255, 255, 255));
         housePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -739,6 +755,25 @@ public class Admin_Barangay extends javax.swing.JFrame {
         fem.setText(" 0");
         housePanel2.add(fem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
 
+        housePanel3.setBackground(new java.awt.Color(255, 255, 255));
+        housePanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel18.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("Female Resident");
+        housePanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        fem1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        fem1.setForeground(new java.awt.Color(27, 57, 77));
+        fem1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/woman-avatar.png"))); // NOI18N
+        fem1.setText(" 0");
+        housePanel3.add(fem1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
+
+        housePanel2.add(housePanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 110, 70));
+
         barangayPanel.add(housePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 110, 70));
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -748,10 +783,45 @@ public class Admin_Barangay extends javax.swing.JFrame {
                 jLabel12MouseClicked(evt);
             }
         });
-        barangayPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 30, 40));
+        barangayPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 50, 40));
 
-        jButton1.setText("Download");
-        barangayPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 110, -1));
+        housePanel4.setBackground(new java.awt.Color(255, 255, 255));
+        housePanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("Archived Resident");
+        housePanel4.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        arch.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        arch.setForeground(new java.awt.Color(27, 57, 77));
+        arch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        arch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-list.png"))); // NOI18N
+        arch.setText(" 0");
+        housePanel4.add(arch, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
+
+        housePanel5.setBackground(new java.awt.Color(255, 255, 255));
+        housePanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel20.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("Female Resident");
+        housePanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+
+        fem3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        fem3.setForeground(new java.awt.Color(27, 57, 77));
+        fem3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/woman-avatar.png"))); // NOI18N
+        fem3.setText(" 0");
+        housePanel5.add(fem3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 110, 30));
+
+        housePanel4.add(housePanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 110, 70));
+
+        barangayPanel.add(housePanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 110, 70));
 
         jPanel2.add(barangayPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 120));
 
@@ -1149,16 +1219,21 @@ public class Admin_Barangay extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
+    private javax.swing.JLabel arch;
     private javax.swing.JPanel barangayPanel;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
     private javax.swing.JLabel fem;
+    private javax.swing.JLabel fem1;
+    private javax.swing.JLabel fem3;
     private javax.swing.JPanel housePanel;
     private javax.swing.JPanel housePanel1;
     private javax.swing.JPanel housePanel2;
+    private javax.swing.JPanel housePanel3;
+    private javax.swing.JPanel housePanel4;
+    private javax.swing.JPanel housePanel5;
     private javax.swing.JLabel household;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1166,7 +1241,10 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;

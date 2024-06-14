@@ -274,7 +274,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         ACCOUNT_NAME.setForeground(new java.awt.Color(89, 182, 255));
         ACCOUNT_NAME.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ACCOUNT_NAME.setText("SAMPLE");
-        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 30));
+        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 40));
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(27, 57, 77));
@@ -286,6 +286,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         cancelBT.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         cancelBT.setForeground(new java.awt.Color(27, 57, 77));
         cancelBT.setText("Cancel");
+        cancelBT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         cancelBT.setBorderPainted(false);
         cancelBT.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -300,7 +301,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
                 cancelBTActionPerformed(evt);
             }
         });
-        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 110, 30));
+        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 110, 30));
 
         yesBT.setBackground(new java.awt.Color(27, 57, 77));
         yesBT.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -320,7 +321,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
                 yesBTActionPerformed(evt);
             }
         });
-        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 110, 30));
+        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 110, 30));
 
         jPanel5.setBackground(new java.awt.Color(27, 57, 77));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1271,7 +1272,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
             }
             
          
-            logEvent(adminID, "USER_DATA_UPDATE", "User: "+uID.getText()+" data is updated by admin");
+            logEvent(adminID, "USER_DATA_UPDATE", "User ID: "+uID.getText()+" data is updated by admin");
 
             JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
             Admin_RegUsers ru = new Admin_RegUsers();
@@ -1489,34 +1490,34 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         
         
         int adminID = sess.getUid();
-    dbConnector dbc = new dbConnector();
-    String stats = "Archive";
+        dbConnector dbc = new dbConnector();
+        String stats = "Archived";
 
-    // Corrected SQL query with placeholder for parameterization
-    String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
 
-    try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
-        // Set the parameters using PreparedStatement
-        pst.setString(1, stats); // Set status
-        pst.setString(2, uID.getText()); // Set user ID
-        int rowsAffected = pst.executeUpdate();
+        String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
 
-        if (rowsAffected > 0) {
-            Window window = SwingUtilities.getWindowAncestor(confirmDel);
-            window.dispose();
-            JOptionPane.showMessageDialog(null, "User data archived.");
-            
-            logEvent(adminID, "USER_DATA_ARCHIVED", "User: "+uID.getText()+" data is archived by admin");
-            
-            Admin_RegUsers u = new Admin_RegUsers();
-            u.setVisible(true);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "No records found to delete.");
+        try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
+
+            pst.setString(1, stats); 
+            pst.setString(2, uID.getText());
+            int rowsAffected = pst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                Window window = SwingUtilities.getWindowAncestor(confirmDel);
+                window.dispose();
+                JOptionPane.showMessageDialog(null, "User data archived.");
+
+                logEvent(adminID, "USER_ARCHIVED", "User: "+uID.getText()+" data is archived by admin");
+
+                Admin_RegUsers u = new Admin_RegUsers();
+                u.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "No records found to delete.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
         }
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
-    }
 
         
     }//GEN-LAST:event_yesBTActionPerformed

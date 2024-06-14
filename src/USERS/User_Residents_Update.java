@@ -18,9 +18,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
@@ -160,12 +163,13 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private void initComponents() {
 
         confirmDel = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         ACCOUNT_NAME = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         cancelBT = new javax.swing.JButton();
         yesBT = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
@@ -212,28 +216,21 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jLabel1 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
 
-        confirmDel.setBackground(new java.awt.Color(27, 55, 77));
+        confirmDel.setBackground(new java.awt.Color(255, 255, 255));
+        confirmDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         confirmDel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        confirmDel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 10));
-
-        jLabel18.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/exclamation (1)_1.png"))); // NOI18N
-        jLabel18.setText(" Notice");
-        jLabel18.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(255, 255, 255)));
-        confirmDel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
+        confirmDel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 10));
 
         ACCOUNT_NAME.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         ACCOUNT_NAME.setForeground(new java.awt.Color(89, 182, 255));
         ACCOUNT_NAME.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ACCOUNT_NAME.setText("SAMPLE");
-        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 30));
+        confirmDel.add(ACCOUNT_NAME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 420, 40));
 
         jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setForeground(new java.awt.Color(27, 57, 77));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Are you sure you want to delete user:");
+        jLabel21.setText("Are you sure you want to archive resident?");
         confirmDel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 420, 20));
 
         cancelBT.setBackground(new java.awt.Color(255, 255, 255));
@@ -254,9 +251,9 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 cancelBTActionPerformed(evt);
             }
         });
-        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 110, 30));
+        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 110, 30));
 
-        yesBT.setBackground(new java.awt.Color(89, 182, 255));
+        yesBT.setBackground(new java.awt.Color(27, 57, 77));
         yesBT.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         yesBT.setForeground(new java.awt.Color(255, 255, 255));
         yesBT.setText("Confirm");
@@ -274,7 +271,18 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 yesBTActionPerformed(evt);
             }
         });
-        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 110, 30));
+        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 110, 30));
+
+        jPanel5.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel22.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("NOTICE");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
+
+        confirmDel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -672,6 +680,10 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     }//GEN-LAST:event_AddMouseClicked
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+
+    Session sess = Session.getInstance();
+
+    int userID = sess.getUid();        
         
     a1.setText("");
     a2.setText("");
@@ -744,6 +756,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 imageUpdater(oldpath, path);
             }
 
+        logEvent(userID, "IMPORT_NEW_RESIDENT", "Resident ID: " +  id.getText() + " data is updated by user.");
 
         JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
         User_Residents ru = new User_Residents();
@@ -793,34 +806,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
             null, options, null);
 
     }//GEN-LAST:event_deleteActionPerformed
-
-    private void cancelBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseEntered
-
-    }//GEN-LAST:event_cancelBTMouseEntered
-
-    private void cancelBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseExited
-
-    }//GEN-LAST:event_cancelBTMouseExited
-
-    private void cancelBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBTActionPerformed
-        Window window = SwingUtilities.getWindowAncestor(confirmDel);
-        window.dispose();
-    }//GEN-LAST:event_cancelBTActionPerformed
-
-    private void yesBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseEntered
-        yesBT.setBackground(Red);
-    }//GEN-LAST:event_yesBTMouseEntered
-
-    private void yesBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseExited
-        yesBT.setBackground(BlueBT);
-    }//GEN-LAST:event_yesBTMouseExited
-
-    private void yesBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTActionPerformed
-        
-        
-        
-        
-    }//GEN-LAST:event_yesBTActionPerformed
 
     private void sexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexActionPerformed
         // TODO add your handling code here:
@@ -899,6 +884,86 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         // TODO add your handling code here:
     }//GEN-LAST:event_lnActionPerformed
 
+    private void cancelBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseEntered
+
+    }//GEN-LAST:event_cancelBTMouseEntered
+
+    private void cancelBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseExited
+
+    }//GEN-LAST:event_cancelBTMouseExited
+
+    private void cancelBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBTActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(confirmDel);
+        window.dispose();
+    }//GEN-LAST:event_cancelBTActionPerformed
+
+    private void yesBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseEntered
+        yesBT.setBackground(Red);
+    }//GEN-LAST:event_yesBTMouseEntered
+
+    private void yesBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseExited
+        yesBT.setBackground(MainC);
+    }//GEN-LAST:event_yesBTMouseExited
+
+    private void yesBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTActionPerformed
+
+        dbConnector dbc = new dbConnector();
+        String stats = "Archive";
+
+       Session sess = Session.getInstance();
+        
+        int userID = sess.getUid();
+        
+        String sql = "UPDATE tbl_residents SET r_status = ? WHERE r_id = ?";
+
+        try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
+
+            pst.setString(1, stats);
+            pst.setString(2, id.getText());
+            int rowsAffected = pst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                Window window = SwingUtilities.getWindowAncestor(confirmDel);
+                window.dispose();
+                JOptionPane.showMessageDialog(null, "User data archived.");
+                
+               logEvent(userID, "RESIDENT_ARCHIVED", "Resident ID: "+id.getText()+" data is archived by user.");
+                
+                User_Residents u = new User_Residents();
+                u.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "No records found to delete.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_yesBTActionPerformed
+
+       public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
+    
     /**
      * @param args the command line arguments
      */
@@ -974,16 +1039,17 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     public javax.swing.JTextField ln;
