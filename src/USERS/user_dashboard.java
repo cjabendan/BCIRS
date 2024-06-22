@@ -9,11 +9,16 @@ import bcirs.login_form;
 import config.RoundPanel;
 import config.Session;
 import config.dbConnector;
+import enhancer.CustomHeaderRenderer;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -27,7 +32,7 @@ public class user_dashboard extends javax.swing.JFrame {
     public user_dashboard() {
         initComponents();
         roundUPanel();
-       
+       displayData();
     }
 
     Color darktxt = new Color(27,57,77);
@@ -46,6 +51,36 @@ public class user_dashboard extends javax.swing.JFrame {
         dashPanel.revalidate();
     
   }
+     
+     public void displayData() {
+    try {
+        dbConnector dbc = new dbConnector();
+        String query = "SELECT r.r_id, r.r_lname, r.r_fname "
+                     + "FROM tbl_residents r "
+                     + "JOIN tbl_household h ON r.h_id = h.h_id "
+                     + "WHERE r.r_status = 'Active' "
+                     + "ORDER BY r.r_id DESC";
+        ResultSet rs = dbc.getData(query);
+        userTbl.setModel(DbUtils.resultSetToTableModel(rs));
+
+        JTableHeader th = userTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        TableColumn tc0 = tcm.getColumn(0);
+        TableColumn tc1 = tcm.getColumn(1);
+        TableColumn tc2 = tcm.getColumn(2);
+        tc0.setHeaderValue("ID");
+        tc1.setHeaderValue("Last Name");
+        tc2.setHeaderValue("First Name");
+       
+
+        th.setDefaultRenderer(new CustomHeaderRenderer());
+        th.repaint();
+
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -93,6 +128,10 @@ public class user_dashboard extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        userTbl = new javax.swing.JTable();
+        jLabel29 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -559,7 +598,7 @@ public class user_dashboard extends javax.swing.JFrame {
         add.setBackground(new java.awt.Color(255, 255, 255));
         add.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         add.setForeground(new java.awt.Color(27, 57, 77));
-        add.setText(" Get started");
+        add.setText(" Get started now!");
         add.setBorder(null);
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -578,10 +617,10 @@ public class user_dashboard extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 140, 120));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 160, 140, 130));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -591,10 +630,10 @@ public class user_dashboard extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, -1, -1));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, -1, 130));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -608,6 +647,39 @@ public class user_dashboard extends javax.swing.JFrame {
         );
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 290, 50));
+
+        userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        userTbl.setGridColor(new java.awt.Color(136, 136, 136));
+        userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userTblMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userTblMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(userTbl);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 380, 150));
+
+        jLabel29.setBackground(new java.awt.Color(27, 57, 77));
+        jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setText("New Residents");
+        jPanel2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 130, 50));
+
+        jButton1.setBackground(new java.awt.Color(27, 57, 77));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("View All");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 80, 30));
 
         jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -865,6 +937,20 @@ public class user_dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_addActionPerformed
 
+    private void userTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTblMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userTblMouseClicked
+
+    private void userTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTblMousePressed
+       
+    }//GEN-LAST:event_userTblMousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        User_Residents aru = new User_Residents();
+        aru.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -910,6 +996,7 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel dashPane;
     private javax.swing.JPanel dashPanel;
     private javax.swing.JLabel dot;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -917,6 +1004,7 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -929,6 +1017,7 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
@@ -937,6 +1026,7 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel reportsPane;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
+    private javax.swing.JTable userTbl;
     private javax.swing.JLabel user_name;
     private javax.swing.JPanel viewC;
     // End of variables declaration//GEN-END:variables

@@ -586,8 +586,9 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Archived Residents");
-        adm_header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 50));
+        adm_header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 50));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(0, 0, 900, 70);
@@ -887,7 +888,7 @@ DefaultListModel listModel = new DefaultListModel();
         int adminID = sess.getUid();
         
         dbConnector dbc = new dbConnector();
-        String stats = "Pending";
+        String stats = "Active";
 
         int rowIndex = userTbl.getSelectedRow();
 
@@ -904,7 +905,7 @@ DefaultListModel listModel = new DefaultListModel();
             if (rowsAffected > 0) {
                 Window window = SwingUtilities.getWindowAncestor(confirm);
                 window.dispose();
-                JOptionPane.showMessageDialog(null, "User data archived.");
+                JOptionPane.showMessageDialog(null, "User data unarchived.");
 
                 logEvent(adminID, "USER_UNARCHIVED", "User: "+userId+" data is unarchived by admin");
                     

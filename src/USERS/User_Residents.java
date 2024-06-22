@@ -71,6 +71,8 @@ public class User_Residents extends javax.swing.JFrame {
         searchField.setBorder(new EmptyBorder(0, 10, 0, 0));
         DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
         displayData();
+        resname.setBorder(new EmptyBorder(0,10,0,0));
+        purpose.setBorder(new EmptyBorder(0,10,0,0));
     }
 
     Color darktxt = new Color(27, 57, 77);
@@ -181,6 +183,76 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
     Workbook workbook;
     Connection connect;
     
+    
+     public void insertRequest(String docType, int userId, String rid, String purpose, String status, String action, Date dateIssued) {
+    try {
+        dbConnector dbc = new dbConnector();
+        
+        
+        String queryUser = "SELECT u_id FROM tbl_user WHERE u_id = ?";
+        PreparedStatement pstUser = dbc.connect.prepareStatement(queryUser);
+        pstUser.setInt(1, userId);
+        
+        ResultSet rsUser = pstUser.executeQuery();
+        
+        if (rsUser.next()) {
+            
+            String queryResident = "SELECT r_id FROM tbl_residents WHERE r_id = ?";
+            PreparedStatement pstResident = dbc.connect.prepareStatement(queryResident);
+            pstResident.setString(1, rid);
+            
+            ResultSet rsResident = pstResident.executeQuery();
+            
+            if (rsResident.next()) {
+               
+               
+                String insertQuery = "INSERT INTO tbl_request (Re_doc_type, u_id, r_id, Re_dateissued, Re_purpose, Re_status, Re_action) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                
+                try (PreparedStatement insertPst = dbc.connect.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
+                    insertPst.setString(1, docType);
+                    insertPst.setInt(2, userId);
+                    insertPst.setString(3, rid);
+                    insertPst.setDate(4, new java.sql.Date(dateIssued.getTime()));
+                    insertPst.setString(5, purpose);
+                    insertPst.setString(6, status);
+                    insertPst.setString(7, action);
+                    
+                    int rowsInserted = insertPst.executeUpdate();
+                    
+                    if (rowsInserted > 0) {
+                        ResultSet generatedKeys = insertPst.getGeneratedKeys();
+                        if (generatedKeys.next()) {
+                            int newRequestId = generatedKeys.getInt(1);
+                            logEvent(userId, "REQUEST_ADDED", "Request ID: " + newRequestId + " added by user " + userId);
+                        }
+                      //  JOptionPane.showMessageDialog(null, "Request added successfully!");
+                    } else {
+                        System.out.println("Error inserting request data");
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("Database Error: " + ex.getMessage());
+                }
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid Resident Selection");
+            }
+            
+            rsResident.close();
+            pstResident.close();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid User Selection");
+        }
+        
+        rsUser.close();
+        pstUser.close();
+        
+    } catch (SQLException ex) {
+        System.out.println("Database Error: " + ex.getMessage());
+    }
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -793,13 +865,13 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         print1.setBackground(new java.awt.Color(27, 57, 77));
         print1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         print1.setForeground(new java.awt.Color(255, 255, 255));
-        print1.setText("Continue");
+        print1.setText("Continue for Payment");
         print1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 print1ActionPerformed(evt);
             }
         });
-        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
+        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 150, 30));
 
         docs.setBackground(new java.awt.Color(245, 246, 248));
         docs.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -1689,6 +1761,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
 
                id.setText(rs.getString("r_id"));
                fullname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
+               resname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
                address.setText(rs.getString("r_address"));
                dob.setText(rs.getString("r_dob"));
                age.setText(rs.getString("r_age"));
@@ -1825,6 +1898,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
 
                 id1.setText(rs.getString("r_id"));
                 fullname1.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + ", " + rs.getString("r_lname"));
+                resname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
                 address1.setText(rs.getString("r_address"));
                 dob1.setText(rs.getString("r_dob"));
                 age1.setText(rs.getString("r_age"));
@@ -1893,6 +1967,9 @@ if (!searchField.getText().isEmpty()) {
        Object[] options = {};
        NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
        dialog.setVisible(true);
+       
+       Window window = SwingUtilities.getWindowAncestor(viewPanel);
+       window.dispose();
 
     }//GEN-LAST:event_printActionPerformed
 
@@ -2036,7 +2113,11 @@ if (!searchField.getText().isEmpty()) {
     private void print2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print2ActionPerformed
        Object[] options = {};
        NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
+       
        dialog.setVisible(true);
+       
+       Window window = SwingUtilities.getWindowAncestor(viewPanel1);
+       window.dispose();
     }//GEN-LAST:event_print2ActionPerformed
 
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
@@ -2118,10 +2199,13 @@ if (!searchField.getText().isEmpty()) {
     private void cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel2ActionPerformed
         Window window = SwingUtilities.getWindowAncestor(gendoc);
         window.dispose();
+        
     }//GEN-LAST:event_cancel2ActionPerformed
 
     private void print1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print1ActionPerformed
-
+        
+        Session sess = Session.getInstance();
+        
         a1.setText("");
         a2.setText("");
 
@@ -2133,7 +2217,35 @@ if (!searchField.getText().isEmpty()) {
                 a2.setText("Field required");
             }
         } else {
+            
+           Doc_Payment dp = new Doc_Payment();
+           if(docs.getSelectedIndex() == 1){
+               dp.amount.setText("PHP 100.00");
+           }else if(docs.getSelectedIndex() == 2){
+               dp.amount.setText("PHP 50.00");
+           }else if(docs.getSelectedIndex() == 3){
+               dp.amount.setText("PHP 70.00");
+           }else if(docs.getSelectedIndex() == 4){
+               dp.amount.setText("PHP 150.00");
+           }else if(docs.getSelectedIndex() == 5){
+               dp.amount.setText("PHP 100.00");
+           }
+           dp.setVisible(true);
            
+           
+           
+           String type = docs.getSelectedItem().toString();
+           int uid = sess.getUid();
+           String name = resname.getText();
+           String purp = purpose.getText();
+           String rid = id.getText();
+           
+           insertRequest(type, uid,  rid, purp, "Pending", "None", new Date());
+           
+           Window window = SwingUtilities.getWindowAncestor(gendoc);
+           window.dispose();
+           this.dispose();
+            
         }
     }//GEN-LAST:event_print1ActionPerformed
 

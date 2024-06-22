@@ -45,41 +45,43 @@ public class User_Reports extends javax.swing.JFrame {
     Color PaneNcolor = new Color(255,255,255);
     
   public void reqData() {
-    Session sess = Session.getInstance();
-    int userId = sess.getUid();
-
     try {
         dbConnector dbc = new dbConnector();
         String query = "SELECT * FROM tbl_request";
         
-        try (PreparedStatement pst = dbc.connect.prepareStatement(query)) {
-            pst.setInt(1, userId);
+        try (PreparedStatement pst = dbc.connect.prepareStatement(query);
+             ResultSet rs = pst.executeQuery()) {
             
-            try (ResultSet rs = pst.executeQuery()) {
-                reqTbl.setModel(DbUtils.resultSetToTableModel(rs));
+            reqTbl.setModel(DbUtils.resultSetToTableModel(rs));
 
-                JTableHeader th = reqTbl.getTableHeader();
-                TableColumnModel tcm = th.getColumnModel();
-                TableColumn tc0 = tcm.getColumn(0);
-                TableColumn tc1 = tcm.getColumn(1);
-                TableColumn tc2 = tcm.getColumn(2);
-                TableColumn tc3 = tcm.getColumn(3);
-                TableColumn tc4 = tcm.getColumn(4);
-                TableColumn tc5 = tcm.getColumn(5);
-
-                tc0.setHeaderValue("Request ID");
-                tc1.setHeaderValue("Document Type");
-                tc2.setHeaderValue("Date Issued");
-                tc3.setHeaderValue("Purpose");
-                tc4.setHeaderValue("Status");
-                tc5.setHeaderValue("Action");
-
+            JTableHeader th = reqTbl.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            TableColumn tc0 = tcm.getColumn(0);
+            TableColumn tc1 = tcm.getColumn(1);
+            TableColumn tc2 = tcm.getColumn(2);
+            TableColumn tc3 = tcm.getColumn(3);
+            TableColumn tc4 = tcm.getColumn(4);
+            TableColumn tc5 = tcm.getColumn(5);
+            TableColumn tc6 = tcm.getColumn(6);
+            TableColumn tc7 = tcm.getColumn(7);
                 
-                th.setDefaultRenderer(new CustomHeaderRenderer());
-                
-                reqTbl.removeColumn(tc5);
-                th.repaint();
-            }
+            tc0.setHeaderValue("Request ID");
+            tc1.setHeaderValue("Document Type");
+            tc2.setHeaderValue("Issued by");
+            tc3.setHeaderValue("Issued to");
+            tc4.setHeaderValue("Date Issued");
+            tc5.setHeaderValue("Purpose");
+            tc6.setHeaderValue("Status");
+            tc7.setHeaderValue("Action");
+
+         
+            th.setDefaultRenderer(new CustomHeaderRenderer());
+            
+           reqTbl.removeColumn(tc2); 
+           reqTbl.removeColumn(tc3); 
+           reqTbl.removeColumn(tc7); 
+           
+            th.repaint();
         }
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
@@ -616,7 +618,7 @@ public class User_Reports extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(reqTbl);
 
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 680, 280));
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 680, 260));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 340));
 
@@ -644,9 +646,7 @@ public class User_Reports extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

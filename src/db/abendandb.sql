@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2024 at 03:39 AM
+-- Generation Time: Jun 22, 2024 at 04:42 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -473,7 +473,54 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (384, '2024-06-09 09:09:58', 'LOGOUT', 1001, 'User logged out'),
 (385, '2024-06-10 14:01:42', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
 (386, '2024-06-10 14:05:31', 'LOGOUT', 1001, 'User logged out'),
-(387, '2024-06-10 14:05:41', 'LOGIN_SUCCESS', 1005, 'User logged in successfully');
+(387, '2024-06-10 14:05:41', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(388, '2024-06-20 08:01:55', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(389, '2024-06-20 08:03:06', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(390, '2024-06-20 08:03:57', 'LOGOUT', 1001, 'User logged out'),
+(391, '2024-06-22 17:30:25', 'LOGIN_FAILURE', 1001, 'Invalid username or password'),
+(392, '2024-06-22 17:30:26', 'LOGIN_FAILURE', 1001, 'Invalid username or password'),
+(393, '2024-06-22 17:30:31', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(394, '2024-06-22 18:08:02', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(395, '2024-06-22 18:14:13', 'RESIDENT_ARCHIVED', 1001, 'User: 1121 data is archived by admin.'),
+(396, '2024-06-22 18:18:33', 'USER_UNARCHIVED', 1001, 'User: 1125 data is unarchived by admin'),
+(397, '2024-06-22 18:21:04', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(398, '2024-06-22 18:21:16', 'LOGOUT', 1001, 'User logged out'),
+(399, '2024-06-22 18:21:29', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(400, '2024-06-22 18:54:21', 'LOGOUT', 1001, 'User logged out'),
+(401, '2024-06-22 19:10:06', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(402, '2024-06-22 19:12:05', 'LOGIN_FAILURE', 1005, 'Invalid username or password'),
+(403, '2024-06-22 19:12:06', 'LOGIN_FAILURE', 1005, 'Invalid username or password'),
+(404, '2024-06-22 19:12:10', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(405, '2024-06-22 19:12:29', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(406, '2024-06-22 20:30:54', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(407, '2024-06-22 20:32:38', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(408, '2024-06-22 20:52:26', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(409, '2024-06-22 20:56:09', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(410, '2024-06-22 20:58:04', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(411, '2024-06-22 20:59:28', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(412, '2024-06-22 21:03:08', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(413, '2024-06-22 21:05:27', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(414, '2024-06-22 21:08:13', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(415, '2024-06-22 21:12:32', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(416, '2024-06-22 21:13:34', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(417, '2024-06-22 21:14:18', 'REQUEST_ADDED', 1005, 'Request ID: 1 added by user 1005'),
+(418, '2024-06-22 21:15:31', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(419, '2024-06-22 21:17:36', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(420, '2024-06-22 21:20:42', 'LOGOUT', 1001, 'User logged out'),
+(421, '2024-06-22 21:20:49', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(422, '2024-06-22 21:22:25', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(423, '2024-06-22 21:39:29', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(424, '2024-06-22 21:39:41', 'REQUEST_ADDED', 1005, 'Request ID: 2 added by user 1005'),
+(425, '2024-06-22 21:39:56', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(426, '2024-06-22 21:42:33', 'LOGIN_FAILURE', 1001, 'Invalid username or password'),
+(427, '2024-06-22 21:42:37', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(428, '2024-06-22 21:43:25', 'LOGOUT', 1001, 'User logged out'),
+(429, '2024-06-22 21:43:31', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(430, '2024-06-22 21:53:01', 'REQUEST_ADDED', 1005, 'Request ID: 3 added by user 1005'),
+(431, '2024-06-22 21:59:17', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(432, '2024-06-22 22:41:06', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(433, '2024-06-22 22:41:38', 'LOGOUT', 1001, 'User logged out'),
+(434, '2024-06-22 22:41:43', 'LOGIN_SUCCESS', 1005, 'User logged in successfully');
 
 -- --------------------------------------------------------
 
@@ -504,7 +551,7 @@ INSERT INTO `tbl_purok` (`p_id`, `p_name`, `b_id`) VALUES
 --
 
 CREATE TABLE `tbl_request` (
-  `Re_id` varchar(255) NOT NULL,
+  `Re_id` int(10) NOT NULL,
   `Re_doc_type` varchar(255) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `r_id` int(11) DEFAULT NULL,
@@ -513,6 +560,15 @@ CREATE TABLE `tbl_request` (
   `Re_status` varchar(50) DEFAULT NULL,
   `Re_action` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_request`
+--
+
+INSERT INTO `tbl_request` (`Re_id`, `Re_doc_type`, `u_id`, `r_id`, `Re_dateissued`, `Re_purpose`, `Re_status`, `Re_action`) VALUES
+(1, 'Barangay Residency', 1005, 1126, '2024-06-22', 'For educational purposes.', 'Pending', 'None'),
+(2, 'Barangay Clearance', 1005, 1124, '2024-06-22', 'For educational purposes.', 'Pending', 'None'),
+(3, 'Barangay Residency', 1005, 1126, '2024-06-22', 'For educational purposes.', 'Pending', 'None');
 
 -- --------------------------------------------------------
 
@@ -541,7 +597,7 @@ CREATE TABLE `tbl_residents` (
 --
 
 INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address`, `r_sex`, `r_dob`, `r_civilstatus`, `r_occupation`, `r_religion`, `h_id`, `r_image`, `r_status`) VALUES
-(1121, 'Smith', 'John', 'Michael', '123 Main St. Anytown, CA 12345', 'Male', '1980-01-01', 'Married', 'Doctor', 'Catholic', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
+(1121, 'Smith', 'John', 'Michael', '123 Main St. Anytown, CA 12345', 'Male', '1980-01-01', 'Married', 'Doctor', 'Catholic', 1, 'src/u_default/blank_pfp.jpg', 'Archived'),
 (1122, 'Johnson', 'Jane', 'Anne', '456 Elm St. Anytown, CA 12345', 'Female', '1985-02-14', 'Single', 'Teacher', 'Christian', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
 (1123, 'Lee', 'David', 'William', '789 Maple St. Anytown, CA 12345', 'Male', '1970-12-25', 'Single', 'Engineer', 'Muslim', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
 (1124, 'Abendan', 'Christian James', 'Arquilos', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-04-27', 'Single', 'Student', 'Catholic', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
@@ -663,13 +719,19 @@ ALTER TABLE `tbl_household`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=388;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`
 --
 ALTER TABLE `tbl_purok`
   MODIFY `p_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tbl_request`
+--
+ALTER TABLE `tbl_request`
+  MODIFY `Re_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_residents`

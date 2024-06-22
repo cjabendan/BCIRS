@@ -538,6 +538,7 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -1473,7 +1474,7 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
         jLayeredPane1.add(list);
         list.setBounds(0, 0, 0, 0);
 
-        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 130));
+        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 160));
 
         searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1501,7 +1502,7 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
         jLabel22.setText(" Search resident");
         jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 40));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 220, 220));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 220, 260));
 
         mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -1548,6 +1549,18 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
             }
         });
         adm_header.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 30, 30));
+
+        jButton2.setBackground(new java.awt.Color(27, 57, 77));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
+        jButton2.setText(" Archived Data");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        adm_header.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 160, 30));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 730, 60);
@@ -2059,7 +2072,7 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
         listModel.removeAllElements();
 
         if (!searchField.getText().isEmpty()) {
-            list.setSize(200, 130);
+            list.setSize(200, 160);
 
             dbConnector dbc = new dbConnector();
 
@@ -2317,6 +2330,12 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_resnameActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Archived_Residents au = new Archived_Residents();
+        au.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
       public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -2418,6 +2437,7 @@ public class Admin_Barangay_Purok extends javax.swing.JFrame {
     private javax.swing.JPanel imagePanel;
     private javax.swing.JPanel ipil;
     private javax.swing.JLabel ipilC;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

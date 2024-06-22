@@ -8,6 +8,7 @@ package USERS;
 import bcirs.login_form;
 import config.Session;
 import config.dbConnector;
+import enhancer.NoBorderDialog;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Window;
@@ -799,11 +800,11 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     }//GEN-LAST:event_deleteMouseExited
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+         
         Object[] options = {};
+            NoBorderDialog dialog = new NoBorderDialog(null, confirmDel);
+            dialog.setVisible(true);
 
-        JOptionPane.showOptionDialog(null, confirmDel, "",
-            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-            null, options, null);
 
     }//GEN-LAST:event_deleteActionPerformed
 
