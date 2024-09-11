@@ -6,6 +6,7 @@
 package Extra_Frames;
 
 import bcirs.login_form;
+import java.awt.Color;
 
 
 /**
@@ -21,6 +22,9 @@ public class Connection_Error extends javax.swing.JFrame {
         initComponents();
     }
   
+    Color Red = new Color(255,0,0);
+    Color Hover = new Color(0,102,255);
+    Color Release = new Color(27,57,77);
  
     
     /**
@@ -34,8 +38,7 @@ public class Connection_Error extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        ok = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -49,26 +52,27 @@ public class Connection_Error extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(27, 55, 77));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Go back");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setOpaque(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        ok.setBackground(new java.awt.Color(27, 55, 77));
+        ok.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        ok.setForeground(new java.awt.Color(255, 255, 255));
+        ok.setText("Go back");
+        ok.setBorder(null);
+        ok.setBorderPainted(false);
+        ok.setOpaque(false);
+        ok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                okMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                okMouseExited(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 120, 33));
-
-        jLabel9.setBackground(new java.awt.Color(234, 234, 234));
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Oops... Looks like there is a connection error.");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 900, 40));
+        ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 120, 33));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/404 Error Page not Found with people connecting a plug-amico (4) (1).png"))); // NOI18N
@@ -77,14 +81,14 @@ public class Connection_Error extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("ERROR 404");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 900, 60));
+        jLabel8.setText("Page not found");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 900, 70));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(40, 82, 115));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Page not found");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 900, 60));
+        jLabel1.setText("Oops... Looks like there is a connection error.");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 900, 60));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 31, 900, 390);
@@ -104,14 +108,22 @@ public class Connection_Error extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         
         login_form log = new login_form();
         log.setVisible(true);
         this.dispose();
  
                       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okActionPerformed
+
+    private void okMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseEntered
+        ok.setBackground(Hover);
+    }//GEN-LAST:event_okMouseEntered
+
+    private void okMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseExited
+        ok.setBackground(Release);
+    }//GEN-LAST:event_okMouseExited
 
     /**
      * @param args the command line arguments
@@ -180,12 +192,11 @@ public class Connection_Error extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ok;
     // End of variables declaration//GEN-END:variables
 }
