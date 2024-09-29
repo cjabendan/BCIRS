@@ -7,6 +7,7 @@ package Extra_Frames;
 
 import bcirs.login_form;
 import bcirs.login_form;
+import java.awt.Color;
 
 
 /**
@@ -22,7 +23,9 @@ public class forgotpass_noCode extends javax.swing.JFrame {
         initComponents();
     }
   
- 
+    Color Red = new Color(255,0,0);
+    Color Hover = new Color(0,102,255);
+    Color Release = new Color(27,57,77);
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +38,7 @@ public class forgotpass_noCode extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ok = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -50,69 +53,85 @@ public class forgotpass_noCode extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(27, 55, 77));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Go back");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setOpaque(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        ok.setBackground(new java.awt.Color(27, 55, 77));
+        ok.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        ok.setForeground(new java.awt.Color(255, 255, 255));
+        ok.setText("Go back");
+        ok.setBorder(null);
+        ok.setBorderPainted(false);
+        ok.setOpaque(false);
+        ok.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                okMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                okMouseExited(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 120, 33));
+        ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ok, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, 150, 35));
 
         jLabel9.setBackground(new java.awt.Color(234, 234, 234));
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(27, 55, 77));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Please contact an admin for password reset assistance.");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 900, 40));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 1160, 70));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/404 Error Page not Found with people connecting a plug-amico (4) (1).png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 210));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Error-NC.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1160, 280));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Security code is not enabled");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 900, 60));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 1160, 70));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 55, 77));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Reset Denied");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 900, 40));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 1160, 70));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 31, 900, 390);
+        jPanel2.setBounds(0, 60, 1170, 510);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         
         login_form log = new login_form();
         log.setVisible(true);
         this.dispose();
  
                       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_okActionPerformed
+
+    private void okMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseEntered
+        ok.setBackground(Hover);
+    }//GEN-LAST:event_okMouseEntered
+
+    private void okMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okMouseExited
+         ok.setBackground(Release);
+    }//GEN-LAST:event_okMouseExited
 
     /**
      * @param args the command line arguments
@@ -213,12 +232,12 @@ public class forgotpass_noCode extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ok;
     // End of variables declaration//GEN-END:variables
 }

@@ -629,11 +629,11 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -758,7 +758,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                  logEvent(adminID, "RESIDENT_DATA_UPDATE", "Resident: "+id.getText()+" data is updated by admin");
 
             JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
-            Admin_Barangay_Purok ru = new Admin_Barangay_Purok();
+            Admin_Barangay ru = new Admin_Barangay();
             ru.setVisible(true);
             this.dispose();
             
@@ -780,7 +780,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
 
-       Admin_Barangay_Purok au = new Admin_Barangay_Purok();
+       Admin_Barangay au = new Admin_Barangay();
        au.setVisible(true);
        this.dispose();
        
@@ -930,7 +930,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 
                   logEvent(adminID, "RESIDENT_ARCHIVED", "User: "+id.getText()+" data is archived by admin.");
                 
-                Admin_Barangay_Purok u = new Admin_Barangay_Purok();
+                Admin_Barangay u = new Admin_Barangay();
                 u.setVisible(true);
                 this.dispose();
                 

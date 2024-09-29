@@ -168,7 +168,6 @@ DefaultListModel listModel = new DefaultListModel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         dashPane = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -188,8 +187,11 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
         settingsPane = new javax.swing.JPanel();
-        mainDk = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        adm_header = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        export = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -197,9 +199,6 @@ DefaultListModel listModel = new DefaultListModel();
         list = new javax.swing.JList<>();
         searchField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        export = new javax.swing.JButton();
-        adm_header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -437,13 +436,6 @@ DefaultListModel listModel = new DefaultListModel();
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         adm_nav.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 2, -1, 446));
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
-        jLabel2.setText("ARQUSTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 17, 180, 45));
 
         dashPane.setBackground(new java.awt.Color(255, 255, 255));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -852,15 +844,53 @@ DefaultListModel listModel = new DefaultListModel();
 
         adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 10, -1));
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
+        jLabel2.setText("PurokSync");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
+
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(-10, -10, 190, 450);
+        adm_nav.setBounds(-10, -10, 190, 580);
 
-        mainDk.setBackground(new java.awt.Color(255, 255, 255));
+        adm_header.setBackground(new java.awt.Color(255, 255, 255));
+        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel19.setText(" Registered users");
+        adm_header.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 60));
 
-        userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(27, 57, 77));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
+        jButton2.setText(" View Archived Data");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        adm_header.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 170, 30));
+
+        export.setBackground(new java.awt.Color(27, 57, 77));
+        export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        export.setForeground(new java.awt.Color(255, 255, 255));
+        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-download-alt.png"))); // NOI18N
+        export.setText(" Export all users data");
+        export.setBorder(null);
+        export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportActionPerformed(evt);
+            }
+        });
+        adm_header.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 270, 30));
+
+        jPanel1.add(adm_header);
+        adm_header.setBounds(180, -10, 990, 70);
+
+        userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
         userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -873,7 +903,8 @@ DefaultListModel listModel = new DefaultListModel();
         jScrollPane1.setViewportView(userTbl);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 470, 340));
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(200, 60, 650, 480);
 
         jPanel3.setBackground(new java.awt.Color(27, 55, 77));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -892,7 +923,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLayeredPane1.add(list);
         list.setBounds(0, 0, 0, 0);
 
-        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 210));
+        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 250, 390));
 
         searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -912,7 +943,7 @@ DefaultListModel listModel = new DefaultListModel();
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 250, 30));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -920,57 +951,18 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel8.setText(" Search user");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 220, 300));
-
-        export.setBackground(new java.awt.Color(27, 57, 77));
-        export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        export.setForeground(new java.awt.Color(255, 255, 255));
-        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-download-alt.png"))); // NOI18N
-        export.setText(" Export all users data");
-        export.setBorder(null);
-        export.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportActionPerformed(evt);
-            }
-        });
-        jPanel2.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 220, 30));
-
-        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
-        mainDk.setLayout(mainDkLayout);
-        mainDkLayout.setHorizontalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mainDkLayout.setVerticalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(mainDk);
-        mainDk.setBounds(180, 60, 720, 360);
-
-        adm_header.setBackground(new java.awt.Color(255, 255, 255));
-        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText(" Registered users");
-        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 62));
-
-        jPanel1.add(adm_header);
-        adm_header.setBounds(180, -10, 730, 70);
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(870, 60, 270, 480);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -1221,7 +1213,7 @@ DefaultListModel listModel = new DefaultListModel();
       listModel.removeAllElements();
 
         if(!searchField.getText().equals("")){
-            list.setSize(200,210);
+            list.setSize(250,390);
 
             dbConnector dbc = new dbConnector();
 
@@ -1606,6 +1598,12 @@ DefaultListModel listModel = new DefaultListModel();
         window.dispose();
     }//GEN-LAST:event_cancel1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Archived_Users au = new Archived_Users();
+        au.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
      public void logEvent(int userId, String event, String description) {
    
@@ -1663,7 +1661,7 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel id;
     public javax.swing.JLabel image;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1673,6 +1671,7 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel27;
@@ -1685,7 +1684,6 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1697,7 +1695,6 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel logout;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
-    private javax.swing.JDesktopPane mainDk;
     private javax.swing.JTextField nameField;
     private javax.swing.JButton pdf;
     private javax.swing.JPopupMenu popUp;

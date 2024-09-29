@@ -93,9 +93,7 @@ public class login_form extends javax.swing.JFrame {
         String userId = null;
 
         try {
-       
-
-      
+         
             String sql = "SELECT u_id FROM tbl_user WHERE u_usn = ?";
             pstmt = dbc.connect.prepareStatement(sql);
             pstmt.setString(1, username);
@@ -180,6 +178,7 @@ public class login_form extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         forgotps = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -201,7 +200,7 @@ public class login_form extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PurokSync");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 60, 550, 90);
+        jLabel1.setBounds(0, 60, 580, 90);
 
         user.setBackground(new java.awt.Color(242, 242, 242));
         user.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -212,7 +211,7 @@ public class login_form extends javax.swing.JFrame {
             }
         });
         jPanel1.add(user);
-        user.setBounds(90, 220, 360, 35);
+        user.setBounds(90, 220, 390, 35);
 
         pass.setBackground(new java.awt.Color(242, 242, 242));
         pass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -222,7 +221,7 @@ public class login_form extends javax.swing.JFrame {
             }
         });
         jPanel1.add(pass);
-        pass.setBounds(90, 310, 360, 35);
+        pass.setBounds(90, 310, 390, 35);
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
@@ -230,15 +229,19 @@ public class login_form extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Manage and organize purok information with us! ");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, 140, 550, 30);
+        jLabel2.setBounds(0, 120, 580, 60);
 
         jPanel2.setBackground(new java.awt.Color(27, 55, 77));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 151, -1, -1));
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 272, -1, -1));
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo__1_-removebg-preview.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 560));
+
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(550, 0, 620, 560);
+        jPanel2.setBounds(580, 0, 590, 560);
 
         forgotps.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         forgotps.setForeground(new java.awt.Color(27, 55, 77));
@@ -255,19 +258,19 @@ public class login_form extends javax.swing.JFrame {
             }
         });
         jPanel1.add(forgotps);
-        forgotps.setBounds(320, 350, 130, 30);
+        forgotps.setBounds(350, 350, 130, 30);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 55, 77));
         jLabel4.setText("Password");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(90, 260, 90, 40);
+        jLabel4.setBounds(90, 270, 90, 40);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(27, 55, 77));
         jLabel5.setText("Username");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(90, 190, 90, 22);
+        jLabel5.setBounds(90, 180, 90, 40);
 
         jButton1.setBackground(new java.awt.Color(27, 55, 77));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -287,7 +290,7 @@ public class login_form extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(90, 390, 360, 40);
+        jButton1.setBounds(90, 390, 390, 40);
 
         reg.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         reg.setForeground(new java.awt.Color(27, 55, 77));
@@ -305,26 +308,26 @@ public class login_form extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reg);
-        reg.setBounds(220, 450, 100, 50);
+        reg.setBounds(210, 470, 140, 40);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Don't have an  account?");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(90, 430, 360, 40);
+        jLabel9.setBounds(90, 430, 390, 60);
 
-        xps.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        xps.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         xps.setForeground(new java.awt.Color(255, 0, 0));
         xps.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel1.add(xps);
-        xps.setBounds(180, 210, 170, 20);
+        xps.setBounds(280, 280, 200, 30);
 
-        nousn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        nousn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         nousn.setForeground(new java.awt.Color(255, 0, 0));
         nousn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel1.add(nousn);
-        nousn.setBounds(180, 140, 170, 20);
+        nousn.setBounds(200, 190, 280, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,14 +358,14 @@ public class login_form extends javax.swing.JFrame {
 
         if (user.getText().isEmpty() || pass.getText().equals("")) {
             if (user.getText().isEmpty()) {
-                nousn.setText("Field Required");  
+                nousn.setText("Field Required.");  
             }
             if (pass.getText().equals("")) {
-                xps.setText("Field Required");
+                xps.setText("Field Required.");
             }
         } else {
-            String username = user.getText(); // assuming this is the username
-            String userId = getUserId(username); // Fetch the u_id from the database
+            String username = user.getText();
+            String userId = getUserId(username);
             String event;
             String description;
 
@@ -401,8 +404,7 @@ public class login_form extends javax.swing.JFrame {
                     }     
                 }            
             } else {          
-                nousn.setText("Invalid Username."); 
-                xps.setText("Invalid Password.");
+                nousn.setText("Invalid Username or Password."); 
                 event = "LOGIN_FAILURE";
                 description = "Invalid username or password";
                 logEvent(userId, event, description);
@@ -483,6 +485,7 @@ public class login_form extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

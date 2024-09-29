@@ -5,18 +5,43 @@
  */
 package ADMIN;
 
+import USERS.User_Residents;
 import bcirs.login_form;
+import certs.Bgy_Clearance;
+import certs.Bgy_Indigency;
+import certs.Bgy_Residency;
+import certs.Bgy_Senior;
+import certs.Bgy_Solo_parent;
+import config.PanelPrinter;
 import config.RoundPanel;
 import config.Session;
 import config.dbConnector;
 import enhancer.CustomHeaderRenderer;
+import enhancer.NoBorderDialog;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Window;
+import java.awt.image.BufferedImage;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -25,25 +50,27 @@ import net.proteanit.sql.DbUtils;
 
 /**
  *
- * @author SCC-COLLEGE
+ * @author Christian James Abendan
  */
 public class Admin_Barangay extends javax.swing.JFrame {
 
-    /**
-     * Creates new form admin_dashboard
-     */
+    
+    DefaultListModel listModel = new DefaultListModel();
+   
+    
     public Admin_Barangay() {
         initComponents();
         barangayPanel();
         countDis();
-        reqData();
-        DefaultTableModel model = (DefaultTableModel) reqTbl.getModel();
+        displayData();
+        list.setModel(listModel);
+        searchField.setBorder(new EmptyBorder(0, 10, 0, 0));
     }
     
      private void barangayPanel(){
       
         RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 30);
-        rounded.setBounds(0, 0, 680, 120);
+        rounded.setBounds(0, 0, 940, 120);
         barangayPanel.setLayout(null); 
         barangayPanel.add(rounded);
         barangayPanel.repaint();
@@ -101,48 +128,210 @@ public class Admin_Barangay extends javax.swing.JFrame {
          
      }
         
-    public void reqData() {
+   public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT * FROM tbl_request";
-        
-        try (PreparedStatement pst = dbc.connect.prepareStatement(query);
-             ResultSet rs = pst.executeQuery()) {
-            
-            reqTbl.setModel(DbUtils.resultSetToTableModel(rs));
+        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                     + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                     + "r.r_sex, h.h_name "
+                     + "FROM tbl_residents r "
+                     + "JOIN tbl_household h ON r.h_id = h.h_id "
+                     + "WHERE r.r_status = 'Active' "
+                     + "ORDER BY r.r_id DESC";
+        ResultSet rs = dbc.getData(query);
+        userTbl.setModel(DbUtils.resultSetToTableModel(rs));
 
-            JTableHeader th = reqTbl.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            TableColumn tc0 = tcm.getColumn(0);
-            TableColumn tc1 = tcm.getColumn(1);
-            TableColumn tc2 = tcm.getColumn(2);
-            TableColumn tc3 = tcm.getColumn(3);
-            TableColumn tc4 = tcm.getColumn(4);
-            TableColumn tc5 = tcm.getColumn(5);
-            TableColumn tc6 = tcm.getColumn(6);
-            TableColumn tc7 = tcm.getColumn(7);
-                
-            tc0.setHeaderValue("Request ID");
-            tc1.setHeaderValue("Document Type");
-            tc2.setHeaderValue("Issued by");
-            tc3.setHeaderValue("Issued to");
-            tc4.setHeaderValue("Date Issued");
-            tc5.setHeaderValue("Purpose");
-            tc6.setHeaderValue("Status");
-            tc7.setHeaderValue("Action");
+        JTableHeader th = userTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        TableColumn tc0 = tcm.getColumn(0);
+        TableColumn tc1 = tcm.getColumn(1);
+        TableColumn tc2 = tcm.getColumn(2);
+        TableColumn tc3 = tcm.getColumn(3);
+        TableColumn tc4 = tcm.getColumn(4);
+        TableColumn tc5 = tcm.getColumn(5);
 
-         
-            th.setDefaultRenderer(new CustomHeaderRenderer());
+        tc0.setHeaderValue("ID");
+        tc1.setHeaderValue("Last Name");
+        tc2.setHeaderValue("First Name");
+        tc3.setHeaderValue("Age");
+        tc4.setHeaderValue("Sex");
+        tc5.setHeaderValue("Household");
 
-           reqTbl.removeColumn(tc7); 
+        th.setDefaultRenderer(new CustomHeaderRenderer());
+        th.repaint();
 
-            th.repaint();
-        }
+        rs.close();
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
     }
 }
-  
+    
+          public ImageIcon resizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
+        Image originalImage = originalIcon.getImage();
+
+      
+        int newHeight = getHeightFromWidth(originalImage, targetWidth);
+
+       
+        BufferedImage resizedImage = new BufferedImage(targetWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+
+     
+        resizedImage.createGraphics().drawImage(originalImage, 0, 0, targetWidth, newHeight, null);
+
+        
+        return new ImageIcon(resizedImage);
+}
+
+
+    public int getHeightFromWidth(Image image, int desiredWidth) {
+        int originalWidth = image.getWidth(null);
+        int originalHeight = image.getHeight(null);
+
+        return (int) ((double) desiredWidth / originalWidth * originalHeight);
+    }
+
+   public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
+    try {
+        dbConnector dbc = new dbConnector();
+        ResultSet rsHousehold = dbc.getData("SELECT h_name FROM tbl_household");
+
+        Vector<String> householdNames = new Vector<>();
+        householdNames.add("Select household");
+
+        while (rsHousehold.next()) {
+            householdNames.add(rsHousehold.getString("h_name"));
+        }
+
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(householdNames);
+        householdComboBox.setModel(model);
+
+        rsHousehold.close();
+    } catch (SQLException ex) {
+        System.out.println("Error: " + ex.getMessage());
+    }
+}
+    
+            public void setDateAutomatically(Bgy_Solo_parent bsp) {
+            // Get the current date
+            LocalDate currentDate = LocalDate.now();
+
+            // Format the day of the month
+            int dayOfMonth = currentDate.getDayOfMonth();
+            String dayOfMonthSuffix = getDayOfMonthSuffix(dayOfMonth);
+            String dayString = dayOfMonth + dayOfMonthSuffix;
+
+            // Format the month
+            String month = currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+
+            // Format the year
+            int year = currentDate.getYear();
+
+            // Combine them into the desired format
+            String formattedDate = dayString + " day of " + month + " " + year;
+
+            // Set the date text field
+            bsp.date.setText(formattedDate);
+        }
+
+        private String getDayOfMonthSuffix(final int day) {
+            if (day >= 11 && day <= 13) {
+                return "th";
+            }
+            switch (day % 10) {
+                case 1: return "st";
+                case 2: return "nd";
+                case 3: return "rd";
+                default: return "th";
+            }
+        }
+
+        public void setDateAutomatically1(Bgy_Senior bs) {
+           // Get the current date
+           LocalDate currentDate = LocalDate.now();
+
+           // Format the day of the month
+           int dayOfMonth = currentDate.getDayOfMonth();
+           String dayOfMonthSuffix = getDayOfMonthSuffix(dayOfMonth);
+           String dayString = dayOfMonth + dayOfMonthSuffix;
+
+           // Format the month
+           String month = currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+
+           // Format the year
+           int year = currentDate.getYear();
+
+           // Combine them into the desired format
+           String formattedDate = dayString + " day of " + month + " " + year;
+
+           // Set the date text field
+           bs.date.setText(formattedDate);
+       }
+
+        public void setDateAutomatically2(Bgy_Clearance bc) {
+           // Get the current date
+           LocalDate currentDate = LocalDate.now();
+
+           // Format the day of the month
+           int dayOfMonth = currentDate.getDayOfMonth();
+           String dayOfMonthSuffix = getDayOfMonthSuffix(dayOfMonth);
+           String dayString = dayOfMonth + dayOfMonthSuffix;
+
+           // Format the month
+           String month = currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+
+           // Format the year
+           int year = currentDate.getYear();
+
+           // Combine them into the desired format
+           String formattedDate = dayString + " day of " + month + " " + year;
+
+           // Set the date text field
+           bc.date.setText(formattedDate);
+       }
+        
+           public void setDateAutomatically3(Bgy_Indigency bi) {
+           // Get the current date
+           LocalDate currentDate = LocalDate.now();
+
+           // Format the day of the month
+           int dayOfMonth = currentDate.getDayOfMonth();
+           String dayOfMonthSuffix = getDayOfMonthSuffix(dayOfMonth);
+           String dayString = dayOfMonth + dayOfMonthSuffix;
+
+           // Format the month
+           String month = currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+
+           // Format the year
+           int year = currentDate.getYear();
+
+           // Combine them into the desired format
+           String formattedDate = dayString + " day of " + month + " " + year;
+
+           // Set the date text field
+           bi.date.setText(formattedDate);
+       }
+
+          public void setDateAutomatically4(Bgy_Residency br) {
+           // Get the current date
+           LocalDate currentDate = LocalDate.now();
+
+           // Format the day of the month
+           int dayOfMonth = currentDate.getDayOfMonth();
+           String dayOfMonthSuffix = getDayOfMonthSuffix(dayOfMonth);
+           String dayString = dayOfMonth + dayOfMonthSuffix;
+
+           // Format the month
+           String month = currentDate.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+
+           // Format the year
+           int year = currentDate.getYear();
+
+           // Combine them into the desired format
+           String formattedDate = dayString + " day of " + month + " " + year;
+
+           // Set the date text field
+           br.date.setText(formattedDate);
+       }
      
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
@@ -159,10 +348,59 @@ public class Admin_Barangay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popUp = new javax.swing.JPopupMenu();
+        view = new javax.swing.JMenuItem();
+        editItem = new javax.swing.JMenuItem();
+        viewPanel = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        imagePanel = new javax.swing.JPanel();
+        image = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        cancel1 = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        household1 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        stats = new javax.swing.JLabel();
+        ocu = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        sex = new javax.swing.JLabel();
+        dob = new javax.swing.JLabel();
+        fullname = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        age = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        address = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
+        stats1 = new javax.swing.JLabel();
+        reg = new javax.swing.JLabel();
+        type1 = new javax.swing.JLabel();
+        purok = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        print = new javax.swing.JButton();
+        gendoc = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        cancel2 = new javax.swing.JButton();
+        print1 = new javax.swing.JButton();
+        docs = new javax.swing.JComboBox<>();
+        purpose = new javax.swing.JTextField();
+        a2 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        a1 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        resname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         dashPane = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -182,8 +420,9 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
         settingsPane = new javax.swing.JPanel();
-        mainDk = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        adm_header = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         barangayPanel = new javax.swing.JPanel();
         populationCount = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -201,18 +440,339 @@ public class Admin_Barangay extends javax.swing.JFrame {
         housePanel3 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         fem1 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         housePanel4 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         arch = new javax.swing.JLabel();
         housePanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         fem3 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        reqTbl = new javax.swing.JTable();
-        adm_header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        userTbl = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        list = new javax.swing.JList<>();
+        searchField = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        sa1 = new javax.swing.JLabel();
+
+        view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
+        view.setText(" View Data");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+        popUp.add(view);
+
+        editItem.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        editItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/pen-circle (1).png"))); // NOI18N
+        editItem.setText(" Edit Data");
+        editItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editItemActionPerformed(evt);
+            }
+        });
+        popUp.add(editItem);
+
+        viewPanel.setBackground(new java.awt.Color(255, 255, 255));
+        viewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        viewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        viewPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 550, 10));
+
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel15.setText("Name:");
+        viewPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 60, 20));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel21.setText("Address:");
+        viewPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 70, 20));
+
+        jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel22.setText("Resident ID:");
+        viewPanel.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 80, 30));
+
+        id.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        id.setForeground(new java.awt.Color(27, 57, 77));
+        id.setText("Id number");
+        viewPanel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 70, 30));
+
+        imagePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        imagePanel.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
+
+        viewPanel.add(imagePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 170, 170));
+
+        jPanel7.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText(" View Resident Details");
+        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        cancel1.setBackground(new java.awt.Color(255, 0, 0));
+        cancel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel1.setForeground(new java.awt.Color(255, 255, 255));
+        cancel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel1.setBorder(null);
+        cancel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel1MouseExited(evt);
+            }
+        });
+        cancel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(cancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 30, 30));
+
+        edit.setBackground(new java.awt.Color(27, 57, 77));
+        edit.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        edit.setForeground(new java.awt.Color(255, 255, 255));
+        edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/pencil.png"))); // NOI18N
+        edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editActionPerformed(evt);
+            }
+        });
+        jPanel7.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 30, 30));
+
+        viewPanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        household1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        household1.setForeground(new java.awt.Color(27, 57, 77));
+        household1.setText("Id number");
+        viewPanel.add(household1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 60, 30));
+
+        jLabel24.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel24.setText("Purok:");
+        viewPanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 40, 30));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel25.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel25.setText("Civil Status:");
+        jPanel5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 80, 20));
+
+        stats.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        stats.setForeground(new java.awt.Color(27, 57, 77));
+        stats.setText("Occupation:");
+        jPanel5.add(stats, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 70, 20));
+
+        ocu.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        ocu.setForeground(new java.awt.Color(27, 57, 77));
+        ocu.setText("ocu");
+        jPanel5.add(ocu, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 110, 20));
+
+        jLabel26.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel26.setText("Age:");
+        jPanel5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 30, 20));
+
+        sex.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        sex.setForeground(new java.awt.Color(27, 57, 77));
+        sex.setText("sex");
+        jPanel5.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 70, 20));
+
+        dob.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        dob.setForeground(new java.awt.Color(27, 57, 77));
+        dob.setText("User ID:");
+        jPanel5.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 120, 20));
+
+        fullname.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        fullname.setForeground(new java.awt.Color(27, 57, 77));
+        fullname.setText("User ID:");
+        jPanel5.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 240, 20));
+
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel29.setText("Date of Birth:");
+        jPanel5.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 80, 20));
+
+        age.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        age.setForeground(new java.awt.Color(27, 57, 77));
+        age.setText("age");
+        jPanel5.add(age, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 90, 20));
+
+        jLabel30.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel30.setText("Sex:");
+        jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 60, 20));
+
+        address.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        address.setForeground(new java.awt.Color(27, 57, 77));
+        address.setText("User ID:");
+        jPanel5.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 240, 20));
+
+        status.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        status.setForeground(new java.awt.Color(27, 57, 77));
+        status.setText("User ID:");
+        jPanel5.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 90, 20));
+
+        stats1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        stats1.setForeground(new java.awt.Color(27, 57, 77));
+        stats1.setText("Religion:");
+        jPanel5.add(stats1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 70, 20));
+
+        reg.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        reg.setForeground(new java.awt.Color(27, 57, 77));
+        reg.setText("reg");
+        jPanel5.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 90, 20));
+
+        viewPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 350, 170));
+
+        type1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        type1.setForeground(new java.awt.Color(27, 57, 77));
+        type1.setText("User ID:");
+        viewPanel.add(type1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 90, 20));
+
+        purok.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        purok.setForeground(new java.awt.Color(27, 57, 77));
+        purok.setText("Purok");
+        viewPanel.add(purok, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 80, 30));
+
+        jLabel31.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel31.setText("House No:");
+        viewPanel.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 80, 30));
+
+        print.setBackground(new java.awt.Color(27, 57, 77));
+        print.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        print.setForeground(new java.awt.Color(255, 255, 255));
+        print.setText("Generate Document");
+        print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printActionPerformed(evt);
+            }
+        });
+        viewPanel.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
+
+        gendoc.setBackground(new java.awt.Color(255, 255, 255));
+        gendoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        gendoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        gendoc.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 550, 10));
+
+        jPanel10.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel40.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel40.setText("Generate Document");
+        jPanel10.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        cancel2.setBackground(new java.awt.Color(255, 0, 0));
+        cancel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel2.setForeground(new java.awt.Color(255, 255, 255));
+        cancel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel2.setBorder(null);
+        cancel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel2MouseExited(evt);
+            }
+        });
+        cancel2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel2ActionPerformed(evt);
+            }
+        });
+        jPanel10.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 30, 30));
+
+        gendoc.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+
+        print1.setBackground(new java.awt.Color(27, 57, 77));
+        print1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        print1.setForeground(new java.awt.Color(255, 255, 255));
+        print1.setText("Continue");
+        print1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                print1ActionPerformed(evt);
+            }
+        });
+        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
+
+        docs.setBackground(new java.awt.Color(245, 246, 248));
+        docs.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        docs.setForeground(new java.awt.Color(27, 57, 77));
+        docs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please select", "Barangay Clearance", "Barangay Residency", "Certifcate of Indigency", "Certificate of Solo Parent", "Certificate of Senior Citizen", " " }));
+        docs.setBorder(null);
+        docs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                docsActionPerformed(evt);
+            }
+        });
+        gendoc.add(docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 24));
+
+        purpose.setBackground(new java.awt.Color(245, 246, 248));
+        purpose.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        purpose.setForeground(new java.awt.Color(100, 115, 122));
+        purpose.setBorder(null);
+        purpose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purposeActionPerformed(evt);
+            }
+        });
+        gendoc.add(purpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, 24));
+
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a2.setText("*");
+        gendoc.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 200, 30));
+
+        jLabel34.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel34.setText("Document");
+        gendoc.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 70, 20));
+
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel37.setText("Issued to:");
+        gendoc.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 100, 20));
+
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a1.setText("*");
+        gendoc.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 170, 30));
+
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel38.setText("Purpose");
+        gendoc.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 20));
+
+        resname.setBackground(new java.awt.Color(245, 246, 248));
+        resname.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        resname.setForeground(new java.awt.Color(27, 57, 77));
+        resname.setBorder(null);
+        resname.setEnabled(false);
+        resname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resnameActionPerformed(evt);
+            }
+        });
+        gendoc.add(resname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, 24));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -231,13 +791,6 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         adm_nav.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 2, -1, 446));
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
-        jLabel2.setText(" ARQUSTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 17, 180, 45));
 
         dashPane.setBackground(new java.awt.Color(255, 255, 255));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -655,13 +1208,26 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 10, -1));
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
+        jLabel2.setText("PurokSync");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
+
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(-10, -10, 190, 450);
+        adm_nav.setBounds(-10, -10, 190, 570);
 
-        mainDk.setBackground(new java.awt.Color(255, 255, 255));
+        adm_header.setBackground(new java.awt.Color(255, 255, 255));
+        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel1.setText("Barangay, Pob. Ward II ");
+        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 60));
+
+        jPanel1.add(adm_header);
+        adm_header.setBounds(180, 0, 720, 60);
 
         barangayPanel.setBackground(new java.awt.Color(27, 57, 77));
         barangayPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -776,15 +1342,6 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         barangayPanel.add(housePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 110, 70));
 
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
-        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel12MouseClicked(evt);
-            }
-        });
-        barangayPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 50, 40));
-
         housePanel4.setBackground(new java.awt.Color(255, 255, 255));
         housePanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -823,66 +1380,86 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         barangayPanel.add(housePanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 110, 70));
 
-        jPanel2.add(barangayPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 120));
+        jPanel1.add(barangayPanel);
+        barangayPanel.setBounds(200, 60, 940, 120);
 
-        jLabel15.setBackground(new java.awt.Color(27, 57, 77));
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Document Request");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 160, 50));
-
-        reqTbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
+        userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        userTbl.setGridColor(new java.awt.Color(136, 136, 136));
+        userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userTblMouseClicked(evt);
             }
-        ));
-        jScrollPane1.setViewportView(reqTbl);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                userTblMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(userTbl);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 680, 170));
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(200, 240, 650, 300);
 
-        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
-        mainDk.setLayout(mainDkLayout);
-        mainDkLayout.setHorizontalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mainDkLayout.setVerticalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        list.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        list.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listMousePressed(evt);
+            }
+        });
+        jLayeredPane1.add(list);
+        list.setBounds(0, 0, 0, 0);
 
-        jPanel1.add(mainDk);
-        mainDk.setBounds(180, 60, 720, 360);
+        jPanel6.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 260, 210));
 
-        adm_header.setBackground(new java.awt.Color(255, 255, 255));
-        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchField.setHighlighter(null);
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchFieldMousePressed(evt);
+            }
+        });
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel6.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 260, 30));
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText("Barangay, Pob. Ward II ");
-        adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 60));
+        jLabel32.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-search.png"))); // NOI18N
+        jLabel32.setText(" Search resident");
+        jPanel6.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
 
-        jPanel1.add(adm_header);
-        adm_header.setBounds(180, 0, 730, 60);
+        jPanel1.add(jPanel6);
+        jPanel6.setBounds(860, 240, 280, 300);
+
+        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        sa1.setForeground(new java.awt.Color(27, 55, 77));
+        sa1.setText("Residents");
+        jPanel1.add(sa1);
+        sa1.setBounds(200, 180, 130, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -1027,9 +1604,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void purokCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseClicked
-     //  Admin_Barangay ab = new Admin_Barangay();
-     //  ab.setVisible(true);
-    //   this.dispose();
+ 
     }//GEN-LAST:event_purokCMouseClicked
 
     private void logoffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseEntered
@@ -1144,11 +1719,468 @@ public class Admin_Barangay extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_settingsPaneMouseExited
 
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
-        Admin_Barangay_Purok abp = new Admin_Barangay_Purok();
-        abp.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel12MouseClicked
+    private void userTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTblMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userTblMouseClicked
+
+    private void userTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTblMousePressed
+        if (SwingUtilities.isRightMouseButton(evt)) {
+            popUp.show(userTbl, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_userTblMousePressed
+
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+
+        String rid = userTbl.getValueAt(userTbl.getSelectedRow(), 0).toString();
+
+        try {
+            dbConnector dbc = new dbConnector();
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, rid);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+                image.setIcon(resizedIcon);
+
+                id.setText(rs.getString("r_id"));
+                fullname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
+                resname.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
+                address.setText(rs.getString("r_address"));
+                dob.setText(rs.getString("r_dob"));
+                age.setText(rs.getString("r_age"));
+                status.setText(rs.getString("r_civilstatus"));
+                sex.setText(rs.getString("r_sex"));
+                ocu.setText(rs.getString("r_occupation"));
+                reg.setText(rs.getString("r_religion"));
+                household.setText(rs.getString("h_name"));
+                purok.setText(rs.getString("p_name"));
+            }
+
+            Object[] options = {};
+            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
+            dialog.setVisible(true);
+
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_viewActionPerformed
+
+    private void editItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItemActionPerformed
+
+        try {
+            String rid = userTbl.getValueAt(userTbl.getSelectedRow(), 0).toString();
+
+            dbConnector dbc = new dbConnector();
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, rid);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+
+                Admin_Residents_Update uru = new Admin_Residents_Update();
+
+                uru.image.setIcon(resizedIcon);
+
+                uru.id.setText(rs.getString("r_id"));
+                uru.ln.setText(rs.getString("r_lname"));
+                uru.fn.setText(rs.getString("r_fname"));
+                uru.mn.setText(rs.getString("r_mname"));
+                uru.address.setText(rs.getString("r_address"));
+                uru.ACCOUNT_NAME.setText(rs.getString("r_fname") + " " + rs.getString("r_lname"));
+                java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
+                uru.dob.setDate(date);
+
+                uru.status.setSelectedItem(rs.getString("r_civilstatus"));
+                uru.sex.setSelectedItem(rs.getString("r_sex"));
+                uru.occupation.setText(rs.getString("r_occupation"));
+                uru.religion.setText(rs.getString("r_religion"));
+
+                uru.populateHouseholdComboBox(uru.household);
+
+                String hName = rs.getString("h_name");
+                uru.household.setSelectedItem(hName);
+
+                uru.setVisible(true);
+                this.dispose();
+            }
+
+            rs.close();
+            pst.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(User_Residents.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editItemActionPerformed
+
+    private void cancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseClicked
+
+    }//GEN-LAST:event_cancel1MouseClicked
+
+    private void cancel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseEntered
+
+    }//GEN-LAST:event_cancel1MouseEntered
+
+    private void cancel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseExited
+
+    }//GEN-LAST:event_cancel1MouseExited
+
+    private void cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel1ActionPerformed
+
+        Window window = SwingUtilities.getWindowAncestor(viewPanel);
+        window.dispose();
+    }//GEN-LAST:event_cancel1ActionPerformed
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+
+        dbConnector dbc = new dbConnector();
+        String rid = id.getText();
+
+        try{
+
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, rid);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+
+                Admin_Residents_Update uru = new Admin_Residents_Update();
+
+                uru.image.setIcon(resizedIcon);
+
+                uru.id.setText(rs.getString("r_id"));
+                uru.ln.setText(rs.getString("r_lname"));
+                uru.fn.setText(rs.getString("r_fname"));
+                uru.mn.setText(rs.getString("r_mname"));
+                uru.address.setText(rs.getString("r_address"));
+
+                java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
+                uru.dob.setDate(date);
+
+                uru.status.setSelectedItem(rs.getString("r_civilstatus"));
+                uru.sex.setSelectedItem(rs.getString("r_sex"));
+                uru.occupation.setText(rs.getString("r_occupation"));
+                uru.religion.setText(rs.getString("r_religion"));
+
+                uru.populateHouseholdComboBox(uru.household);
+
+                String hName = rs.getString("h_name");
+                uru.household.setSelectedItem(hName);
+
+                Window window = SwingUtilities.getWindowAncestor(viewPanel);
+                window.dispose();
+                uru.setVisible(true);
+                this.dispose();
+            }
+
+            rs.close();
+            pst.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(User_Residents.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editActionPerformed
+
+    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_printActionPerformed
+
+    private void cancel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel2MouseClicked
+
+    private void cancel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel2MouseEntered
+
+    private void cancel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel2MouseExited
+
+    private void cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel2ActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(gendoc);
+        window.dispose();
+    }//GEN-LAST:event_cancel2ActionPerformed
+
+    private void print1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print1ActionPerformed
+
+        a1.setText("");
+        a2.setText("");
+
+        if (purpose.getText().isEmpty() || docs.getSelectedIndex() == 0) {
+            if (purpose.getText().isEmpty()) {
+                a1.setText("Field required");
+            }
+            if (docs.getSelectedIndex() == 0) {
+                a2.setText("Field required");
+            }
+        } else {
+            switch (docs.getSelectedIndex()) {
+                case 1:
+                {
+                    Bgy_Clearance bc = new Bgy_Clearance();
+                    bc.fullname.setText(fullname.getText()+",");
+                    bc.purok.setText(purok.getText());
+                    setDateAutomatically2(bc);
+                    bc.age.setText(age.getText());
+
+                    String dobText = dob.getText();
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
+                    try {
+                        Date dateOfBirth = inputFormat.parse(dobText);
+                        String formattedDOB = outputFormat.format(dateOfBirth);
+                        bc.dob.setText(formattedDOB);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
+                    bc.purpose.setText(purpose.getText());
+                    bc.purok2.setText(purok.getText());
+                    PanelPrinter pPrint = new PanelPrinter(bc.page);
+                    pPrint.printPanel();
+                    purpose.setText("");
+                    docs.setSelectedIndex(0);
+                    break;
+                }
+
+                case 2:
+                {
+                    Bgy_Residency br = new Bgy_Residency();
+                    br.fullname.setText(fullname.getText()+",");
+                    br.purok.setText(purok.getText());
+                    setDateAutomatically4(br);
+                    br.purpose.setText(purpose.getText());
+                    br.purok2.setText(purok.getText());
+                    PanelPrinter pPrint = new PanelPrinter(br.page);
+                    pPrint.printPanel();
+                    purpose.setText("");
+                    docs.setSelectedIndex(0);
+                    break;
+                }
+
+                case 3:
+                {
+                    Bgy_Indigency bi = new Bgy_Indigency();
+                    bi.fullname.setText(fullname.getText()+",");
+                    bi.purok.setText(purok.getText());
+                    bi.status.setText(status.getText());
+                    bi.age.setText(age.getText());
+                    setDateAutomatically3(bi);
+                    bi.purpose.setText(purpose.getText());
+                    bi.purok2.setText(purok.getText());
+                    PanelPrinter pPrint = new PanelPrinter(bi.page);
+                    pPrint.printPanel();
+                    purpose.setText("");
+                    docs.setSelectedIndex(0);
+                    break;
+
+                }
+
+                case 4:
+                {
+                    Bgy_Solo_parent bsp = new Bgy_Solo_parent();
+                    bsp.fullname.setText(fullname.getText()+",");
+                    bsp.purok.setText(purok.getText());
+                    setDateAutomatically(bsp);
+                    bsp.purpose.setText(purpose.getText());
+                    bsp.purok2.setText(purok.getText());
+                    PanelPrinter pPrint = new PanelPrinter(bsp.page);
+                    pPrint.printPanel();
+                    purpose.setText("");
+                    docs.setSelectedIndex(0);
+                    break;
+                }
+                default:
+                {
+                    Bgy_Senior bs = new Bgy_Senior();
+                    bs.fullname.setText(fullname.getText()+",");
+                    bs.purok.setText(purok.getText());
+                    bs.age.setText(age.getText());
+                    String dobText = dob.getText();
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
+                    try {
+                        Date dateOfBirth = inputFormat.parse(dobText);
+                        String formattedDOB = outputFormat.format(dateOfBirth);
+                        bs.dob.setText(formattedDOB);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
+                    setDateAutomatically1(bs);
+                    bs.purpose.setText(purpose.getText());
+                    bs.purok2.setText(purok.getText());
+                    PanelPrinter pPrint = new PanelPrinter(bs.page);
+                    pPrint.printPanel();
+                    purpose.setText("");
+                    docs.setSelectedIndex(0);
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_print1ActionPerformed
+
+    private void docsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_docsActionPerformed
+
+    private void purposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purposeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_purposeActionPerformed
+
+    private void resnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resnameActionPerformed
+
+    private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
+
+    }//GEN-LAST:event_listMouseClicked
+
+    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
+
+        String fullName = list.getSelectedValue();
+
+        if (fullName == null || fullName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No name selected. Please select a name from the list.");
+            return;
+        }
+
+        String[] nameParts = fullName.split(",\\s*");
+
+        if (nameParts.length != 3) {
+            JOptionPane.showMessageDialog(null, "Invalid name format. The name should be in 'Lastname, Firstname, Middlename' format.");
+            return;
+        }
+
+        String lastName = nameParts[0].trim();
+        String firstName = nameParts[1].trim();
+        String middleName = nameParts[2].trim();
+
+        System.out.println("First Name: " + firstName);
+        System.out.println("Middle Name: " + middleName);
+        System.out.println("Last Name: " + lastName);
+
+        dbConnector dbc = new dbConnector();
+
+        String query = "SELECT r.*, h.h_name, p.p_name, "
+        + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+        + "FROM tbl_residents r "
+        + "LEFT JOIN tbl_household h ON r.h_id = h.h_id "
+        + "JOIN tbl_purok p ON h.p_id = p.p_id "
+        + "WHERE r_fname = ? AND r_mname = ? AND r_lname = ?";
+
+        try (PreparedStatement pst = dbc.connect.prepareStatement(query)) {
+            pst.setString(1, firstName);
+            pst.setString(2, middleName);
+            pst.setString(3, lastName);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+                image.setIcon(resizedIcon);
+
+                id.setText(rs.getString("r_id"));
+                fullname.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
+                resname.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
+                address.setText(rs.getString("r_address"));
+                dob.setText(rs.getString("r_dob"));
+                age.setText(rs.getString("r_age"));
+                status.setText(rs.getString("r_civilstatus"));
+                sex.setText(rs.getString("r_sex"));
+                ocu.setText(rs.getString("r_occupation"));
+                reg.setText(rs.getString("r_religion"));
+                household.setText(rs.getString("h_name"));
+                purok.setText(rs.getString("p_name"));
+            }
+
+            Object[] options = {};
+            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
+            dialog.setVisible(true);
+
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_listMousePressed
+
+    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
+
+    }//GEN-LAST:event_searchFieldMousePressed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+
+        listModel.removeAllElements();
+
+        if (!searchField.getText().isEmpty()) {
+            list.setSize(260, 210);
+
+            dbConnector dbc = new dbConnector();
+
+            try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?"
+                + "AND (r_status = 'Active')")){
+            String name = searchField.getText();
+            pst.setString(1, "%" + name + "%");
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                String fullName = rs.getString("r_lname") + ", " + rs.getString("r_fname") + ", " + rs.getString("r_mname");
+                listModel.addElement(fullName);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Errors: " + ex.getMessage());
+        }
+
+        } else {
+            list.setSize(200, 0);
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
 
       public void logEvent(int userId, String event, String description) {
    
@@ -1217,16 +2249,28 @@ public class Admin_Barangay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel a1;
+    private javax.swing.JLabel a2;
+    private javax.swing.JLabel address;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
+    private javax.swing.JLabel age;
     private javax.swing.JLabel arch;
     private javax.swing.JPanel barangayPanel;
+    public javax.swing.JButton cancel1;
+    public javax.swing.JButton cancel2;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
+    private javax.swing.JLabel dob;
+    public javax.swing.JComboBox<String> docs;
     private javax.swing.JLabel dot;
+    private javax.swing.JButton edit;
+    private javax.swing.JMenuItem editItem;
     private javax.swing.JLabel fem;
     private javax.swing.JLabel fem1;
     private javax.swing.JLabel fem3;
+    private javax.swing.JLabel fullname;
+    private javax.swing.JPanel gendoc;
     private javax.swing.JPanel housePanel;
     private javax.swing.JPanel housePanel1;
     private javax.swing.JPanel housePanel2;
@@ -1234,8 +2278,12 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JPanel housePanel4;
     private javax.swing.JPanel housePanel5;
     private javax.swing.JLabel household;
+    private javax.swing.JLabel household1;
+    private javax.swing.JLabel id;
+    public javax.swing.JLabel image;
+    private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -1245,31 +2293,67 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> list;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
-    public javax.swing.JDesktopPane mainDk;
     private javax.swing.JLabel male;
+    private javax.swing.JLabel ocu;
+    private javax.swing.JPopupMenu popUp;
     private javax.swing.JLabel populationCount;
+    private javax.swing.JButton print;
+    private javax.swing.JButton print1;
+    private javax.swing.JLabel purok;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
-    private javax.swing.JTable reqTbl;
+    public javax.swing.JTextField purpose;
+    private javax.swing.JLabel reg;
+    public javax.swing.JTextField resname;
+    private javax.swing.JLabel sa1;
+    private javax.swing.JTextField searchField;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
+    private javax.swing.JLabel sex;
+    private javax.swing.JLabel stats;
+    private javax.swing.JLabel stats1;
+    private javax.swing.JLabel status;
+    private javax.swing.JLabel type1;
+    private javax.swing.JTable userTbl;
+    private javax.swing.JMenuItem view;
     private javax.swing.JPanel viewC;
     private javax.swing.JPanel viewPane;
+    private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 }

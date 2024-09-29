@@ -189,9 +189,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
         accPane = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        privacyPane = new javax.swing.JPanel();
-        purokC = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         viewC = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
@@ -199,7 +196,10 @@ public class User_Settings_Account extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         sessUsn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        mainDk = new javax.swing.JDesktopPane();
+        adm_header = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        d = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         remove = new javax.swing.JButton();
@@ -216,10 +216,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
         image = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
         update = new javax.swing.JButton();
-        adm_header = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        d = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -321,77 +317,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
 
         adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 147, -1));
 
-        privacyPane.setBackground(new java.awt.Color(255, 255, 255));
-        privacyPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                privacyPaneMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                privacyPaneMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout privacyPaneLayout = new javax.swing.GroupLayout(privacyPane);
-        privacyPane.setLayout(privacyPaneLayout);
-        privacyPaneLayout.setHorizontalGroup(
-            privacyPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
-        );
-        privacyPaneLayout.setVerticalGroup(
-            privacyPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
-        adm_nav.add(privacyPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
-
-        purokC.setBackground(new java.awt.Color(255, 255, 255));
-        purokC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                purokCMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                purokCMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                purokCMouseExited(evt);
-            }
-        });
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/shield-check.png"))); // NOI18N
-        jLabel6.setText(" Privacy");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel6MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout purokCLayout = new javax.swing.GroupLayout(purokC);
-        purokC.setLayout(purokCLayout);
-        purokCLayout.setHorizontalGroup(
-            purokCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(purokCLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        purokCLayout.setVerticalGroup(
-            purokCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, purokCLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
-
         viewC.setBackground(new java.awt.Color(255, 255, 255));
         viewC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -476,9 +401,31 @@ public class User_Settings_Account extends javax.swing.JFrame {
         adm_nav.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 70));
 
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(-10, -10, 190, 450);
+        adm_nav.setBounds(-10, -10, 190, 580);
 
-        mainDk.setBackground(new java.awt.Color(255, 255, 255));
+        adm_header.setBackground(new java.awt.Color(255, 255, 255));
+        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(27, 55, 77));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        d.setBackground(new java.awt.Color(244, 244, 244));
+        d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        d.setForeground(new java.awt.Color(204, 204, 204));
+        d.setText("See and manage your information like your username or email addrerss.");
+        jPanel3.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 50));
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Account Settings");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
+
+        adm_header.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 60));
+
+        jPanel1.add(adm_header);
+        adm_header.setBounds(180, 0, 990, 60);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -621,57 +568,18 @@ public class User_Settings_Account extends javax.swing.JFrame {
         });
         jPanel2.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 100, 30));
 
-        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
-        mainDk.setLayout(mainDkLayout);
-        mainDkLayout.setHorizontalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mainDkLayout.setVerticalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainDkLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(mainDk);
-        mainDk.setBounds(180, 60, 720, 360);
-
-        adm_header.setBackground(new java.awt.Color(255, 255, 255));
-        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        d.setBackground(new java.awt.Color(244, 244, 244));
-        d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        d.setForeground(new java.awt.Color(204, 204, 204));
-        d.setText("See and manage your information like your username or email addrerss.");
-        jPanel3.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 50));
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Account Settings");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
-
-        adm_header.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 60));
-
-        jPanel1.add(adm_header);
-        adm_header.setBounds(180, 0, 730, 60);
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(200, 80, 720, 372);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -841,40 +749,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
           
     }//GEN-LAST:event_updateActionPerformed
 
-    private void purokCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseExited
-        privacyPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_purokCMouseExited
-
-    private void purokCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseEntered
-        privacyPane.setBackground(Panecolor);
-    }//GEN-LAST:event_purokCMouseEntered
-
-    private void purokCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseClicked
-
-    }//GEN-LAST:event_purokCMouseClicked
-
-    private void jLabel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseExited
-        privacyPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel6MouseExited
-
-    private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
-        privacyPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel6MouseEntered
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        User_Privacy ap = new User_Privacy();
-        ap.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void privacyPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_privacyPaneMouseExited
-        privacyPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_privacyPaneMouseExited
-
-    private void privacyPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_privacyPaneMouseEntered
-        privacyPane.setBackground(Panecolor);
-    }//GEN-LAST:event_privacyPaneMouseEntered
-
     private void dashCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseExited
 
     }//GEN-LAST:event_dashCMouseExited
@@ -1031,7 +905,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -1043,9 +916,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mail;
-    public javax.swing.JDesktopPane mainDk;
-    private javax.swing.JPanel privacyPane;
-    private javax.swing.JPanel purokC;
     public javax.swing.JButton remove;
     private javax.swing.JPanel secPane;
     public javax.swing.JLabel sessUsn;

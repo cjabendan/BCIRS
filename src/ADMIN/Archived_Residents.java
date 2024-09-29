@@ -576,7 +576,7 @@ DefaultListModel listModel = new DefaultListModel();
                 cancel2ActionPerformed(evt);
             }
         });
-        adm_header.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 30, 30));
+        adm_header.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 20, 30, 30));
 
         d.setBackground(new java.awt.Color(244, 244, 244));
         d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
@@ -591,7 +591,7 @@ DefaultListModel listModel = new DefaultListModel();
         adm_header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 50));
 
         jPanel1.add(adm_header);
-        adm_header.setBounds(0, 0, 900, 70);
+        adm_header.setBounds(0, 0, 1160, 70);
 
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -607,7 +607,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 490, 280);
+        jScrollPane1.setBounds(20, 120, 680, 420);
 
         export.setBackground(new java.awt.Color(27, 57, 77));
         export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -625,7 +625,7 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/File searching-pana (2).png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(600, 190, 290, 220);
+        jLabel1.setBounds(780, 210, 290, 220);
 
         d1.setBackground(new java.awt.Color(244, 244, 244));
         d1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -639,11 +639,11 @@ DefaultListModel listModel = new DefaultListModel();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();

@@ -355,7 +355,6 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         resname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         viewC = new javax.swing.JPanel();
@@ -376,11 +375,9 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
         settingsPane = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
         sa = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
@@ -389,6 +386,8 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         list = new javax.swing.JList<>();
         searchField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -948,13 +947,6 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         adm_nav.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235), 2));
         adm_nav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
-        jLabel2.setText("ARQUISTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 18, 180, 45));
-
         dashC.setBackground(new java.awt.Color(255, 255, 255));
         dashC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -1366,8 +1358,15 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
 
         adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 10, -1));
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
+        jLabel2.setText("PurokSync");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
+
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(-10, -10, 190, 450);
+        adm_nav.setBounds(-10, -10, 190, 580);
 
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
         adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1376,28 +1375,6 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         sa.setForeground(new java.awt.Color(27, 55, 77));
         sa.setText("Residents");
         adm_header.add(sa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 60));
-
-        jButton1.setBackground(new java.awt.Color(27, 57, 77));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Add resident");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        adm_header.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 130, 30));
-
-        jButton2.setBackground(new java.awt.Color(27, 57, 77));
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Import");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        adm_header.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 80, 30));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 730, 60);
@@ -1418,7 +1395,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         jScrollPane1.setViewportView(userTbl);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 470, 340));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 640, 470));
 
         jPanel3.setBackground(new java.awt.Color(27, 55, 77));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1440,7 +1417,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         jLayeredPane1.add(list);
         list.setBounds(0, 0, 0, 0);
 
-        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 200, 250));
+        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 380));
 
         searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1460,7 +1437,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 200, 30));
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 30));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -1468,35 +1445,44 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         jLabel8.setText(" Search resident");
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 220, 340));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 290, 470));
 
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(190, 70, 970, 490);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jButton2.setBackground(new java.awt.Color(27, 57, 77));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Import");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(1060, 20, 80, 30);
 
-        jPanel1.add(jDesktopPane1);
-        jDesktopPane1.setBounds(180, 60, 720, 360);
+        jButton1.setBackground(new java.awt.Color(27, 57, 77));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Add resident");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(920, 20, 130, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -1935,7 +1921,7 @@ public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
    listModel.removeAllElements();
 
 if (!searchField.getText().isEmpty()) {
-    list.setSize(200, 250);
+    list.setSize(270, 380);
 
     dbConnector dbc = new dbConnector();
 
@@ -2372,7 +2358,6 @@ if (!searchField.getText().isEmpty()) {
     private javax.swing.JPanel imagePanel1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

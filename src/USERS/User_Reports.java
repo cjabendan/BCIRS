@@ -35,8 +35,6 @@ public class User_Reports extends javax.swing.JFrame {
      */
     public User_Reports() {
         initComponents(); 
-        reqData();
-        DefaultTableModel model = (DefaultTableModel) reqTbl.getModel();
     }
 
     Color darktxt = new Color(27,57,77);
@@ -44,52 +42,8 @@ public class User_Reports extends javax.swing.JFrame {
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
     
-  public void reqData() {
-    try {
-        dbConnector dbc = new dbConnector();
-        String query = "SELECT * FROM tbl_request";
-        
-        try (PreparedStatement pst = dbc.connect.prepareStatement(query);
-             ResultSet rs = pst.executeQuery()) {
-            
-            reqTbl.setModel(DbUtils.resultSetToTableModel(rs));
+  
 
-            JTableHeader th = reqTbl.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            TableColumn tc0 = tcm.getColumn(0);
-            TableColumn tc1 = tcm.getColumn(1);
-            TableColumn tc2 = tcm.getColumn(2);
-            TableColumn tc3 = tcm.getColumn(3);
-            TableColumn tc4 = tcm.getColumn(4);
-            TableColumn tc5 = tcm.getColumn(5);
-            TableColumn tc6 = tcm.getColumn(6);
-            TableColumn tc7 = tcm.getColumn(7);
-                
-            tc0.setHeaderValue("Request ID");
-            tc1.setHeaderValue("Document Type");
-            tc2.setHeaderValue("Issued by");
-            tc3.setHeaderValue("Issued to");
-            tc4.setHeaderValue("Date Issued");
-            tc5.setHeaderValue("Purpose");
-            tc6.setHeaderValue("Status");
-            tc7.setHeaderValue("Action");
-
-         
-            th.setDefaultRenderer(new CustomHeaderRenderer());
-            
-           reqTbl.removeColumn(tc2); 
-           reqTbl.removeColumn(tc3); 
-           reqTbl.removeColumn(tc7); 
-           
-            th.repaint();
-        }
-    } catch (SQLException ex) {
-        System.out.println("Errors: " + ex.getMessage());
-    }
-}
-
-
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,7 +55,6 @@ public class User_Reports extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         viewC = new javax.swing.JPanel();
@@ -122,16 +75,9 @@ public class User_Reports extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
         settingsPane = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
         sa = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        d1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        reqTbl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -147,13 +93,6 @@ public class User_Reports extends javax.swing.JFrame {
         adm_nav.setBackground(new java.awt.Color(255, 255, 255));
         adm_nav.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235), 2));
         adm_nav.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
-        jLabel2.setText("ARQUISTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 18, 180, 45));
 
         dashC.setBackground(new java.awt.Color(255, 255, 255));
         dashC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -567,8 +506,15 @@ public class User_Reports extends javax.swing.JFrame {
 
         adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 10, -1));
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
+        jLabel2.setText("PurokSync");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
+
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(-10, -10, 190, 450);
+        adm_nav.setBounds(-10, -10, 190, 580);
 
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
         adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -581,72 +527,15 @@ public class User_Reports extends javax.swing.JFrame {
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 730, 60);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel4.setBackground(new java.awt.Color(27, 57, 77));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Request Certifacate");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 200, 40));
-
-        d1.setBackground(new java.awt.Color(244, 244, 244));
-        d1.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        d1.setForeground(new java.awt.Color(204, 204, 204));
-        d1.setText("All requests are subject to approval by an administrator.");
-        jPanel4.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 40));
-
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
-
-        reqTbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(reqTbl);
-
-        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 680, 260));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 680, 340));
-
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jDesktopPane1);
-        jDesktopPane1.setBounds(180, 60, 720, 360);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -979,32 +868,24 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JPanel citizenPane;
-    public javax.swing.JLabel d1;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     private javax.swing.JPanel reportsPane;
-    private javax.swing.JTable reqTbl;
     private javax.swing.JLabel sa;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;

@@ -211,7 +211,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         dashPane = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -231,8 +230,10 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
         settingsPane = new javax.swing.JPanel();
-        mainDk = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        adm_header = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         st = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
@@ -261,9 +262,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         a4 = new javax.swing.JLabel();
         a2 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
-        adm_header = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        cancel = new javax.swing.JButton();
 
         confirmDel.setBackground(new java.awt.Color(255, 255, 255));
         confirmDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -351,13 +349,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         adm_nav.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(327, 2, -1, 446));
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo_32PX.png"))); // NOI18N
-        jLabel2.setText("ARQUSTATS");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 17, 170, 45));
 
         dashPane.setBackground(new java.awt.Color(255, 255, 255));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -761,262 +752,40 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
 
         adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 10, -1));
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
+        jLabel2.setText("PurokSync");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
+
         jPanel1.add(adm_nav);
-        adm_nav.setBounds(-10, -10, 190, 450);
-
-        mainDk.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        st.setBackground(new java.awt.Color(245, 246, 248));
-        st.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        st.setForeground(new java.awt.Color(100, 115, 122));
-        st.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Active", "Pending" }));
-        st.setBorder(null);
-        st.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stActionPerformed(evt);
-            }
-        });
-        jPanel3.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, 190, 24));
-
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel13.setText("Status");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, 20));
-
-        update.setBackground(new java.awt.Color(27, 55, 77));
-        update.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        update.setForeground(new java.awt.Color(255, 255, 255));
-        update.setText("Save Changes");
-        update.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateMouseClicked(evt);
-            }
-        });
-        update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateActionPerformed(evt);
-            }
-        });
-        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 140, 30));
-
-        delete.setBackground(new java.awt.Color(27, 55, 77));
-        delete.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        delete.setForeground(new java.awt.Color(255, 255, 255));
-        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
-        delete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                deleteMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                deleteMouseExited(evt);
-            }
-        });
-        delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteActionPerformed(evt);
-            }
-        });
-        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 30, 30));
-
-        uID.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        uID.setForeground(new java.awt.Color(27, 55, 77));
-        uID.setText("id");
-        jPanel3.add(uID, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 80, 20));
-
-        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 50));
-
-        usn.setBackground(new java.awt.Color(245, 246, 248));
-        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        usn.setForeground(new java.awt.Color(100, 115, 122));
-        usn.setBorder(null);
-        usn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 190, 24));
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel8.setText("Username");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 60, 20));
-
-        fn.setBackground(new java.awt.Color(245, 246, 248));
-        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        fn.setForeground(new java.awt.Color(100, 115, 122));
-        fn.setBorder(null);
-        fn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 190, 24));
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel4.setText("First Name");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel11.setText("Authorization ");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 70, 20));
-
-        ut.setBackground(new java.awt.Color(245, 246, 248));
-        ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        ut.setForeground(new java.awt.Color(100, 115, 122));
-        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User" }));
-        ut.setBorder(null);
-        ut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                utActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 190, 24));
-
-        mail.setBackground(new java.awt.Color(245, 246, 248));
-        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        mail.setForeground(new java.awt.Color(100, 115, 122));
-        mail.setBorder(null);
-        mail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mailActionPerformed(evt);
-            }
-        });
-        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 190, 24));
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel10.setText("Email");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 40, 20));
-
-        ln.setBackground(new java.awt.Color(245, 246, 248));
-        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        ln.setForeground(new java.awt.Color(100, 115, 122));
-        ln.setBorder(null);
-        ln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, 190, 24));
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel7.setText("Last Name");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, 20));
-
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel17.setText("Account ID:");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 80, 20));
-
-        jPanel7.setBackground(new java.awt.Color(245, 246, 248));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
-        jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
-
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 170, 170));
-
-        remove.setBackground(new java.awt.Color(27, 57, 77));
-        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeMouseExited(evt);
-            }
-        });
-        remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
-            }
-        });
-        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 30, 30));
-
-        addProfile.setBackground(new java.awt.Color(255, 255, 255));
-        addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
-        addProfile.setText(" Edit Profile");
-        addProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addProfileActionPerformed(evt);
-            }
-        });
-        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 130, 30));
-
-        a6.setForeground(new java.awt.Color(255, 0, 0));
-        a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 140, 20));
-
-        a5.setForeground(new java.awt.Color(255, 0, 0));
-        a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 140, 20));
-
-        a3.setForeground(new java.awt.Color(255, 0, 0));
-        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 140, 20));
-
-        a4.setForeground(new java.awt.Color(255, 0, 0));
-        a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 140, 20));
-
-        a2.setForeground(new java.awt.Color(255, 0, 0));
-        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 140, 20));
-
-        a1.setForeground(new java.awt.Color(255, 0, 0));
-        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 140, 20));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 0, 681, 344));
-
-        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
-        mainDk.setLayout(mainDkLayout);
-        mainDkLayout.setHorizontalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mainDkLayout.setVerticalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(mainDk);
-        mainDk.setBounds(180, 60, 720, 360);
+        adm_nav.setBounds(-10, -10, 190, 580);
 
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
         jLabel1.setText(" Registered user settings");
+
+        javax.swing.GroupLayout adm_headerLayout = new javax.swing.GroupLayout(adm_header);
+        adm_header.setLayout(adm_headerLayout);
+        adm_headerLayout.setHorizontalGroup(
+            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adm_headerLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(491, Short.MAX_VALUE))
+        );
+        adm_headerLayout.setVerticalGroup(
+            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_headerLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(adm_header);
+        adm_header.setBounds(180, 0, 730, 60);
 
         cancel.setBackground(new java.awt.Color(27, 55, 77));
         cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -1038,41 +807,246 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
+        jPanel1.add(cancel);
+        cancel.setBounds(1100, 20, 33, 30);
 
-        javax.swing.GroupLayout adm_headerLayout = new javax.swing.GroupLayout(adm_header);
-        adm_header.setLayout(adm_headerLayout);
-        adm_headerLayout.setHorizontalGroup(
-            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(adm_headerLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 426, Short.MAX_VALUE)
-                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        st.setBackground(new java.awt.Color(245, 246, 248));
+        st.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        st.setForeground(new java.awt.Color(100, 115, 122));
+        st.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Active", "Pending" }));
+        st.setBorder(null);
+        st.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stActionPerformed(evt);
+            }
+        });
+        jPanel3.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 275, 35));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel13.setText("Status");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 70, 20));
+
+        update.setBackground(new java.awt.Color(27, 55, 77));
+        update.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setText("Save Changes");
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+        jPanel3.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, 140, 33));
+
+        delete.setBackground(new java.awt.Color(27, 55, 77));
+        delete.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
+        delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                deleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                deleteMouseExited(evt);
+            }
+        });
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 420, 30, 33));
+
+        uID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        uID.setForeground(new java.awt.Color(27, 55, 77));
+        uID.setText("id");
+        jPanel3.add(uID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 80, 20));
+
+        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        adm_headerLayout.setVerticalGroup(
-            adm_headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_headerLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adm_headerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jPanel1.add(adm_header);
-        adm_header.setBounds(180, 0, 730, 60);
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 50));
+
+        usn.setBackground(new java.awt.Color(245, 246, 248));
+        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        usn.setForeground(new java.awt.Color(100, 115, 122));
+        usn.setBorder(null);
+        usn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 270, 35));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel8.setText("Username");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 100, 30));
+
+        fn.setBackground(new java.awt.Color(245, 246, 248));
+        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        fn.setForeground(new java.awt.Color(100, 115, 122));
+        fn.setBorder(null);
+        fn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 270, 35));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel4.setText("First Name");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 110, 30));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel11.setText("Authorization ");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 100, 20));
+
+        ut.setBackground(new java.awt.Color(245, 246, 248));
+        ut.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ut.setForeground(new java.awt.Color(100, 115, 122));
+        ut.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Type", "Admin", "User" }));
+        ut.setBorder(null);
+        ut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                utActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ut, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 270, 35));
+
+        mail.setBackground(new java.awt.Color(245, 246, 248));
+        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        mail.setForeground(new java.awt.Color(100, 115, 122));
+        mail.setBorder(null);
+        mail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mailActionPerformed(evt);
+            }
+        });
+        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 270, 35));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel10.setText("Email");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 80, 30));
+
+        ln.setBackground(new java.awt.Color(245, 246, 248));
+        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ln.setForeground(new java.awt.Color(100, 115, 122));
+        ln.setBorder(null);
+        ln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 270, 35));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel7.setText("Last Name");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 110, 30));
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel17.setText("Account ID:");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 80, 20));
+
+        jPanel7.setBackground(new java.awt.Color(245, 246, 248));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
+
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 170, 170));
+
+        remove.setBackground(new java.awt.Color(27, 57, 77));
+        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
+        remove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                removeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                removeMouseExited(evt);
+            }
+        });
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 30, 30));
+
+        addProfile.setBackground(new java.awt.Color(255, 255, 255));
+        addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
+        addProfile.setText(" Edit Profile");
+        addProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProfileActionPerformed(evt);
+            }
+        });
+        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 130, 30));
+
+        a6.setForeground(new java.awt.Color(255, 0, 0));
+        a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 140, 20));
+
+        a5.setForeground(new java.awt.Color(255, 0, 0));
+        a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 140, 20));
+
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 140, 20));
+
+        a4.setForeground(new java.awt.Color(255, 0, 0));
+        a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 140, 20));
+
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 140, 20));
+
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 140, 20));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(200, 70, 930, 470);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -1668,7 +1642,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1681,7 +1654,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
     public javax.swing.JTextField mail;
-    private javax.swing.JDesktopPane mainDk;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     public javax.swing.JButton remove;

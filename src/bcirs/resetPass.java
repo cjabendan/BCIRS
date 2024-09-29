@@ -50,9 +50,6 @@ public class resetPass extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -71,73 +68,69 @@ public class resetPass extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(null);
-
-        jPanel4.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel4.setLayout(null);
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 32)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText("Reset Password");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 60, 400, 47));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Reset Your Password");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 530, 47));
 
         jLabel11.setBackground(new java.awt.Color(234, 234, 234));
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel11.setText("Your new password must be different from previously used");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 420, 30));
+        jLabel11.setText("In creating your new password must be different from previously");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, 420, 30));
 
         jPanel5.setBackground(new java.awt.Color(27, 55, 77));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_223PX.png"))); // NOI18N
-        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 420));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/My password-pana (1).png"))); // NOI18N
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, 262));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 420));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 582, 560));
 
         jLabel12.setBackground(new java.awt.Color(234, 234, 234));
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(27, 55, 77));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("password.");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 80, 30));
+        jLabel12.setText(" used password.");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 110, 30));
 
         id.setForeground(new java.awt.Color(255, 255, 255));
         id.setText("jLabel3");
         jPanel2.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 140, -1));
 
-        jLabel32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(27, 57, 77));
         jLabel32.setText("New Password:");
-        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 190, 30));
+        jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, 190, 40));
 
         nps.setBackground(new java.awt.Color(242, 242, 242));
+        nps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nps.setBorder(null);
-        jPanel2.add(nps, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 380, 30));
+        jPanel2.add(nps, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 380, 40));
 
-        a1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel2.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 240, 30));
+        jPanel2.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 220, 240, 40));
 
-        a2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        a2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         a2.setForeground(new java.awt.Color(255, 0, 0));
         a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel2.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 260, 30));
+        jPanel2.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, 260, 40));
 
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(27, 57, 77));
         jLabel31.setText("Confirm  Password:");
-        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 220, 30));
+        jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, 220, 40));
 
         cnps.setBackground(new java.awt.Color(242, 242, 242));
+        cnps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cnps.setBorder(null);
-        jPanel2.add(cnps, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 290, 380, 30));
+        jPanel2.add(cnps, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 380, 40));
 
         cBt.setBackground(new java.awt.Color(27, 55, 77));
         cBt.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -159,34 +152,17 @@ public class resetPass extends javax.swing.JFrame {
                 cBtActionPerformed(evt);
             }
         });
-        jPanel2.add(cBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 190, 33));
-
-        jPanel4.add(jPanel2);
-        jPanel2.setBounds(0, 0, 900, 420);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 0, 900, 420);
+        jPanel2.add(cBt, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 420, 190, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -333,10 +309,7 @@ public class resetPass extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField nps;
     // End of variables declaration//GEN-END:variables

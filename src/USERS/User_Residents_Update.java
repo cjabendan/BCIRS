@@ -175,46 +175,45 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jPanel3 = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
         delete = new javax.swing.JButton();
-        a7 = new javax.swing.JLabel();
-        dob = new com.toedter.calendar.JDateChooser();
-        sex = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        a9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        status = new javax.swing.JComboBox<>();
-        a8 = new javax.swing.JLabel();
-        household = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        a10 = new javax.swing.JLabel();
         remove = new javax.swing.JButton();
         addProfile = new javax.swing.JButton();
-        address = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        a4 = new javax.swing.JLabel();
-        occupation = new javax.swing.JTextField();
-        a5 = new javax.swing.JLabel();
-        religion = new javax.swing.JTextField();
-        a6 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        mn = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        a3 = new javax.swing.JLabel();
-        a2 = new javax.swing.JLabel();
-        fn = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        ln = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        a1 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        d = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        d = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        a1 = new javax.swing.JLabel();
+        a4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        address = new javax.swing.JTextField();
+        ln = new javax.swing.JTextField();
+        a7 = new javax.swing.JLabel();
+        dob = new com.toedter.calendar.JDateChooser();
+        a9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        sex = new javax.swing.JComboBox<>();
+        household = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        a10 = new javax.swing.JLabel();
+        occupation = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        a5 = new javax.swing.JLabel();
+        a2 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        fn = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        mn = new javax.swing.JTextField();
+        a3 = new javax.swing.JLabel();
+        a6 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        religion = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        status = new javax.swing.JComboBox<>();
+        a8 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
 
         confirmDel.setBackground(new java.awt.Color(255, 255, 255));
@@ -314,7 +313,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 AddActionPerformed(evt);
             }
         });
-        jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 320, 140, 30));
+        jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 430, 140, 33));
 
         delete.setBackground(new java.awt.Color(27, 55, 77));
         delete.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -336,77 +335,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 deleteActionPerformed(evt);
             }
         });
-        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 320, 30, 30));
-
-        a7.setForeground(new java.awt.Color(255, 0, 0));
-        a7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 120, 30));
-
-        dob.setBackground(new java.awt.Color(255, 255, 255));
-        dob.setDateFormatString("yyyy-MM-dd");
-        jPanel3.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 190, 24));
-
-        sex.setBackground(new java.awt.Color(245, 246, 248));
-        sex.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        sex.setForeground(new java.awt.Color(100, 115, 122));
-        sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Select", "Male", "Female" }));
-        sex.setBorder(null);
-        sex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sexActionPerformed(evt);
-            }
-        });
-        jPanel3.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 190, 24));
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel10.setText("Sex");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 30, 30));
-
-        a9.setForeground(new java.awt.Color(255, 0, 0));
-        a9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 140, 30));
-
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel14.setText("Civil Status");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 110, 30));
-
-        status.setBackground(new java.awt.Color(245, 246, 248));
-        status.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        status.setForeground(new java.awt.Color(100, 115, 122));
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Select", "Single", "Married", "Widowed", "Separated" }));
-        status.setBorder(null);
-        status.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusActionPerformed(evt);
-            }
-        });
-        jPanel3.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 190, 24));
-
-        a8.setForeground(new java.awt.Color(255, 0, 0));
-        a8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 140, 30));
-
-        household.setBackground(new java.awt.Color(245, 246, 248));
-        household.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        household.setForeground(new java.awt.Color(100, 115, 122));
-        household.setBorder(null);
-        household.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                householdActionPerformed(evt);
-            }
-        });
-        jPanel3.add(household, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 190, 24));
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel8.setText("HouseHold");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 60, 30));
-
-        a10.setForeground(new java.awt.Color(255, 0, 0));
-        a10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 130, 30));
+        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 430, 30, 33));
 
         remove.setBackground(new java.awt.Color(27, 57, 77));
         remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
@@ -423,7 +352,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 removeActionPerformed(evt);
             }
         });
-        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 30, 30));
+        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 30, 30));
 
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -434,137 +363,17 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 addProfileActionPerformed(evt);
             }
         });
-        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 130, 30));
+        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 130, 30));
 
-        address.setBackground(new java.awt.Color(245, 246, 248));
-        address.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        address.setForeground(new java.awt.Color(100, 115, 122));
-        address.setBorder(null);
-        address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressActionPerformed(evt);
-            }
-        });
-        jPanel3.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 190, 24));
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel11.setText("Address");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, -1, 30));
-
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel15.setText("Occupation");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, 30));
-
-        a4.setForeground(new java.awt.Color(255, 0, 0));
-        a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 140, 30));
-
-        occupation.setBackground(new java.awt.Color(245, 246, 248));
-        occupation.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        occupation.setForeground(new java.awt.Color(100, 115, 122));
-        occupation.setBorder(null);
-        occupation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                occupationActionPerformed(evt);
-            }
-        });
-        jPanel3.add(occupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 190, 24));
-
-        a5.setForeground(new java.awt.Color(255, 0, 0));
-        a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 140, 30));
-
-        religion.setBackground(new java.awt.Color(245, 246, 248));
-        religion.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        religion.setForeground(new java.awt.Color(100, 115, 122));
-        religion.setBorder(null);
-        religion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                religionActionPerformed(evt);
-            }
-        });
-        jPanel3.add(religion, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 180, 190, 24));
-
-        a6.setForeground(new java.awt.Color(255, 0, 0));
-        a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 140, 30));
-
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel16.setText("Religion");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 150, 70, 30));
-
-        mn.setBackground(new java.awt.Color(245, 246, 248));
-        mn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        mn.setForeground(new java.awt.Color(100, 115, 122));
-        mn.setBorder(null);
-        mn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(mn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 190, 24));
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel4.setText("Middle Name");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 70, 30));
-
-        a3.setForeground(new java.awt.Color(255, 0, 0));
-        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 110, 30));
-
-        a2.setForeground(new java.awt.Color(255, 0, 0));
-        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 140, 30));
-
-        fn.setBackground(new java.awt.Color(245, 246, 248));
-        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        fn.setForeground(new java.awt.Color(100, 115, 122));
-        fn.setBorder(null);
-        fn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 190, 24));
-
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel13.setText("First Name");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 70, 30));
-
-        ln.setBackground(new java.awt.Color(245, 246, 248));
-        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        ln.setForeground(new java.awt.Color(100, 115, 122));
-        ln.setBorder(null);
-        ln.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 190, 24));
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel12.setText("Last Name");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 70, 30));
-
-        a1.setForeground(new java.awt.Color(255, 0, 0));
-        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 110, 30));
-
-        jLabel19.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(27, 57, 77));
         jLabel19.setText("Resident ID:");
-        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 80, 30));
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, 30));
 
         id.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         id.setForeground(new java.awt.Color(27, 57, 77));
         id.setText("Id number");
-        jPanel3.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 70, 30));
+        jPanel3.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 70, 30));
 
         jPanel7.setBackground(new java.awt.Color(245, 246, 248));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -572,38 +381,222 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 170, 170));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 170, 170));
 
         jPanel6.setBackground(new java.awt.Color(27, 55, 77));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Update resident information");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 300, 40));
 
         d.setBackground(new java.awt.Color(244, 244, 244));
         d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         d.setForeground(new java.awt.Color(204, 204, 204));
         d.setText("Resident's purok address will be automatically set for every household. ");
-        jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 40));
+        jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 50));
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Purok");
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 40));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 60));
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel12.setText("Last Name");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 100, 40));
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 140, 40));
+
+        a4.setForeground(new java.awt.Color(255, 0, 0));
+        a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 140, 40));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel11.setText("Address");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 80, 40));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel7.setText("Date of Birth ( yy--mm--day )");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 140, 30));
+        jLabel7.setText("Date of Birth ");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 150, 40));
+
+        address.setBackground(new java.awt.Color(245, 246, 248));
+        address.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        address.setForeground(new java.awt.Color(100, 115, 122));
+        address.setBorder(null);
+        address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressActionPerformed(evt);
+            }
+        });
+        jPanel3.add(address, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 270, 35));
+
+        ln.setBackground(new java.awt.Color(245, 246, 248));
+        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ln.setForeground(new java.awt.Color(100, 115, 122));
+        ln.setBorder(null);
+        ln.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 270, 35));
+
+        a7.setForeground(new java.awt.Color(255, 0, 0));
+        a7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 140, 40));
+
+        dob.setBackground(new java.awt.Color(255, 255, 255));
+        dob.setDateFormatString("yyyy-MM-dd");
+        jPanel3.add(dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 270, 35));
+
+        a9.setForeground(new java.awt.Color(255, 0, 0));
+        a9.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 140, 40));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel10.setText("Sex");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 80, 40));
+
+        sex.setBackground(new java.awt.Color(245, 246, 248));
+        sex.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        sex.setForeground(new java.awt.Color(100, 115, 122));
+        sex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Select", "Male", "Female" }));
+        sex.setBorder(null);
+        sex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexActionPerformed(evt);
+            }
+        });
+        jPanel3.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 270, 35));
+
+        household.setBackground(new java.awt.Color(245, 246, 248));
+        household.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        household.setForeground(new java.awt.Color(100, 115, 122));
+        household.setBorder(null);
+        household.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                householdActionPerformed(evt);
+            }
+        });
+        jPanel3.add(household, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 270, 35));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel8.setText("Household");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 90, 40));
+
+        a10.setForeground(new java.awt.Color(255, 0, 0));
+        a10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 130, 40));
+
+        occupation.setBackground(new java.awt.Color(245, 246, 248));
+        occupation.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        occupation.setForeground(new java.awt.Color(100, 115, 122));
+        occupation.setBorder(null);
+        occupation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                occupationActionPerformed(evt);
+            }
+        });
+        jPanel3.add(occupation, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 270, 35));
+
+        jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel15.setText("Occupation");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 100, 40));
+
+        a5.setForeground(new java.awt.Color(255, 0, 0));
+        a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, 140, 40));
+
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, 140, 40));
+
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel13.setText("First Name");
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 100, 100, 40));
+
+        fn.setBackground(new java.awt.Color(245, 246, 248));
+        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        fn.setForeground(new java.awt.Color(100, 115, 122));
+        fn.setBorder(null);
+        fn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 270, 35));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel4.setText("Middle Name");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, 100, 40));
+
+        mn.setBackground(new java.awt.Color(245, 246, 248));
+        mn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        mn.setForeground(new java.awt.Color(100, 115, 122));
+        mn.setBorder(null);
+        mn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(mn, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 140, 270, 35));
+
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 100, 140, 40));
+
+        a6.setForeground(new java.awt.Color(255, 0, 0));
+        a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 190, 120, 40));
+
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel16.setText("Religion");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 190, 100, 40));
+
+        religion.setBackground(new java.awt.Color(245, 246, 248));
+        religion.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        religion.setForeground(new java.awt.Color(100, 115, 122));
+        religion.setBorder(null);
+        religion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                religionActionPerformed(evt);
+            }
+        });
+        jPanel3.add(religion, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 230, 270, 35));
+
+        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel14.setText("Civil Status");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 280, 160, 40));
+
+        status.setBackground(new java.awt.Color(245, 246, 248));
+        status.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        status.setForeground(new java.awt.Color(100, 115, 122));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Select", "Single", "Married", "Widowed", "Separated" }));
+        status.setBorder(null);
+        status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusActionPerformed(evt);
+            }
+        });
+        jPanel3.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, 270, 35));
+
+        a8.setForeground(new java.awt.Color(255, 0, 0));
+        a8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel3.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 140, 40));
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(0, 50, 900, 370);
-
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel1.setText("Resident's data settings");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 0, 220, 50);
+        jPanel3.setBounds(20, 60, 1120, 480);
 
         cancel.setBackground(new java.awt.Color(27, 55, 77));
         cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -626,17 +619,17 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
             }
         });
         jPanel1.add(cancel);
-        cancel.setBounds(840, 10, 33, 30);
+        cancel.setBounds(1106, 20, 33, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1163, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -767,26 +760,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
 
     }//GEN-LAST:event_AddActionPerformed
 
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
-        cancel.setBackground(Red);
-    }//GEN-LAST:event_cancelMouseEntered
-
-    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
-        cancel.setBackground(MainC);
-    }//GEN-LAST:event_cancelMouseExited
-
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-
-       User_Residents au = new User_Residents ();
-       au.setVisible(true);
-       this.dispose();
-       
-    }//GEN-LAST:event_cancelActionPerformed
-
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteMouseClicked
@@ -807,18 +780,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
 
 
     }//GEN-LAST:event_deleteActionPerformed
-
-    private void sexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sexActionPerformed
-
-    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusActionPerformed
-
-    private void householdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_householdActionPerformed
 
     private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
         remove.setBackground(Red);
@@ -860,30 +821,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
             }
         }
     }//GEN-LAST:event_addProfileActionPerformed
-
-    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addressActionPerformed
-
-    private void occupationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occupationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_occupationActionPerformed
-
-    private void religionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_religionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_religionActionPerformed
-
-    private void mnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mnActionPerformed
-
-    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnActionPerformed
-
-    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnActionPerformed
 
     private void cancelBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseEntered
 
@@ -940,6 +877,62 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
             JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
         }
     }//GEN-LAST:event_yesBTActionPerformed
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
+        cancel.setBackground(Red);
+    }//GEN-LAST:event_cancelMouseEntered
+
+    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
+        cancel.setBackground(MainC);
+    }//GEN-LAST:event_cancelMouseExited
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+
+        User_Residents au = new User_Residents ();
+        au.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressActionPerformed
+
+    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lnActionPerformed
+
+    private void sexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexActionPerformed
+
+    private void householdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_householdActionPerformed
+
+    private void occupationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occupationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_occupationActionPerformed
+
+    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnActionPerformed
+
+    private void mnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnActionPerformed
+
+    private void religionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_religionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_religionActionPerformed
+
+    private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_statusActionPerformed
 
        public void logEvent(int userId, String event, String description) {
    
@@ -1032,7 +1025,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     public javax.swing.JComboBox<String> household;
     public javax.swing.JLabel id;
     public javax.swing.JLabel image;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
