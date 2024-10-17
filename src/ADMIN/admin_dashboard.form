@@ -520,26 +520,6 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI" size="18" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4d" green="37" red="39" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/mini_logo-removebg-preview (1).png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="PurokSync"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="7" y="12" width="180" height="50"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Container class="javax.swing.JPanel" name="dashPane">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -676,7 +656,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/users_nF.png"/>
+                      <Image iconType="3" name="/Icons/users_F.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Users"/>
                   </Properties>
@@ -794,7 +774,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/barangay_nF.png"/>
+                      <Image iconType="3" name="/Icons/house-building.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Barangay"/>
                   </Properties>
@@ -855,7 +835,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/folder-open.png"/>
+                      <Image iconType="3" name="/Icons/folder-open (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Logs"/>
                   </Properties>
@@ -929,7 +909,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/settings (3).png"/>
+                      <Image iconType="3" name="/Icons/settings (4).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Settings"/>
                   </Properties>
@@ -1080,6 +1060,26 @@
                 </DimensionLayout>
               </Layout>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Yu Gothic UI" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="4d" green="37" red="39" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Icons/mini_logo-removebg-preview (1).png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Purok Link"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="7" y="12" width="180" height="50"/>
+                </Constraint>
+              </Constraints>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="adm_header">

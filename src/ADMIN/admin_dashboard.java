@@ -233,7 +233,6 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         dashPane = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -253,6 +252,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         logoffbg = new javax.swing.JPanel();
         logout = new javax.swing.JLabel();
         logoff = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
         admin_name = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -431,13 +431,6 @@ public class admin_dashboard extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         adm_nav.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 2, -1, 446));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
-        jLabel2.setText("PurokSync");
-        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
-
         dashPane.setBackground(new java.awt.Color(27, 55, 77));
         dashPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -516,7 +509,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_nF.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png"))); // NOI18N
         jLabel5.setText(" Users");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,7 +600,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barangay_nF.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-building.png"))); // NOI18N
         jLabel6.setText(" Barangay");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -655,7 +648,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open (1).png"))); // NOI18N
         jLabel9.setText(" Logs");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -727,7 +720,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (4).png"))); // NOI18N
         jLabel27.setText(" Settings");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -841,6 +834,13 @@ public class admin_dashboard extends javax.swing.JFrame {
         );
 
         adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(57, 55, 77));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
+        jLabel2.setText("Purok Link");
+        adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
 
         jPanel1.add(adm_nav);
         adm_nav.setBounds(-10, -10, 190, 580);

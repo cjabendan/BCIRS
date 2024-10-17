@@ -107,7 +107,6 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lable1 = new javax.swing.JLabel();
@@ -138,6 +137,8 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         lable3 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,11 +163,11 @@ public class Bgy_Senior extends javax.swing.JFrame {
         page.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 40, -1));
 
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 260, 20));
+        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 260, 20));
 
         lable.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         lable.setText("Cebu.");
-        page.add(lable, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 60, 20));
+        page.add(lable, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 60, 20));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo/Untitled design (1).png"))); // NOI18N
@@ -192,18 +193,13 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel9.setText("BARANGAY CERTIFICATION");
         page.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 530, 70));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("HON. CHRISTIAN JAMES A. ABENDAN");
-        page.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 260, 40));
-
         jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         page.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 430, 20));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Punong Barangay");
-        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, 260, 30));
+        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, 260, 30));
 
         lable1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable1.setText("TO WHOM IT MAY CONCERN;");
@@ -212,7 +208,7 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("By the authority of the Punong Barangay:");
-        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 530, 40));
+        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 260, 40));
 
         lable2.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable2.setText("(SENIOR CITIZEN)");
@@ -230,7 +226,7 @@ public class Bgy_Senior extends javax.swing.JFrame {
         purok2.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         purok2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         purok2.setText("Purok Name");
-        page.add(purok2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 60, 20));
+        page.add(purok2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, 60, 20));
 
         dob.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         dob.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -240,11 +236,11 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText(", Poblacion Ward II, ");
-        page.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 90, 20));
+        page.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, 90, 20));
 
         lable6.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable6.setText("ISSUED");
-        page.add(lable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, 20));
+        page.add(lable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, -1, 20));
 
         lable7.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable7.setText("FUTHER CERTIFIES");
@@ -258,7 +254,7 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("this");
-        page.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 20, 20));
+        page.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, 20, 20));
 
         lable8.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable8.setText("THIS CERTIFICATION");
@@ -267,7 +263,7 @@ public class Bgy_Senior extends javax.swing.JFrame {
         date.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("date issued");
-        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 130, 20));
+        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 130, 20));
 
         jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -291,7 +287,7 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("at Purok");
-        page.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, 40, 20));
+        page.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 40, 20));
 
         age.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         age.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -333,7 +329,17 @@ public class Bgy_Senior extends javax.swing.JFrame {
 
         lable3.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         lable3.setText("Minglanilla, ");
-        page.add(lable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, 60, 20));
+        page.add(lable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 60, 20));
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel25.setText(" barangay seal  and the signature/specimen of an authorized barangay official.");
+        page.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 330, 40));
+
+        jLabel26.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel26.setText("Disclaimer: This document is prefilled for convenience purposes and is not considered official without the");
+        page.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 450, 40));
 
         jPanel1.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 530, 630));
 
@@ -443,10 +449,11 @@ public class Bgy_Senior extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

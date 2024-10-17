@@ -756,7 +756,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(57, 55, 77));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
-        jLabel2.setText("PurokSync");
+        jLabel2.setText("Purok Link");
         adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
 
         jPanel1.add(adm_nav);

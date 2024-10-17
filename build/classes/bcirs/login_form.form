@@ -57,7 +57,7 @@
               <Color blue="4d" green="37" red="1b" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="PurokSync"/>
+            <Property name="text" type="java.lang.String" value="Purok Link"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -161,7 +161,7 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Icons/logo__1_-removebg-preview.png"/>
+                  <Image iconType="3" name="/Images/logo__1_-removebg-preview (1).png"/>
                 </Property>
               </Properties>
               <Constraints>

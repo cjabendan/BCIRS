@@ -106,7 +106,6 @@ public class Bgy_Residency extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lable1 = new javax.swing.JLabel();
@@ -129,6 +128,8 @@ public class Bgy_Residency extends javax.swing.JFrame {
         lable3 = new javax.swing.JLabel();
         lable = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,11 +150,11 @@ public class Bgy_Residency extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("resident of  Purok");
-        page.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 120, -1));
+        jLabel4.setText(" a bonified resident of  Purok");
+        page.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 120, -1));
 
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 260, 20));
+        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, 260, 20));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo/Untitled design (1).png"))); // NOI18N
@@ -179,18 +180,13 @@ public class Bgy_Residency extends javax.swing.JFrame {
         jLabel9.setText("CERTIFICATE OF RESIDENCY");
         page.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 530, 70));
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("HON. CHRISTIAN JAMES A. ABENDAN");
-        page.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 260, 40));
-
         jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         page.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 430, 20));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Punong Barangay");
-        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, 260, 30));
+        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 260, 50));
 
         lable1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable1.setText("TO WHOM IT MAY CONCERN;");
@@ -225,11 +221,11 @@ public class Bgy_Residency extends javax.swing.JFrame {
         purok.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         purok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         purok.setText("Purok Name");
-        page.add(purok, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 70, -1));
+        page.add(purok, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 100, -1));
 
         lable10.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         lable10.setText(", Pobalcion Ward II, Minglanilla, Cebu.");
-        page.add(lable10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+        page.add(lable10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -238,49 +234,59 @@ public class Bgy_Residency extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText(" legal age, and a bonified");
-        page.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 110, -1));
+        jLabel15.setText(" is in legal age, and");
+        page.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 110, -1));
 
         lable6.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable6.setText("ISSUED");
-        page.add(lable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, 20));
+        page.add(lable6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, 20));
 
         jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("this");
-        page.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 20, 20));
+        page.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 20, 20));
 
         date.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("date issued");
-        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 420, 130, 20));
+        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 480, 130, 20));
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("at Purok");
-        page.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 40, 20));
+        page.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 40, 20));
 
         purok2.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         purok2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         purok2.setText("Purok Name");
-        page.add(purok2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 60, 20));
+        page.add(purok2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 60, 20));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText(", Poblacion Ward II, ");
-        page.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 90, 20));
+        page.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 90, 20));
 
         lable3.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         lable3.setText("Minglanilla, ");
-        page.add(lable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 60, 20));
+        page.add(lable3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 60, 20));
 
         lable.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         lable.setText("Cebu.");
-        page.add(lable, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 60, 20));
+        page.add(lable, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, 60, 20));
 
         jLabel22.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel22.setText("Based on the record of this office, they have been residing at Barangay Poblacion Ward II, Municipality");
         page.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, -1, -1));
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Disclaimer: This document is prefilled for convenience purposes and is not considered official without the");
+        page.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 450, 40));
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText(" barangay seal  and the signature/specimen of an authorized barangay official.");
+        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 330, 40));
 
         jPanel1.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 530, 630));
 
@@ -405,6 +411,7 @@ public class Bgy_Residency extends javax.swing.JFrame {
     public javax.swing.JLabel fullname;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -416,10 +423,10 @@ public class Bgy_Residency extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

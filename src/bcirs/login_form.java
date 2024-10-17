@@ -198,7 +198,7 @@ public class login_form extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 42)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(27, 55, 77));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PurokSync");
+        jLabel1.setText("Purok Link");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 60, 580, 90);
 
@@ -237,7 +237,7 @@ public class login_form extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 272, -1, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/logo__1_-removebg-preview.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo__1_-removebg-preview (1).png"))); // NOI18N
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 560));
 
         jPanel1.add(jPanel2);

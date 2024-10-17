@@ -744,7 +744,7 @@
                       <Color blue="4d" green="37" red="1b" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/dash_nF.png"/>
+                      <Image iconType="3" name="/Icons/dash_F.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Dashboard"/>
                   </Properties>
@@ -921,7 +921,7 @@
                       <Color blue="4d" green="37" red="1b" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/barangay_nF.png"/>
+                      <Image iconType="3" name="/Icons/house-building.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Barangay"/>
                   </Properties>
@@ -982,7 +982,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/folder-open.png"/>
+                      <Image iconType="3" name="/Icons/folder-open (1).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="  Logs"/>
                   </Properties>
@@ -1146,7 +1146,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/settings (3).png"/>
+                      <Image iconType="3" name="/Icons/settings (4).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Settings"/>
                   </Properties>
@@ -1219,7 +1219,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/mini_logo-removebg-preview (1).png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="PurokSync"/>
+                <Property name="text" type="java.lang.String" value="Purok Link"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1300,7 +1300,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/cloud-download-alt.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" Export all users data"/>
+                <Property name="text" type="java.lang.String" value=" Export data"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -1310,7 +1310,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="690" y="30" width="270" height="30"/>
+                  <AbsoluteConstraints x="810" y="30" width="150" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

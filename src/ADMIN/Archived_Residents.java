@@ -1,6 +1,7 @@
 
 package ADMIN;
 
+import USERS.User_Purok;
 import bcirs.login_form;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.itextpdf.text.DocumentException;
@@ -29,6 +30,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +50,8 @@ DefaultListModel listModel = new DefaultListModel();
     public Archived_Residents() {
         initComponents();
         displayData();
+        list.setModel(listModel);
+        searchField.setBorder(new EmptyBorder(0, 10, 0, 0));
         DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
     }
  
@@ -191,8 +195,12 @@ DefaultListModel listModel = new DefaultListModel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
         export = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         d1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        list = new javax.swing.JList<>();
+        searchField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -588,10 +596,10 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Archived Residents");
-        adm_header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 50));
+        adm_header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 50));
 
         jPanel1.add(adm_header);
-        adm_header.setBounds(0, 0, 1160, 70);
+        adm_header.setBounds(0, 0, 1190, 70);
 
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -607,7 +615,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 680, 420);
+        jScrollPane1.setBounds(20, 120, 820, 420);
 
         export.setBackground(new java.awt.Color(27, 57, 77));
         export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -623,10 +631,6 @@ DefaultListModel listModel = new DefaultListModel();
         jPanel1.add(export);
         export.setBounds(340, 80, 170, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/File searching-pana (2).png"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(780, 210, 290, 220);
-
         d1.setBackground(new java.awt.Color(244, 244, 244));
         d1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         d1.setForeground(new java.awt.Color(27, 57, 77));
@@ -634,6 +638,57 @@ DefaultListModel listModel = new DefaultListModel();
         d1.setText(" You may download the system's archived data here.");
         jPanel1.add(d1);
         d1.setBounds(20, 80, 310, 30);
+
+        jPanel3.setBackground(new java.awt.Color(27, 55, 77));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        list.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
+        list.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        list.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listMousePressed(evt);
+            }
+        });
+        jLayeredPane1.add(list);
+        list.setBounds(0, 0, 0, 0);
+
+        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 330));
+
+        searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchField.setHighlighter(null);
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchFieldMousePressed(evt);
+            }
+        });
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 30));
+
+        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-search.png"))); // NOI18N
+        jLabel8.setText(" Search archived resident");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 40));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(860, 120, 290, 420);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -643,7 +698,7 @@ DefaultListModel listModel = new DefaultListModel();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
         );
 
         pack();
@@ -729,8 +784,8 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel2ActionPerformed
 
-        Admin_Barangay ru = new Admin_Barangay();
-        ru.setVisible(true);
+        User_Purok up = new User_Purok();
+        up.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_cancel2ActionPerformed
@@ -942,6 +997,121 @@ DefaultListModel listModel = new DefaultListModel();
 
     }//GEN-LAST:event_printActionPerformed
 
+    private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listMouseClicked
+
+    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
+
+        String fullName = list.getSelectedValue();
+
+        // Check if a value is selected from the list
+        if (fullName == null || fullName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No name selected. Please select a name from the list.");
+            return;
+        }
+
+        String[] nameParts = fullName.split(",\\s*");
+
+        // Check if the full name has three parts (lastname, firstname, middlename)
+        if (nameParts.length != 3) {
+            JOptionPane.showMessageDialog(null, "Invalid name format. The name should be in 'Lastname, Firstname, Middlename' format.");
+            return;
+        }
+
+        String lastName = nameParts[0].trim();
+        String firstName = nameParts[1].trim();
+        String middleName = nameParts[2].trim();
+
+        // Debugging logs
+        System.out.println("First Name: " + firstName);
+        System.out.println("Middle Name: " + middleName);
+        System.out.println("Last Name: " + lastName);
+
+        dbConnector dbc = new dbConnector();
+
+        String query = "SELECT r.*, h.h_name, p.p_name, "
+        + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+        + "FROM tbl_residents r "
+        + "LEFT JOIN tbl_household h ON r.h_id = h.h_id "
+        + "JOIN tbl_purok p ON h.p_id = p.p_id "
+        + "WHERE r_fname = ? AND r_mname = ? AND r_lname = ?";
+
+        try (PreparedStatement pst = dbc.connect.prepareStatement(query)) {
+            pst.setString(1, firstName);
+            pst.setString(2, middleName);
+            pst.setString(3, lastName);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+                image.setIcon(resizedIcon);
+
+                id.setText(rs.getString("r_id"));
+                fullname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + ", " + rs.getString("r_lname"));
+                address.setText(rs.getString("r_address"));
+                dob.setText(rs.getString("r_dob"));
+                age.setText(rs.getString("r_age"));
+                status.setText(rs.getString("r_civilstatus"));
+                sex.setText(rs.getString("r_sex"));
+                ocu.setText(rs.getString("r_occupation"));
+                reg.setText(rs.getString("r_religion"));
+                household.setText(rs.getString("h_name"));
+                purok.setText(rs.getString("p_name"));
+            }
+
+            Object[] options = {};
+            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
+            dialog.setVisible(true);
+
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_listMousePressed
+
+    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
+
+    }//GEN-LAST:event_searchFieldMousePressed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+
+        listModel.removeAllElements();
+
+        if (!searchField.getText().isEmpty()) {
+            list.setSize(270, 330);
+
+            dbConnector dbc = new dbConnector();
+
+            try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?"
+                + "AND (r_status = 'Archived')")){
+
+            String name = searchField.getText();
+            pst.setString(1, "%" + name + "%");
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                String fullName = rs.getString("r_lname") + ", " + rs.getString("r_fname") + ", " + rs.getString("r_mname");
+                listModel.addElement(fullName);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Errors: " + ex.getMessage());
+        }
+
+        } else {
+            list.setSize(200, 0);
+        }
+
+    }//GEN-LAST:event_searchFieldKeyReleased
+
     
      public void logEvent(int userId, String event, String description) {
    
@@ -1005,7 +1175,6 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel id;
     public javax.swing.JLabel image;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1025,12 +1194,16 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> list;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel ocu;
     private javax.swing.JButton pdf;
@@ -1038,6 +1211,7 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JButton print;
     private javax.swing.JLabel purok;
     private javax.swing.JLabel reg;
+    private javax.swing.JTextField searchField;
     private javax.swing.JLabel sex;
     private javax.swing.JLabel stats;
     private javax.swing.JLabel stats1;

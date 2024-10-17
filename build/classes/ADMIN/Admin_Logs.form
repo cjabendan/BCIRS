@@ -439,7 +439,7 @@
                       <Color blue="4d" green="37" red="1b" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/dash_nF.png"/>
+                      <Image iconType="3" name="/Icons/dash_F.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Dashboard"/>
                   </Properties>
@@ -529,7 +529,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/barangay_nF.png"/>
+                      <Image iconType="3" name="/Icons/house-building.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Barangay"/>
                   </Properties>
@@ -753,7 +753,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/settings (3).png"/>
+                      <Image iconType="3" name="/Icons/settings (4).png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Settings"/>
                   </Properties>
@@ -863,7 +863,7 @@
                       <Color blue="4d" green="37" red="39" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/users (4).png"/>
+                      <Image iconType="3" name="/Icons/users_F.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" Users"/>
                   </Properties>
@@ -916,7 +916,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/Icons/mini_logo-removebg-preview (1).png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="PurokSync"/>
+                <Property name="text" type="java.lang.String" value="Purok Link"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

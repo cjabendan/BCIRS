@@ -7,8 +7,11 @@ package USERS;
 
 import config.Session;
 import config.dbConnector;
+import enhancer.NoBorderDialog;
+import java.sql.Statement;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +32,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -130,13 +134,30 @@ import javax.swing.border.EmptyBorder;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        houseAdd = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        cancel3 = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        addHouse = new javax.swing.JButton();
+        purok = new javax.swing.JComboBox<>();
+        address1 = new javax.swing.JTextField();
+        hname = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        a11 = new javax.swing.JLabel();
+        a12 = new javax.swing.JLabel();
+        a13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        adm_header = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         d = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        cancel = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         ln = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -171,7 +192,131 @@ import javax.swing.border.EmptyBorder;
         religion = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         a9 = new javax.swing.JLabel();
-        cancel = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+
+        houseAdd.setBackground(new java.awt.Color(255, 255, 255));
+        houseAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        houseAdd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        houseAdd.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 480, 20));
+
+        jLabel33.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel33.setText("Address");
+        houseAdd.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 60, 20));
+
+        jLabel34.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel34.setText("Purok");
+        houseAdd.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 70, 20));
+
+        jLabel36.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel36.setText("Household");
+        houseAdd.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 20));
+
+        jPanel8.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cancel3.setBackground(new java.awt.Color(255, 0, 0));
+        cancel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel3.setForeground(new java.awt.Color(255, 255, 255));
+        cancel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel3.setBorder(null);
+        cancel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel3MouseExited(evt);
+            }
+        });
+        cancel3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel3ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(cancel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 30, 30));
+
+        jLabel37.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Register New Household");
+        jPanel8.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 50));
+
+        houseAdd.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 50));
+
+        addHouse.setBackground(new java.awt.Color(27, 57, 77));
+        addHouse.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addHouse.setForeground(new java.awt.Color(255, 255, 255));
+        addHouse.setText("Register");
+        addHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHouseActionPerformed(evt);
+            }
+        });
+        houseAdd.add(addHouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 100, 30));
+
+        purok.setBackground(new java.awt.Color(245, 246, 248));
+        purok.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        purok.setForeground(new java.awt.Color(100, 115, 122));
+        purok.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Select", "Tambis", "Mahogany", "Guyabano", "Ipil-Ipil" }));
+        purok.setBorder(null);
+        purok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purokActionPerformed(evt);
+            }
+        });
+        houseAdd.add(purok, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 170, 24));
+
+        address1.setBackground(new java.awt.Color(245, 246, 248));
+        address1.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        address1.setForeground(new java.awt.Color(100, 115, 122));
+        address1.setBorder(null);
+        address1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                address1ActionPerformed(evt);
+            }
+        });
+        houseAdd.add(address1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 230, 24));
+
+        hname.setBackground(new java.awt.Color(245, 246, 248));
+        hname.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        hname.setForeground(new java.awt.Color(100, 115, 122));
+        hname.setBorder(null);
+        hname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hnameActionPerformed(evt);
+            }
+        });
+        houseAdd.add(hname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 230, 24));
+
+        jLabel31.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel31.setText(" Household cannot be edited nor be deleted once registered.");
+        houseAdd.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 320, 20));
+
+        jLabel35.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel35.setText("Note: ");
+        houseAdd.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+
+        a11.setForeground(new java.awt.Color(255, 0, 0));
+        a11.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a11.setText("*");
+        houseAdd.add(a11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 110, 30));
+
+        a12.setForeground(new java.awt.Color(255, 0, 0));
+        a12.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a12.setText("*");
+        houseAdd.add(a12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 140, 30));
+
+        a13.setForeground(new java.awt.Color(255, 0, 0));
+        a13.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a13.setText("*");
+        houseAdd.add(a13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -183,11 +328,6 @@ import javax.swing.border.EmptyBorder;
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
-
-        adm_header.setBackground(new java.awt.Color(255, 255, 255));
-        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(adm_header);
-        adm_header.setBounds(180, 0, 730, 50);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
@@ -223,6 +363,28 @@ import javax.swing.border.EmptyBorder;
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("New resident");
         jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
+
+        cancel.setBackground(new java.awt.Color(27, 55, 77));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/undo-alt.png"))); // NOI18N
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel6.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 20, 33, 30));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
 
@@ -467,31 +629,18 @@ import javax.swing.border.EmptyBorder;
         a9.setText("*");
         jPanel3.add(a9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 140, 40));
 
-        jPanel1.add(jPanel3);
-        jPanel3.setBounds(20, 60, 1120, 480);
-
-        cancel.setBackground(new java.awt.Color(27, 55, 77));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel.setForeground(new java.awt.Color(255, 255, 255));
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/undo-alt.png"))); // NOI18N
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancelMouseExited(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
+        jButton7.setBackground(new java.awt.Color(27, 57, 77));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/plus (1).png"))); // NOI18N
+        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 2, true));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
+                jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(cancel);
-        cancel.setBounds(1106, 20, 33, 30);
+        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 20, 20));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(20, 20, 1120, 520);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -571,6 +720,9 @@ import javax.swing.border.EmptyBorder;
         || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 
         || household.getSelectedIndex() == 0) {
 
+        JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+
+        
         if (ln.getText().isEmpty()) {
             a1.setText("*");
         }
@@ -623,9 +775,9 @@ import javax.swing.border.EmptyBorder;
 
                     int householdId = rs.getInt("h_id");
 
-                    try (PreparedStatement insertPst = dbc.connect.prepareStatement(
-                        "INSERT INTO tbl_residents (r_lname, r_fname, r_mname, r_address, r_sex, r_dob, r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+                  try (PreparedStatement insertPst = dbc.connect.prepareStatement(
+    "INSERT INTO tbl_residents (r_lname, r_fname, r_mname, r_address, r_sex, r_dob, r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) "
+    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)) {
 
                         insertPst.setString(1, ln.getText());
                         insertPst.setString(2, fn.getText());
@@ -640,14 +792,18 @@ import javax.swing.border.EmptyBorder;
                         insertPst.setString(11, imageDestination);
                         insertPst.setString(12, "Active");
 
-                        int rowsInserted = insertPst.executeUpdate();
-                        
-                        ResultSet generatedKeys = pst.getGeneratedKeys();
-                            if (generatedKeys.next()) {
-                                int newResidentId = generatedKeys.getInt(1);
-                                logEvent(userID, "IMPORT_NEW_RESIDENT", "Resident ID: " + newResidentId + " is added by user.");
-                            }
-                        
+                       int rowsInserted = insertPst.executeUpdate();
+
+                if (rowsInserted > 0) {
+                    // Retrieve generated keys
+                    ResultSet generatedKeys = insertPst.getGeneratedKeys();
+                    if (generatedKeys.next()) {
+                        int newResidentId = generatedKeys.getInt(1); // Get the generated resident ID
+                        logEvent(userID, "ADDED NEW RESIDENT", "Resident ID: " + newResidentId + " is added by user: " + userID + ".");
+                    }
+                    generatedKeys.close();
+                }
+
                         if (rowsInserted > 0) {
                             if (selectedFile != null) {
                                 try {
@@ -665,7 +821,7 @@ import javax.swing.border.EmptyBorder;
                             updatePst.close();
 
                             JOptionPane.showMessageDialog(null, "Resident Registered Successfully!");
-                            User_Residents au = new User_Residents();
+                            User_Purok au = new User_Purok();
                             au.setVisible(true);
                             this.dispose();
                         } else {
@@ -705,7 +861,7 @@ import javax.swing.border.EmptyBorder;
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
 
-       User_Residents au = new User_Residents ();
+       User_Purok au = new User_Purok();
        au.setVisible(true);
        this.dispose();
        
@@ -788,6 +944,99 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_religionActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, houseAdd);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void cancel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseClicked
+
+    }//GEN-LAST:event_cancel3MouseClicked
+
+    private void cancel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseEntered
+
+    }//GEN-LAST:event_cancel3MouseEntered
+
+    private void cancel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseExited
+
+    }//GEN-LAST:event_cancel3MouseExited
+
+    private void cancel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel3ActionPerformed
+
+        Window window = SwingUtilities.getWindowAncestor(houseAdd);
+        window.dispose();
+    }//GEN-LAST:event_cancel3ActionPerformed
+
+    private void addHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHouseActionPerformed
+
+        Session sess = Session.getInstance();
+
+        int userID = sess.getUid();
+
+        a1.setText("");
+        a2.setText("");
+        a3.setText("");
+
+        if(hname.getText().isEmpty() || address.getText().isEmpty() || purok.getSelectedIndex() == 0){
+            if (hname.getText().isEmpty()) {
+                a1.setText("*");
+            }
+            if (address.getText().isEmpty()) {
+                a2.setText("*");
+            }
+            if (purok.getSelectedIndex() == 0) {
+                a3.setText("*");
+            }
+        } else {
+            dbConnector dbc = new dbConnector();
+
+            try {
+
+                String query = "INSERT INTO tbl_household (h_name, h_address, p_id) VALUES (?, ?, ?)";
+                PreparedStatement pst = dbc.connect.prepareStatement(query);
+
+                pst.setString(1, hname.getText());
+                pst.setString(2, address.getText());
+                pst.setInt(3, purok.getSelectedIndex());
+
+                int rowsInserted = pst.executeUpdate();
+
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Household Registered Successfully!");
+
+                    logEvent(userID, "NEW_HOUSEHOLD", "Household: "+hname.getText()+" is added by user.");
+
+                    Window window = SwingUtilities.getWindowAncestor(houseAdd);
+                    window.dispose();
+
+                    hname.setText("");
+                    address.setText("");
+                    purok.setSelectedIndex(0);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error registering household.");
+                }
+
+                pst.close();
+            } catch (SQLException ex) {
+                System.out.println("Database Error: " + ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_addHouseActionPerformed
+
+    private void purokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purokActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_purokActionPerformed
+
+    private void address1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_address1ActionPerformed
+
+    private void hnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hnameActionPerformed
+
      public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -854,6 +1103,9 @@ import javax.swing.border.EmptyBorder;
     public javax.swing.JButton Add;
     private javax.swing.JLabel a1;
     private javax.swing.JLabel a10;
+    private javax.swing.JLabel a11;
+    private javax.swing.JLabel a12;
+    private javax.swing.JLabel a13;
     private javax.swing.JLabel a2;
     private javax.swing.JLabel a3;
     private javax.swing.JLabel a4;
@@ -862,15 +1114,20 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JLabel a7;
     private javax.swing.JLabel a8;
     private javax.swing.JLabel a9;
+    private javax.swing.JButton addHouse;
     public javax.swing.JButton addProfile;
     public javax.swing.JTextField address;
-    private javax.swing.JPanel adm_header;
+    public javax.swing.JTextField address1;
     public javax.swing.JButton cancel;
+    public javax.swing.JButton cancel3;
     public javax.swing.JLabel d;
     private com.toedter.calendar.JDateChooser dob;
     public javax.swing.JTextField fn;
+    public javax.swing.JTextField hname;
+    private javax.swing.JPanel houseAdd;
     public javax.swing.JComboBox<String> household;
     public javax.swing.JLabel image;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -878,6 +1135,13 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -886,9 +1150,11 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mn;
     public javax.swing.JTextField occupation;
+    public javax.swing.JComboBox<String> purok;
     public javax.swing.JTextField religion;
     public javax.swing.JButton remove;
     public javax.swing.JComboBox<String> sex;

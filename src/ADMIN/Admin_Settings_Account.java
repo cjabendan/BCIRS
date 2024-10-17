@@ -199,7 +199,7 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         d = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         remove = new javax.swing.JButton();
         addProfile = new javax.swing.JButton();
@@ -213,8 +213,8 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
-        cancel = new javax.swing.JButton();
         update = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -426,8 +426,11 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 990, 60);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel17.setText("Edit your personal details");
+        jPanel1.add(jLabel17);
+        jLabel17.setBounds(210, 80, 280, 60);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
@@ -462,7 +465,7 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jPanel5.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 130, 30));
 
         fn.setBackground(new java.awt.Color(245, 246, 248));
-        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         fn.setForeground(new java.awt.Color(100, 115, 122));
         fn.setBorder(null);
         fn.addActionListener(new java.awt.event.ActionListener() {
@@ -470,10 +473,10 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
                 fnActionPerformed(evt);
             }
         });
-        jPanel5.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 190, 24));
+        jPanel5.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 270, 30));
 
         usn.setBackground(new java.awt.Color(245, 246, 248));
-        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         usn.setForeground(new java.awt.Color(100, 115, 122));
         usn.setBorder(null);
         usn.addActionListener(new java.awt.event.ActionListener() {
@@ -481,10 +484,10 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
                 usnActionPerformed(evt);
             }
         });
-        jPanel5.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 190, 24));
+        jPanel5.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 270, 30));
 
         mail.setBackground(new java.awt.Color(245, 246, 248));
-        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        mail.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         mail.setForeground(new java.awt.Color(100, 115, 122));
         mail.setBorder(null);
         mail.addActionListener(new java.awt.event.ActionListener() {
@@ -492,15 +495,15 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
                 mailActionPerformed(evt);
             }
         });
-        jPanel5.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 190, 24));
+        jPanel5.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 270, 30));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 55, 77));
         jLabel10.setText("Email");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 40, 20));
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 60, 40));
 
         ln.setBackground(new java.awt.Color(245, 246, 248));
-        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        ln.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         ln.setForeground(new java.awt.Color(100, 115, 122));
         ln.setBorder(null);
         ln.addActionListener(new java.awt.event.ActionListener() {
@@ -508,22 +511,22 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
                 lnActionPerformed(evt);
             }
         });
-        jPanel5.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 190, 24));
+        jPanel5.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, 270, 30));
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(27, 55, 77));
         jLabel12.setText("Last Name");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, 20));
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, 20));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
         jLabel8.setText("Username");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 60, 20));
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 140, 20));
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(27, 55, 77));
         jLabel13.setText("First Name");
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 32, -1, 30));
 
         jPanel7.setBackground(new java.awt.Color(245, 246, 248));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -532,24 +535,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
 
         jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 170, 170));
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1020, 300));
-
-        cancel.setBackground(new java.awt.Color(255, 255, 255));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        cancel.setForeground(new java.awt.Color(27, 57, 77));
-        cancel.setText("Cancel");
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-        jPanel2.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 100, 30));
 
         update.setBackground(new java.awt.Color(27, 55, 77));
         update.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -565,10 +550,26 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
                 updateActionPerformed(evt);
             }
         });
-        jPanel2.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 100, 30));
+        jPanel5.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 240, 100, 30));
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(180, 60, 1010, 372);
+        cancel.setBackground(new java.awt.Color(255, 255, 255));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        cancel.setForeground(new java.awt.Color(27, 57, 77));
+        cancel.setText("Cancel");
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 100, 30));
+
+        jPanel1.add(jPanel5);
+        jPanel5.setBounds(210, 140, 910, 310);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -629,124 +630,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         }
        }
     }//GEN-LAST:event_formWindowActivated
-
-    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
-        remove.setBackground(Red);
-    }//GEN-LAST:event_removeMouseEntered
-
-    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
-        remove.setBackground(MainC);
-    }//GEN-LAST:event_removeMouseExited
-
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        remove.setEnabled(false);
-        addProfile.setText(" Add profile");
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_removeActionPerformed
-
-    private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
-
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            try {
-                selectedFile = fileChooser.getSelectedFile();
-                destination = "src/u_images/" + selectedFile.getName();
-                path  = selectedFile.getAbsolutePath();
-
-                if(FileExistenceChecker(path) == 1){
-                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
-                    destination = "";
-                    path="";
-                }else{
-                    image.setIcon(ResizeImage(path, null, image));
-                    addProfile.setText(" Edit Profile");
-                    remove.setEnabled(true);
-                }
-            } catch (Exception ex) {
-                System.out.println("File Error!");
-            }
-        }
-    }//GEN-LAST:event_addProfileActionPerformed
-
-    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnActionPerformed
-
-    private void usnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usnActionPerformed
-
-    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mailActionPerformed
-
-    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnActionPerformed
-
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-            
-            Admin_Settings ru = new Admin_Settings();
-            ru.setVisible(true);
-            this.dispose();
-    }//GEN-LAST:event_cancelActionPerformed
-
-    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updateMouseClicked
-
-    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
-        
-        Session sess = Session.getInstance(); 
-        
-        if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
-                || usn.getText().isEmpty())
-        {
-            
-            JOptionPane.showMessageDialog(null,"All fields are required!");
-            
-        }
-            else if(updateCheck()){
-            
-            System.out.println("Duplicate Exist!");
-            
-        }
-        else{
-             
-        dbConnector dbc = new dbConnector();
-        
-        dbc.updateData("UPDATE tbl_user SET u_fname = '" + fn.getText() + "', u_lname = '" + ln.getText()
-                + "', u_email = '" + mail.getText() + "', u_usn = '" + usn.getText()
-                + "',u_image = '" + destination + "' WHERE u_id = '" + sess.getUid() + "'");
-        
-        
-        if(destination.isEmpty()){
-            File existingFile = new File(oldpath);
-            if(existingFile.exists()){
-                existingFile.delete();
-            }
-        }else{
-            if(!(oldpath.equals(path))){
-                imageUpdater(oldpath,path);
-            }
-                
-        }
-        
-            JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
-            Admin_Settings as = new Admin_Settings();
-            as.setVisible(true);
-            this.dispose();
-        
-        }
-          
-    }//GEN-LAST:event_updateActionPerformed
 
     private void dashCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseExited
 
@@ -820,6 +703,123 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
+        remove.setBackground(Red);
+    }//GEN-LAST:event_removeMouseEntered
+
+    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
+        remove.setBackground(MainC);
+    }//GEN-LAST:event_removeMouseExited
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        remove.setEnabled(false);
+        addProfile.setText(" Add profile");
+        image.setIcon(null);
+        destination = "";
+        path = "";
+    }//GEN-LAST:event_removeActionPerformed
+
+    private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
+
+        JFileChooser fileChooser = new JFileChooser();
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try {
+                selectedFile = fileChooser.getSelectedFile();
+                destination = "src/u_images/" + selectedFile.getName();
+                path  = selectedFile.getAbsolutePath();
+
+                if(FileExistenceChecker(path) == 1){
+                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
+                    destination = "";
+                    path="";
+                }else{
+                    image.setIcon(ResizeImage(path, null, image));
+                    addProfile.setText(" Edit Profile");
+                    remove.setEnabled(true);
+                }
+            } catch (Exception ex) {
+                System.out.println("File Error!");
+            }
+        }
+    }//GEN-LAST:event_addProfileActionPerformed
+
+    private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fnActionPerformed
+
+    private void usnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usnActionPerformed
+
+    private void mailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mailActionPerformed
+
+    private void lnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lnActionPerformed
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+
+        Session sess = Session.getInstance();
+
+        if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty()
+            || usn.getText().isEmpty())
+        {
+
+            JOptionPane.showMessageDialog(null,"All fields are required!");
+
+        }
+        else if(updateCheck()){
+
+            System.out.println("Duplicate Exist!");
+
+        }
+        else{
+
+            dbConnector dbc = new dbConnector();
+
+            dbc.updateData("UPDATE tbl_user SET u_fname = '" + fn.getText() + "', u_lname = '" + ln.getText()
+                + "', u_email = '" + mail.getText() + "', u_usn = '" + usn.getText()
+                + "',u_image = '" + destination + "' WHERE u_id = '" + sess.getUid() + "'");
+
+            if(destination.isEmpty()){
+                File existingFile = new File(oldpath);
+                if(existingFile.exists()){
+                    existingFile.delete();
+                }
+            }else{
+                if(!(oldpath.equals(path))){
+                    imageUpdater(oldpath,path);
+                }
+
+            }
+
+            JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
+            Admin_Settings as = new Admin_Settings();
+            as.setVisible(true);
+            this.dispose();
+
+        }
+
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelMouseClicked
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+
+        Admin_Settings ru = new Admin_Settings();
+        ru.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -885,13 +885,13 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

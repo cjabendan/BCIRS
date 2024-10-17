@@ -159,7 +159,7 @@ public class User_Settings extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -169,6 +169,7 @@ public class User_Settings extends javax.swing.JFrame {
         authorization = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         status = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -389,35 +390,35 @@ public class User_Settings extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        fullname.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        fullname.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         fullname.setForeground(new java.awt.Color(27, 55, 77));
         fullname.setText("name");
-        jPanel5.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 200, 20));
+        jPanel5.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 530, 20));
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
         jLabel8.setText("Username:");
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 70, -1));
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 130, -1));
 
-        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         usn.setForeground(new java.awt.Color(27, 55, 77));
         usn.setText("usn");
-        jPanel5.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 200, 20));
+        jPanel5.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 360, 20));
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 55, 77));
         jLabel10.setText("Email:");
-        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 40, -1));
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 100, -1));
 
-        email.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        email.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
         email.setForeground(new java.awt.Color(27, 55, 77));
         email.setText("email");
-        jPanel5.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 200, 20));
+        jPanel5.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 360, 20));
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 55, 77));
         jLabel11.setText("Full Name:");
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 150, -1));
 
         jPanel7.setBackground(new java.awt.Color(245, 246, 248));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -425,70 +426,82 @@ public class User_Settings extends javax.swing.JFrame {
         image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
 
-        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 170, 170));
+        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 170));
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(27, 57, 77));
+        jButton2.setText("Edit Profile");
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 1, true));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 940, 210));
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel9.setText("Additional Information");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 260, 70));
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel17.setText("System Profile");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, 60));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel18.setText("Account ID:");
+        jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 100, 40));
+
+        uID.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        uID.setForeground(new java.awt.Color(27, 55, 77));
+        uID.setText("id");
+        jPanel8.add(uID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 120, 40));
+
+        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel19.setText("Authorization:");
+        jPanel8.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 120, 40));
+
+        authorization.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        authorization.setForeground(new java.awt.Color(27, 55, 77));
+        authorization.setText("id");
+        jPanel8.add(authorization, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 130, 40));
+
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel20.setText("Status:");
+        jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 60, 40));
+
+        status.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        status.setForeground(new java.awt.Color(27, 55, 77));
+        status.setText("id");
+        jPanel8.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 130, 40));
+
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 940, 70));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(27, 57, 77));
-        jButton1.setText("Edit Profile");
+        jButton1.setText("Delete Account");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 1, true));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 120, 30));
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 210));
-
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel9.setText("Additional Information");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 150, 50));
-
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel17.setText("System Profile");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 100, 40));
-
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel18.setText("Account ID:");
-        jPanel8.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 80, 40));
-
-        uID.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        uID.setForeground(new java.awt.Color(27, 55, 77));
-        uID.setText("id");
-        jPanel8.add(uID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 70, 40));
-
-        jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel19.setText("Authorization:");
-        jPanel8.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 100, 40));
-
-        authorization.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        authorization.setForeground(new java.awt.Color(27, 55, 77));
-        authorization.setText("id");
-        jPanel8.add(authorization, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 70, 40));
-
-        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel20.setText("Status:");
-        jPanel8.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 60, 40));
-
-        status.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        status.setForeground(new java.awt.Color(27, 55, 77));
-        status.setText("id");
-        jPanel8.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 70, 40));
-
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 730, 70));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 440, 140, 35));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(200, 80, 730, 372);
+        jPanel2.setBounds(180, 60, 990, 510);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -629,6 +642,10 @@ public class User_Settings extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -691,6 +708,7 @@ public class User_Settings extends javax.swing.JFrame {
     public javax.swing.JLabel fullname;
     public javax.swing.JLabel image;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

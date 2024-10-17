@@ -60,9 +60,11 @@ public class User_Security extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         sessUsn = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        mainDk = new javax.swing.JDesktopPane();
+        adm_header = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        d = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -73,10 +75,7 @@ public class User_Security extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         dot = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        adm_header = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        d = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -260,112 +259,6 @@ public class User_Security extends javax.swing.JFrame {
         jPanel1.add(adm_nav);
         adm_nav.setBounds(-10, -10, 190, 580);
 
-        mainDk.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Privacy policy-pana (1).png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, 210, 240));
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/lock (1).png"))); // NOI18N
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel20MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 20, 30));
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel8.setText("Manage your account's security.");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, 30));
-
-        jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel23.setText("Security");
-        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel23MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 160, 30));
-
-        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-key.png"))); // NOI18N
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 20, 30));
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel11.setText("and enter your security code to reset your password.");
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, 40));
-
-        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel28.setText("Additional password protection");
-        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel28MouseClicked(evt);
-            }
-        });
-        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 210, 30));
-
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel12.setText("For added protection, you'll need to confirm your email address");
-        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 30));
-
-        dot.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        dot.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel5.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 30, 20));
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 460, 150));
-
-        jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel24.setText("Account security");
-        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 160, 50));
-
-        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
-        mainDk.setLayout(mainDkLayout);
-        mainDkLayout.setHorizontalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mainDkLayout.setVerticalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainDkLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(mainDk);
-        mainDk.setBounds(180, 60, 720, 360);
-
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
         adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -389,6 +282,95 @@ public class User_Security extends javax.swing.JFrame {
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 980, 60);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/lock (1).png"))); // NOI18N
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 20, 30));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setText("Manage your account's security.");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 30));
+
+        jLabel23.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel23.setText("Security");
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 230, 30));
+
+        jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user-key.png"))); // NOI18N
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 20, 30));
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setText("and enter your security code to reset your password.");
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, 30));
+
+        jLabel28.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel28.setText("Additional password protection");
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
+        jPanel5.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 280, 30));
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel12.setText("For added protection, you'll need to confirm your email address");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, -1, 30));
+
+        dot.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        dot.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel5.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 30, 20));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 510, 190));
+
+        jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel24.setText("Account security");
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 180, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Privacy policy-pana (1).png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 210, 220));
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(180, 80, 980, 480);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -737,7 +719,6 @@ public class User_Security extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    public javax.swing.JDesktopPane mainDk;
     private javax.swing.JPanel secPane;
     public javax.swing.JLabel sessUsn;
     private javax.swing.JPanel viewC;

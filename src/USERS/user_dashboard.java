@@ -52,10 +52,12 @@ public class user_dashboard extends javax.swing.JFrame {
     
   }
      
-     public void displayData() {
+      public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT r.r_id, r.r_lname, r.r_fname "
+        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                     + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                     + "r.r_sex, h.h_name "
                      + "FROM tbl_residents r "
                      + "JOIN tbl_household h ON r.h_id = h.h_id "
                      + "WHERE r.r_status = 'Active' "
@@ -68,10 +70,16 @@ public class user_dashboard extends javax.swing.JFrame {
         TableColumn tc0 = tcm.getColumn(0);
         TableColumn tc1 = tcm.getColumn(1);
         TableColumn tc2 = tcm.getColumn(2);
+        TableColumn tc3 = tcm.getColumn(3);
+        TableColumn tc4 = tcm.getColumn(4);
+        TableColumn tc5 = tcm.getColumn(5);
+
         tc0.setHeaderValue("ID");
         tc1.setHeaderValue("Last Name");
         tc2.setHeaderValue("First Name");
-       
+        tc3.setHeaderValue("Age");
+        tc4.setHeaderValue("Sex");
+        tc5.setHeaderValue("Household");
 
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
@@ -80,7 +88,10 @@ public class user_dashboard extends javax.swing.JFrame {
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
     }
-}
+      }
+     
+     
+     
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,13 +106,10 @@ public class user_dashboard extends javax.swing.JFrame {
         adm_nav = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        viewC = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         purokC = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         dashPane = new javax.swing.JPanel();
-        citizenPane = new javax.swing.JPanel();
         purokPane = new javax.swing.JPanel();
         reportsPane = new javax.swing.JPanel();
         logs = new javax.swing.JPanel();
@@ -124,9 +132,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         add = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
         jLabel29 = new javax.swing.JLabel();
@@ -182,51 +188,6 @@ public class user_dashboard extends javax.swing.JFrame {
 
         adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        viewC.setBackground(new java.awt.Color(255, 255, 255));
-        viewC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                viewCMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                viewCMouseExited(evt);
-            }
-        });
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_nF.png"))); // NOI18N
-        jLabel5.setText(" Residents");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout viewCLayout = new javax.swing.GroupLayout(viewC);
-        viewC.setLayout(viewCLayout);
-        viewCLayout.setHorizontalGroup(
-            viewCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewCLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        viewCLayout.setVerticalGroup(
-            viewCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewCLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, -1));
-
         purokC.setBackground(new java.awt.Color(255, 255, 255));
         purokC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -240,7 +201,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barangay_nF.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-building.png"))); // NOI18N
         jLabel6.setText(" Purok");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -270,7 +231,7 @@ public class user_dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235), 2));
@@ -300,29 +261,6 @@ public class user_dashboard extends javax.swing.JFrame {
 
         adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        citizenPane.setBackground(new java.awt.Color(255, 255, 255));
-        citizenPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                citizenPaneMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                citizenPaneMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout citizenPaneLayout = new javax.swing.GroupLayout(citizenPane);
-        citizenPane.setLayout(citizenPaneLayout);
-        citizenPaneLayout.setHorizontalGroup(
-            citizenPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
-        );
-        citizenPaneLayout.setVerticalGroup(
-            citizenPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
-        adm_nav.add(citizenPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
-
         purokPane.setBackground(new java.awt.Color(255, 255, 255));
         purokPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -344,7 +282,7 @@ public class user_dashboard extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         reportsPane.setBackground(new java.awt.Color(255, 255, 255));
         reportsPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -367,7 +305,7 @@ public class user_dashboard extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(reportsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        adm_nav.add(reportsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         logs.setBackground(new java.awt.Color(255, 255, 255));
         logs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -385,7 +323,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open (1).png"))); // NOI18N
         jLabel9.setText(" Reports");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -415,7 +353,7 @@ public class user_dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         logoff.setBackground(new java.awt.Color(255, 255, 255));
         logoff.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -438,7 +376,7 @@ public class user_dashboard extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         logoffbg.setBackground(new java.awt.Color(255, 255, 255));
         logoffbg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -486,7 +424,7 @@ public class user_dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         settingsBg.setBackground(new java.awt.Color(255, 255, 255));
         settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -505,7 +443,7 @@ public class user_dashboard extends javax.swing.JFrame {
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (4).png"))); // NOI18N
         jLabel27.setText(" Settings");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -524,7 +462,7 @@ public class user_dashboard extends javax.swing.JFrame {
         dot.setForeground(new java.awt.Color(255, 0, 0));
         settingsBg.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 40, 20));
 
-        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 140, -1));
+        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, -1));
 
         settingsPane.setBackground(new java.awt.Color(255, 255, 255));
         settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -547,13 +485,13 @@ public class user_dashboard extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 10, -1));
+        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 10, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(57, 55, 77));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
-        jLabel2.setText("PurokSync");
+        jLabel2.setText("Purok Link");
         adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
 
         jPanel1.add(adm_nav);
@@ -565,7 +503,7 @@ public class user_dashboard extends javax.swing.JFrame {
         user_name.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         user_name.setForeground(new java.awt.Color(27, 55, 77));
         user_name.setText("Dashboard");
-        adm_header.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 60));
+        adm_header.add(user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 230, 60));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 730, 60);
@@ -578,7 +516,7 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Start monitoring the oragnized Purok data with us!");
+        jLabel4.setText("Start monitoring and oragnizing Purok data with us!");
         dashPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 370, 50));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sparkle (1).png"))); // NOI18N
@@ -592,7 +530,7 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("You can save more time with PurokSync");
+        jLabel11.setText("You can save more time with Purok Link");
         dashPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 430, 80));
 
         add.setBackground(new java.awt.Color(255, 255, 255));
@@ -609,44 +547,18 @@ public class user_dashboard extends javax.swing.JFrame {
 
         jPanel2.add(dashPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 920, 150));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 210, 140));
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 510, Short.MAX_VALUE)
+            .addGap(0, 290, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 510, 60));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, 210, 60));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 290, 60));
 
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -659,9 +571,9 @@ public class user_dashboard extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(userTbl);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
+    
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 380, 280));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 600, 280));
 
         jLabel29.setBackground(new java.awt.Color(27, 57, 77));
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -679,11 +591,11 @@ public class user_dashboard extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 80, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 110, 30));
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Building-rafiki (1) (1).png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 270, 210));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 250, 280, 230));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(190, 60, 950, 490);
@@ -710,14 +622,6 @@ public class user_dashboard extends javax.swing.JFrame {
     private void dashCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseExited
         
     }//GEN-LAST:event_dashCMouseExited
-
-    private void viewCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseEntered
-        citizenPane.setBackground(Panecolor);
-    }//GEN-LAST:event_viewCMouseEntered
-
-    private void viewCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseExited
-        citizenPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_viewCMouseExited
 
     private void purokCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseEntered
         purokPane.setBackground(Panecolor);
@@ -771,14 +675,6 @@ public class user_dashboard extends javax.swing.JFrame {
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_dashPaneMouseExited
 
-    private void citizenPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citizenPaneMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_citizenPaneMouseEntered
-
-    private void citizenPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citizenPaneMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_citizenPaneMouseExited
-
     private void purokPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokPaneMouseEntered
         purokPane.setBackground(Panecolor);
     }//GEN-LAST:event_purokPaneMouseEntered
@@ -820,14 +716,6 @@ public class user_dashboard extends javax.swing.JFrame {
     private void logsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseExited
         reportsPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_logsMouseExited
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-       citizenPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel5MouseEntered
-
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-      citizenPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
       purokPane.setBackground(Panecolor);
@@ -879,12 +767,6 @@ public class user_dashboard extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-       User_Residents up = new User_Residents();
-       up.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         User_Settings as = new User_Settings();
         as.setVisible(true);
@@ -920,7 +802,7 @@ public class user_dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsPaneMouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        User_Residents aru = new User_Residents();
+        User_Purok aru = new User_Purok();
         aru.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -980,7 +862,6 @@ public class user_dashboard extends javax.swing.JFrame {
     public javax.swing.JButton add;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
-    private javax.swing.JPanel citizenPane;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JPanel dashPanel;
@@ -996,16 +877,13 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
@@ -1017,6 +895,5 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel settingsPane;
     private javax.swing.JTable userTbl;
     private javax.swing.JLabel user_name;
-    private javax.swing.JPanel viewC;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,6 +10,7 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import enhancer.CustomHeaderRenderer;
+import enhancer.NoBorderDialog;
 import java.awt.Color;
 import java.awt.Window;
 import java.sql.PreparedStatement;
@@ -53,17 +54,16 @@ public class User_Reports extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popUp = new javax.swing.JPopupMenu();
+        view = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        viewC = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         purokC = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         dashPane = new javax.swing.JPanel();
-        citizenPane = new javax.swing.JPanel();
         purokPane = new javax.swing.JPanel();
         reportsPane = new javax.swing.JPanel();
         logs = new javax.swing.JPanel();
@@ -76,8 +76,24 @@ public class User_Reports extends javax.swing.JFrame {
         dot = new javax.swing.JLabel();
         settingsPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        adm_header = new javax.swing.JPanel();
-        sa = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        add = new javax.swing.JButton();
+        arc = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        repTbl = new javax.swing.JTable();
+        sa1 = new javax.swing.JLabel();
+
+        view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
+        view.setText(" View Data");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+        popUp.add(view);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -107,7 +123,7 @@ public class User_Reports extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dash_nF.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dash_F.png"))); // NOI18N
         jLabel3.setText(" Dashboard");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,51 +155,6 @@ public class User_Reports extends javax.swing.JFrame {
 
         adm_nav.add(dashC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 140, -1));
 
-        viewC.setBackground(new java.awt.Color(255, 255, 255));
-        viewC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                viewCMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                viewCMouseExited(evt);
-            }
-        });
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_nF.png"))); // NOI18N
-        jLabel5.setText(" Residents");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel5MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout viewCLayout = new javax.swing.GroupLayout(viewC);
-        viewC.setLayout(viewCLayout);
-        viewCLayout.setHorizontalGroup(
-            viewCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(viewCLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        viewCLayout.setVerticalGroup(
-            viewCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewCLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        adm_nav.add(viewC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, -1));
-
         purokC.setBackground(new java.awt.Color(255, 255, 255));
         purokC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -197,7 +168,7 @@ public class User_Reports extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barangay_nF.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-building.png"))); // NOI18N
         jLabel6.setText(" Purok");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -227,7 +198,7 @@ public class User_Reports extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        adm_nav.add(purokC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235), 2));
@@ -257,29 +228,6 @@ public class User_Reports extends javax.swing.JFrame {
 
         adm_nav.add(dashPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        citizenPane.setBackground(new java.awt.Color(255, 255, 255));
-        citizenPane.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                citizenPaneMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                citizenPaneMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout citizenPaneLayout = new javax.swing.GroupLayout(citizenPane);
-        citizenPane.setLayout(citizenPaneLayout);
-        citizenPaneLayout.setHorizontalGroup(
-            citizenPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 9, Short.MAX_VALUE)
-        );
-        citizenPaneLayout.setVerticalGroup(
-            citizenPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
-        adm_nav.add(citizenPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
-
         purokPane.setBackground(new java.awt.Color(255, 255, 255));
         purokPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -301,7 +249,7 @@ public class User_Reports extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        adm_nav.add(purokPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         reportsPane.setBackground(new java.awt.Color(27, 57, 77));
         reportsPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,7 +272,7 @@ public class User_Reports extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(reportsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        adm_nav.add(reportsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         logs.setBackground(new java.awt.Color(255, 255, 255));
         logs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -372,7 +320,7 @@ public class User_Reports extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        adm_nav.add(logs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         logoff.setBackground(new java.awt.Color(255, 255, 255));
         logoff.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -395,7 +343,7 @@ public class User_Reports extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        adm_nav.add(logoff, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         logoffbg.setBackground(new java.awt.Color(255, 255, 255));
         logoffbg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -443,7 +391,7 @@ public class User_Reports extends javax.swing.JFrame {
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+        adm_nav.add(logoffbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         settingsBg.setBackground(new java.awt.Color(255, 255, 255));
         settingsBg.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -462,7 +410,7 @@ public class User_Reports extends javax.swing.JFrame {
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (4).png"))); // NOI18N
         jLabel27.setText(" Settings");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -481,7 +429,7 @@ public class User_Reports extends javax.swing.JFrame {
         dot.setForeground(new java.awt.Color(255, 0, 0));
         settingsBg.add(dot, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 40, 20));
 
-        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 140, -1));
+        adm_nav.add(settingsBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, -1));
 
         settingsPane.setBackground(new java.awt.Color(255, 255, 255));
         settingsPane.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -504,28 +452,83 @@ public class User_Reports extends javax.swing.JFrame {
             .addGap(0, 38, Short.MAX_VALUE)
         );
 
-        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 10, -1));
+        adm_nav.add(settingsPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 10, -1));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(57, 55, 77));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
-        jLabel2.setText("PurokSync");
+        jLabel2.setText("Purok Link");
         adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
 
         jPanel1.add(adm_nav);
         adm_nav.setBounds(-10, -10, 190, 580);
 
-        adm_header.setBackground(new java.awt.Color(255, 255, 255));
-        adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        sa.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        sa.setForeground(new java.awt.Color(27, 55, 77));
-        sa.setText("Reports");
-        adm_header.add(sa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 230, 60));
+        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.add(adm_header);
-        adm_header.setBounds(180, 0, 730, 60);
+        jButton2.setBackground(new java.awt.Color(0, 102, 255));
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Pending Reports");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 145, 30));
+
+        add.setBackground(new java.awt.Color(0, 102, 255));
+        add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        add.setForeground(new java.awt.Color(255, 255, 255));
+        add.setText(" Add Incident");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel6.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 145, 35));
+
+        arc.setBackground(new java.awt.Color(27, 57, 77));
+        arc.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        arc.setForeground(new java.awt.Color(255, 255, 255));
+        arc.setText(" Archived Reports");
+        arc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arcActionPerformed(evt);
+            }
+        });
+        jPanel6.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 145, 35));
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 70));
+
+        repTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        repTbl.setGridColor(new java.awt.Color(136, 136, 136));
+        repTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                repTblMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                repTblMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(repTbl);
+     
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 920, 400));
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(200, 50, 940, 490);
+
+        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        sa1.setForeground(new java.awt.Color(27, 55, 77));
+        sa1.setText("Incident Reports");
+        jPanel1.add(sa1);
+        sa1.setBounds(200, 0, 230, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -549,14 +552,6 @@ public class User_Reports extends javax.swing.JFrame {
     private void dashCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dashCMouseExited
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_dashCMouseExited
-
-    private void viewCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseEntered
-        citizenPane.setBackground(Panecolor);
-    }//GEN-LAST:event_viewCMouseEntered
-
-    private void viewCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewCMouseExited
-        citizenPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_viewCMouseExited
 
     private void purokCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokCMouseEntered
         purokPane.setBackground(Panecolor);
@@ -606,14 +601,6 @@ public class User_Reports extends javax.swing.JFrame {
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_dashPaneMouseExited
 
-    private void citizenPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citizenPaneMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_citizenPaneMouseEntered
-
-    private void citizenPaneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citizenPaneMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_citizenPaneMouseExited
-
     private void purokPaneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purokPaneMouseEntered
         purokPane.setBackground(Panecolor);
     }//GEN-LAST:event_purokPaneMouseEntered
@@ -653,14 +640,6 @@ public class User_Reports extends javax.swing.JFrame {
     private void logsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsMouseExited
       //  reportsPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_logsMouseExited
-
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-       citizenPane.setBackground(Panecolor);
-    }//GEN-LAST:event_jLabel5MouseEntered
-
-    private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
-      citizenPane.setBackground(PaneNcolor);
-    }//GEN-LAST:event_jLabel5MouseExited
 
     private void jLabel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseEntered
        purokPane.setBackground(Panecolor);
@@ -712,12 +691,6 @@ public class User_Reports extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-       User_Residents up = new User_Residents();
-       up.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jLabel5MouseClicked
-
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
         User_Settings as = new User_Settings();
         as.setVisible(true);
@@ -753,7 +726,7 @@ public class User_Reports extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsPaneMouseExited
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-          user_dashboard uds = new user_dashboard();
+        user_dashboard uds = new user_dashboard();
         uds.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
@@ -765,6 +738,59 @@ public class User_Reports extends javax.swing.JFrame {
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
         dashPane.setBackground(PaneNcolor);
     }//GEN-LAST:event_jLabel3MouseExited
+
+    private void repTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_repTblMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_repTblMouseClicked
+
+    private void repTblMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_repTblMousePressed
+          if (SwingUtilities.isRightMouseButton(evt)) {
+            popUp.show(repTbl, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_repTblMousePressed
+
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        User_Reports_Add uds = new User_Reports_Add();
+        uds.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addActionPerformed
+
+    private void arcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arcActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+
+        String i_id = repTbl.getValueAt(repTbl.getSelectedRow(), 0).toString();
+
+        try {
+            dbConnector dbc = new dbConnector();
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, i_id);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+               
+            }
+
+
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_viewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -865,30 +891,35 @@ public class User_Reports extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel adm_header;
+    private javax.swing.JButton add;
     private javax.swing.JPanel adm_nav;
-    private javax.swing.JPanel citizenPane;
+    private javax.swing.JButton arc;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
+    private javax.swing.JPopupMenu popUp;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
+    private javax.swing.JTable repTbl;
     private javax.swing.JPanel reportsPane;
-    private javax.swing.JLabel sa;
+    private javax.swing.JLabel sa1;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
-    private javax.swing.JPanel viewC;
+    private javax.swing.JMenuItem view;
     // End of variables declaration//GEN-END:variables
 }

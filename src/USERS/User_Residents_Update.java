@@ -184,6 +184,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         d = new javax.swing.JLabel();
+        cancel = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
         a4 = new javax.swing.JLabel();
@@ -214,7 +215,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jLabel14 = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
         a8 = new javax.swing.JLabel();
-        cancel = new javax.swing.JButton();
 
         confirmDel.setBackground(new java.awt.Color(255, 255, 255));
         confirmDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -397,6 +397,28 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         d.setForeground(new java.awt.Color(204, 204, 204));
         d.setText("Resident's purok address will be automatically set for every household. ");
         jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 50));
+
+        cancel.setBackground(new java.awt.Color(27, 55, 77));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
+        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/undo-alt.png"))); // NOI18N
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelMouseExited(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel6.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 20, 33, 30));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
 
@@ -596,30 +618,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jPanel3.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 140, 40));
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(20, 60, 1120, 480);
-
-        cancel.setBackground(new java.awt.Color(27, 55, 77));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel.setForeground(new java.awt.Color(255, 255, 255));
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/undo-alt.png"))); // NOI18N
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancelMouseExited(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cancel);
-        cancel.setBounds(1106, 20, 33, 30);
+        jPanel3.setBounds(20, 20, 1120, 520);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -750,10 +749,10 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 imageUpdater(oldpath, path);
             }
 
-        logEvent(userID, "IMPORT_NEW_RESIDENT", "Resident ID: " +  id.getText() + " data is updated by user.");
+        logEvent(userID, "EDITED RESIDENT DATA", "Resident ID: " +  id.getText() + " data is updated by user: "+userID+".");
 
         JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
-        User_Residents ru = new User_Residents();
+        User_Purok ru = new User_Purok();
         ru.setVisible(true);
         this.dispose();
     }
@@ -865,9 +864,9 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 window.dispose();
                 JOptionPane.showMessageDialog(null, "User data archived.");
                 
-               logEvent(userID, "RESIDENT_ARCHIVED", "Resident ID: "+id.getText()+" data is archived by user.");
+               logEvent(userID, "RESIDENT ARCHIVED", "Resident ID: "+id.getText()+" data is archived by user.");
                 
-                User_Residents u = new User_Residents();
+                User_Purok u = new User_Purok();
                 u.setVisible(true);
                 this.dispose();
             } else {
@@ -892,10 +891,10 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
 
-        User_Residents au = new User_Residents ();
-        au.setVisible(true);
-        this.dispose();
-
+       User_Purok au = new User_Purok();
+       au.setVisible(true);
+       this.dispose();
+       
     }//GEN-LAST:event_cancelActionPerformed
 
     private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed

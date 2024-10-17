@@ -1,6 +1,7 @@
 
 package ADMIN;
 
+import USERS.User_Purok;
 import bcirs.login_form;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.itextpdf.text.DocumentException;
@@ -520,7 +521,7 @@ DefaultListModel listModel = new DefaultListModel();
         adm_header.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 50));
 
         jPanel1.add(adm_header);
-        adm_header.setBounds(0, 0, 1180, 70);
+        adm_header.setBounds(0, 0, 1190, 70);
 
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -550,7 +551,7 @@ DefaultListModel listModel = new DefaultListModel();
             }
         });
         jPanel1.add(export);
-        export.setBounds(350, 80, 160, 30);
+        export.setBounds(540, 80, 160, 30);
 
         d1.setBackground(new java.awt.Color(244, 244, 244));
         d1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -724,8 +725,8 @@ DefaultListModel listModel = new DefaultListModel();
 
     private void cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel2ActionPerformed
 
-        Admin_RegUsers ru = new Admin_RegUsers();
-        ru.setVisible(true);
+        Admin_RegUsers ar = new Admin_RegUsers();
+        ar.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_cancel2ActionPerformed

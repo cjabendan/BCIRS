@@ -139,6 +139,8 @@ public class Bgy_Clearance extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,8 +197,7 @@ public class Bgy_Clearance extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("HON. CHRISTIAN JAMES A. ABENDAN");
-        page.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 500, 260, 40));
+        page.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 260, 40));
 
         jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         page.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 430, 20));
@@ -212,8 +213,8 @@ public class Bgy_Clearance extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("By the authority of the Punong Barangay:");
-        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 530, 50));
+        jLabel12.setText(" barangay seal  and the signature/specimen of an authorized barangay official.");
+        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 330, 40));
 
         purpose.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         purpose.setText("Resident purpose");
@@ -313,12 +314,12 @@ public class Bgy_Clearance extends javax.swing.JFrame {
         page.add(lable2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, 20));
 
         jLabel26.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        page.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 260, 20));
+        page.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 550, 260, 20));
 
         jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Punong Barangay");
-        page.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 540, 260, 30));
+        page.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 260, 30));
 
         jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -335,6 +336,16 @@ public class Bgy_Clearance extends javax.swing.JFrame {
 
         jLabel31.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         page.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 90, 20));
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel20.setText("By the authority of the Punong Barangay:");
+        page.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 530, 60));
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("Disclaimer: This document is prefilled for convenience purposes and is not considered official without the");
+        page.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 450, 40));
 
         jPanel1.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 530, 630));
 
@@ -415,6 +426,8 @@ public class Bgy_Clearance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel25;

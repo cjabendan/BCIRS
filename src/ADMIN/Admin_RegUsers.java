@@ -476,7 +476,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dash_nF.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/dash_F.png"))); // NOI18N
         jLabel3.setText(" Dashboard");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -609,7 +609,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/barangay_nF.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house-building.png"))); // NOI18N
         jLabel6.setText(" Barangay");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -657,7 +657,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/folder-open (1).png"))); // NOI18N
         jLabel13.setText("  Logs");
         jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -800,7 +800,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel27.setBackground(new java.awt.Color(255, 255, 255));
         jLabel27.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(57, 55, 77));
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (3).png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/settings (4).png"))); // NOI18N
         jLabel27.setText(" Settings");
         jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -848,7 +848,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel2.setForeground(new java.awt.Color(57, 55, 77));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/mini_logo-removebg-preview (1).png"))); // NOI18N
-        jLabel2.setText("PurokSync");
+        jLabel2.setText("Purok Link");
         adm_nav.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 12, 180, 50));
 
         jPanel1.add(adm_nav);
@@ -878,14 +878,14 @@ DefaultListModel listModel = new DefaultListModel();
         export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         export.setForeground(new java.awt.Color(255, 255, 255));
         export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-download-alt.png"))); // NOI18N
-        export.setText(" Export all users data");
+        export.setText(" Export data");
         export.setBorder(null);
         export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exportActionPerformed(evt);
             }
         });
-        adm_header.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 270, 30));
+        adm_header.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 150, 30));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, -10, 990, 70);

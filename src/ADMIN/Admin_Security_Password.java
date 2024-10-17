@@ -64,8 +64,12 @@ public class Admin_Security_Password extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         sessUsn = new javax.swing.JLabel();
-        mainDk = new javax.swing.JDesktopPane();
+        adm_header = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        d = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         cps = new javax.swing.JPasswordField();
         jLabel30 = new javax.swing.JLabel();
@@ -78,12 +82,7 @@ public class Admin_Security_Password extends javax.swing.JFrame {
         a2 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        adm_header = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        d = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -267,113 +266,6 @@ public class Admin_Security_Password extends javax.swing.JFrame {
         jPanel1.add(adm_nav);
         adm_nav.setBounds(-10, -10, 190, 580);
 
-        mainDk.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
-        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cps.setBackground(new java.awt.Color(242, 242, 242));
-        cps.setBorder(null);
-        jPanel5.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 340, 30));
-
-        jLabel30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel30.setText("Current Password:");
-        jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 110, 20));
-
-        jLabel32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel32.setText("New Password:");
-        jPanel5.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 90, 20));
-
-        nps.setBackground(new java.awt.Color(242, 242, 242));
-        nps.setBorder(null);
-        jPanel5.add(nps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 30));
-
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel31.setText("Confirm  Password:");
-        jPanel5.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, 20));
-
-        cnps.setBackground(new java.awt.Color(242, 242, 242));
-        cnps.setBorder(null);
-        jPanel5.add(cnps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 340, 30));
-
-        jButton1.setBackground(new java.awt.Color(27, 55, 77));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Update password");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 160, 30));
-
-        a3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        a3.setForeground(new java.awt.Color(255, 0, 0));
-        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel5.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 160, 20));
-
-        a2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        a2.setForeground(new java.awt.Color(255, 0, 0));
-        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel5.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 140, 20));
-
-        a1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        a1.setForeground(new java.awt.Color(255, 0, 0));
-        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel5.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 140, 20));
-
-        cancel.setBackground(new java.awt.Color(255, 255, 255));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        cancel.setForeground(new java.awt.Color(27, 57, 77));
-        cancel.setText("Cancel");
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-        jPanel5.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 100, 30));
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 380, 290));
-
-        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel17.setText("Change your password");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 50));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Reset password-amico (1).png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 240, 230));
-
-        mainDk.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout mainDkLayout = new javax.swing.GroupLayout(mainDk);
-        mainDk.setLayout(mainDkLayout);
-        mainDkLayout.setHorizontalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mainDkLayout.setVerticalGroup(
-            mainDkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainDkLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel1.add(mainDk);
-        mainDk.setBounds(180, 60, 720, 360);
-
         adm_header.setBackground(new java.awt.Color(255, 255, 255));
         adm_header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -397,6 +289,99 @@ public class Admin_Security_Password extends javax.swing.JFrame {
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, 0, 990, 60);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel17.setText("Change your password");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 270, 40));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cps.setBackground(new java.awt.Color(242, 242, 242));
+        cps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cps.setBorder(null);
+        jPanel5.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 340, 30));
+
+        jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel30.setText("Current Password:");
+        jPanel5.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 140, 20));
+
+        jLabel32.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel32.setText("New Password:");
+        jPanel5.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 120, 20));
+
+        nps.setBackground(new java.awt.Color(242, 242, 242));
+        nps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nps.setBorder(null);
+        jPanel5.add(nps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 340, 30));
+
+        jLabel31.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel31.setText("Confirm  Password:");
+        jPanel5.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 150, 20));
+
+        cnps.setBackground(new java.awt.Color(242, 242, 242));
+        cnps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cnps.setBorder(null);
+        jPanel5.add(cnps, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 340, 30));
+
+        jButton1.setBackground(new java.awt.Color(27, 55, 77));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Update password");
+        jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 160, 30));
+
+        a3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel5.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 160, 20));
+
+        a2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        a2.setForeground(new java.awt.Color(255, 0, 0));
+        a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel5.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 140, 20));
+
+        a1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        a1.setForeground(new java.awt.Color(255, 0, 0));
+        a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jPanel5.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 140, 20));
+
+        cancel.setBackground(new java.awt.Color(255, 255, 255));
+        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        cancel.setForeground(new java.awt.Color(27, 57, 77));
+        cancel.setText("Cancel");
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
+        jPanel5.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 100, 30));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 390, 290));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Reset password-amico (1).png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 240, 230));
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(180, 60, 980, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -506,9 +491,14 @@ public class Admin_Security_Password extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        admin_dashboard ads = new admin_dashboard();
+        ads.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
         a1.setText("");
         a2.setText("");
         a3.setText("");
@@ -550,15 +540,9 @@ public class Admin_Security_Password extends javax.swing.JFrame {
                     String npass = pH.hashPassword(nps.getText());
                     dbc.updateData("UPDATE tbl_user SET u_pass = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
                     JOptionPane.showMessageDialog(null, "Password changed successfully!");
-                    
-                    
-                    
-                    
-                     logEvent(sess.getUid(), "PASSWORD_RESET", "User password has been reset");
-                     
-                     Admin_Settings as = new Admin_Settings();
-                     as.setVisible(true);
-                     this.dispose();
+                    Admin_Settings as = new Admin_Settings();
+                    as.setVisible(true);
+                    this.dispose();
                 }
             }
 
@@ -566,12 +550,6 @@ public class Admin_Security_Password extends javax.swing.JFrame {
             System.out.println("" + ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        admin_dashboard ads = new admin_dashboard();
-        ads.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
         // TODO add your handling code here:
@@ -582,7 +560,6 @@ public class Admin_Security_Password extends javax.swing.JFrame {
         Admin_Security ru = new Admin_Security();
         ru.setVisible(true);
         this.dispose();
-        
     }//GEN-LAST:event_cancelActionPerformed
 
     
@@ -706,7 +683,6 @@ public class Admin_Security_Password extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    public javax.swing.JDesktopPane mainDk;
     private javax.swing.JPasswordField nps;
     private javax.swing.JPanel secPane;
     public javax.swing.JLabel sessUsn;
