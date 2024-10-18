@@ -11,8 +11,10 @@ import static ADMIN.Admin_RegUsers_Update.usname;
 import bcirs.login_form;
 import config.Session;
 import config.dbConnector;
+import enhancer.NoBorderDialog;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Window;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,13 +22,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -182,7 +188,14 @@ public class User_Settings_Account extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel6 = new javax.swing.JPanel();
+        confirmDel = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        cancelBT = new javax.swing.JButton();
+        yesBT = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -216,17 +229,75 @@ public class User_Settings_Account extends javax.swing.JFrame {
         update = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        confirmDel.setBackground(new java.awt.Color(255, 255, 255));
+        confirmDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        confirmDel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        confirmDel.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 420, 10));
+
+        jLabel21.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("of your account?");
+        confirmDel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 420, 70));
+
+        cancelBT.setBackground(new java.awt.Color(255, 255, 255));
+        cancelBT.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        cancelBT.setForeground(new java.awt.Color(27, 57, 77));
+        cancelBT.setText("Cancel");
+        cancelBT.setBorderPainted(false);
+        cancelBT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancelBTMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancelBTMouseExited(evt);
+            }
+        });
+        cancelBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelBTActionPerformed(evt);
+            }
+        });
+        confirmDel.add(cancelBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 110, 30));
+
+        yesBT.setBackground(new java.awt.Color(27, 57, 77));
+        yesBT.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        yesBT.setForeground(new java.awt.Color(255, 255, 255));
+        yesBT.setText("Confirm");
+        yesBT.setBorderPainted(false);
+        yesBT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                yesBTMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                yesBTMouseExited(evt);
+            }
+        });
+        yesBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesBTActionPerformed(evt);
+            }
+        });
+        confirmDel.add(yesBT, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 110, 30));
+
+        jPanel8.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel22.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel22.setText("NOTICE");
+        jPanel8.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 50));
+
+        confirmDel.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 50));
+
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Do you want to confirm the deletion");
+        confirmDel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 420, 50));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -572,6 +643,19 @@ public class User_Settings_Account extends javax.swing.JFrame {
         jPanel1.add(jLabel17);
         jLabel17.setBounds(210, 80, 280, 60);
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Delete Account");
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 1, true));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(950, 493, 170, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -822,6 +906,93 @@ public class User_Settings_Account extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void cancelBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseEntered
+
+    }//GEN-LAST:event_cancelBTMouseEntered
+
+    private void cancelBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelBTMouseExited
+
+    }//GEN-LAST:event_cancelBTMouseExited
+
+    private void cancelBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBTActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(confirmDel);
+        window.dispose();
+    }//GEN-LAST:event_cancelBTActionPerformed
+
+    private void yesBTMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseEntered
+        yesBT.setBackground(Red);
+    }//GEN-LAST:event_yesBTMouseEntered
+
+    private void yesBTMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yesBTMouseExited
+        yesBT.setBackground(MainC);
+    }//GEN-LAST:event_yesBTMouseExited
+
+    private void yesBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTActionPerformed
+
+        dbConnector dbc = new dbConnector();
+        String stats = "Archived";
+
+        Session sess = Session.getInstance();
+
+        int userID = sess.getUid();
+
+        String sql = "UPDATE tbl_user SET u_status = ? WHERE u_id = ?";
+
+        try (PreparedStatement pst = dbc.connect.prepareStatement(sql)) {
+
+            pst.setString(1, stats);
+            pst.setInt(2, userID);
+            int rowsAffected = pst.executeUpdate();
+
+            if (rowsAffected > 0) {
+                Window window = SwingUtilities.getWindowAncestor(confirmDel);
+                window.dispose();
+                JOptionPane.showMessageDialog(null, "User data archived.");
+
+                logEvent(userID, "USER ACCOUNT DELETED", "USER ID: "+userID+" has deleted their account.");
+
+                login_form u = new login_form();
+                u.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "No records found to delete.");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_yesBTActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, confirmDel);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+        public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+        }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -894,16 +1065,23 @@ public class User_Settings_Account extends javax.swing.JFrame {
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     public javax.swing.JButton cancel;
+    private javax.swing.JButton cancelBT;
+    private javax.swing.JPanel confirmDel;
     public javax.swing.JLabel d;
     private javax.swing.JPanel dashC;
     private javax.swing.JLabel dot;
     public javax.swing.JTextField fn;
     public javax.swing.JLabel image;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -913,8 +1091,8 @@ public class User_Settings_Account extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mail;
     public javax.swing.JButton remove;
@@ -923,5 +1101,6 @@ public class User_Settings_Account extends javax.swing.JFrame {
     public javax.swing.JButton update;
     public javax.swing.JTextField usn;
     private javax.swing.JPanel viewC;
+    private javax.swing.JButton yesBT;
     // End of variables declaration//GEN-END:variables
 }
