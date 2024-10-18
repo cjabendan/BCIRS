@@ -482,7 +482,7 @@ public class User_Reports extends javax.swing.JFrame {
         });
         jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 145, 30));
 
-        add.setBackground(new java.awt.Color(0, 102, 255));
+        add.setBackground(new java.awt.Color(0, 145, 234));
         add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
         add.setText(" Add Incident");
@@ -517,7 +517,7 @@ public class User_Reports extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(repTbl);
-     
+       
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 920, 400));
 
