@@ -24,20 +24,26 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.Window;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -48,6 +54,11 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import net.proteanit.sql.DbUtils;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -81,7 +92,10 @@ public class User_Purok extends javax.swing.JFrame {
     Color PaneNcolor = new Color(255,255,255);
     
     
-  
+    JFileChooser fileChooser = new JFileChooser(new File(System.getProperty("user.home")));
+    File selectedFile;
+    Workbook workbook;
+    Connection connect;
 
     public void displayData() {
     try {
@@ -551,9 +565,10 @@ public class User_Purok extends javax.swing.JFrame {
         list = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         sa2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         sa = new javax.swing.JLabel();
 
         houseAdd.setBackground(new java.awt.Color(255, 255, 255));
@@ -1782,17 +1797,6 @@ public class User_Purok extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 620, 310));
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 255));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Add resident");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 145, 30));
-
         sa2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         sa2.setForeground(new java.awt.Color(27, 55, 77));
         sa2.setText("All Residents ");
@@ -1801,13 +1805,35 @@ public class User_Purok extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(27, 57, 77));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText(" Archived Data");
+        jButton2.setText("Import residents");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 145, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 145, 30));
+
+        jButton3.setBackground(new java.awt.Color(0, 102, 255));
+        jButton3.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Add resident");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 145, 30));
+
+        jButton4.setBackground(new java.awt.Color(27, 57, 77));
+        jButton4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText(" Archived Data");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 145, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(190, 50, 980, 510);
@@ -2399,17 +2425,87 @@ public class User_Purok extends javax.swing.JFrame {
         window.dispose();
     }//GEN-LAST:event_print2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        User_Residents_Add aru = new User_Residents_Add();
-        aru.remove.setEnabled(false);
-        aru.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Archived_Residents au = new Archived_Residents();
-        au.setVisible(true);
-        this.dispose();
+        Session sess = Session.getInstance();
+
+    int userID = sess.getUid();
+
+    int result = fileChooser.showOpenDialog(null);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        selectedFile = fileChooser.getSelectedFile();
+
+    dbConnector dbc = new dbConnector();
+
+    try {
+        workbook = new XSSFWorkbook(selectedFile);
+        Sheet sheet = workbook.getSheetAt(0);
+        int newResidentsCount = 0;
+
+        try (PreparedStatement pst = dbc.connect.prepareStatement(
+                "INSERT INTO tbl_residents(r_lname, r_fname, r_mname, r_address, r_sex, r_dob, "
+                + "r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                Statement.RETURN_GENERATED_KEYS)) {
+
+            Iterator<Row> iterator = sheet.iterator();
+            if (iterator.hasNext()) {
+                iterator.next(); 
+            }
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            while (iterator.hasNext()) {
+                Row row = iterator.next();
+
+                for (int i = 0; i < 9; i++) {
+                    if (row.getCell(i) == null) {
+                        System.out.println("Cell " + i + " in row " + row.getRowNum() + " is null.");
+                    }
+                }
+
+                pst.setString(1, row.getCell(0).getStringCellValue());
+                pst.setString(2, row.getCell(1).getStringCellValue());
+                pst.setString(3, row.getCell(2).getStringCellValue());
+                pst.setString(4, row.getCell(3).getStringCellValue());
+                pst.setString(5, row.getCell(4).getStringCellValue());
+
+                java.util.Date date = row.getCell(5).getDateCellValue();
+                String formattedDate = dateFormat.format(date);
+                pst.setString(6, formattedDate);
+
+                pst.setString(7, row.getCell(6).getStringCellValue());
+                pst.setString(8, row.getCell(7).getStringCellValue());
+                pst.setString(9, row.getCell(8).getStringCellValue());
+                pst.setDouble(10, row.getCell(9).getNumericCellValue());
+                pst.setString(11, "src/u_default/blank_pfp.jpg");
+                pst.setString(12, "Active");
+
+                pst.executeUpdate();
+                newResidentsCount++;
+
+                ResultSet generatedKeys = pst.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    int newResidentId = generatedKeys.getInt(1);
+                    logEvent(userID, "IMPORT_NEW_RESIDENT", "Resident ID: " + newResidentId + " is added by user.");
+                }
+            }
+
+            String updateQuery = "UPDATE tbl_barangay SET b_population = b_population + ? WHERE b_id = ?";
+            PreparedStatement updatePst = dbc.connect.prepareStatement(updateQuery);
+            updatePst.setInt(1, newResidentsCount);
+            updatePst.setInt(2, 1001); 
+            updatePst.executeUpdate();
+            updatePst.close();
+
+            JOptionPane.showMessageDialog(null, "Successfully Imported!");
+            displayData();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    } catch (IOException | InvalidFormatException e) {
+        System.out.println(e);
+    }
+    }
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cancel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseClicked
@@ -2631,6 +2727,14 @@ public class User_Purok extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listMouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
      public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -2738,8 +2842,9 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JPanel imagePanel1;
     private javax.swing.JPanel ipil;
     private javax.swing.JLabel ipilC;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
