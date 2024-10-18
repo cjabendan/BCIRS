@@ -368,7 +368,7 @@ public class User_Security_Code extends javax.swing.JFrame {
 
         jLabel24.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel24.setText("Secuirty Code");
+        jLabel24.setText("Security Code");
         jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel24MouseClicked(evt);
