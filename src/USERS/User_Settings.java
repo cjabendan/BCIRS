@@ -488,9 +488,9 @@ public class User_Settings extends javax.swing.JFrame {
 
         jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 940, 70));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(27, 57, 77));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Delete Account");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 1, true));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -631,9 +631,7 @@ public class User_Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        User_Settings_Account asa = new User_Settings_Account();
-        asa.setVisible(true);
-        this.dispose();
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -643,7 +641,9 @@ public class User_Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        User_Settings_Account asa = new User_Settings_Account();
+        asa.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
