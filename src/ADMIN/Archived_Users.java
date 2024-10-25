@@ -537,7 +537,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 680, 420);
+        jScrollPane1.setBounds(20, 120, 480, 420);
 
         export.setBackground(new java.awt.Color(27, 57, 77));
         export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -551,7 +551,7 @@ DefaultListModel listModel = new DefaultListModel();
             }
         });
         jPanel1.add(export);
-        export.setBounds(540, 80, 160, 30);
+        export.setBounds(340, 80, 160, 30);
 
         d1.setBackground(new java.awt.Color(244, 244, 244));
         d1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -563,7 +563,7 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/File searching-pana (2).png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(780, 210, 290, 220);
+        jLabel1.setBounds(700, 220, 290, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

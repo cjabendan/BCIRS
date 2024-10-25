@@ -80,52 +80,40 @@ public class Admin_Barangay extends javax.swing.JFrame {
      
      private void countDis(){
          
-         try{
-             
-             dbConnector dbc = new dbConnector();
+           try {
+           dbConnector dbc = new dbConnector();
+
          
-             ResultSet rs1 = dbc.getData("SELECT b_population FROM tbl_barangay WHERE b_id = 1001");
-             ResultSet rs2 = dbc.getData("SELECT COUNT(*) AS total_household FROM tbl_household");
-             ResultSet rs3 = dbc.getData("SELECT COUNT(*) AS total_male FROM tbl_residents WHERE r_sex = 'Male'");
-             ResultSet rs4 = dbc.getData("SELECT COUNT(*) AS total_fem FROM tbl_residents WHERE r_sex = 'Female'");
-             ResultSet rs5 = dbc.getData("SELECT COUNT(*) AS total_a FROM tbl_residents WHERE r_status = 'Archived'");
-             
-             if (rs1.next()) {
-                 int ttl_u = rs1.getInt("b_population");
-                 populationCount.setText(" " + ttl_u);
-             }
+           String query = "SELECT " +
+                          "(SELECT COUNT(*) FROM tbl_household) AS total_household_count, " +
+                          "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Male' AND r_status = 'Active') AS total_male, " +
+                          "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Female' AND r_status = 'Active') AS total_female, " +
+                          "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archived') AS total_archived";
+
+           ResultSet rs = dbc.getData(query);
+
+           if (rs.next()) {
+              
+               int totalHousehold = rs.getInt("total_household_count");
+               int totalMale = rs.getInt("total_male");
+               int totalFemale = rs.getInt("total_female");
+               int totalArchived = rs.getInt("total_archived");
 
              
-             if (rs2.next()) {
-                 int ttl_h = rs2.getInt("total_household");
-                 ttl_household.setText(" " + ttl_h);
-             }
-             
-              if (rs3.next()) {
-                 int ttl_m = rs3.getInt("total_male");
-                 male.setText(" " + ttl_m);
-             }
-             
-               if (rs4.next()) {
-                 int ttl_f = rs4.getInt("total_fem");
-                 fem.setText(" " + ttl_f);
-             }
-               
-               
-               if (rs5.next()) {
-                 int ttl_ar = rs5.getInt("total_a");
-                 arch.setText(" " + ttl_ar);
-             }
-             
-             rs1.close();
-             rs2.close();
-             rs3.close();
-             rs4.close();
-             rs5.close();
-         } catch (SQLException ex) {
-             System.out.println("Errors: " + ex.getMessage());
-         }
-         
+               ttl_household.setText(" " + totalHousehold);
+               male.setText(" " + totalMale);
+               fem.setText(" " + totalFemale);
+               arch.setText(" " + totalArchived);
+
+              
+               populationCount.setText(" " + (totalMale + totalFemale));
+           }
+
+           rs.close(); // Close the result set
+       } catch (SQLException ex) {
+           System.out.println("Errors: " + ex.getMessage());
+       }
+
      }
         
    public void displayData() {

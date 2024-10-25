@@ -197,19 +197,19 @@ public class User_Purok extends javax.swing.JFrame {
     String queryTambis = "SELECT COUNT(*) AS ttl_tC FROM tbl_residents r " +
             "JOIN tbl_household h ON r.h_id = h.h_id " +
             "JOIN tbl_purok p ON h.p_id = p.p_id " +
-            "WHERE p.p_id = 1";
+            "WHERE p.p_id = 1 and r.r_status = 'Active'";
     String queryMahogany = "SELECT COUNT(*) AS ttl_mC FROM tbl_residents r " +
             "JOIN tbl_household h ON r.h_id = h.h_id " +
             "JOIN tbl_purok p ON h.p_id = p.p_id " +
-            "WHERE p.p_id = 2";
+            "WHERE p.p_id = 2 and r.r_status = 'Active'";
     String queryGuyabano = "SELECT COUNT(*) AS ttl_gC FROM tbl_residents r " +
             "JOIN tbl_household h ON r.h_id = h.h_id " +
             "JOIN tbl_purok p ON h.p_id = p.p_id " +
-            "WHERE p.p_id = 3";
+            "WHERE p.p_id = 3 and r.r_status = 'Active'";
     String queryIpilIpil = "SELECT COUNT(*) AS ttl_iC FROM tbl_residents r " +
             "JOIN tbl_household h ON r.h_id = h.h_id " +
             "JOIN tbl_purok p ON h.p_id = p.p_id " +
-            "WHERE p.p_id = 4";
+            "WHERE p.p_id = 4 and r.r_status = 'Active'";
     
 
         ResultSet rs1 = dbc.getData(queryTambis);
@@ -468,7 +468,6 @@ public class User_Purok extends javax.swing.JFrame {
         type1 = new javax.swing.JLabel();
         purok1 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        print = new javax.swing.JButton();
         exportData = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
@@ -510,21 +509,6 @@ public class User_Purok extends javax.swing.JFrame {
         type2 = new javax.swing.JLabel();
         purok2 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
-        print2 = new javax.swing.JButton();
-        gendoc = new javax.swing.JPanel();
-        jLabel55 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel56 = new javax.swing.JLabel();
-        cancel2 = new javax.swing.JButton();
-        print1 = new javax.swing.JButton();
-        docs = new javax.swing.JComboBox<>();
-        purpose = new javax.swing.JTextField();
-        a7 = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
-        a8 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        resname = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
@@ -556,8 +540,8 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         guyabanoC = new javax.swing.JLabel();
         ipil = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
         ipilC = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -882,17 +866,6 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel25.setText("House No:");
         viewPanel.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 80, 30));
 
-        print.setBackground(new java.awt.Color(27, 57, 77));
-        print.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        print.setForeground(new java.awt.Color(255, 255, 255));
-        print.setText("Request Document");
-        print.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printActionPerformed(evt);
-            }
-        });
-        viewPanel.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
-
         exportData.setBackground(new java.awt.Color(255, 255, 255));
         exportData.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         exportData.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 320, 10));
@@ -1116,127 +1089,6 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel49.setForeground(new java.awt.Color(27, 57, 77));
         jLabel49.setText("House No:");
         viewPanel1.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 80, 30));
-
-        print2.setBackground(new java.awt.Color(27, 57, 77));
-        print2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        print2.setForeground(new java.awt.Color(255, 255, 255));
-        print2.setText("Document Request");
-        print2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                print2ActionPerformed(evt);
-            }
-        });
-        viewPanel1.add(print2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
-
-        gendoc.setBackground(new java.awt.Color(255, 255, 255));
-        gendoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
-        gendoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        gendoc.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 550, 10));
-
-        jPanel12.setBackground(new java.awt.Color(27, 57, 77));
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel56.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel56.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel56.setText("Generate Document");
-        jPanel12.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
-
-        cancel2.setBackground(new java.awt.Color(255, 0, 0));
-        cancel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel2.setForeground(new java.awt.Color(255, 255, 255));
-        cancel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
-        cancel2.setBorder(null);
-        cancel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancel2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancel2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancel2MouseExited(evt);
-            }
-        });
-        cancel2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancel2ActionPerformed(evt);
-            }
-        });
-        jPanel12.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 30, 30));
-
-        gendoc.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
-
-        print1.setBackground(new java.awt.Color(27, 57, 77));
-        print1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        print1.setForeground(new java.awt.Color(255, 255, 255));
-        print1.setText("Continue");
-        print1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                print1ActionPerformed(evt);
-            }
-        });
-        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
-
-        docs.setBackground(new java.awt.Color(245, 246, 248));
-        docs.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        docs.setForeground(new java.awt.Color(27, 57, 77));
-        docs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please select", "Barangay Clearance", "Barangay Residency", "Certifcate of Indigency", "Certificate of Solo Parent", "Certificate of Senior Citizen", " " }));
-        docs.setBorder(null);
-        docs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                docsActionPerformed(evt);
-            }
-        });
-        gendoc.add(docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 24));
-
-        purpose.setBackground(new java.awt.Color(245, 246, 248));
-        purpose.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        purpose.setForeground(new java.awt.Color(100, 115, 122));
-        purpose.setBorder(null);
-        purpose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                purposeActionPerformed(evt);
-            }
-        });
-        gendoc.add(purpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, 24));
-
-        a7.setForeground(new java.awt.Color(255, 0, 0));
-        a7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        a7.setText("*");
-        gendoc.add(a7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 200, 30));
-
-        jLabel57.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel57.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel57.setText("Document");
-        gendoc.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 70, 20));
-
-        jLabel58.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel58.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel58.setText("Issued to:");
-        gendoc.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 100, 20));
-
-        a8.setForeground(new java.awt.Color(255, 0, 0));
-        a8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        a8.setText("*");
-        gendoc.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 170, 30));
-
-        jLabel59.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel59.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel59.setText("Purpose");
-        gendoc.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 20));
-
-        resname.setBackground(new java.awt.Color(245, 246, 248));
-        resname.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        resname.setForeground(new java.awt.Color(27, 57, 77));
-        resname.setBorder(null);
-        resname.setEnabled(false);
-        resname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resnameActionPerformed(evt);
-            }
-        });
-        gendoc.add(resname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, 24));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1608,130 +1460,74 @@ public class User_Purok extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tambis.setBackground(new java.awt.Color(27, 57, 77));
+        tambis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("TAMBIS");
+        tambis.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
 
         tambisC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tambisC.setForeground(new java.awt.Color(255, 255, 255));
         tambisC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tambisC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         tambisC.setText(" 0");
-
-        javax.swing.GroupLayout tambisLayout = new javax.swing.GroupLayout(tambis);
-        tambis.setLayout(tambisLayout);
-        tambisLayout.setHorizontalGroup(
-            tambisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-            .addComponent(tambisC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        tambisLayout.setVerticalGroup(
-            tambisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tambisLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tambisC, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        tambis.add(tambisC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 145, 58));
 
         jPanel2.add(tambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 145, 130));
 
         mahogany.setBackground(new java.awt.Color(27, 57, 77));
+        mahogany.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MAHOGANY");
+        mahogany.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
 
         mahoganyC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         mahoganyC.setForeground(new java.awt.Color(255, 255, 255));
         mahoganyC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mahoganyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         mahoganyC.setText(" 0");
-
-        javax.swing.GroupLayout mahoganyLayout = new javax.swing.GroupLayout(mahogany);
-        mahogany.setLayout(mahoganyLayout);
-        mahoganyLayout.setHorizontalGroup(
-            mahoganyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-            .addComponent(mahoganyC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        mahoganyLayout.setVerticalGroup(
-            mahoganyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mahoganyLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mahoganyC, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        mahogany.add(mahoganyC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 145, 47));
 
         jPanel2.add(mahogany, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 145, 130));
 
         guyabano.setBackground(new java.awt.Color(27, 57, 77));
+        guyabano.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("GUYABANO");
+        guyabano.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
 
         guyabanoC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         guyabanoC.setForeground(new java.awt.Color(255, 255, 255));
         guyabanoC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guyabanoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         guyabanoC.setText(" 0");
-
-        javax.swing.GroupLayout guyabanoLayout = new javax.swing.GroupLayout(guyabano);
-        guyabano.setLayout(guyabanoLayout);
-        guyabanoLayout.setHorizontalGroup(
-            guyabanoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-            .addComponent(guyabanoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        guyabanoLayout.setVerticalGroup(
-            guyabanoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(guyabanoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(guyabanoC, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        guyabano.add(guyabanoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 145, 49));
 
         jPanel2.add(guyabano, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 145, 130));
 
         ipil.setBackground(new java.awt.Color(27, 57, 77));
-
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("IPIL-IPIL");
+        ipil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ipilC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         ipilC.setForeground(new java.awt.Color(255, 255, 255));
         ipilC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ipilC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         ipilC.setText(" 0");
+        ipil.add(ipilC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 145, 48));
 
-        javax.swing.GroupLayout ipilLayout = new javax.swing.GroupLayout(ipil);
-        ipil.setLayout(ipilLayout);
-        ipilLayout.setHorizontalGroup(
-            ipilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-            .addComponent(ipilC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        ipilLayout.setVerticalGroup(
-            ipilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ipilLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ipilC, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel10.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("IPIL-IPIL");
+        ipil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
 
         jPanel2.add(ipil, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 145, 130));
 
@@ -1793,16 +1589,16 @@ public class User_Purok extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(userTbl);
-     
+
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 620, 310));
 
         sa2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         sa2.setForeground(new java.awt.Color(27, 55, 77));
         sa2.setText("All Residents ");
-        jPanel2.add(sa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 230, 50));
+        jPanel2.add(sa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 130, 50));
 
-        jButton2.setBackground(new java.awt.Color(27, 57, 77));
+        jButton2.setBackground(new java.awt.Color(0, 153, 51));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Import residents");
@@ -1824,10 +1620,10 @@ public class User_Purok extends javax.swing.JFrame {
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 145, 30));
 
-        jButton4.setBackground(new java.awt.Color(27, 57, 77));
+        jButton4.setBackground(new java.awt.Color(27, 55, 77));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText(" Archived Data");
+        jButton4.setText(" Archived Residents");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -2219,7 +2015,6 @@ public class User_Purok extends javax.swing.JFrame {
 
                 id.setText(rs.getString("r_id"));
                 fullname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
-                resname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
                 address.setText(rs.getString("r_address"));
                 dob.setText(rs.getString("r_dob"));
                 age.setText(rs.getString("r_age"));
@@ -2321,16 +2116,6 @@ public class User_Purok extends javax.swing.JFrame {
         window.dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void printActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printActionPerformed
-
-        Object[] options = {};
-        NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
-        dialog.setVisible(true);
-
-        Window window = SwingUtilities.getWindowAncestor(viewPanel);
-        window.dispose();
-    }//GEN-LAST:event_printActionPerformed
-
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
 
     }//GEN-LAST:event_pdfActionPerformed
@@ -2415,16 +2200,6 @@ public class User_Purok extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editActionPerformed
 
-    private void print2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print2ActionPerformed
-        Object[] options = {};
-        NoBorderDialog dialog = new NoBorderDialog(null, gendoc);
-
-        dialog.setVisible(true);
-
-        Window window = SwingUtilities.getWindowAncestor(viewPanel1);
-        window.dispose();
-    }//GEN-LAST:event_print2ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Session sess = Session.getInstance();
 
@@ -2508,156 +2283,6 @@ public class User_Purok extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void cancel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancel2MouseClicked
-
-    private void cancel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancel2MouseEntered
-
-    private void cancel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel2MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancel2MouseExited
-
-    private void cancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel2ActionPerformed
-        Window window = SwingUtilities.getWindowAncestor(gendoc);
-        window.dispose();
-    }//GEN-LAST:event_cancel2ActionPerformed
-
-    private void print1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print1ActionPerformed
-
-        a1.setText("");
-        a2.setText("");
-
-        if (purpose.getText().isEmpty() || docs.getSelectedIndex() == 0) {
-            if (purpose.getText().isEmpty()) {
-                a1.setText("Field required");
-            }
-            if (docs.getSelectedIndex() == 0) {
-                a2.setText("Field required");
-            }
-        } else {
-            switch (docs.getSelectedIndex()) {
-                case 1:
-                {
-                    Bgy_Clearance bc = new Bgy_Clearance();
-                    bc.fullname.setText(fullname.getText()+",");
-                    bc.purok.setText(purok1.getText());
-                    setDateAutomatically2(bc);
-                    bc.age.setText(age.getText());
-
-                    String dobText = dob.getText();
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
-                    try {
-                        Date dateOfBirth = inputFormat.parse(dobText);
-                        String formattedDOB = outputFormat.format(dateOfBirth);
-                        bc.dob.setText(formattedDOB);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-
-                    bc.purpose.setText(purpose.getText());
-                    bc.purok2.setText(purok1.getText());
-                    PanelPrinter pPrint = new PanelPrinter(bc.page);
-                    pPrint.printPanel();
-                    purpose.setText("");
-                    docs.setSelectedIndex(0);
-                    break;
-                }
-
-                case 2:
-                {
-                    Bgy_Residency br = new Bgy_Residency();
-                    br.fullname.setText(fullname.getText()+",");
-                    br.purok.setText(purok1.getText());
-                    setDateAutomatically4(br);
-                    br.purpose.setText(purpose.getText());
-                    br.purok2.setText(purok1.getText());
-                    PanelPrinter pPrint = new PanelPrinter(br.page);
-                    pPrint.printPanel();
-                    purpose.setText("");
-                    docs.setSelectedIndex(0);
-                    break;
-                }
-
-                case 3:
-                {
-                    Bgy_Indigency bi = new Bgy_Indigency();
-                    bi.fullname.setText(fullname.getText()+",");
-                    bi.purok.setText(purok1.getText());
-                    bi.status.setText(status.getText());
-                    bi.age.setText(age.getText());
-                    setDateAutomatically3(bi);
-                    bi.purpose.setText(purpose.getText());
-                    bi.purok2.setText(purok1.getText());
-                    PanelPrinter pPrint = new PanelPrinter(bi.page);
-                    pPrint.printPanel();
-                    purpose.setText("");
-                    docs.setSelectedIndex(0);
-                    break;
-
-                }
-
-                case 4:
-                {
-                    Bgy_Solo_parent bsp = new Bgy_Solo_parent();
-                    bsp.fullname.setText(fullname.getText()+",");
-                    bsp.purok.setText(purok1.getText());
-                    setDateAutomatically(bsp);
-                    bsp.purpose.setText(purpose.getText());
-                    bsp.purok2.setText(purok1.getText());
-                    PanelPrinter pPrint = new PanelPrinter(bsp.page);
-                    pPrint.printPanel();
-                    purpose.setText("");
-                    docs.setSelectedIndex(0);
-                    break;
-                }
-                default:
-                {
-                    Bgy_Senior bs = new Bgy_Senior();
-                    bs.fullname.setText(fullname.getText()+",");
-                    bs.purok.setText(purok1.getText());
-                    bs.age.setText(age.getText());
-                    String dobText = dob.getText();
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    SimpleDateFormat outputFormat = new SimpleDateFormat("MMMM dd, yyyy");
-                    try {
-                        Date dateOfBirth = inputFormat.parse(dobText);
-                        String formattedDOB = outputFormat.format(dateOfBirth);
-                        bs.dob.setText(formattedDOB);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-
-                    setDateAutomatically1(bs);
-                    bs.purpose.setText(purpose.getText());
-                    bs.purok2.setText(purok1.getText());
-                    PanelPrinter pPrint = new PanelPrinter(bs.page);
-                    pPrint.printPanel();
-                    purpose.setText("");
-                    docs.setSelectedIndex(0);
-                    break;
-                }
-            }
-        }
-    }//GEN-LAST:event_print1ActionPerformed
-
-    private void docsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_docsActionPerformed
-
-    private void purposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purposeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_purposeActionPerformed
-
-    private void resnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resnameActionPerformed
-
     private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
             String fullName = list.getSelectedValue();
 
@@ -2704,7 +2329,6 @@ public class User_Purok extends javax.swing.JFrame {
 
                 id1.setText(rs.getString("r_id"));
                 fullname1.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
-                resname.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
                 address1.setText(rs.getString("r_address"));
                 dob1.setText(rs.getString("r_dob"));
                 age1.setText(rs.getString("r_age"));
@@ -2728,11 +2352,15 @@ public class User_Purok extends javax.swing.JFrame {
     }//GEN-LAST:event_listMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        User_Residents_Add as = new User_Residents_Add();
+        as.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        Archived_Residents as = new Archived_Residents();
+        as.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
      public void logEvent(int userId, String event, String description) {
@@ -2803,8 +2431,6 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel a2;
     private javax.swing.JLabel a3;
     private javax.swing.JLabel a4;
-    private javax.swing.JLabel a7;
-    private javax.swing.JLabel a8;
     private javax.swing.JButton addHouse;
     public javax.swing.JTextField address;
     private javax.swing.JLabel address1;
@@ -2814,20 +2440,17 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel age1;
     public javax.swing.JButton cancel;
     public javax.swing.JButton cancel1;
-    public javax.swing.JButton cancel2;
     public javax.swing.JButton cancel3;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dob;
     private javax.swing.JLabel dob1;
-    public javax.swing.JComboBox<String> docs;
     private javax.swing.JLabel dot;
     private javax.swing.JButton edit;
     private javax.swing.JMenuItem editItem;
     private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;
     private javax.swing.JLabel fullname1;
-    private javax.swing.JPanel gendoc;
     private javax.swing.JPanel guyabano;
     private javax.swing.JLabel guyabanoC;
     public javax.swing.JTextField hname;
@@ -2846,6 +2469,7 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -2885,19 +2509,12 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2918,19 +2535,14 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel ocu1;
     private javax.swing.JButton pdf;
     private javax.swing.JPopupMenu popUp;
-    private javax.swing.JButton print;
-    private javax.swing.JButton print1;
-    private javax.swing.JButton print2;
     public javax.swing.JComboBox<String> purok;
     private javax.swing.JLabel purok1;
     private javax.swing.JLabel purok2;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
-    public javax.swing.JTextField purpose;
     private javax.swing.JLabel reg;
     private javax.swing.JLabel reg1;
     private javax.swing.JPanel reportsPane;
-    public javax.swing.JTextField resname;
     private javax.swing.JLabel sa;
     private javax.swing.JLabel sa2;
     private javax.swing.JTextField searchField;

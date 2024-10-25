@@ -58,7 +58,7 @@ DefaultListModel listModel = new DefaultListModel();
    public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT r_id, r_fname, r_lname, r_status FROM tbl_residents WHERE r_status IN ('Archived')"
+        String query = "SELECT r_id, r_fname, r_lname, r_status FROM tbl_residents WHERE r_status IN ('Archive')"
                 + "ORDER BY r_id DESC";
         
         ResultSet rs = dbc.getData(query);
@@ -201,6 +201,7 @@ DefaultListModel listModel = new DefaultListModel();
         list = new javax.swing.JList<>();
         searchField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -615,7 +616,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 820, 420);
+        jScrollPane1.setBounds(20, 120, 490, 420);
 
         export.setBackground(new java.awt.Color(27, 57, 77));
         export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -688,7 +689,11 @@ DefaultListModel listModel = new DefaultListModel();
         jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 40));
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(860, 120, 290, 420);
+        jPanel3.setBounds(520, 80, 290, 460);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/File searching-pana (2).png"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(840, 210, 290, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1086,7 +1091,7 @@ DefaultListModel listModel = new DefaultListModel();
         listModel.removeAllElements();
 
         if (!searchField.getText().isEmpty()) {
-            list.setSize(270, 330);
+            list.setSize(270, 370);
 
             dbConnector dbc = new dbConnector();
 
@@ -1175,6 +1180,7 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel id;
     public javax.swing.JLabel image;
     private javax.swing.JPanel imagePanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

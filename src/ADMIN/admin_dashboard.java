@@ -131,7 +131,7 @@ public class admin_dashboard extends javax.swing.JFrame {
          
         try {
             
-            ResultSet rs = dbc.getData("SELECT COUNT(*) FROM tbl_user");
+            ResultSet rs = dbc.getData("SELECT COUNT(*) FROM tbl_user WHERE u_status = 'Active' OR u_status = 'Pending' ");
             if (rs.next()) {
                 int ttl_u = rs.getInt(1);
                 userCount.setText(" " + ttl_u);
@@ -901,7 +901,7 @@ public class admin_dashboard extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Ease up your work now");
+        jLabel16.setText("Ease up your work now, add your team");
 
         add.setBackground(new java.awt.Color(255, 255, 255));
         add.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -928,9 +928,9 @@ public class admin_dashboard extends javax.swing.JFrame {
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                     .addGroup(illusPanelLayout.createSequentialGroup()
                         .addGroup(illusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel12)
@@ -945,7 +945,7 @@ public class admin_dashboard extends javax.swing.JFrame {
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
         );

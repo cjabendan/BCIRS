@@ -191,7 +191,7 @@ DefaultListModel listModel = new DefaultListModel();
         adm_header = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        export = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
@@ -862,30 +862,27 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel19.setText(" Registered users");
         adm_header.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 60));
 
-        jButton2.setBackground(new java.awt.Color(27, 57, 77));
+        jButton2.setBackground(new java.awt.Color(27, 55, 77));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box.png"))); // NOI18N
-        jButton2.setText(" View Archived Data");
+        jButton2.setText(" Archived Users");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        adm_header.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 170, 30));
+        adm_header.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 30, 130, 30));
 
-        export.setBackground(new java.awt.Color(27, 57, 77));
-        export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        export.setForeground(new java.awt.Color(255, 255, 255));
-        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-download-alt.png"))); // NOI18N
-        export.setText(" Export data");
-        export.setBorder(null);
-        export.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setBackground(new java.awt.Color(0, 102, 255));
+        jButton3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText(" Add Users");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        adm_header.add(export, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 30, 150, 30));
+        adm_header.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 130, 30));
 
         jPanel1.add(adm_header);
         adm_header.setBounds(180, -10, 990, 70);
@@ -1435,14 +1432,11 @@ DefaultListModel listModel = new DefaultListModel();
 
     }//GEN-LAST:event_printActionPerformed
 
-    private void exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportActionPerformed
-        
-         Object[] options = {};
-            NoBorderDialog dialog = new NoBorderDialog(null, exportData);
-            dialog.setVisible(true);
-            
-    }//GEN-LAST:event_exportActionPerformed
-
+    //       Object[] options = {};
+     //       NoBorderDialog dialog = new NoBorderDialog(null, exportData);
+     //       dialog.setVisible(true);
+         
+    
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
      
      Session sess = Session.getInstance();
@@ -1604,6 +1598,12 @@ DefaultListModel listModel = new DefaultListModel();
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Admin_RegUsers_Add ara = new  Admin_RegUsers_Add();
+       ara.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     
      public void logEvent(int userId, String event, String description) {
    
@@ -1655,13 +1655,13 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JLabel dot;
     private javax.swing.JMenuItem editItem;
     private javax.swing.JButton excel;
-    private javax.swing.JButton export;
     private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;
     private javax.swing.JLabel id;
     public javax.swing.JLabel image;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
