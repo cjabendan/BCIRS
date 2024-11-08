@@ -78,43 +78,41 @@ public class Admin_Barangay extends javax.swing.JFrame {
  
   }
      
-     private void countDis(){
-         
-           try {
-           dbConnector dbc = new dbConnector();
+    private void countDis() {
+    try {
+        dbConnector dbc = new dbConnector();
 
-         
-           String query = "SELECT " +
-                          "(SELECT COUNT(*) FROM tbl_household) AS total_household_count, " +
-                          "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Male' AND r_status = 'Active') AS total_male, " +
-                          "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Female' AND r_status = 'Active') AS total_female, " +
-                          "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archived') AS total_archived";
+        String query = "SELECT " +
+                       "(SELECT COUNT(*) FROM tbl_household) AS total_household_count, " +
+                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Male' AND r_status = 'Active') AS total_male, " +
+                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Female' AND r_status = 'Active') AS total_female, " +
+                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archived') AS total_archived, " + // Added missing comma
+                       "(SELECT COUNT(*) FROM tbl_reports WHERE inc_status = 'Open') AS total_reps";
 
-           ResultSet rs = dbc.getData(query);
+        ResultSet rs = dbc.getData(query);
 
-           if (rs.next()) {
-              
-               int totalHousehold = rs.getInt("total_household_count");
-               int totalMale = rs.getInt("total_male");
-               int totalFemale = rs.getInt("total_female");
-               int totalArchived = rs.getInt("total_archived");
+        if (rs.next()) {
+            int totalHousehold = rs.getInt("total_household_count");
+            int totalMale = rs.getInt("total_male");
+            int totalFemale = rs.getInt("total_female");
+            int totalArchived = rs.getInt("total_archived");
+            int totalReps = rs.getInt("total_reps");
 
-             
-               ttl_household.setText(" " + totalHousehold);
-               male.setText(" " + totalMale);
-               fem.setText(" " + totalFemale);
-               arch.setText(" " + totalArchived);
+            // Set text fields with count values
+            ttl_household.setText(" " + totalHousehold);
+            male.setText(" " + totalMale);
+            fem.setText(" " + totalFemale);
+            arch.setText(" " + totalArchived);
+            reps.setText(" " + totalReps);
+            populationCount.setText(" " + (totalMale + totalFemale));
+        }
 
-              
-               populationCount.setText(" " + (totalMale + totalFemale));
-           }
+        rs.close(); // Close the result set
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
+}
 
-           rs.close(); // Close the result set
-       } catch (SQLException ex) {
-           System.out.println("Errors: " + ex.getMessage());
-       }
-
-     }
         
    public void displayData() {
     try {

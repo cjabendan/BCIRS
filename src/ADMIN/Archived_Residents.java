@@ -590,7 +590,7 @@ DefaultListModel listModel = new DefaultListModel();
         d.setBackground(new java.awt.Color(244, 244, 244));
         d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         d.setForeground(new java.awt.Color(204, 204, 204));
-        d.setText("See and manage your archived user data here.");
+        d.setText("See and manage your archived residents data here.");
         adm_header.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 360, 40));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N

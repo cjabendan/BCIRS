@@ -26,6 +26,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -99,6 +101,26 @@ import javax.swing.border.EmptyBorder;
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         cancel = new javax.swing.JButton();
+        Add = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        i_n = new javax.swing.JTextField();
+        i_p = new javax.swing.JTextField();
+        i_dt = new javax.swing.JTextField();
+        i_t = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        i_l = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        i_rb = new javax.swing.JTextField();
+        i_s = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        i_rt = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        d1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         houseAdd.setBackground(new java.awt.Color(255, 255, 255));
         houseAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -264,7 +286,144 @@ import javax.swing.border.EmptyBorder;
         });
         jPanel6.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 20, 33, 30));
 
+        Add.setBackground(new java.awt.Color(0, 102, 255));
+        Add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        Add.setForeground(new java.awt.Color(255, 255, 255));
+        Add.setText("ADD REPORT");
+        Add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMouseClicked(evt);
+            }
+        });
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddActionPerformed(evt);
+            }
+        });
+        jPanel6.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 140, 33));
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Incident Report Form");
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
+
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
+
+        i_n.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_nActionPerformed(evt);
+            }
+        });
+        jPanel3.add(i_n, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 1060, 120));
+
+        i_p.setToolTipText("");
+        i_p.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_pActionPerformed(evt);
+            }
+        });
+        jPanel3.add(i_p, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 690, 60));
+
+        i_dt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_dtActionPerformed(evt);
+            }
+        });
+        jPanel3.add(i_dt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 380, 30));
+
+        i_t.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_tActionPerformed(evt);
+            }
+        });
+        jPanel3.add(i_t, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 290, 30));
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel2.setText("INVOLVED PERSONS & SPECIFIC PARTICIPATION");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 220, 370, 50));
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel6.setText("TYPE OF INCIDENT");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 70, 150, 40));
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel3.setText("INCLUSIVE DATE & TIME OF INCIDENT");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(336, 70, 290, 40));
+
+        i_l.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_lActionPerformed(evt);
+            }
+        });
+        jPanel3.add(i_l, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 690, 30));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel5.setText("NARRATIVE DETAILS OF INCIDENT");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 330, 260, 50));
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 55, 77)));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        i_rb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_rbActionPerformed(evt);
+            }
+        });
+        jPanel9.add(i_rb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 300, 30));
+
+        i_s.setBackground(new java.awt.Color(245, 246, 248));
+        i_s.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        i_s.setForeground(new java.awt.Color(100, 115, 122));
+        i_s.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Status", "Open", "Closed" }));
+        i_s.setBorder(null);
+        i_s.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_sActionPerformed(evt);
+            }
+        });
+        jPanel9.add(i_s, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 300, 30));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel4.setText("REPORTED BY");
+        jPanel9.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 40));
+
+        i_rt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                i_rtActionPerformed(evt);
+            }
+        });
+        jPanel9.add(i_rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 300, 30));
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel9.setText("REPORT STATUS");
+        jPanel9.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 150, 40));
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel10.setText("REPORTED TO");
+        jPanel9.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 110, 40));
+
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 90, 340, 240));
+
+        d1.setBackground(new java.awt.Color(244, 244, 244));
+        d1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        d1.setForeground(new java.awt.Color(27, 57, 77));
+        d1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/info (2).png"))); // NOI18N
+        d1.setText(" Describe the incident in detail, including all actions and exchanges that took place. Include all the physical, emotional, mental damges and etc....");
+        jPanel3.add(d1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 790, 50));
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel7.setText("EXACT LOCATION OF INCIDENT");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 140, 240, 50));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(20, 20, 1120, 520);
@@ -348,6 +507,94 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_hnameActionPerformed
 
+    private void i_nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_nActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_nActionPerformed
+
+    private void i_pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_pActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_pActionPerformed
+
+    private void i_dtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_dtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_dtActionPerformed
+
+    private void i_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_tActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_tActionPerformed
+
+    private void i_rbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_rbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_rbActionPerformed
+
+    private void i_lActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_lActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_lActionPerformed
+
+    private void i_sActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_sActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_sActionPerformed
+
+    private void i_rtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_i_rtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_i_rtActionPerformed
+
+    private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddMouseClicked
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+
+        Session sess = Session.getInstance();
+
+        int userID = sess.getUid();
+
+   
+        if (i_t.getText().isEmpty() || i_l.getText().isEmpty() || i_dt.getText().isEmpty()
+            || i_l.getText().isEmpty() || i_p.getText().isEmpty()
+            || i_rb.getText().isEmpty() ||  i_rt.getText().isEmpty() || i_s.getSelectedIndex() == 0
+           ) {
+
+            JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+
+
+        } else {
+
+            dbConnector dbc = new dbConnector();
+            
+         if (dbc.insertData("INSERT INTO tbl_reports (inc_type, inc_date_time, inc_loc, inc_involvedpersons, inc_narrative, inc_reported_by, inc_received_by, inc_status)"
+        + " VALUES ('" + i_t.getText() + "','" + i_dt.getText() + "','" + i_l.getText() + "','"
+        + i_p.getText() + "','" + i_n.getText() + "','" + i_rb.getText() + "','"
+        + i_rt.getText() + "','" + i_s.getSelectedItem() + "')")) {
+
+        try {
+            ResultSet resultSet = dbc.getData("SELECT inc_id FROM tbl_reports WHERE inc_date_time = '" + i_dt.getText() + "'");
+            if (resultSet.next()) {
+
+                String newIncidentId = resultSet.getString("inc_id");
+        
+                logEvent(userID, "NEW_INCIDENT_REPORT", "New incident reported. Incident ID: " + newIncidentId);
+
+    
+                JOptionPane.showMessageDialog(null, "Incident Reported Successfully!");
+ 
+                User_Reports irv = new User_Reports();
+                irv.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error fetching new incident ID!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User_Reports_Add.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Connection Error!");
+    }
+
+        }
+      
+    }//GEN-LAST:event_AddActionPerformed
+
      public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -415,6 +662,7 @@ import javax.swing.border.EmptyBorder;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton Add;
     private javax.swing.JLabel a11;
     private javax.swing.JLabel a12;
     private javax.swing.JLabel a13;
@@ -422,8 +670,20 @@ import javax.swing.border.EmptyBorder;
     public javax.swing.JTextField address1;
     public javax.swing.JButton cancel;
     public javax.swing.JButton cancel3;
+    public javax.swing.JLabel d1;
     public javax.swing.JTextField hname;
     private javax.swing.JPanel houseAdd;
+    private javax.swing.JTextField i_dt;
+    private javax.swing.JTextField i_l;
+    private javax.swing.JTextField i_n;
+    private javax.swing.JTextField i_p;
+    private javax.swing.JTextField i_rb;
+    private javax.swing.JTextField i_rt;
+    public javax.swing.JComboBox<String> i_s;
+    private javax.swing.JTextField i_t;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -431,10 +691,17 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     public javax.swing.JComboBox<String> purok;
     // End of variables declaration//GEN-END:variables
 }
