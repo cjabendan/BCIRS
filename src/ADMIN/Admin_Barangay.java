@@ -5,7 +5,6 @@
  */
 package ADMIN;
 
-import USERS.User_Residents;
 import bcirs.login_form;
 import certs.Bgy_Clearance;
 import certs.Bgy_Indigency;
@@ -86,7 +85,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
                        "(SELECT COUNT(*) FROM tbl_household) AS total_household_count, " +
                        "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Male' AND r_status = 'Active') AS total_male, " +
                        "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Female' AND r_status = 'Active') AS total_female, " +
-                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archived') AS total_archived, " + // Added missing comma
+                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archive') AS total_archived, " + // Added missing comma
                        "(SELECT COUNT(*) FROM tbl_reports WHERE inc_status = 'Open') AS total_reps";
 
         ResultSet rs = dbc.getData(query);
@@ -1477,9 +1476,9 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         sa1.setForeground(new java.awt.Color(27, 55, 77));
-        sa1.setText("Residents");
+        sa1.setText("All Residents Data");
         jPanel1.add(sa1);
-        sa1.setBounds(200, 180, 130, 60);
+        sa1.setBounds(200, 180, 170, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1849,6 +1848,10 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
     private void print1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print1ActionPerformed
 
+        Session sess = Session.getInstance();
+        
+        int userID = sess.getUid();
+        
         a1.setText("");
         a2.setText("");
 
@@ -1965,7 +1968,9 @@ public class Admin_Barangay extends javax.swing.JFrame {
                     break;
                 }
             }
+             logEvent(userID, "RESIDENT_DOCUMENT_DOWNLOAD", "Resident ID: "+id.getText()+" document is downloaded by user.");
         }
+        
     }//GEN-LAST:event_print1ActionPerformed
 
     private void docsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_docsActionPerformed

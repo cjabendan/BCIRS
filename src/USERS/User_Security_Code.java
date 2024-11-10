@@ -11,8 +11,10 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
@@ -547,6 +549,7 @@ public class User_Security_Code extends javax.swing.JFrame {
 
     private void saveCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCodeActionPerformed
 
+       
         a1.setText("");
         a2.setText("");
 
@@ -578,6 +581,12 @@ public class User_Security_Code extends javax.swing.JFrame {
                 } else {
                     String code = pH.hashPassword(sc.getText());
                     dbc.updateData("UPDATE tbl_user SET u_code = '" + code + "' WHERE u_id = '" + sess.getUid() + "'");
+                    
+                    
+                    
+                    
+                    
+                    
                     Admin_Settings as = new Admin_Settings();
                     as.setVisible(true);
                     this.dispose();
@@ -591,6 +600,30 @@ public class User_Security_Code extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveCodeActionPerformed
 
+       public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new java.util.Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
+    
     private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
         Admin_Security_Password asp = new Admin_Security_Password();
         asp.setVisible(true);

@@ -24,6 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -537,13 +538,13 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 120, 480, 420);
+        jScrollPane1.setBounds(20, 120, 590, 420);
 
         export.setBackground(new java.awt.Color(27, 57, 77));
         export.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         export.setForeground(new java.awt.Color(255, 255, 255));
         export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-download-alt.png"))); // NOI18N
-        export.setText(" Export  data");
+        export.setText(" Export ");
         export.setBorder(null);
         export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -551,19 +552,19 @@ DefaultListModel listModel = new DefaultListModel();
             }
         });
         jPanel1.add(export);
-        export.setBounds(340, 80, 160, 30);
+        export.setBounds(500, 80, 110, 30);
 
         d1.setBackground(new java.awt.Color(244, 244, 244));
         d1.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         d1.setForeground(new java.awt.Color(27, 57, 77));
         d1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/info (2).png"))); // NOI18N
-        d1.setText(" You may download the system's archived data here.");
+        d1.setText(" Access and download the complete set of archived user data for the system here.");
         jPanel1.add(d1);
-        d1.setBounds(20, 80, 310, 30);
+        d1.setBounds(20, 80, 460, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/File searching-pana (2).png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(700, 220, 290, 220);
+        jLabel1.setBounds(830, 320, 290, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

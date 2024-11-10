@@ -1182,7 +1182,7 @@
             <Container class="javax.swing.JLayeredPane" name="jLayeredPane1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="80" width="270" height="330"/>
+                  <AbsoluteConstraints x="10" y="80" width="270" height="370"/>
                 </Constraint>
               </Constraints>
 
@@ -1274,7 +1274,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="840" y="210" width="290" height="220"/>
+              <AbsoluteConstraints x="850" y="330" width="290" height="220"/>
             </Constraint>
           </Constraints>
         </Component>

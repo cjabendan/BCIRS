@@ -51,6 +51,8 @@ import javax.swing.border.EmptyBorder;
         ln.setBorder(new EmptyBorder(0,10,0,0));
         mn.setBorder(new EmptyBorder(0,10,0,0));
         ln.setBorder(new EmptyBorder(0,10,0,0));
+        hname1.setBorder(new EmptyBorder(0,10,0,0));
+        address2.setBorder(new EmptyBorder(0,10,0,0));
         address.setBorder(new EmptyBorder(0,10,0,0));
         occupation.setBorder(new EmptyBorder(0,10,0,0));
         religion.setBorder(new EmptyBorder(0,10,0,0));
@@ -171,6 +173,23 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         yesBT = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
+        houseAdd = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        cancel3 = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        addHouse = new javax.swing.JButton();
+        purok1 = new javax.swing.JComboBox<>();
+        address2 = new javax.swing.JTextField();
+        hname1 = new javax.swing.JTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        a11 = new javax.swing.JLabel();
+        a12 = new javax.swing.JLabel();
+        a13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
@@ -215,6 +234,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jLabel14 = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
         a8 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         confirmDel.setBackground(new java.awt.Color(255, 255, 255));
         confirmDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -283,6 +303,130 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
 
         confirmDel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 50));
+
+        houseAdd.setBackground(new java.awt.Color(255, 255, 255));
+        houseAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        houseAdd.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        houseAdd.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 480, 20));
+
+        jLabel33.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel33.setText("Address");
+        houseAdd.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 60, 20));
+
+        jLabel34.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel34.setText("Purok");
+        houseAdd.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 70, 20));
+
+        jLabel36.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel36.setText("Household Name");
+        houseAdd.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 100, 20));
+
+        jPanel8.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cancel3.setBackground(new java.awt.Color(255, 0, 0));
+        cancel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel3.setForeground(new java.awt.Color(255, 255, 255));
+        cancel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel3.setBorder(null);
+        cancel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel3MouseExited(evt);
+            }
+        });
+        cancel3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel3ActionPerformed(evt);
+            }
+        });
+        jPanel8.add(cancel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 30, 30));
+
+        jLabel37.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel37.setText("Register New Household");
+        jPanel8.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 50));
+
+        houseAdd.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 50));
+
+        addHouse.setBackground(new java.awt.Color(27, 57, 77));
+        addHouse.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addHouse.setForeground(new java.awt.Color(255, 255, 255));
+        addHouse.setText("Register Household");
+        addHouse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHouseActionPerformed(evt);
+            }
+        });
+        houseAdd.add(addHouse, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 170, 30));
+
+        purok1.setBackground(new java.awt.Color(245, 246, 248));
+        purok1.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        purok1.setForeground(new java.awt.Color(100, 115, 122));
+        purok1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "Tambis", "Mahogany", "Guyabano", "Ipil-Ipil", "Minsinitas", "Tugas", "Lubi" }));
+        purok1.setBorder(null);
+        purok1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                purok1ActionPerformed(evt);
+            }
+        });
+        houseAdd.add(purok1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 170, 24));
+
+        address2.setBackground(new java.awt.Color(245, 246, 248));
+        address2.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        address2.setForeground(new java.awt.Color(100, 115, 122));
+        address2.setBorder(null);
+        address2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                address2ActionPerformed(evt);
+            }
+        });
+        houseAdd.add(address2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 230, 24));
+
+        hname1.setBackground(new java.awt.Color(245, 246, 248));
+        hname1.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        hname1.setForeground(new java.awt.Color(100, 115, 122));
+        hname1.setBorder(null);
+        hname1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hname1ActionPerformed(evt);
+            }
+        });
+        houseAdd.add(hname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 230, 24));
+
+        jLabel31.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel31.setText(" Household cannot be edited nor be deleted once registered.");
+        houseAdd.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 320, 20));
+
+        jLabel35.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel35.setText("Note: ");
+        houseAdd.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+
+        a11.setForeground(new java.awt.Color(255, 0, 0));
+        a11.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a11.setText("*");
+        houseAdd.add(a11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 110, 30));
+
+        a12.setForeground(new java.awt.Color(255, 0, 0));
+        a12.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a12.setText("*");
+        houseAdd.add(a12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 140, 30));
+
+        a13.setForeground(new java.awt.Color(255, 0, 0));
+        a13.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a13.setText("*");
+        houseAdd.add(a13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -617,6 +761,16 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         a8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel3.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 140, 40));
 
+        jButton7.setBackground(new java.awt.Color(27, 57, 77));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/plus (1).png"))); // NOI18N
+        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 2, true));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 20, 20));
+
         jPanel1.add(jPanel3);
         jPanel3.setBounds(20, 20, 1120, 520);
 
@@ -636,35 +790,37 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        
-  Session sess = Session.getInstance();
-       
-       if(sess.getUid() == 0){
-            JOptionPane.showMessageDialog(null, "No Account, Log in First! ","Notice", JOptionPane.ERROR_MESSAGE);
-            login_form lgf = new login_form();
-            lgf.setVisible(true);
-            this.dispose();
-       }else{
-           
-           
-          try{
-          dbConnector dbc = new dbConnector();
-           ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
       
-           if(rs.next()){
-               
-              
- 
-           }
+        Session sess = Session.getInstance();
 
-           rs.close();
-                      
-           }catch(SQLException ex){
-                 System.out.println(""+ex);
-         
+       try {
+        dbConnector dbc = new dbConnector();
+        ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
+        ResultSet rs1 = dbc.getData("SELECT h_name FROM tbl_household");
+
+
+        if(rs.next()){
+
+            Vector<String> householdIDs = new Vector<>();
+
+
+            householdIDs.add("Select household");  
+
+            while(rs1.next()) {
+                householdIDs.add(rs1.getString("h_name"));
+            }
+
+
+            DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(householdIDs);
+            household.setModel(model);
+
+
+            rs.close();
+            rs1.close();
         }
-              
-       }
+    } catch(SQLException ex) {
+        System.out.println(""+ex);
+    }
 
     }//GEN-LAST:event_formWindowActivated
 
@@ -933,6 +1089,99 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         // TODO add your handling code here:
     }//GEN-LAST:event_statusActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, houseAdd);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void cancel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseClicked
+
+    }//GEN-LAST:event_cancel3MouseClicked
+
+    private void cancel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseEntered
+
+    }//GEN-LAST:event_cancel3MouseEntered
+
+    private void cancel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseExited
+
+    }//GEN-LAST:event_cancel3MouseExited
+
+    private void cancel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel3ActionPerformed
+
+        Window window = SwingUtilities.getWindowAncestor(houseAdd);
+        window.dispose();
+    }//GEN-LAST:event_cancel3ActionPerformed
+
+    private void addHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHouseActionPerformed
+
+        Session sess = Session.getInstance();
+
+        int userID = sess.getUid();
+
+        a1.setText("");
+        a2.setText("");
+        a3.setText("");
+
+        if(hname1.getText().isEmpty() || address2.getText().isEmpty() || purok1.getSelectedIndex() == 0){
+            if (hname1.getText().isEmpty()) {
+                a1.setText("*");
+            }
+            if (address2.getText().isEmpty()) {
+                a2.setText("*");
+            }
+            if (purok1.getSelectedIndex() == 0) {
+                a3.setText("*");
+            }
+        } else {
+            dbConnector dbc = new dbConnector();
+
+            try {
+
+                String query = "INSERT INTO tbl_household (h_name, h_address, p_id) VALUES (?, ?, ?)";
+                PreparedStatement pst = dbc.connect.prepareStatement(query);
+
+                pst.setString(1, hname1.getText());
+                pst.setString(2, address2.getText());
+                pst.setInt(3, purok1.getSelectedIndex());
+
+                int rowsInserted = pst.executeUpdate();
+
+                if (rowsInserted > 0) {
+                    JOptionPane.showMessageDialog(null, "Household Registered Successfully!");
+
+                    logEvent(userID, "NEW_HOUSEHOLD", "Household: "+hname1.getText()+" is added by user.");
+
+                    Window window = SwingUtilities.getWindowAncestor(houseAdd);
+                    window.dispose();
+
+                    hname1.setText("");
+                    address2.setText("");
+                    purok1.setSelectedIndex(0);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error registering household.");
+                }
+
+                pst.close();
+            } catch (SQLException ex) {
+                System.out.println("Database Error: " + ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_addHouseActionPerformed
+
+    private void purok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purok1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_purok1ActionPerformed
+
+    private void address2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_address2ActionPerformed
+
+    private void hname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hname1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hname1ActionPerformed
+
        public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -1004,6 +1253,9 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     public javax.swing.JButton Add;
     private javax.swing.JLabel a1;
     private javax.swing.JLabel a10;
+    private javax.swing.JLabel a11;
+    private javax.swing.JLabel a12;
+    private javax.swing.JLabel a13;
     private javax.swing.JLabel a2;
     private javax.swing.JLabel a3;
     private javax.swing.JLabel a4;
@@ -1012,18 +1264,24 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JLabel a7;
     private javax.swing.JLabel a8;
     private javax.swing.JLabel a9;
+    private javax.swing.JButton addHouse;
     public javax.swing.JButton addProfile;
     public javax.swing.JTextField address;
+    public javax.swing.JTextField address2;
     public javax.swing.JButton cancel;
+    public javax.swing.JButton cancel3;
     private javax.swing.JButton cancelBT;
     private javax.swing.JPanel confirmDel;
     public javax.swing.JLabel d;
     public javax.swing.JButton delete;
     public com.toedter.calendar.JDateChooser dob;
     public javax.swing.JTextField fn;
+    public javax.swing.JTextField hname1;
+    private javax.swing.JPanel houseAdd;
     public javax.swing.JComboBox<String> household;
     public javax.swing.JLabel id;
     public javax.swing.JLabel image;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1035,6 +1293,13 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -1044,9 +1309,11 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mn;
     public javax.swing.JTextField occupation;
+    public javax.swing.JComboBox<String> purok1;
     public javax.swing.JTextField religion;
     public javax.swing.JButton remove;
     public javax.swing.JComboBox<String> sex;

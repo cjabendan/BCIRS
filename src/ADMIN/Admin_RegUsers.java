@@ -1300,7 +1300,15 @@ DefaultListModel listModel = new DefaultListModel();
                     ru.addProfile.setText(" Add profile");
                     ru.remove.setEnabled(false);
                 }
+                
+                
             }
+            
+                             
+            Object[] options = {};
+            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
+            dialog.setVisible(true);
+            
         } catch (SQLException ex) {
             System.out.println("Errors: " + ex.getMessage());
         }

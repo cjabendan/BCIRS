@@ -37,10 +37,14 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -77,6 +81,10 @@ public class User_Purok extends javax.swing.JFrame {
          roundUPanel1();
          roundUPanel2();
          roundUPanel3();
+         roundUPanel4();
+         roundUPanel5();
+         roundUPanel5();
+         roundUPanel6();
          displayData();
          purokCount();
         list.setModel(listModel);
@@ -90,6 +98,7 @@ public class User_Purok extends javax.swing.JFrame {
     Color Bluetxt = new Color(89,182,255);
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
+    Color BlueB = new Color(0,102,255);
     
     
     JFileChooser fileChooser = new JFileChooser(new File(System.getProperty("user.home")));
@@ -135,11 +144,75 @@ public class User_Purok extends javax.swing.JFrame {
     }
 }
 
+    public void displayData(String purokName) {
+    dbConnector dbc = new dbConnector();
+    ResultSet rs = null;
+
+    try {
+        // Base query with conditional purok filter
+        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                     + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                     + "r.r_sex, h.h_name "
+                     + "FROM tbl_residents r "
+                     + "JOIN tbl_household h ON r.h_id = h.h_id "
+                     + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                     + "WHERE r.r_status = 'Active' ";
+
+        // Modify the query to filter by purok if a purokName is provided
+        if (purokName != null && !purokName.isEmpty()) {
+            query += "AND p.p_name = ? ";
+        }
+        
+        query += "ORDER BY r.r_id DESC";
+
+        PreparedStatement pst = dbc.connect.prepareStatement(query);
+        
+        // Set the purokName parameter if a filter is applied
+        if (purokName != null && !purokName.isEmpty()) {
+            pst.setString(1, purokName);
+        }
+
+        rs = pst.executeQuery();
+
+        // Display data in the table
+        userTbl.setModel(DbUtils.resultSetToTableModel(rs));
+        JTableHeader th = userTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        TableColumn tc0 = tcm.getColumn(0);
+        TableColumn tc1 = tcm.getColumn(1);
+        TableColumn tc2 = tcm.getColumn(2);
+        TableColumn tc3 = tcm.getColumn(3);
+        TableColumn tc4 = tcm.getColumn(4);
+        TableColumn tc5 = tcm.getColumn(5);
+
+        tc0.setHeaderValue("ID");
+        tc1.setHeaderValue("Last Name");
+        tc2.setHeaderValue("First Name");
+        tc3.setHeaderValue("Age");
+        tc4.setHeaderValue("Sex");
+        tc5.setHeaderValue("Household");
+
+        th.setDefaultRenderer(new CustomHeaderRenderer());
+        th.repaint();
+        
+
+    } catch (SQLException ex) {
+        System.err.println("Error displaying data: " + ex.getMessage());
+    } finally {
+        try {
+            if (rs != null) rs.close();
+            if (dbc.connect != null) dbc.connect.close();
+        } catch (SQLException e) {
+            System.err.println("Error closing resources: " + e.getMessage());
+        }
+    }
+}
+
     
       private void roundUPanel(){
       
         RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
-        rounded.setBounds(0, 0, 145, 130);
+        rounded.setBounds(0, 0, 125, 130);
         
         tambis.setLayout(null); 
         tambis.add(rounded);
@@ -151,7 +224,7 @@ public class User_Purok extends javax.swing.JFrame {
        private void roundUPanel1(){
        
         RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
-        rounded.setBounds(0, 0, 145, 130);
+        rounded.setBounds(0, 0, 125, 130);
            
         mahogany.setLayout(null); 
         mahogany.add(rounded);
@@ -164,7 +237,7 @@ public class User_Purok extends javax.swing.JFrame {
          private void roundUPanel2(){
        
         RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
-        rounded.setBounds(0, 0, 145, 130);
+        rounded.setBounds(0, 0, 125, 130);
            
          guyabano.setLayout(null); 
         guyabano.add(rounded);
@@ -177,7 +250,7 @@ public class User_Purok extends javax.swing.JFrame {
         private void roundUPanel3(){
        
         RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
-        rounded.setBounds(0, 0, 145, 130);
+        rounded.setBounds(0, 0, 125, 130);
            
         ipil.setLayout(null); 
         ipil.add(rounded);
@@ -186,6 +259,46 @@ public class User_Purok extends javax.swing.JFrame {
         
            
        } 
+        
+        private void roundUPanel4(){
+       
+        RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
+        rounded.setBounds(0, 0, 125, 130);
+           
+        minsi.setLayout(null); 
+        minsi.add(rounded);
+        minsi.repaint();
+        minsi.revalidate();
+        
+           
+       } 
+          
+        private void roundUPanel5(){
+       
+        RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
+        rounded.setBounds(0, 0, 125, 130);
+           
+        tugas.setLayout(null); 
+        tugas.add(rounded);
+        tugas.repaint();
+        tugas.revalidate();
+        
+           
+       } 
+           
+        private void roundUPanel6(){
+       
+        RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 20);
+        rounded.setBounds(0, 0, 125, 130);
+           
+        lubi.setLayout(null); 
+        lubi.add(rounded);
+        lubi.repaint();
+        lubi.revalidate();
+        
+           
+       } 
+         
          
         
           private void purokCount() {
@@ -210,38 +323,59 @@ public class User_Purok extends javax.swing.JFrame {
             "JOIN tbl_household h ON r.h_id = h.h_id " +
             "JOIN tbl_purok p ON h.p_id = p.p_id " +
             "WHERE p.p_id = 4 and r.r_status = 'Active'";
+    String queryMinsinitas = "SELECT COUNT(*) AS ttl_minC FROM tbl_residents r " +
+                "JOIN tbl_household h ON r.h_id = h.h_id " +
+                "JOIN tbl_purok p ON h.p_id = p.p_id " +
+                "WHERE p.p_id = 5 AND r.r_status = 'Active'";
+    String queryTugas = "SELECT COUNT(*) AS ttl_tugC FROM tbl_residents r " +
+                "JOIN tbl_household h ON r.h_id = h.h_id " +
+                "JOIN tbl_purok p ON h.p_id = p.p_id " +
+                "WHERE p.p_id = 6 AND r.r_status = 'Active'";
+    String queryLubi = "SELECT COUNT(*) AS ttl_lubC FROM tbl_residents r " +
+                "JOIN tbl_household h ON r.h_id = h.h_id " +
+                "JOIN tbl_purok p ON h.p_id = p.p_id " +
+                "WHERE p.p_id = 7 AND r.r_status = 'Active'";
     
 
         ResultSet rs1 = dbc.getData(queryTambis);
         ResultSet rs2 = dbc.getData(queryMahogany);
         ResultSet rs3 = dbc.getData(queryGuyabano);
         ResultSet rs4 = dbc.getData(queryIpilIpil);
+        ResultSet rs5 = dbc.getData(queryMinsinitas);
+        ResultSet rs6 = dbc.getData(queryTugas);
+        ResultSet rs7 = dbc.getData(queryLubi);
 
         if (rs1.next()) {
-            int totalt = rs1.getInt("ttl_tC");
-            tambisC.setText(" "+ totalt);
+            tambisC.setText(" " + rs1.getInt("ttl_tC"));
+        }
+        if (rs2.next()) {
+            mahoganyC.setText(" " + rs2.getInt("ttl_mC"));
+        }
+        if (rs3.next()) {
+            guyabanoC.setText(" " + rs3.getInt("ttl_gC"));
+        }
+        if (rs4.next()) {
+            ipilC.setText(" " + rs4.getInt("ttl_iC"));
+        }
+        if (rs5.next()) {
+            minsiC.setText(" " + rs5.getInt("ttl_minC"));
+        }
+        if (rs6.next()) {
+            tugasC.setText(" " + rs6.getInt("ttl_tugC"));
+        }
+        if (rs7.next()) {
+            lubiC.setText(" " + rs7.getInt("ttl_lubC"));
         }
 
-         if (rs2.next()) {
-            int totalm = rs2.getInt("ttl_mC");
-            mahoganyC.setText(" "+ totalm);
-        }
-         
-         
-         if (rs3.next()) {
-            int totalg = rs3.getInt("ttl_gC");
-            guyabanoC.setText(" "+ totalg);
-        }
-         
-          if (rs4.next()) {
-            int totali = rs4.getInt("ttl_iC");
-            ipilC.setText(" "+ totali);
-        }
-              
+        // Close all ResultSets
         rs1.close();
         rs2.close();
         rs3.close();
         rs4.close();
+        rs5.close();
+        rs6.close();
+        rs7.close();
+
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
     }
@@ -533,15 +667,19 @@ public class User_Purok extends javax.swing.JFrame {
         tambis = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         tambisC = new javax.swing.JLabel();
+        tambisB = new javax.swing.JButton();
         mahogany = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         mahoganyC = new javax.swing.JLabel();
+        mahoganyB = new javax.swing.JButton();
         guyabano = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         guyabanoC = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
         ipil = new javax.swing.JPanel();
         ipilC = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -549,11 +687,24 @@ public class User_Purok extends javax.swing.JFrame {
         list = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
-        sa2 = new javax.swing.JLabel();
+        purokData = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        tugas = new javax.swing.JPanel();
+        tugasC = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton11 = new javax.swing.JButton();
+        lubi = new javax.swing.JPanel();
+        lubiC = new javax.swing.JLabel();
+        asd = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        minsi = new javax.swing.JPanel();
+        minsiC = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         sa = new javax.swing.JLabel();
+        cancel6 = new javax.swing.JButton();
 
         houseAdd.setBackground(new java.awt.Color(255, 255, 255));
         houseAdd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -1466,16 +1617,27 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("TAMBIS");
-        tambis.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
+        tambis.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 120, -1));
 
         tambisC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         tambisC.setForeground(new java.awt.Color(255, 255, 255));
         tambisC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tambisC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         tambisC.setText(" 0");
-        tambis.add(tambisC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 45, 145, 58));
+        tambis.add(tambisC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 50));
 
-        jPanel2.add(tambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 145, 130));
+        tambisB.setBackground(new java.awt.Color(27, 55, 77));
+        tambisB.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        tambisB.setForeground(new java.awt.Color(255, 255, 255));
+        tambisB.setText("View");
+        tambisB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambisBActionPerformed(evt);
+            }
+        });
+        tambis.add(tambisB, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(tambis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 125, 130));
 
         mahogany.setBackground(new java.awt.Color(27, 57, 77));
         mahogany.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1484,16 +1646,27 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MAHOGANY");
-        mahogany.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
+        mahogany.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 130, -1));
 
         mahoganyC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         mahoganyC.setForeground(new java.awt.Color(255, 255, 255));
         mahoganyC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mahoganyC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         mahoganyC.setText(" 0");
-        mahogany.add(mahoganyC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 145, 47));
+        mahogany.add(mahoganyC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 130, 50));
 
-        jPanel2.add(mahogany, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 145, 130));
+        mahoganyB.setBackground(new java.awt.Color(27, 55, 77));
+        mahoganyB.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        mahoganyB.setForeground(new java.awt.Color(255, 255, 255));
+        mahoganyB.setText("View");
+        mahoganyB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mahoganyBActionPerformed(evt);
+            }
+        });
+        mahogany.add(mahoganyB, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(mahogany, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 125, 130));
 
         guyabano.setBackground(new java.awt.Color(27, 57, 77));
         guyabano.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1502,16 +1675,27 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("GUYABANO");
-        guyabano.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
+        guyabano.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 130, -1));
 
         guyabanoC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         guyabanoC.setForeground(new java.awt.Color(255, 255, 255));
         guyabanoC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         guyabanoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         guyabanoC.setText(" 0");
-        guyabano.add(guyabanoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 145, 49));
+        guyabano.add(guyabanoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 50));
 
-        jPanel2.add(guyabano, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 145, 130));
+        jButton8.setBackground(new java.awt.Color(27, 55, 77));
+        jButton8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("View");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        guyabano.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(guyabano, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 125, 130));
 
         ipil.setBackground(new java.awt.Color(27, 57, 77));
         ipil.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1521,15 +1705,26 @@ public class User_Purok extends javax.swing.JFrame {
         ipilC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ipilC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
         ipilC.setText(" 0");
-        ipil.add(ipilC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 145, 48));
+        ipil.add(ipilC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 50));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("IPIL-IPIL");
-        ipil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 145, -1));
+        ipil.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 130, -1));
 
-        jPanel2.add(ipil, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 145, 130));
+        jButton9.setBackground(new java.awt.Color(27, 55, 77));
+        jButton9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("View");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        ipil.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(ipil, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 125, 130));
 
         jPanel3.setBackground(new java.awt.Color(27, 55, 77));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1552,7 +1747,7 @@ public class User_Purok extends javax.swing.JFrame {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 270, 30));
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 280, 30));
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -1574,9 +1769,9 @@ public class User_Purok extends javax.swing.JFrame {
         jLayeredPane1.add(list);
         list.setBounds(0, 0, 0, 0);
 
-        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 400));
+        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 280, 270));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 290, 490));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 305, 360));
 
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -1589,56 +1784,166 @@ public class User_Purok extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(userTbl);
+      
 
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 640, 320));
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 620, 310));
-
-        sa2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        sa2.setForeground(new java.awt.Color(27, 55, 77));
-        sa2.setText("All Residents ");
-        jPanel2.add(sa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 130, 50));
+        purokData.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        purokData.setForeground(new java.awt.Color(27, 55, 77));
+        purokData.setText("All Residents Data");
+        jPanel2.add(purokData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 50));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 51));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Import residents");
+        jButton2.setText("IMPORT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 145, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 110, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 102, 255));
         jButton3.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Add resident");
+        jButton3.setText("ADD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 145, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 110, 30));
+
+        tugas.setBackground(new java.awt.Color(27, 57, 77));
+        tugas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tugasC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tugasC.setForeground(new java.awt.Color(255, 255, 255));
+        tugasC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tugasC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
+        tugasC.setText(" 0");
+        tugas.add(tugasC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 50));
+
+        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("TUGAS");
+        tugas.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 120, -1));
+
+        jButton11.setBackground(new java.awt.Color(27, 55, 77));
+        jButton11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("View");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        tugas.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(tugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 125, 130));
+
+        lubi.setBackground(new java.awt.Color(27, 57, 77));
+        lubi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lubiC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lubiC.setForeground(new java.awt.Color(255, 255, 255));
+        lubiC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lubiC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
+        lubiC.setText(" 0");
+        lubi.add(lubiC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 50));
+
+        asd.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        asd.setForeground(new java.awt.Color(255, 255, 255));
+        asd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        asd.setText("LUBI");
+        lubi.add(asd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 120, -1));
+
+        jButton5.setBackground(new java.awt.Color(27, 55, 77));
+        jButton5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("View");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        lubi.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(lubi, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 0, 125, 130));
+
+        minsi.setBackground(new java.awt.Color(27, 57, 77));
+        minsi.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        minsiC.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        minsiC.setForeground(new java.awt.Color(255, 255, 255));
+        minsiC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        minsiC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users (2).png"))); // NOI18N
+        minsiC.setText(" 0");
+        minsi.add(minsiC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 50));
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("MINSINITAS");
+        minsi.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 130, -1));
+
+        jButton10.setBackground(new java.awt.Color(27, 55, 77));
+        jButton10.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
+        jButton10.setText("View");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        minsi.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 90, 100, 30));
+
+        jPanel2.add(minsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 125, 130));
 
         jButton4.setBackground(new java.awt.Color(27, 55, 77));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText(" Archived Residents");
+        jButton4.setText(" ARCHIVED ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 145, 30));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 110, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(190, 50, 980, 510);
 
         sa.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         sa.setForeground(new java.awt.Color(27, 55, 77));
-        sa.setText("Purok Data");
+        sa.setText("Purok Data Overview");
         jPanel1.add(sa);
-        sa.setBounds(210, 0, 130, 50);
+        sa.setBounds(190, 0, 180, 50);
+
+        cancel6.setBackground(new java.awt.Color(27, 55, 77));
+        cancel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel6.setForeground(new java.awt.Color(255, 255, 255));
+        cancel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/refresh.png"))); // NOI18N
+        cancel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel6MouseExited(evt);
+            }
+        });
+        cancel6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancel6);
+        cancel6.setBounds(1120, 10, 33, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1771,9 +2076,15 @@ public class User_Purok extends javax.swing.JFrame {
     }//GEN-LAST:event_logoffMouseExited
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        login_form ads = new login_form();
+        Session sess = Session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
 
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
+       
+        login_form ads = new login_form();
+        JOptionPane.showMessageDialog(null, "Log out successfully!");
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel28MouseClicked
@@ -1955,7 +2266,7 @@ public class User_Purok extends javax.swing.JFrame {
         listModel.removeAllElements();
 
         if (!searchField.getText().isEmpty()) {
-            list.setSize(270, 400);
+            list.setSize(280, 270);
 
             dbConnector dbc = new dbConnector();
 
@@ -2072,7 +2383,7 @@ public class User_Purok extends javax.swing.JFrame {
                 uru.ACCOUNT_NAME.setText(rs.getString("r_fname") + " " + rs.getString("r_lname"));
                 java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
                 uru.dob.setDate(date);
-
+                uru.household.setSelectedItem(rs.getString("h_id"));
                 uru.status.setSelectedItem(rs.getString("r_civilstatus"));
                 uru.sex.setSelectedItem(rs.getString("r_sex"));
                 uru.occupation.setText(rs.getString("r_occupation"));
@@ -2093,7 +2404,7 @@ public class User_Purok extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         } catch (ParseException ex) {
-            Logger.getLogger(User_Residents.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User_Residents_Update.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_editItemActionPerformed
@@ -2137,11 +2448,14 @@ public class User_Purok extends javax.swing.JFrame {
         window.dispose();
     }//GEN-LAST:event_cancel1ActionPerformed
 
+
+
+
     private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
 
         dbConnector dbc = new dbConnector();
         String rid = id1.getText();
-
+        
         try{
 
             String query = "SELECT r.*, h.h_name, p.p_name, "
@@ -2172,7 +2486,7 @@ public class User_Purok extends javax.swing.JFrame {
 
                 java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
                 uru.dob.setDate(date);
-
+                uru.household.setSelectedIndex(rs.getInt("h_id"));
                 uru.status.setSelectedItem(rs.getString("r_civilstatus"));
                 uru.sex.setSelectedItem(rs.getString("r_sex"));
                 uru.occupation.setText(rs.getString("r_occupation"));
@@ -2196,7 +2510,7 @@ public class User_Purok extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
         } catch (ParseException ex) {
-            Logger.getLogger(User_Residents.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(User_Residents_Update.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_editActionPerformed
 
@@ -2363,6 +2677,82 @@ public class User_Purok extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String purokName = "Lubi"; 
+
+        purokData.setText("Purok Lubi Residents");
+       
+        displayData(purokName);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tambisBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambisBActionPerformed
+       String purokName = "Tambis"; 
+
+       purokData.setText("Purok Tambis Residents");
+       
+       displayData(purokName);
+    }//GEN-LAST:event_tambisBActionPerformed
+
+    private void mahoganyBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mahoganyBActionPerformed
+        String purokName = "Mahogany"; 
+
+       purokData.setText("Purok Mahogany Residents");
+        
+        displayData(purokName);
+    }//GEN-LAST:event_mahoganyBActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+         String purokName = "Guyabano"; 
+
+        purokData.setText("Purok Guyabano Residents");
+         
+        displayData(purokName);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+         String purokName = "Ipil-Ipil"; 
+
+        purokData.setText("Purok Ipil-Ipil Residents");
+         
+        displayData(purokName);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+         String purokName = "Minsinitas"; 
+
+        purokData.setText("Purok Minsinitas Residents");
+       
+        displayData(purokName);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        String purokName = "Tugas"; 
+        
+        purokData.setText("Purok Tugas Residents");
+        
+        displayData(purokName);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void cancel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel6MouseClicked
+
+    }//GEN-LAST:event_cancel6MouseClicked
+
+    private void cancel6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel6MouseEntered
+        cancel.setBackground(BlueB);
+    }//GEN-LAST:event_cancel6MouseEntered
+
+    private void cancel6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel6MouseExited
+        cancel.setBackground(PaneNcolor);
+    }//GEN-LAST:event_cancel6MouseExited
+
+    private void cancel6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel6ActionPerformed
+
+        purokData.setText("All Resident Data");
+        
+        displayData();
+        
+    }//GEN-LAST:event_cancel6ActionPerformed
+
      public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -2438,9 +2828,11 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JPanel adm_nav;
     private javax.swing.JLabel age;
     private javax.swing.JLabel age1;
+    private javax.swing.JLabel asd;
     public javax.swing.JButton cancel;
     public javax.swing.JButton cancel1;
     public javax.swing.JButton cancel3;
+    public javax.swing.JButton cancel6;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dob;
@@ -2465,11 +2857,18 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JPanel imagePanel1;
     private javax.swing.JPanel ipil;
     private javax.swing.JLabel ipilC;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -2528,8 +2927,13 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
+    private javax.swing.JPanel lubi;
+    private javax.swing.JLabel lubiC;
     private javax.swing.JPanel mahogany;
+    private javax.swing.JButton mahoganyB;
     private javax.swing.JLabel mahoganyC;
+    private javax.swing.JPanel minsi;
+    private javax.swing.JLabel minsiC;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel ocu;
     private javax.swing.JLabel ocu1;
@@ -2539,12 +2943,12 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel purok1;
     private javax.swing.JLabel purok2;
     private javax.swing.JPanel purokC;
+    private javax.swing.JLabel purokData;
     private javax.swing.JPanel purokPane;
     private javax.swing.JLabel reg;
     private javax.swing.JLabel reg1;
     private javax.swing.JPanel reportsPane;
     private javax.swing.JLabel sa;
-    private javax.swing.JLabel sa2;
     private javax.swing.JTextField searchField;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
@@ -2557,7 +2961,10 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel status;
     private javax.swing.JLabel status1;
     private javax.swing.JPanel tambis;
+    private javax.swing.JButton tambisB;
     private javax.swing.JLabel tambisC;
+    private javax.swing.JPanel tugas;
+    private javax.swing.JLabel tugasC;
     private javax.swing.JLabel type1;
     private javax.swing.JLabel type2;
     private javax.swing.JTable userTbl;

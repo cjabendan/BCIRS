@@ -39,26 +39,6 @@ public class Bgy_Clearance extends javax.swing.JFrame {
     }
 
     
-        Timer t;
-        SimpleDateFormat st;
-    
-    private void time(){
-
-        t = new Timer(0, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                
-                Date dt = new Date();
-                st = new SimpleDateFormat("hh:mm:ss a");
-                
-                String tm = st.format(dt);              
-            }
-        });
-        
-        t.start();
-        
-    }
-    
     
     public ImageIcon resizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
         Image originalImage = originalIcon.getImage();

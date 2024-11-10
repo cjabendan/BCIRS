@@ -11,8 +11,10 @@ import config.Session;
 import config.dbConnector;
 import enhancer.CustomHeaderRenderer;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.JTableHeader;
@@ -718,11 +720,39 @@ public class user_dashboard extends javax.swing.JFrame {
     private void logoffMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_logoffMouseExited
+   public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
 
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new java.util.Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        login_form ads = new login_form();
+       Session sess = Session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
 
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
+       
+        login_form ads = new login_form();
+        JOptionPane.showMessageDialog(null, "Log out successfully!");
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel28MouseClicked

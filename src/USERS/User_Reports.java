@@ -18,6 +18,7 @@ import java.awt.Window;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -146,21 +147,6 @@ public class User_Reports extends javax.swing.JFrame {
 
         popUp = new javax.swing.JPopupMenu();
         view = new javax.swing.JMenuItem();
-        viewPanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        id = new javax.swing.JLabel();
-        uid = new javax.swing.JLabel();
-        event = new javax.swing.JLabel();
-        time = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        cancel = new javax.swing.JButton();
-        des = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         dashC = new javax.swing.JPanel();
@@ -199,95 +185,6 @@ public class User_Reports extends javax.swing.JFrame {
             }
         });
         popUp.add(view);
-
-        viewPanel.setBackground(new java.awt.Color(255, 255, 255));
-        viewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
-        viewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel4.setText("Time:");
-        viewPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 80, 20));
-        viewPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 440, 10));
-
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel10.setText("User:");
-        viewPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 60, 20));
-
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel11.setText("Event:");
-        viewPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 70, 20));
-
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel12.setText("Description:");
-        viewPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 100, 20));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel13.setText("Log ID:");
-        viewPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 50, 20));
-
-        id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        id.setForeground(new java.awt.Color(27, 57, 77));
-        id.setText("Id number");
-        viewPanel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 90, 20));
-
-        uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        uid.setForeground(new java.awt.Color(27, 57, 77));
-        uid.setText("User ID:");
-        viewPanel.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 170, 20));
-
-        event.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        event.setForeground(new java.awt.Color(27, 57, 77));
-        event.setText("User ID:");
-        viewPanel.add(event, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 310, 20));
-
-        time.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        time.setForeground(new java.awt.Color(27, 57, 77));
-        time.setText("User ID:");
-        viewPanel.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 310, 20));
-
-        jPanel7.setBackground(new java.awt.Color(27, 57, 77));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText(" INCIDENT REPORT");
-        jPanel7.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 50));
-
-        cancel.setBackground(new java.awt.Color(255, 0, 0));
-        cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        cancel.setForeground(new java.awt.Color(255, 255, 255));
-        cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
-        cancel.setBorder(null);
-        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cancelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                cancelMouseExited(evt);
-            }
-        });
-        cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelActionPerformed(evt);
-            }
-        });
-        jPanel7.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 30, 30));
-
-        viewPanel.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, -1));
-
-        des.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        des.setForeground(new java.awt.Color(27, 57, 77));
-        des.setText("User ID:");
-        viewPanel.add(des, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 300, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -711,7 +608,7 @@ public class User_Reports extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(repTbl);
-     
+       
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 920, 400));
 
@@ -851,10 +748,42 @@ public class User_Reports extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_logoffMouseExited
 
-    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        login_form ads = new login_form();
+        public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
 
-        JOptionPane.showMessageDialog(null,"Log out successfully!");
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new java.util.Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+       
+    }
+    
+     }
+    
+    
+    
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        Session sess = Session.getInstance();
+        
+        int userId = sess.getUid();
+        
+        logEvent(userId, "LOGOUT", "User logged out");
+
+       
+        login_form ads = new login_form();
+        JOptionPane.showMessageDialog(null, "Log out successfully!");
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel28MouseClicked
@@ -996,24 +925,6 @@ public class User_Reports extends javax.swing.JFrame {
 
     }//GEN-LAST:event_viewActionPerformed
 
-    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-
-    }//GEN-LAST:event_cancelMouseClicked
-
-    private void cancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseEntered
-
-    }//GEN-LAST:event_cancelMouseEntered
-
-    private void cancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseExited
-
-    }//GEN-LAST:event_cancelMouseExited
-
-    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-
-        Window window = SwingUtilities.getWindowAncestor(viewPanel);
-        window.dispose();
-    }//GEN-LAST:event_cancelActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1116,32 +1027,20 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JButton add;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JButton arc;
-    public javax.swing.JButton cancel;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
-    private javax.swing.JLabel des;
     private javax.swing.JLabel dot;
-    private javax.swing.JLabel event;
-    private javax.swing.JLabel id;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
@@ -1154,9 +1053,6 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JLabel sa1;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
-    private javax.swing.JLabel time;
-    private javax.swing.JLabel uid;
     private javax.swing.JMenuItem view;
-    private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package USERS;
 
+import Reports.Reports_Temp;
+import config.PanelPrinter;
 import config.Session;
 import config.dbConnector;
 import enhancer.NoBorderDialog;
@@ -338,7 +340,7 @@ import javax.swing.border.EmptyBorder;
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Incident Report Form");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1120, 70));
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
 
         jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1120, 70));
 
@@ -571,7 +573,25 @@ import javax.swing.border.EmptyBorder;
     }//GEN-LAST:event_PRINTMouseExited
 
     private void PRINTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PRINTActionPerformed
-     
+        
+        Session sess = Session.getInstance();
+        
+        int userID = sess.getUid();
+        
+        Reports_Temp ru = new Reports_Temp();
+       
+        ru.i_t1.setText(i_t1.getText());
+        ru.i_dt1.setText(i_dt1.getText());
+        ru.i_l1.setText(i_l1.getText());
+        ru.i_p1.setText(i_p1.getText());
+        ru.i_n1.setText(i_n1.getText());
+        ru.i_rb1.setText(i_rb1.getText());
+        ru.i_rt1.setText(i_rt1.getText());
+    
+        PanelPrinter pPrint = new PanelPrinter(ru.page);
+        pPrint.printPanel();
+        
+          logEvent(userID, "INCIDENT_REPORT_DOWNLOAD", "Incident Report ID: "+id.getText()+" is downloaded by user.");
     }//GEN-LAST:event_PRINTActionPerformed
 
      public void logEvent(int userId, String event, String description) {

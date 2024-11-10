@@ -660,7 +660,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLayeredPane1.add(list);
         list.setBounds(0, 0, 0, 0);
 
-        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 330));
+        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 270, 370));
 
         searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -693,7 +693,7 @@ DefaultListModel listModel = new DefaultListModel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/File searching-pana (2).png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(840, 210, 290, 220);
+        jLabel1.setBounds(850, 330, 290, 220);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1096,7 +1096,7 @@ DefaultListModel listModel = new DefaultListModel();
             dbConnector dbc = new dbConnector();
 
             try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?"
-                + "AND (r_status = 'Archived')")){
+                + "AND (r_status = 'Archive')")){
 
             String name = searchField.getText();
             pst.setString(1, "%" + name + "%");
