@@ -64,6 +64,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
         displayData();
         list.setModel(listModel);
         searchField.setBorder(new EmptyBorder(0, 10, 0, 0));
+        resname.setBorder(new EmptyBorder(0, 10, 0, 0));
+        purpose.setBorder(new EmptyBorder(0, 10, 0, 0));
     }
     
      private void barangayPanel(){
@@ -637,7 +639,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         gendoc.setBackground(new java.awt.Color(255, 255, 255));
         gendoc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         gendoc.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        gendoc.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 550, 10));
+        gendoc.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 380, 10));
 
         jPanel10.setBackground(new java.awt.Color(27, 57, 77));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -646,7 +648,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel40.setText("Generate Document");
-        jPanel10.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+        jPanel10.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 50));
 
         cancel2.setBackground(new java.awt.Color(255, 0, 0));
         cancel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -669,32 +671,32 @@ public class Admin_Barangay extends javax.swing.JFrame {
                 cancel2ActionPerformed(evt);
             }
         });
-        jPanel10.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 30, 30));
+        jPanel10.add(cancel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 30, 30));
 
-        gendoc.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 50));
+        gendoc.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 50));
 
         print1.setBackground(new java.awt.Color(27, 57, 77));
         print1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         print1.setForeground(new java.awt.Color(255, 255, 255));
-        print1.setText("Continue");
+        print1.setText("GENERATE");
         print1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 print1ActionPerformed(evt);
             }
         });
-        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
+        gendoc.add(print1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 110, 30));
 
         docs.setBackground(new java.awt.Color(245, 246, 248));
         docs.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         docs.setForeground(new java.awt.Color(27, 57, 77));
-        docs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please select", "Barangay Clearance", "Barangay Residency", "Certifcate of Indigency", "Certificate of Solo Parent", "Certificate of Senior Citizen", " " }));
+        docs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please select", "Barangay Clearance", "Barangay Residency", "Certifcate of Indigency", "Certificate of Solo Parent", "Certificate of Senior Citizen" }));
         docs.setBorder(null);
         docs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 docsActionPerformed(evt);
             }
         });
-        gendoc.add(docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 24));
+        gendoc.add(docs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 200, 30));
 
         purpose.setBackground(new java.awt.Color(245, 246, 248));
         purpose.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -705,32 +707,32 @@ public class Admin_Barangay extends javax.swing.JFrame {
                 purposeActionPerformed(evt);
             }
         });
-        gendoc.add(purpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, 24));
+        gendoc.add(purpose, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 320, 30));
 
         a2.setForeground(new java.awt.Color(255, 0, 0));
         a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a2.setText("*");
-        gendoc.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 200, 30));
+        gendoc.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 110, 30));
 
         jLabel34.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(27, 57, 77));
         jLabel34.setText("Document");
-        gendoc.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 70, 20));
+        gendoc.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 70, 30));
 
         jLabel37.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(27, 57, 77));
         jLabel37.setText("Issued to:");
-        gendoc.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 100, 20));
+        gendoc.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 100, 40));
 
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a1.setText("*");
-        gendoc.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 170, 30));
+        gendoc.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 170, 40));
 
         jLabel38.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(27, 57, 77));
         jLabel38.setText("Purpose");
-        gendoc.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, 20));
+        gendoc.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, 40));
 
         resname.setBackground(new java.awt.Color(245, 246, 248));
         resname.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
@@ -742,7 +744,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
                 resnameActionPerformed(evt);
             }
         });
-        gendoc.add(resname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, 24));
+        gendoc.add(resname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 320, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);

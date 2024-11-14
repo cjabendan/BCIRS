@@ -64,7 +64,7 @@ public class terms extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("By using our “PurokSync” system, you agree to comply with the following terms: ");
+        jLabel3.setText("By using our “Purok Link” system, you agree to comply with the following terms: ");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 1160, -1));
 
         jPanel1.add(jPanel2);

@@ -1,6 +1,7 @@
 
 package ADMIN;
 
+import Reports.PrintUserDets;
 import USERS.User_Purok;
 import bcirs.login_form;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;

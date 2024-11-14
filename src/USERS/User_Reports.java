@@ -168,13 +168,12 @@ public class User_Reports extends javax.swing.JFrame {
         settingsPane = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        add = new javax.swing.JButton();
-        arc = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         repTbl = new javax.swing.JTable();
+        add = new javax.swing.JButton();
+        arc = new javax.swing.JButton();
         sa1 = new javax.swing.JLabel();
+        sa2 = new javax.swing.JLabel();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -559,45 +558,7 @@ public class User_Reports extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 235)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton2.setBackground(new java.awt.Color(0, 102, 255));
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Pending Reports");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 145, 30));
-
-        add.setBackground(new java.awt.Color(0, 145, 234));
-        add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        add.setForeground(new java.awt.Color(255, 255, 255));
-        add.setText("ADD INCIDENT");
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addActionPerformed(evt);
-            }
-        });
-        jPanel6.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 145, 35));
-
-        arc.setBackground(new java.awt.Color(27, 57, 77));
-        arc.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
-        arc.setForeground(new java.awt.Color(255, 255, 255));
-        arc.setText("ARCHIVED INCIDENTS");
-        arc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                arcActionPerformed(evt);
-            }
-        });
-        jPanel6.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 145, 35));
-
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 70));
-
-        repTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        repTbl.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         repTbl.setGridColor(new java.awt.Color(136, 136, 136));
         repTbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -608,18 +569,45 @@ public class User_Reports extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(repTbl);
-       
+  
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 920, 400));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 900, 400));
+
+        add.setBackground(new java.awt.Color(0, 145, 234));
+        add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        add.setForeground(new java.awt.Color(255, 255, 255));
+        add.setText("ADD INCIDENT");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 145, 35));
+
+        arc.setBackground(new java.awt.Color(27, 57, 77));
+        arc.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        arc.setForeground(new java.awt.Color(255, 255, 255));
+        arc.setText("ARCHIVED INCIDENTS");
+        arc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arcActionPerformed(evt);
+            }
+        });
+        jPanel3.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, -1, 35));
+
+        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        sa1.setForeground(new java.awt.Color(27, 55, 77));
+        sa1.setText("INCIDENT REPORT FILING");
+        jPanel3.add(sa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 290, 70));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(200, 50, 940, 490);
 
-        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        sa1.setForeground(new java.awt.Color(27, 55, 77));
-        sa1.setText("Incident Reports");
-        jPanel1.add(sa1);
-        sa1.setBounds(200, 0, 230, 50);
+        sa2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        sa2.setForeground(new java.awt.Color(27, 55, 77));
+        sa2.setText("Reports");
+        jPanel1.add(sa2);
+        sa2.setBounds(200, 0, 230, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -884,10 +872,6 @@ public class User_Reports extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_arcActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
 
      int rowIndex = repTbl.getSelectedRow();
@@ -1030,7 +1014,6 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1040,7 +1023,6 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
@@ -1051,6 +1033,7 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JTable repTbl;
     private javax.swing.JPanel reportsPane;
     private javax.swing.JLabel sa1;
+    private javax.swing.JLabel sa2;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
     private javax.swing.JMenuItem view;

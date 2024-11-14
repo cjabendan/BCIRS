@@ -72,9 +72,8 @@ public class admin_dashboard extends javax.swing.JFrame {
   
    private void activePanel(){
       
-    
        RoundPanel rounded = new RoundPanel(new Color(27, 57, 77), 15);
-       rounded.setBounds(0, 0, 110, 80);
+       rounded.setBounds(0, 0, 200, 80);
        activePanel.add(rounded);
        activePanel.repaint();
        activePanel.revalidate();
@@ -83,9 +82,8 @@ public class admin_dashboard extends javax.swing.JFrame {
    
     private void pendingPanel(){
       
-    
        RoundPanel rounded = new RoundPanel(new Color(40,82,115), 15);
-       rounded.setBounds(0, 0, 110, 80);
+       rounded.setBounds(0, 0, 200, 80);
        pendingPanel.add(rounded);
        pendingPanel.repaint();
        pendingPanel.revalidate();
@@ -94,9 +92,11 @@ public class admin_dashboard extends javax.swing.JFrame {
    
       private void archivePanel(){
       
-    
        RoundPanel rounded = new RoundPanel(new Color(40,82,115), 15);
-       rounded.setBounds(0, 0, 110, 80);
+       rounded.setBounds(0, 0, 200, 80);
+       archivePanel.add(rounded);
+       archivePanel.repaint();
+       archivePanel.revalidate();
   }
   
     
@@ -224,7 +224,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         
         if (rs2.next()) {
             int userAc = rs2.getInt("TotalAc");
-         //    archive.setText(" " + userAc);
+            arc.setText(" " + userAc);
         } else {
             System.out.println("No users found!");
         }
@@ -321,16 +321,16 @@ public class admin_dashboard extends javax.swing.JFrame {
         active = new javax.swing.JLabel();
         pendingPanel = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
-        pending = new javax.swing.JLabel();
+        arc = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         logsTbl = new javax.swing.JTable();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
-        pendingPanel1 = new javax.swing.JPanel();
+        archivePanel = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
-        pending1 = new javax.swing.JLabel();
+        pending = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
 
         userSettings.setBackground(new java.awt.Color(27, 55, 77));
         userSettings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1014,7 +1014,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/check (1).png"))); // NOI18N
-        jLabel29.setText(" ACTIVE");
+        jLabel29.setText(" ACTIVE USER");
         jLabel29.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
         active.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -1026,8 +1026,8 @@ public class admin_dashboard extends javax.swing.JFrame {
         activePanel.setLayout(activePanelLayout);
         activePanelLayout.setHorizontalGroup(
             activePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(active, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         activePanelLayout.setVerticalGroup(
             activePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1037,30 +1037,30 @@ public class admin_dashboard extends javax.swing.JFrame {
                 .addComponent(active, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(activePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 110, 80));
+        jPanel2.add(activePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 200, 80));
 
         pendingPanel.setBackground(new java.awt.Color(40, 82, 115));
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/pending.png"))); // NOI18N
-        jLabel36.setText(" ARCHIVED");
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/trash.png"))); // NOI18N
+        jLabel36.setText(" ARCHIVED USER");
         jLabel36.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
-        pending.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        pending.setForeground(new java.awt.Color(255, 255, 255));
-        pending.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pending.setText("0");
-        pending.addMouseListener(new java.awt.event.MouseAdapter() {
+        arc.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        arc.setForeground(new java.awt.Color(255, 255, 255));
+        arc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        arc.setText("0");
+        arc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pendingMouseClicked(evt);
+                arcMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pendingMouseEntered(evt);
+                arcMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pendingMouseExited(evt);
+                arcMouseExited(evt);
             }
         });
 
@@ -1068,18 +1068,18 @@ public class admin_dashboard extends javax.swing.JFrame {
         pendingPanel.setLayout(pendingPanelLayout);
         pendingPanelLayout.setHorizontalGroup(
             pendingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(pending, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(arc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pendingPanelLayout.setVerticalGroup(
             pendingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pendingPanelLayout.createSequentialGroup()
                 .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(pending, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addComponent(arc, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(pendingPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 110, 80));
+        jPanel2.add(pendingPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 200, 80));
 
         time.setBackground(new java.awt.Color(27, 57, 77));
         time.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -1101,21 +1101,14 @@ public class admin_dashboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(logsTbl);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 690, 260));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 730, 260));
 
         jLabel33.setBackground(new java.awt.Color(27, 57, 77));
         jLabel33.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(27, 57, 77));
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setText("System Reports");
-        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 130, 60));
-
-        jLabel34.setBackground(new java.awt.Color(27, 57, 77));
-        jLabel34.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(27, 57, 77));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("Recent Activities");
-        jPanel2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 140, 60));
+        jLabel33.setText("Recent Activities");
+        jPanel2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 140, 60));
 
         date.setBackground(new java.awt.Color(27, 57, 77));
         date.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -1124,47 +1117,54 @@ public class admin_dashboard extends javax.swing.JFrame {
         date.setText("Date");
         jPanel2.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 240, 40));
 
-        pendingPanel1.setBackground(new java.awt.Color(40, 82, 115));
+        archivePanel.setBackground(new java.awt.Color(40, 82, 115));
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(255, 255, 255));
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/pending.png"))); // NOI18N
-        jLabel37.setText(" PENDING");
+        jLabel37.setText(" PENDING USERS");
         jLabel37.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 
-        pending1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        pending1.setForeground(new java.awt.Color(255, 255, 255));
-        pending1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pending1.setText("0");
-        pending1.addMouseListener(new java.awt.event.MouseAdapter() {
+        pending.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        pending.setForeground(new java.awt.Color(255, 255, 255));
+        pending.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pending.setText("0");
+        pending.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pending1MouseClicked(evt);
+                pendingMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pending1MouseEntered(evt);
+                pendingMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pending1MouseExited(evt);
+                pendingMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout pendingPanel1Layout = new javax.swing.GroupLayout(pendingPanel1);
-        pendingPanel1.setLayout(pendingPanel1Layout);
-        pendingPanel1Layout.setHorizontalGroup(
-            pendingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(pending1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout archivePanelLayout = new javax.swing.GroupLayout(archivePanel);
+        archivePanel.setLayout(archivePanelLayout);
+        archivePanelLayout.setHorizontalGroup(
+            archivePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(pending, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        pendingPanel1Layout.setVerticalGroup(
-            pendingPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pendingPanel1Layout.createSequentialGroup()
+        archivePanelLayout.setVerticalGroup(
+            archivePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(archivePanelLayout.createSequentialGroup()
                 .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(pending1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pending, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
         );
 
-        jPanel2.add(pendingPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 110, 80));
+        jPanel2.add(archivePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 200, 80));
+
+        jLabel35.setBackground(new java.awt.Color(27, 57, 77));
+        jLabel35.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel35.setText("System Reports");
+        jPanel2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 130, 60));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(190, 60, 950, 490);
@@ -1501,19 +1501,19 @@ public class admin_dashboard extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_addActionPerformed
 
-    private void pendingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseClicked
+    private void arcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arcMouseClicked
         Admin_RegUsers ar = new Admin_RegUsers();
         ar.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_pendingMouseClicked
+    }//GEN-LAST:event_arcMouseClicked
 
-    private void pendingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseEntered
+    private void arcMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arcMouseEntered
        
-    }//GEN-LAST:event_pendingMouseEntered
+    }//GEN-LAST:event_arcMouseEntered
 
-    private void pendingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseExited
+    private void arcMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_arcMouseExited
        
-    }//GEN-LAST:event_pendingMouseExited
+    }//GEN-LAST:event_arcMouseExited
 
     private void logsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logsTblMouseClicked
         // TODO add your handling code here:
@@ -1523,17 +1523,17 @@ public class admin_dashboard extends javax.swing.JFrame {
  
     }//GEN-LAST:event_logsTblMousePressed
 
-    private void pending1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pending1MouseClicked
+    private void pendingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_pending1MouseClicked
+    }//GEN-LAST:event_pendingMouseClicked
 
-    private void pending1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pending1MouseEntered
+    private void pendingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_pending1MouseEntered
+    }//GEN-LAST:event_pendingMouseEntered
 
-    private void pending1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pending1MouseExited
+    private void pendingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_pending1MouseExited
+    }//GEN-LAST:event_pendingMouseExited
 
  public void logEvent(int userId, String event, String description) {
    
@@ -1605,6 +1605,8 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
     private javax.swing.JLabel admin_name;
+    private javax.swing.JLabel arc;
+    private javax.swing.JPanel archivePanel;
     private javax.swing.JPasswordField cnps;
     private javax.swing.JPasswordField cps;
     private javax.swing.JPanel dashC;
@@ -1637,7 +1639,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel5;
@@ -1658,9 +1660,7 @@ public class admin_dashboard extends javax.swing.JFrame {
     private javax.swing.JPasswordField nps;
     public javax.swing.JPanel panelUcount;
     private javax.swing.JLabel pending;
-    private javax.swing.JLabel pending1;
     private javax.swing.JPanel pendingPanel;
-    private javax.swing.JPanel pendingPanel1;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
     private javax.swing.JLabel resPs1;

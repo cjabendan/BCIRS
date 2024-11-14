@@ -103,7 +103,7 @@ import javax.swing.border.EmptyBorder;
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         cancel = new javax.swing.JButton();
-        Add = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         PRINT = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -298,21 +298,21 @@ import javax.swing.border.EmptyBorder;
         });
         jPanel6.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 20, 33, 30));
 
-        Add.setBackground(new java.awt.Color(0, 102, 255));
-        Add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
-        Add.setForeground(new java.awt.Color(255, 255, 255));
-        Add.setText("UDPATE REPORT");
-        Add.addMouseListener(new java.awt.event.MouseAdapter() {
+        update.setBackground(new java.awt.Color(0, 102, 255));
+        update.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
+        update.setForeground(new java.awt.Color(255, 255, 255));
+        update.setText("UDPATE REPORT");
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddMouseClicked(evt);
+                updateMouseClicked(evt);
             }
         });
-        Add.addActionListener(new java.awt.event.ActionListener() {
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
-        jPanel6.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 140, 33));
+        jPanel6.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 140, 33));
 
         PRINT.setBackground(new java.awt.Color(27, 55, 77));
         PRINT.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -540,11 +540,11 @@ import javax.swing.border.EmptyBorder;
 
     }//GEN-LAST:event_cancelActionPerformed
 
-    private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddMouseClicked
+    }//GEN-LAST:event_updateMouseClicked
 
-    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
 
            User_Reports_Update ru = new User_Reports_Update(); 
            ru.id.setText(id.getText());
@@ -558,7 +558,7 @@ import javax.swing.border.EmptyBorder;
            ru.i_s.setSelectedItem(i_s1.getText());
            ru.setVisible(true);
            this.dispose();
-    }//GEN-LAST:event_AddActionPerformed
+    }//GEN-LAST:event_updateActionPerformed
 
     private void PRINTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PRINTMouseClicked
         // TODO add your handling code here:
@@ -685,7 +685,6 @@ import javax.swing.border.EmptyBorder;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton Add;
     public javax.swing.JButton PRINT;
     private javax.swing.JLabel a11;
     private javax.swing.JLabel a12;
@@ -736,5 +735,6 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     public javax.swing.JComboBox<String> purok;
+    public javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
