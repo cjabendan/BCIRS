@@ -136,6 +136,10 @@ public class register_form extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        hide1 = new javax.swing.JLabel();
+        show1 = new javax.swing.JLabel();
+        hide = new javax.swing.JLabel();
+        show = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -173,6 +177,50 @@ public class register_form extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        hide1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide1.setForeground(new java.awt.Color(153, 153, 153));
+        hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide1MousePressed(evt);
+            }
+        });
+        jPanel3.add(hide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 320, -1, -1));
+
+        show1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show1.setForeground(new java.awt.Color(153, 153, 153));
+        show1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show1MouseClicked(evt);
+            }
+        });
+        jPanel3.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 320, -1, -1));
+
+        hide.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide.setForeground(new java.awt.Color(153, 153, 153));
+        hide.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hideMousePressed(evt);
+            }
+        });
+        jPanel3.add(hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 320, -1, -1));
+
+        show.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show.setForeground(new java.awt.Color(153, 153, 153));
+        show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMouseClicked(evt);
+            }
+        });
+        jPanel3.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 320, -1, -1));
+
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 42)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(27, 55, 77));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -188,7 +236,7 @@ public class register_form extends javax.swing.JFrame {
                 fnActionPerformed(evt);
             }
         });
-        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 230, 35));
+        jPanel3.add(fn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 240, 35));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel14.setText("First Name");
@@ -257,7 +305,7 @@ public class register_form extends javax.swing.JFrame {
                 lnActionPerformed(evt);
             }
         });
-        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 230, 35));
+        jPanel3.add(ln, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 240, 35));
 
         signIn.setBackground(new java.awt.Color(245, 246, 248));
         signIn.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -296,7 +344,7 @@ public class register_form extends javax.swing.JFrame {
                 mailActionPerformed(evt);
             }
         });
-        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 230, 35));
+        jPanel3.add(mail, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 240, 35));
 
         usn.setBackground(new java.awt.Color(242, 242, 242));
         usn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -307,18 +355,18 @@ public class register_form extends javax.swing.JFrame {
                 usnActionPerformed(evt);
             }
         });
-        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 230, 35));
+        jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 240, 35));
 
         a1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a1.setText("*");
-        jPanel3.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 140, 30));
+        jPanel3.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 140, 30));
 
         ps.setBackground(new java.awt.Color(242, 242, 242));
         ps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ps.setBorder(null);
-        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 230, 35));
+        jPanel3.add(ps, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 240, 35));
 
         jLabel20.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel20.setText("Confirm Password");
@@ -328,36 +376,36 @@ public class register_form extends javax.swing.JFrame {
         a2.setForeground(new java.awt.Color(255, 0, 0));
         a2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a2.setText("*");
-        jPanel3.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 140, 30));
+        jPanel3.add(a2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 140, 30));
 
         a3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a3.setForeground(new java.awt.Color(255, 0, 0));
         a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a3.setText("*");
-        jPanel3.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 140, 30));
+        jPanel3.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 140, 30));
 
         a4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a4.setForeground(new java.awt.Color(255, 0, 0));
         a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a4.setText("*");
-        jPanel3.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 140, 30));
+        jPanel3.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 140, 30));
 
         a5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a5.setForeground(new java.awt.Color(255, 0, 0));
         a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a5.setText("*");
-        jPanel3.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 140, 30));
+        jPanel3.add(a5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 140, 30));
 
         a6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         a6.setForeground(new java.awt.Color(255, 0, 0));
         a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a6.setText("*");
-        jPanel3.add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 140, 30));
+        jPanel3.add(a6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 140, 30));
 
         cps.setBackground(new java.awt.Color(242, 242, 242));
         cps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cps.setBorder(null);
-        jPanel3.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 230, 35));
+        jPanel3.add(cps, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 240, 35));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 940, 480));
 
@@ -534,6 +582,30 @@ public class register_form extends javax.swing.JFrame {
         registerBT.setBackground(Release);
     }//GEN-LAST:event_registerBTMouseExited
 
+    private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
+        hide.setVisible(false);
+        show.setVisible(true);
+        ps.setEchoChar((char) 0);
+    }//GEN-LAST:event_hideMousePressed
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+        hide.setVisible(true);
+        show.setVisible(false);
+        ps.setEchoChar('*');
+    }//GEN-LAST:event_showMouseClicked
+
+    private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
+        hide1.setVisible(false);
+        show1.setVisible(true);
+        cps.setEchoChar((char) 0);
+    }//GEN-LAST:event_hide1MousePressed
+
+    private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
+        hide1.setVisible(true);
+        show1.setVisible(false);
+        cps.setEchoChar('*');
+    }//GEN-LAST:event_show1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -579,6 +651,8 @@ public class register_form extends javax.swing.JFrame {
     private javax.swing.JLabel a6;
     private javax.swing.JPasswordField cps;
     private javax.swing.JTextField fn;
+    private javax.swing.JLabel hide;
+    private javax.swing.JLabel hide1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -595,6 +669,8 @@ public class register_form extends javax.swing.JFrame {
     private javax.swing.JTextField mail;
     private javax.swing.JPasswordField ps;
     private javax.swing.JButton registerBT;
+    private javax.swing.JLabel show;
+    private javax.swing.JLabel show1;
     private javax.swing.JLabel signIn;
     private javax.swing.JLabel tnc;
     private javax.swing.JTextField usn;

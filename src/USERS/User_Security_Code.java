@@ -76,7 +76,11 @@ public class User_Security_Code extends javax.swing.JFrame {
         saveCode = new javax.swing.JButton();
         a1 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
+        hide1 = new javax.swing.JLabel();
+        show1 = new javax.swing.JLabel();
         sc = new javax.swing.JPasswordField();
+        hide = new javax.swing.JLabel();
+        show = new javax.swing.JLabel();
         cps = new javax.swing.JPasswordField();
         jLabel24 = new javax.swing.JLabel();
         a2 = new javax.swing.JLabel();
@@ -360,9 +364,53 @@ public class User_Security_Code extends javax.swing.JFrame {
         });
         jPanel5.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 250, 40));
 
+        hide1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide1.setForeground(new java.awt.Color(153, 153, 153));
+        hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide1MousePressed(evt);
+            }
+        });
+        jPanel5.add(hide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 87, -1, -1));
+
+        show1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show1.setForeground(new java.awt.Color(153, 153, 153));
+        show1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show1MouseClicked(evt);
+            }
+        });
+        jPanel5.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 87, -1, -1));
+
         sc.setBackground(new java.awt.Color(242, 242, 242));
         sc.setBorder(null);
         jPanel5.add(sc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 410, 30));
+
+        hide.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide.setForeground(new java.awt.Color(153, 153, 153));
+        hide.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hideMousePressed(evt);
+            }
+        });
+        jPanel5.add(hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 188, -1, -1));
+
+        show.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show.setForeground(new java.awt.Color(153, 153, 153));
+        show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMouseClicked(evt);
+            }
+        });
+        jPanel5.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 188, -1, -1));
 
         cps.setBackground(new java.awt.Color(242, 242, 242));
         cps.setBorder(null);
@@ -645,6 +693,30 @@ public class User_Security_Code extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
+        hide1.setVisible(false);
+        show1.setVisible(true);
+        sc.setEchoChar((char) 0);
+    }//GEN-LAST:event_hide1MousePressed
+
+    private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
+        hide1.setVisible(true);
+        show1.setVisible(false);
+        sc.setEchoChar('*');
+    }//GEN-LAST:event_show1MouseClicked
+
+    private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
+        hide.setVisible(false);
+        show.setVisible(true);
+        cps.setEchoChar((char) 0);
+    }//GEN-LAST:event_hideMousePressed
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+        hide.setVisible(true);
+        show.setVisible(false);
+        cps.setEchoChar('*');
+    }//GEN-LAST:event_showMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -822,6 +894,8 @@ public class User_Security_Code extends javax.swing.JFrame {
     public javax.swing.JLabel d4;
     private javax.swing.JPanel dashC;
     private javax.swing.JLabel dot;
+    private javax.swing.JLabel hide;
+    private javax.swing.JLabel hide1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -841,6 +915,8 @@ public class User_Security_Code extends javax.swing.JFrame {
     private javax.swing.JPasswordField sc;
     private javax.swing.JPanel secPane;
     public javax.swing.JLabel sessUsn;
+    private javax.swing.JLabel show;
+    private javax.swing.JLabel show1;
     private javax.swing.JPanel viewC;
     // End of variables declaration//GEN-END:variables
 }

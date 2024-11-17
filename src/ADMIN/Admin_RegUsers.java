@@ -863,7 +863,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel19.setText(" Registered users");
         adm_header.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 200, 60));
 
-        jButton2.setBackground(new java.awt.Color(27, 55, 77));
+        jButton2.setBackground(new java.awt.Color(244, 67, 54));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText(" Archived Users");

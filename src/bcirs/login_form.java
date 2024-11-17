@@ -171,6 +171,8 @@ public class login_form extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        hide = new javax.swing.JLabel();
+        show = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
@@ -185,15 +187,39 @@ public class login_form extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         reg = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         xps = new javax.swing.JLabel();
         nousn = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
+
+        hide.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide.setForeground(new java.awt.Color(153, 153, 153));
+        hide.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hideMousePressed(evt);
+            }
+        });
+        jPanel1.add(hide);
+        hide.setBounds(440, 310, 40, 35);
+
+        show.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show.setForeground(new java.awt.Color(153, 153, 153));
+        show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMouseClicked(evt);
+            }
+        });
+        jPanel1.add(show);
+        show.setBounds(440, 310, 40, 35);
 
         jLabel1.setBackground(new java.awt.Color(220, 242, 241));
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 42)); // NOI18N
@@ -333,13 +359,6 @@ public class login_form extends javax.swing.JFrame {
         jPanel1.add(reg);
         reg.setBounds(210, 470, 140, 40);
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Don't have an  account?");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(90, 430, 390, 60);
-
         xps.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         xps.setForeground(new java.awt.Color(255, 0, 0));
         xps.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -351,6 +370,13 @@ public class login_form extends javax.swing.JFrame {
         nousn.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel1.add(nousn);
         nousn.setBounds(200, 190, 280, 30);
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Don't have an  account?");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(90, 430, 390, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -497,6 +523,18 @@ public class login_form extends javax.swing.JFrame {
     System.exit(0);        
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
+      hide.setVisible(false);
+      show.setVisible(true);
+      pass.setEchoChar((char) 0);
+    }//GEN-LAST:event_hideMousePressed
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+        hide.setVisible(true);
+        show.setVisible(false);
+        pass.setEchoChar('*');
+    }//GEN-LAST:event_showMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -526,20 +564,22 @@ public class login_form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton cancel;
     private javax.swing.JLabel forgotps;
+    private javax.swing.JLabel hide;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nousn;
     private javax.swing.JPasswordField pass;
     private javax.swing.JLabel reg;
+    private javax.swing.JLabel show;
     private javax.swing.JTextField user;
     private javax.swing.JLabel xps;
     // End of variables declaration//GEN-END:variables

@@ -677,7 +677,7 @@
             <Component class="javax.swing.JButton" name="arc">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4d" green="39" red="1b" type="rgb"/>
+                  <Color blue="36" green="43" red="f4" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="11" style="1"/>

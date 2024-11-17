@@ -50,15 +50,17 @@ public class forgotpass_code extends javax.swing.JFrame {
         email = new javax.swing.JLabel();
         cBt = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        sc = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         a1 = new javax.swing.JLabel();
+        hide1 = new javax.swing.JLabel();
+        show1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         signIn = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        sc = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -105,16 +107,6 @@ public class forgotpass_code extends javax.swing.JFrame {
         jLabel11.setText("We have verified your email address. To continue, kindly enter");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 420, 30));
 
-        sc.setBackground(new java.awt.Color(242, 242, 242));
-        sc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        sc.setForeground(new java.awt.Color(57, 55, 77));
-        sc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                scActionPerformed(evt);
-            }
-        });
-        jPanel2.add(sc, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 420, 40));
-
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(27, 55, 77));
         jLabel16.setText("Security code");
@@ -124,6 +116,28 @@ public class forgotpass_code extends javax.swing.JFrame {
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel2.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 260, 260, 30));
+
+        hide1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide1.setForeground(new java.awt.Color(153, 153, 153));
+        hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide1MousePressed(evt);
+            }
+        });
+        jPanel2.add(hide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 303, -1, -1));
+
+        show1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show1.setForeground(new java.awt.Color(153, 153, 153));
+        show1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 303, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(27, 55, 77));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,6 +181,10 @@ public class forgotpass_code extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Remember Password?");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 140, 50));
+
+        sc.setBackground(new java.awt.Color(242, 242, 242));
+        jPanel2.add(sc, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 420, 40));
+        sc.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,11 +246,6 @@ public class forgotpass_code extends javax.swing.JFrame {
                          
     }//GEN-LAST:event_cBtActionPerformed
 
-    private void scActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scActionPerformed
-    
-   
-    }//GEN-LAST:event_scActionPerformed
-
     private void cBtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cBtMouseEntered
          cBt.setBackground(Hover);
     }//GEN-LAST:event_cBtMouseEntered
@@ -254,6 +267,18 @@ public class forgotpass_code extends javax.swing.JFrame {
     private void signInMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInMouseExited
         signIn.setForeground(Release);
     }//GEN-LAST:event_signInMouseExited
+
+    private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
+        hide1.setVisible(false);
+        show1.setVisible(true);
+        sc.setEchoChar((char) 0);
+    }//GEN-LAST:event_hide1MousePressed
+
+    private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
+        hide1.setVisible(true);
+        show1.setVisible(false);
+        sc.setEchoChar('*');
+    }//GEN-LAST:event_show1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -301,6 +326,7 @@ public class forgotpass_code extends javax.swing.JFrame {
     private javax.swing.JLabel a1;
     private javax.swing.JButton cBt;
     public javax.swing.JLabel email;
+    private javax.swing.JLabel hide1;
     public javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -310,7 +336,8 @@ public class forgotpass_code extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField sc;
+    private javax.swing.JPasswordField sc;
+    private javax.swing.JLabel show1;
     private javax.swing.JLabel signIn;
     // End of variables declaration//GEN-END:variables
 }

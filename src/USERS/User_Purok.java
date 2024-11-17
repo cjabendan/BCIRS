@@ -1784,8 +1784,7 @@ public class User_Purok extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(userTbl);
-      
-
+       
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 640, 320));
 
         purokData.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -1807,7 +1806,7 @@ public class User_Purok extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(0, 102, 255));
         jButton3.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("ADD");
+        jButton3.setText(" ADD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -1902,7 +1901,7 @@ public class User_Purok extends javax.swing.JFrame {
 
         jPanel2.add(minsi, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 0, 125, 130));
 
-        jButton4.setBackground(new java.awt.Color(27, 55, 77));
+        jButton4.setBackground(new java.awt.Color(244, 67, 54));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText(" ARCHIVED ");
@@ -2747,7 +2746,7 @@ public class User_Purok extends javax.swing.JFrame {
 
     private void cancel6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel6ActionPerformed
 
-        purokData.setText("All Resident Data");
+        purokData.setText("All Residents Data");
         
         displayData();
         

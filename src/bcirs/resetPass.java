@@ -58,10 +58,14 @@ public class resetPass extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
+        show1 = new javax.swing.JLabel();
+        hide1 = new javax.swing.JLabel();
         nps = new javax.swing.JPasswordField();
         a1 = new javax.swing.JLabel();
         a2 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
+        hide2 = new javax.swing.JLabel();
+        show2 = new javax.swing.JLabel();
         cnps = new javax.swing.JPasswordField();
         cBt = new javax.swing.JButton();
 
@@ -107,6 +111,28 @@ public class resetPass extends javax.swing.JFrame {
         jLabel32.setText("New Password:");
         jPanel2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, 190, 40));
 
+        show1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show1.setForeground(new java.awt.Color(153, 153, 153));
+        show1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(show1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 273, -1, -1));
+
+        hide1.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide1.setForeground(new java.awt.Color(153, 153, 153));
+        hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide1MousePressed(evt);
+            }
+        });
+        jPanel2.add(hide1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 273, -1, -1));
+
         nps.setBackground(new java.awt.Color(242, 242, 242));
         nps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nps.setBorder(null);
@@ -126,6 +152,28 @@ public class resetPass extends javax.swing.JFrame {
         jLabel31.setForeground(new java.awt.Color(27, 57, 77));
         jLabel31.setText("Confirm  Password:");
         jPanel2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, 220, 40));
+
+        hide2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide2.setForeground(new java.awt.Color(153, 153, 153));
+        hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide2MousePressed(evt);
+            }
+        });
+        jPanel2.add(hide2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 363, -1, -1));
+
+        show2.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show2.setForeground(new java.awt.Color(153, 153, 153));
+        show2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                show2MouseClicked(evt);
+            }
+        });
+        jPanel2.add(show2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 363, -1, -1));
 
         cnps.setBackground(new java.awt.Color(242, 242, 242));
         cnps.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -224,6 +272,30 @@ public class resetPass extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cBtActionPerformed
 
+    private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
+        hide1.setVisible(false);
+        show1.setVisible(true);
+        nps.setEchoChar((char) 0);
+    }//GEN-LAST:event_hide1MousePressed
+
+    private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
+        hide1.setVisible(true);
+        show1.setVisible(false);
+        nps.setEchoChar('*');
+    }//GEN-LAST:event_show1MouseClicked
+
+    private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
+        hide2.setVisible(false);
+        show2.setVisible(true);
+        cnps.setEchoChar((char) 0);
+    }//GEN-LAST:event_hide2MousePressed
+
+    private void show2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show2MouseClicked
+        hide2.setVisible(true);
+        show2.setVisible(false);
+        cnps.setEchoChar('*');
+    }//GEN-LAST:event_show2MouseClicked
+
       public void logEvent(String userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -302,6 +374,8 @@ public class resetPass extends javax.swing.JFrame {
     private javax.swing.JLabel a2;
     private javax.swing.JButton cBt;
     private javax.swing.JPasswordField cnps;
+    private javax.swing.JLabel hide1;
+    private javax.swing.JLabel hide2;
     public javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -312,5 +386,7 @@ public class resetPass extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField nps;
+    private javax.swing.JLabel show1;
+    private javax.swing.JLabel show2;
     // End of variables declaration//GEN-END:variables
 }

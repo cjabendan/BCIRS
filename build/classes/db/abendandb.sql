@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 06:00 AM
+-- Generation Time: Nov 14, 2024 at 01:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_barangay` (
 --
 
 INSERT INTO `tbl_barangay` (`b_id`, `b_name`, `b_location`, `b_population`) VALUES
-(1001, 'Pob. Ward II', 'Minglanilla, Cebu', 6);
+(1001, 'Pob. Ward II', 'Minglanilla, Cebu', 7);
 
 -- --------------------------------------------------------
 
@@ -805,7 +805,84 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (715, '2024-11-08 12:41:46', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
 (716, '2024-11-08 12:47:21', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
 (717, '2024-11-08 12:47:30', 'UPDATE_INCIDENT_REPORT', 1005, 'Incident updated. Incident ID: 3'),
-(718, '2024-11-08 12:48:55', 'LOGIN_SUCCESS', 1005, 'User logged in successfully');
+(718, '2024-11-08 12:48:55', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(719, '2024-11-09 16:53:33', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(720, '2024-11-09 17:23:12', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(721, '2024-11-09 17:27:25', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(722, '2024-11-09 17:29:41', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(723, '2024-11-09 17:33:21', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(724, '2024-11-09 17:38:14', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(725, '2024-11-09 17:38:25', 'NEW_HOUSEHOLD', 1005, 'Household: dsadsad is added by user.'),
+(726, '2024-11-09 17:40:13', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(727, '2024-11-09 17:40:29', 'NEW_HOUSEHOLD', 1005, 'Household:  adsad is added by user.'),
+(728, '2024-11-09 17:42:28', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(729, '2024-11-09 17:43:15', 'NEW_HOUSEHOLD', 1005, 'Household: sadsad is added by user.'),
+(730, '2024-11-09 17:45:25', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(731, '2024-11-09 17:52:57', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(732, '2024-11-09 17:55:24', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(733, '2024-11-09 18:02:55', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(734, '2024-11-09 18:04:01', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(735, '2024-11-09 18:56:01', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(736, '2024-11-09 19:10:32', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(737, '2024-11-09 19:10:52', 'INCIDENT_REPORT_DOWNLOAD', 1005, 'Incident Report ID: 3 is downloaded by user.'),
+(738, '2024-11-09 19:11:05', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(739, '2024-11-09 19:11:45', 'RESIDENT_DOCUMENT_DOWNLOAD', 1001, 'Resident ID: 1146 document is downloaded by user.'),
+(740, '2024-11-09 19:12:34', 'LOGOUT', 1001, 'User logged out'),
+(741, '2024-11-09 19:18:18', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(742, '2024-11-09 19:18:51', 'LOGOUT', 1005, 'User logged out'),
+(743, '2024-11-09 19:23:51', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(744, '2024-11-09 19:24:11', 'LOGOUT', 1005, 'User logged out'),
+(745, '2024-11-09 19:28:08', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(746, '2024-11-09 19:30:14', 'LOGOUT', 1001, 'User logged out'),
+(747, '2024-11-09 19:30:24', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(748, '2024-11-09 19:32:22', 'LOGOUT', 1001, 'User logged out'),
+(749, '2024-11-09 19:32:33', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(750, '2024-11-09 19:32:43', 'LOGOUT', 1001, 'User logged out'),
+(751, '2024-11-09 19:36:07', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(752, '2024-11-09 19:37:48', 'LOGOUT', 1001, 'User logged out'),
+(753, '2024-11-09 19:37:54', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(754, '2024-11-09 19:38:04', 'LOGOUT', 1005, 'User logged out'),
+(755, '2024-11-09 19:38:49', 'LOGIN_FAILURE', 1001, 'Invalid username or password'),
+(756, '2024-11-09 19:38:54', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(757, '2024-11-09 19:40:32', 'LOGOUT', 1001, 'User logged out'),
+(758, '2024-11-09 19:40:43', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(759, '2024-11-09 19:41:18', 'LOGOUT', 1001, 'User logged out'),
+(760, '2024-11-10 10:19:40', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(761, '2024-11-10 10:20:17', 'LOGOUT', 1001, 'User logged out'),
+(762, '2024-11-10 10:20:39', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(763, '2024-11-10 10:20:53', 'LOGOUT', 1001, 'User logged out'),
+(764, '2024-11-10 10:35:58', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(765, '2024-11-10 10:39:57', 'LOGOUT', 1005, 'User logged out'),
+(766, '2024-11-10 10:40:09', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(767, '2024-11-10 10:40:45', 'ADDED NEW RESIDENT', 1005, 'Resident ID: 1147 is added by user: 1005.'),
+(768, '2024-11-10 10:41:07', 'LOGOUT', 1005, 'User logged out'),
+(769, '2024-11-10 10:54:17', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(770, '2024-11-10 10:54:42', 'LOGOUT', 1005, 'User logged out'),
+(771, '2024-11-10 10:55:59', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(772, '2024-11-10 10:56:16', 'LOGOUT', 1005, 'User logged out'),
+(773, '2024-11-10 13:12:28', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(774, '2024-11-12 11:17:52', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(775, '2024-11-12 11:18:04', 'LOGOUT', 1001, 'User logged out'),
+(776, '2024-11-12 11:20:11', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(777, '2024-11-12 11:21:32', 'LOGOUT', 1001, 'User logged out'),
+(778, '2024-11-12 11:21:51', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(779, '2024-11-12 11:23:24', 'LOGOUT', 1005, 'User logged out'),
+(780, '2024-11-12 11:28:39', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(781, '2024-11-12 11:30:23', 'INCIDENT_REPORT_DOWNLOAD', 1005, 'Incident Report ID: 3 is downloaded by user.'),
+(782, '2024-11-12 11:31:17', 'LOGOUT', 1005, 'User logged out'),
+(783, '2024-11-12 11:31:25', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(784, '2024-11-12 11:32:10', 'USER_UNARCHIVED', 1001, 'User: 1003 data is unarchived by admin'),
+(785, '2024-11-12 11:32:16', 'USER_UNARCHIVED', 1001, 'User: 1004 data is unarchived by admin'),
+(786, '2024-11-12 11:32:19', 'USER_UNARCHIVED', 1001, 'User: 1006 data is unarchived by admin'),
+(787, '2024-11-12 11:32:22', 'USER_UNARCHIVED', 1001, 'User: 1020 data is unarchived by admin'),
+(788, '2024-11-12 11:32:39', 'LOGOUT', 1001, 'User logged out'),
+(789, '2024-11-14 08:28:41', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(790, '2024-11-14 08:29:32', 'EXPORT_USER_DATA', 1001, 'Admin exported User: 1003 data.'),
+(791, '2024-11-14 08:30:12', 'EXPORT_USER_DATA', 1001, 'Admin exported User: 1001 data.'),
+(792, '2024-11-14 08:30:53', 'LOGOUT', 1001, 'User logged out'),
+(793, '2024-11-14 08:34:29', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(794, '2024-11-14 08:34:38', 'EXPORT_USER_DATA', 1001, 'Admin exported User: 1003 data.'),
+(795, '2024-11-14 08:34:58', 'LOGOUT', 1001, 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -827,7 +904,10 @@ INSERT INTO `tbl_purok` (`p_id`, `p_name`, `b_id`) VALUES
 (1, 'Tambis', 1001),
 (2, 'Mahogany', 1001),
 (3, 'Guyabano', 1001),
-(4, 'Ipil-Ipil', 1001);
+(4, 'Ipil-Ipil', 1001),
+(5, 'Minsinitas', 1001),
+(6, 'Tugas', 1001),
+(7, 'Lubi', 1001);
 
 -- --------------------------------------------------------
 
@@ -886,7 +966,8 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (1143, 'Lee', 'David', 'William', '789 Maple St. Anytown, CA 12345', 'Male', '1970-12-25', 'Single', 'Engineer', 'Muslim', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
 (1144, 'Abendan', 'Christian James', 'Arquilos', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-04-27', 'Single', 'Student', 'Catholic', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
 (1145, 'Villondo', 'David Sailas', 'Romano', 'Lipata, Minglanilla, Cebu', 'Male', '2003-02-10', 'Married', 'Student', 'Born Again', 2, 'src/u_default/blank_pfp.jpg', 'Active'),
-(1146, 'Plameran', 'John Bert', 'Decena', 'Lipata, Minglanilla, Cebu', 'Male', '2003-07-10', 'Married', 'Student', 'Catholic', 2, 'src/u_default/blank_pfp.jpg', 'Active');
+(1146, 'Plameran', 'John Bert', 'Decena', 'Lipata, Minglanilla, Cebu', 'Male', '2003-07-10', 'Married', 'Student', 'Catholic', 2, 'src/u_default/blank_pfp.jpg', 'Active'),
+(1147, 'Sample', 'Sample', 'Sample', 'Sample', 'Male', '2012-11-15', 'Single', 'Sample', 'Sample', 7, 'src/u_default/blank_pfp.jpg', 'Active');
 
 -- --------------------------------------------------------
 
@@ -914,10 +995,10 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pass`, `u_type`, `u_status`, `u_image`, `u_code`) VALUES
 (1001, 'Christian James', 'Abendan', 'chrisbend2004@gmail.com', 'cjabendan', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_images/chan2.jpg', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe'),
 (1002, 'David Sailas', 'Villondo', 'chebry@gmail.com', 'dasai', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_default/blank_pfp.jpg', ''),
-(1003, 'Vince Micheal', 'Bacarisas', 'bensoy@gmail.com', 'bensoy', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Archived', 'src/u_default/blank_pfp.jpg', ''),
-(1004, 'John Michael', 'Dela Cuesta', 'jeym@gmail.com', 'jeym', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Archived', 'src/u_default/blank_pfp.jpg', ''),
+(1003, 'Vince Micheal', 'Bacarisas', 'bensoy@gmail.com', 'bensoy', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Pending', 'src/u_default/blank_pfp.jpg', ''),
+(1004, 'John Michael', 'Dela Cuesta', 'jeym@gmail.com', 'jeym', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Pending', 'src/u_default/blank_pfp.jpg', ''),
 (1005, 'Emman', 'Bas', 'emmanbas@gmail.com', 'wais.', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/emman_bas.jpg', ''),
-(1006, 'Ariane Jae', 'Bas', 'aj@gmail.com', 'inu', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Archived', 'src/u_default/blank_pfp.jpg', ''),
+(1006, 'Ariane Jae', 'Bas', 'aj@gmail.com', 'inu', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Pending', 'src/u_default/blank_pfp.jpg', ''),
 (1007, 'Briane Jae', 'Bas', 'bj@gmail.com', 'brinap', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', ''),
 (1008, 'Angel Faith', 'Abendan', 'angel@gmail.com', 'apay', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', ''),
 (1009, 'Rhovella', 'Abendan', 'ruby@gmail.com', 'ruby85', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', ''),
@@ -931,7 +1012,7 @@ INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pas
 (1017, 'Kirk', 'Cerinza', 'kirk@gmail.com', 'kirk', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Pending', 'src/u_default/blank_pfp.jpg', ''),
 (1018, 'Noah', 'Galleros', 'noah@gmail.com', 'noah', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Pending', 'src/u_default/blank_pfp.jpg', ''),
 (1019, 'Triston', 'Manalo', 'trist@gmail.com', 'trist', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', ''),
-(1020, 'Mike', 'Bustamante', 'mike@gmail.com', 'buss', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Archived', 'src/u_default/blank_pfp.jpg', '');
+(1020, 'Mike', 'Bustamante', 'mike@gmail.com', 'buss', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Pending', 'src/u_default/blank_pfp.jpg', '');
 
 --
 -- Indexes for dumped tables
@@ -997,19 +1078,19 @@ ALTER TABLE `tbl_barangay`
 -- AUTO_INCREMENT for table `tbl_household`
 --
 ALTER TABLE `tbl_household`
-  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=719;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=796;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`
 --
 ALTER TABLE `tbl_purok`
-  MODIFY `p_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_reports`
@@ -1021,7 +1102,7 @@ ALTER TABLE `tbl_reports`
 -- AUTO_INCREMENT for table `tbl_residents`
 --
 ALTER TABLE `tbl_residents`
-  MODIFY `r_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1147;
+  MODIFY `r_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1148;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

@@ -103,7 +103,6 @@ public class PrintUserDets extends javax.swing.JFrame {
         uid = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
-        image = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         fullname = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -119,6 +118,7 @@ public class PrintUserDets extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        image = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,12 +134,12 @@ public class PrintUserDets extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel13.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 510, 10));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 510, 10));
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(27, 55, 77));
         jLabel14.setText("AUTHORIZATION");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 180, 40));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 180, 40));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -148,22 +148,19 @@ public class PrintUserDets extends javax.swing.JFrame {
         uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         uid.setForeground(new java.awt.Color(27, 57, 77));
         uid.setText("Id number");
-        jPanel9.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 140, 30));
+        jPanel9.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 30));
 
-        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 30));
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 200, 30));
 
         jLabel19.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(27, 55, 77));
         jLabel19.setText("Issued on this");
-        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 80, 20));
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 510, 80, 20));
 
         date.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
         date.setForeground(new java.awt.Color(27, 55, 77));
         date.setText("November 09, 2024 at Poblacion Ward II, MInglanilla Cebu");
-        jPanel3.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 350, 20));
-
-        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
-        jPanel3.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 150, 140));
+        jPanel3.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 350, 20));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -174,7 +171,7 @@ public class PrintUserDets extends javax.swing.JFrame {
         fullname.setText("name");
         jPanel4.add(fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 270, 30));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 290, 30));
+        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 290, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -185,12 +182,12 @@ public class PrintUserDets extends javax.swing.JFrame {
         umail.setText("email");
         jPanel2.add(umail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 450, 30));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 470, 30));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 470, 30));
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(27, 55, 77));
         jLabel17.setText("IDENTIFICATION NUMBER");
-        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 40));
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, 40));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -201,17 +198,17 @@ public class PrintUserDets extends javax.swing.JFrame {
         username.setText("usn");
         jPanel5.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 180, 30));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 220, 30));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 220, 30));
 
         jLabel18.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 510, 10));
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 510, 10));
 
         jLabel16.setBackground(new java.awt.Color(0, 0, 0));
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(27, 55, 77));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("USER'S SYSTEM INFORMATION");
-        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 270, 40));
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 270, 40));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -222,29 +219,32 @@ public class PrintUserDets extends javax.swing.JFrame {
         type.setText("role");
         jPanel6.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 30));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 220, 30));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 220, 30));
 
         jLabel21.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(27, 55, 77));
         jLabel21.setText("FULL NAME");
-        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 180, 40));
+        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 180, 40));
 
         jLabel22.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(27, 55, 77));
         jLabel22.setText("EMAIL ADDRESS");
-        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 180, 40));
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 180, 40));
 
         jLabel23.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(27, 55, 77));
         jLabel23.setText("USERNAME");
-        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 180, 40));
+        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 180, 40));
 
         jLabel20.setBackground(new java.awt.Color(0, 0, 0));
         jLabel20.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(27, 55, 77));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel20.setText("Purok Link");
-        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 460, 70));
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 460, 70));
+
+        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        jPanel3.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, 170, 170));
 
         page.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 510, 550));
 

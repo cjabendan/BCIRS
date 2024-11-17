@@ -569,7 +569,7 @@ public class User_Reports extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(repTbl);
-  
+     
 
         jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 900, 400));
 
@@ -584,7 +584,7 @@ public class User_Reports extends javax.swing.JFrame {
         });
         jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 145, 35));
 
-        arc.setBackground(new java.awt.Color(27, 57, 77));
+        arc.setBackground(new java.awt.Color(244, 67, 54));
         arc.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         arc.setForeground(new java.awt.Color(255, 255, 255));
         arc.setText("ARCHIVED INCIDENTS");

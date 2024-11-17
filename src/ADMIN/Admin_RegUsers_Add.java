@@ -207,6 +207,8 @@ import javax.swing.border.EmptyBorder;
         Add = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         usn = new javax.swing.JTextField();
+        hide = new javax.swing.JLabel();
+        show = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         fn = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -752,6 +754,28 @@ import javax.swing.border.EmptyBorder;
             }
         });
         jPanel3.add(usn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 270, 35));
+
+        hide.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        hide.setForeground(new java.awt.Color(153, 153, 153));
+        hide.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye-crossed.png"))); // NOI18N
+        hide.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hideMousePressed(evt);
+            }
+        });
+        jPanel3.add(hide, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 310, -1, -1));
+
+        show.setFont(new java.awt.Font("Yu Gothic UI", 0, 16)); // NOI18N
+        show.setForeground(new java.awt.Color(153, 153, 153));
+        show.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye.png"))); // NOI18N
+        show.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showMouseClicked(evt);
+            }
+        });
+        jPanel3.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 310, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(27, 55, 77));
@@ -1327,6 +1351,18 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_settingsPaneMouseExited
 
+    private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
+        hide.setVisible(false);
+        show.setVisible(true);
+        ps.setEchoChar((char) 0);
+    }//GEN-LAST:event_hideMousePressed
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+        hide.setVisible(true);
+        show.setVisible(false);
+        ps.setEchoChar('*');
+    }//GEN-LAST:event_showMouseClicked
+
       public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -1527,6 +1563,7 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JPanel dashPane;
     private javax.swing.JLabel dot;
     public javax.swing.JTextField fn;
+    private javax.swing.JLabel hide;
     public javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1559,6 +1596,7 @@ import javax.swing.border.EmptyBorder;
     public javax.swing.JButton remove;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
+    private javax.swing.JLabel show;
     public javax.swing.JTextField usn;
     public javax.swing.JComboBox<String> ut;
     private javax.swing.JPanel viewC;
