@@ -22,6 +22,7 @@ import java.nio.file.StandardCopyOption;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -190,6 +191,17 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         a11 = new javax.swing.JLabel();
         a12 = new javax.swing.JLabel();
         a13 = new javax.swing.JLabel();
+        houseAdd1 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        cancel4 = new javax.swing.JButton();
+        jLabel42 = new javax.swing.JLabel();
+        hs4 = new javax.swing.JLabel();
+        addHouse1 = new javax.swing.JButton();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        household = new javax.swing.JComboBox<>();
+        a19 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
@@ -216,8 +228,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         a9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         sex = new javax.swing.JComboBox<>();
-        household = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        hs = new javax.swing.JLabel();
         a10 = new javax.swing.JLabel();
         occupation = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -234,7 +245,11 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jLabel14 = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
         a8 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        hs1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        house = new javax.swing.JLabel();
+        hs2 = new javax.swing.JLabel();
+        hs3 = new javax.swing.JLabel();
 
         confirmDel.setBackground(new java.awt.Color(255, 255, 255));
         confirmDel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -428,6 +443,87 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         a13.setText("*");
         houseAdd.add(a13, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 140, 30));
 
+        houseAdd1.setBackground(new java.awt.Color(255, 255, 255));
+        houseAdd1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        houseAdd1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        houseAdd1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 370, 20));
+
+        jPanel9.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cancel4.setBackground(new java.awt.Color(255, 0, 0));
+        cancel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel4.setForeground(new java.awt.Color(255, 255, 255));
+        cancel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel4.setBorder(null);
+        cancel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel4MouseExited(evt);
+            }
+        });
+        cancel4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel4ActionPerformed(evt);
+            }
+        });
+        jPanel9.add(cancel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 30, 30));
+
+        jLabel42.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setText("Update Household");
+        jPanel9.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 50));
+
+        houseAdd1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 50));
+
+        hs4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        hs4.setForeground(new java.awt.Color(27, 55, 77));
+        hs4.setText("Household");
+        houseAdd1.add(hs4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 220, 30));
+
+        addHouse1.setBackground(new java.awt.Color(27, 57, 77));
+        addHouse1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addHouse1.setForeground(new java.awt.Color(255, 255, 255));
+        addHouse1.setText("Update Household");
+        addHouse1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addHouse1ActionPerformed(evt);
+            }
+        });
+        houseAdd1.add(addHouse1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 150, 30));
+
+        jLabel43.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel43.setText(" Household cannot be edited nor be deleted once registered.");
+        houseAdd1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 310, 20));
+
+        jLabel44.setFont(new java.awt.Font("Yu Gothic UI", 1, 11)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(27, 55, 77));
+        jLabel44.setText("Note: ");
+        houseAdd1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+
+        household.setBackground(new java.awt.Color(245, 246, 248));
+        household.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        household.setForeground(new java.awt.Color(100, 115, 122));
+        household.setBorder(null);
+        household.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                householdActionPerformed(evt);
+            }
+        });
+        houseAdd1.add(household, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 310, 35));
+
+        a19.setForeground(new java.awt.Color(255, 0, 0));
+        a19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a19.setText("*");
+        houseAdd1.add(a19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 170, 30));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -457,7 +553,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 AddActionPerformed(evt);
             }
         });
-        jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 430, 140, 33));
+        jPanel3.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 470, 140, 33));
 
         delete.setBackground(new java.awt.Color(27, 55, 77));
         delete.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -479,7 +575,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 deleteActionPerformed(evt);
             }
         });
-        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 430, 30, 33));
+        jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 470, 30, 33));
 
         remove.setBackground(new java.awt.Color(27, 57, 77));
         remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
@@ -640,25 +736,19 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         });
         jPanel3.add(sex, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 270, 35));
 
-        household.setBackground(new java.awt.Color(245, 246, 248));
-        household.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
-        household.setForeground(new java.awt.Color(100, 115, 122));
-        household.setBorder(null);
-        household.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                householdActionPerformed(evt);
+        hs.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        hs.setForeground(new java.awt.Color(27, 55, 77));
+        hs.setText("Register to new household?");
+        hs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hsMousePressed(evt);
             }
         });
-        jPanel3.add(household, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 270, 35));
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(27, 55, 77));
-        jLabel8.setText("Household");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 90, 40));
+        jPanel3.add(hs, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 170, 40));
 
         a10.setForeground(new java.awt.Color(255, 0, 0));
         a10.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jPanel3.add(a10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 280, 130, 40));
+        jPanel3.add(a10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, 100, 40));
 
         occupation.setBackground(new java.awt.Color(245, 246, 248));
         occupation.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -761,15 +851,35 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         a8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jPanel3.add(a8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, 140, 40));
 
-        jButton7.setBackground(new java.awt.Color(27, 57, 77));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/plus (1).png"))); // NOI18N
-        jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(27, 57, 77), 2, true));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+        hs1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        hs1.setForeground(new java.awt.Color(27, 55, 77));
+        hs1.setText(" Update Household");
+        hs1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hs1MousePressed(evt);
             }
         });
-        jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, 20, 20));
+        jPanel3.add(hs1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 130, 40));
+
+        jPanel2.setBackground(new java.awt.Color(245, 246, 248));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        house.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
+        house.setForeground(new java.awt.Color(100, 115, 122));
+        house.setText("jLabel1");
+        jPanel2.add(house, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 35));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 270, 35));
+
+        hs2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        hs2.setForeground(new java.awt.Color(27, 55, 77));
+        hs2.setText("Household");
+        jPanel3.add(hs2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 280, 70, 40));
+
+        hs3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        hs3.setForeground(new java.awt.Color(27, 55, 77));
+        hs3.setText("or");
+        jPanel3.add(hs3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 20, 40));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(20, 20, 1120, 520);
@@ -790,7 +900,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-      
+          
         Session sess = Session.getInstance();
 
        try {
@@ -848,8 +958,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     if (ln.getText().isEmpty() || fn.getText().isEmpty() || mn.getText().isEmpty() 
         || address.getText().isEmpty() || occupation.getText().isEmpty() 
         || religion.getText().isEmpty() || dob.getDate() == null
-        || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 
-        || household.getSelectedIndex() == 0) {
+        || sex.getSelectedIndex() == 0 || status.getSelectedIndex() == 0 ) {
 
         if (ln.getText().isEmpty()) {
             a1.setText("*");
@@ -878,9 +987,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         if (status.getSelectedIndex() == 0) {
             a9.setText("*");
         }
-        if (household.getSelectedIndex() == 0) {
-            a10.setText("*");
-        }
     } else {
         dbConnector dbc = new dbConnector();
 
@@ -896,7 +1002,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
             + "r_civilstatus = '" + status.getSelectedItem() + "', "
             + "r_occupation = '" + occupation.getText() + "', "
             + "r_religion = '" + religion.getText() + "', "
-            + "h_id = (SELECT h_id FROM tbl_household WHERE h_name = '" + household.getSelectedItem().toString() + "'), "
+            + "h_id = (SELECT h_id FROM tbl_household WHERE h_name = '" + house.getText() + "'), "
             + "r_image = '" + imagePathToUpdate + "' "
             + "WHERE r_id = '" + id.getText() + "'");
 
@@ -1065,10 +1171,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexActionPerformed
 
-    private void householdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_householdActionPerformed
-
     private void occupationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_occupationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_occupationActionPerformed
@@ -1089,12 +1191,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         // TODO add your handling code here:
     }//GEN-LAST:event_statusActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Object[] options = {};
-        NoBorderDialog dialog = new NoBorderDialog(null, houseAdd);
-        dialog.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void cancel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseClicked
 
     }//GEN-LAST:event_cancel3MouseClicked
@@ -1114,60 +1210,88 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     }//GEN-LAST:event_cancel3ActionPerformed
 
     private void addHouseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHouseActionPerformed
+                                      
 
-        Session sess = Session.getInstance();
+    Session sess = Session.getInstance();
+    int userID = sess.getUid();
 
-        int userID = sess.getUid();
+    a1.setText("");
+    a2.setText("");
+    a3.setText("");
 
-        a1.setText("");
-        a2.setText("");
-        a3.setText("");
+    if (hname1.getText().isEmpty() || address2.getText().isEmpty() || purok1.getSelectedIndex() == 0) {
+        if (hname1.getText().isEmpty()) {
+            a1.setText("*");
+        }
+        if (address2.getText().isEmpty()) {
+            a2.setText("*");
+        }
+        if (purok1.getSelectedIndex() == 0) {
+            a3.setText("*");
+        }
+    } else {
+        dbConnector dbc = new dbConnector();
 
-        if(hname1.getText().isEmpty() || address2.getText().isEmpty() || purok1.getSelectedIndex() == 0){
-            if (hname1.getText().isEmpty()) {
-                a1.setText("*");
-            }
-            if (address2.getText().isEmpty()) {
-                a2.setText("*");
-            }
-            if (purok1.getSelectedIndex() == 0) {
-                a3.setText("*");
-            }
-        } else {
-            dbConnector dbc = new dbConnector();
+        try {
+            // Insert into tbl_household
+            String query = "INSERT INTO tbl_household (h_name, h_address, p_id) VALUES (?, ?, ?)";
+            PreparedStatement pst = dbc.connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-            try {
+            pst.setString(1, hname1.getText());
+            pst.setString(2, address2.getText());
+            pst.setInt(3, purok1.getSelectedIndex());
 
-                String query = "INSERT INTO tbl_household (h_name, h_address, p_id) VALUES (?, ?, ?)";
-                PreparedStatement pst = dbc.connect.prepareStatement(query);
+            int rowsInserted = pst.executeUpdate();
 
-                pst.setString(1, hname1.getText());
-                pst.setString(2, address2.getText());
-                pst.setInt(3, purok1.getSelectedIndex());
-
-                int rowsInserted = pst.executeUpdate();
-
-                if (rowsInserted > 0) {
-                    JOptionPane.showMessageDialog(null, "Household Registered Successfully!");
-
-                    logEvent(userID, "NEW_HOUSEHOLD", "Household: "+hname1.getText()+" is added by user.");
-
-                    Window window = SwingUtilities.getWindowAncestor(houseAdd);
-                    window.dispose();
-
-                    hname1.setText("");
-                    address2.setText("");
-                    purok1.setSelectedIndex(0);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error registering household.");
+            if (rowsInserted > 0) {
+                
+                // Retrieve the generated h_id
+                ResultSet generatedKeys = pst.getGeneratedKeys();
+                int newHouseholdId = 0;
+                if (generatedKeys.next()) {
+                    newHouseholdId = generatedKeys.getInt(1);
                 }
 
-                pst.close();
-            } catch (SQLException ex) {
-                System.out.println("Database Error: " + ex.getMessage());
+               
+                String residentId = id.getText();
+
+                // Insert into tbl_resident
+                String residentQuery = "UPDATE tbl_residents SET h_id = ? WHERE r_id = ?";
+                PreparedStatement residentPst = dbc.connect.prepareStatement(residentQuery);
+                residentPst.setInt(1, newHouseholdId);
+                residentPst.setString(2, residentId);
+
+                int residentUpdated = residentPst.executeUpdate();
+
+                if (residentUpdated > 0) {
+                    JOptionPane.showMessageDialog(null, "Household Registered Successfully and Resident Updated!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Household Registered, but Resident Update Failed.");
+                }
+
+                logEvent(userID, "NEW_HOUSEHOLD", "Household: " + hname1.getText() + " is added by user.");
+
+                house.setText(hname1.getText());
+                
+                Window window = SwingUtilities.getWindowAncestor(houseAdd);
+                window.dispose();
+
+                hname1.setText("");
+                address2.setText("");
+                purok1.setSelectedIndex(0);
+
+                residentPst.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error registering household.");
             }
+
+            pst.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Database Error: " + ex.getMessage());
         }
+    }
+
     }//GEN-LAST:event_addHouseActionPerformed
 
     private void purok1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_purok1ActionPerformed
@@ -1181,6 +1305,114 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private void hname1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hname1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hname1ActionPerformed
+
+    private void hsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hsMousePressed
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, houseAdd);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_hsMousePressed
+
+    private void cancel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel4MouseClicked
+
+    private void cancel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel4MouseEntered
+
+    private void cancel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel4MouseExited
+
+    private void cancel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel4ActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(houseAdd1);
+        window.dispose();
+    }//GEN-LAST:event_cancel4ActionPerformed
+
+    private void addHouse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addHouse1ActionPerformed
+        Session sess = Session.getInstance();
+    int userID = sess.getUid();
+
+    // Clear error markers
+    a19.setText("");
+
+    if (household.getSelectedItem() == null || id.getText().isEmpty()) {
+        if (household.getSelectedItem() == null) {
+            a19.setText("*");
+        }
+        JOptionPane.showMessageDialog(null, "Please select a household and ensure Resident ID is filled.");
+        return;
+    }
+
+    dbConnector dbc = new dbConnector();
+
+    try {
+        // Get selected household details
+        String selectedHousehold = household.getSelectedItem().toString(); // Assumes this dropdown contains household names
+        int selectedHouseholdId = getHouseholdIdByName(selectedHousehold, dbc); // Helper function to fetch h_id by name
+
+        if (selectedHouseholdId == 0) {
+            JOptionPane.showMessageDialog(null, "Household not found.");
+            return;
+        }
+
+        // Get Resident ID from the text field
+        String residentId = id.getText();
+
+        // Update tbl_residents with the selected h_id
+        String residentQuery = "UPDATE tbl_residents SET h_id = ? WHERE r_id = ?";
+        PreparedStatement residentPst = dbc.connect.prepareStatement(residentQuery);
+        residentPst.setInt(1, selectedHouseholdId);
+        residentPst.setString(2, residentId);
+
+        int rowsUpdated = residentPst.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            JOptionPane.showMessageDialog(null, "Resident's household updated successfully!");
+
+            // Update the `house` text field to reflect the new household name
+            house.setText(selectedHousehold);
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to update Resident's household. Check Resident ID.");
+        }
+
+        residentPst.close();
+
+    } catch (SQLException ex) {
+        System.out.println("Database Error: " + ex.getMessage());
+    }
+    }//GEN-LAST:event_addHouse1ActionPerformed
+
+    private int getHouseholdIdByName(String householdName, dbConnector dbc) {
+    int householdId = 0;
+    try {
+        String query = "SELECT h_id FROM tbl_household WHERE h_name = ?";
+        PreparedStatement pst = dbc.connect.prepareStatement(query);
+        pst.setString(1, householdName);
+
+        ResultSet rs = pst.executeQuery();
+        if (rs.next()) {
+            householdId = rs.getInt("h_id");
+        }
+
+        rs.close();
+        pst.close();
+    } catch (SQLException ex) {
+        System.out.println("Error fetching household ID: " + ex.getMessage());
+    }
+    return householdId;
+}
+
+    
+    private void hs1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hs1MousePressed
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, houseAdd1);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_hs1MousePressed
+
+    private void householdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_householdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_householdActionPerformed
 
        public void logEvent(int userId, String event, String description) {
    
@@ -1256,6 +1488,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JLabel a11;
     private javax.swing.JLabel a12;
     private javax.swing.JLabel a13;
+    private javax.swing.JLabel a19;
     private javax.swing.JLabel a2;
     private javax.swing.JLabel a3;
     private javax.swing.JLabel a4;
@@ -1265,11 +1498,13 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JLabel a8;
     private javax.swing.JLabel a9;
     private javax.swing.JButton addHouse;
+    private javax.swing.JButton addHouse1;
     public javax.swing.JButton addProfile;
     public javax.swing.JTextField address;
     public javax.swing.JTextField address2;
     public javax.swing.JButton cancel;
     public javax.swing.JButton cancel3;
+    public javax.swing.JButton cancel4;
     private javax.swing.JButton cancelBT;
     private javax.swing.JPanel confirmDel;
     public javax.swing.JLabel d;
@@ -1277,11 +1512,17 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     public com.toedter.calendar.JDateChooser dob;
     public javax.swing.JTextField fn;
     public javax.swing.JTextField hname1;
+    public javax.swing.JLabel house;
     private javax.swing.JPanel houseAdd;
+    private javax.swing.JPanel houseAdd1;
     public javax.swing.JComboBox<String> household;
+    private javax.swing.JLabel hs;
+    private javax.swing.JLabel hs1;
+    public javax.swing.JLabel hs2;
+    public javax.swing.JLabel hs3;
+    public javax.swing.JLabel hs4;
     public javax.swing.JLabel id;
     public javax.swing.JLabel image;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1300,16 +1541,21 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mn;
     public javax.swing.JTextField occupation;

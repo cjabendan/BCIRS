@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2024 at 01:35 AM
+-- Generation Time: Nov 20, 2024 at 09:41 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -66,7 +66,12 @@ INSERT INTO `tbl_household` (`h_id`, `h_name`, `h_address`, `p_id`) VALUES
 (5, 'HN. 05', 'Patricio Aleman', 3),
 (6, 'HN. 06', 'Patricio Aleman', 3),
 (7, 'HN. 07', 'Ward II Road', 4),
-(8, 'HN. 08', 'Ward II Road', 4);
+(8, 'HN. 08', 'Ward II Road', 4),
+(12, 'HN. 09', 'Pob. Ward II, MInglanilla, Cebu', 6),
+(13, 'HN. 10', 'Pob. Ward II, MInglanilla, Cebu', 6),
+(14, 'HN. 11', 'Pob. Ward II, Minglanilla, Cebu', 4),
+(15, 'HN. 11', 'Pob. Ward II, Minglanilla, Cebu', 3),
+(16, 'HN. 12', 'Pob. Ward II, MInglanilla, Cebu', 6);
 
 -- --------------------------------------------------------
 
@@ -882,7 +887,67 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (792, '2024-11-14 08:30:53', 'LOGOUT', 1001, 'User logged out'),
 (793, '2024-11-14 08:34:29', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
 (794, '2024-11-14 08:34:38', 'EXPORT_USER_DATA', 1001, 'Admin exported User: 1003 data.'),
-(795, '2024-11-14 08:34:58', 'LOGOUT', 1001, 'User logged out');
+(795, '2024-11-14 08:34:58', 'LOGOUT', 1001, 'User logged out'),
+(796, '2024-11-15 12:36:56', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(797, '2024-11-15 12:37:28', 'LOGOUT', 1005, 'User logged out'),
+(798, '2024-11-15 12:39:36', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(799, '2024-11-15 12:40:03', 'LOGOUT', 1001, 'User logged out'),
+(800, '2024-11-15 12:40:13', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(801, '2024-11-15 12:40:28', 'LOGOUT', 1005, 'User logged out'),
+(802, '2024-11-15 12:40:52', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(803, '2024-11-15 12:41:33', 'LOGOUT', 1005, 'User logged out'),
+(804, '2024-11-17 19:25:59', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(805, '2024-11-17 19:28:33', 'LOGOUT', 1001, 'User logged out'),
+(806, '2024-11-17 19:28:48', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(807, '2024-11-17 19:29:52', 'LOGOUT', 1005, 'User logged out'),
+(808, '2024-11-20 11:20:24', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(809, '2024-11-20 11:20:55', 'LOGOUT', 1005, 'User logged out'),
+(810, '2024-11-20 11:29:40', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(811, '2024-11-20 11:30:03', 'LOGOUT', 1005, 'User logged out'),
+(812, '2024-11-20 11:30:59', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(813, '2024-11-20 11:33:20', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1147 data is updated by user: 1005.'),
+(814, '2024-11-20 11:34:02', 'LOGOUT', 1005, 'User logged out'),
+(815, '2024-11-20 11:38:50', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(816, '2024-11-20 11:39:00', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1147 data is updated by user: 1005.'),
+(817, '2024-11-20 11:40:03', 'LOGOUT', 1005, 'User logged out'),
+(818, '2024-11-20 11:53:47', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(819, '2024-11-20 11:54:09', 'LOGOUT', 1005, 'User logged out'),
+(820, '2024-11-20 11:55:06', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(821, '2024-11-20 11:55:17', 'LOGOUT', 1005, 'User logged out'),
+(822, '2024-11-20 12:07:25', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(823, '2024-11-20 12:08:07', 'NEW_HOUSEHOLD', 1005, 'Household: HN. 09 is added by user.'),
+(824, '2024-11-20 12:08:20', 'LOGOUT', 1005, 'User logged out'),
+(825, '2024-11-20 12:10:16', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(826, '2024-11-20 12:10:38', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1147 data is updated by user: 1005.'),
+(827, '2024-11-20 12:11:12', 'NEW_HOUSEHOLD', 1005, 'Household: HN. 10 is added by user.'),
+(828, '2024-11-20 12:11:23', 'LOGOUT', 1005, 'User logged out'),
+(829, '2024-11-20 12:11:34', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(830, '2024-11-20 12:11:46', 'LOGOUT', 1001, 'User logged out'),
+(831, '2024-11-20 12:20:35', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(832, '2024-11-20 12:21:29', 'LOGOUT', 1005, 'User logged out'),
+(833, '2024-11-20 12:21:49', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(834, '2024-11-20 12:22:21', 'NEW_HOUSEHOLD', 1005, 'Household: HN. 11 is added by user.'),
+(835, '2024-11-20 12:27:56', 'LOGOUT', 1005, 'User logged out'),
+(836, '2024-11-20 12:28:08', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(837, '2024-11-20 12:28:37', 'NEW_HOUSEHOLD', 1005, 'Household: HN. 12 is added by user.'),
+(838, '2024-11-20 12:28:47', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1147 data is updated by user: 1005.'),
+(839, '2024-11-20 12:28:59', 'LOGOUT', 1005, 'User logged out'),
+(840, '2024-11-20 13:19:15', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(841, '2024-11-20 13:20:46', 'LOGOUT', 1005, 'User logged out'),
+(842, '2024-11-20 13:20:58', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(843, '2024-11-20 13:21:23', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1147 data is updated by user: 1005.'),
+(844, '2024-11-20 13:21:50', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1147 data is updated by user: 1005.'),
+(845, '2024-11-20 13:22:06', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1146 data is updated by user: 1005.'),
+(846, '2024-11-20 13:25:39', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(847, '2024-11-20 13:25:57', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1144 data is updated by user: 1005.'),
+(848, '2024-11-20 13:26:13', 'EDITED RESIDENT DATA', 1005, 'Resident ID: 1144 data is updated by user: 1005.'),
+(849, '2024-11-20 13:26:18', 'LOGOUT', 1005, 'User logged out'),
+(850, '2024-11-20 16:37:13', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(851, '2024-11-20 16:38:02', 'LOGOUT', 1005, 'User logged out'),
+(852, '2024-11-20 16:39:13', 'LOGIN_SUCCESS', 1001, 'Admin logged in successfully'),
+(853, '2024-11-20 16:39:33', 'LOGOUT', 1001, 'User logged out'),
+(854, '2024-11-20 16:39:45', 'LOGIN_SUCCESS', 1005, 'User logged in successfully'),
+(855, '2024-11-20 16:40:30', 'LOGOUT', 1005, 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -966,8 +1031,8 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (1143, 'Lee', 'David', 'William', '789 Maple St. Anytown, CA 12345', 'Male', '1970-12-25', 'Single', 'Engineer', 'Muslim', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
 (1144, 'Abendan', 'Christian James', 'Arquilos', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-04-27', 'Single', 'Student', 'Catholic', 1, 'src/u_default/blank_pfp.jpg', 'Active'),
 (1145, 'Villondo', 'David Sailas', 'Romano', 'Lipata, Minglanilla, Cebu', 'Male', '2003-02-10', 'Married', 'Student', 'Born Again', 2, 'src/u_default/blank_pfp.jpg', 'Active'),
-(1146, 'Plameran', 'John Bert', 'Decena', 'Lipata, Minglanilla, Cebu', 'Male', '2003-07-10', 'Married', 'Student', 'Catholic', 2, 'src/u_default/blank_pfp.jpg', 'Active'),
-(1147, 'Sample', 'Sample', 'Sample', 'Sample', 'Male', '2012-11-15', 'Single', 'Sample', 'Sample', 7, 'src/u_default/blank_pfp.jpg', 'Active');
+(1146, 'Plameran', 'John Bert', 'Decena', 'Lipata, Minglanilla, Cebu', 'Male', '2003-07-10', 'Married', 'Student', 'Catholic', 16, 'src/u_default/blank_pfp.jpg', 'Active'),
+(1147, 'Bacarisas', 'Vince Michael', 'Ramirez', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2012-11-15', 'Single', 'Sample', 'Sample', 7, 'src/u_default/blank_pfp.jpg', 'Active');
 
 -- --------------------------------------------------------
 
@@ -1078,13 +1143,13 @@ ALTER TABLE `tbl_barangay`
 -- AUTO_INCREMENT for table `tbl_household`
 --
 ALTER TABLE `tbl_household`
-  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `h_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=796;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=856;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`

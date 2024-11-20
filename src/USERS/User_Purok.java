@@ -2325,7 +2325,7 @@ public class User_Purok extends javax.swing.JFrame {
 
                 id.setText(rs.getString("r_id"));
                 fullname.setText(rs.getString("r_fname") + " " + rs.getString("r_mname") + " " + rs.getString("r_lname"));
-                address.setText(rs.getString("r_address"));
+                address1.setText(rs.getString("r_address"));
                 dob.setText(rs.getString("r_dob"));
                 age.setText(rs.getString("r_age"));
                 status.setText(rs.getString("r_civilstatus"));
@@ -2382,16 +2382,11 @@ public class User_Purok extends javax.swing.JFrame {
                 uru.ACCOUNT_NAME.setText(rs.getString("r_fname") + " " + rs.getString("r_lname"));
                 java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
                 uru.dob.setDate(date);
-                uru.household.setSelectedItem(rs.getString("h_id"));
+                uru.house.setText(rs.getString("h_name"));
                 uru.status.setSelectedItem(rs.getString("r_civilstatus"));
                 uru.sex.setSelectedItem(rs.getString("r_sex"));
                 uru.occupation.setText(rs.getString("r_occupation"));
                 uru.religion.setText(rs.getString("r_religion"));
-
-                uru.populateHouseholdComboBox(uru.household);
-
-                String hName = rs.getString("h_name");
-                uru.household.setSelectedItem(hName);
 
                 uru.setVisible(true);
                 this.dispose();
@@ -2485,17 +2480,14 @@ public class User_Purok extends javax.swing.JFrame {
 
                 java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
                 uru.dob.setDate(date);
-                uru.household.setSelectedIndex(rs.getInt("h_id"));
+                uru.house.setText(rs.getString("h_name"));
                 uru.status.setSelectedItem(rs.getString("r_civilstatus"));
                 uru.sex.setSelectedItem(rs.getString("r_sex"));
                 uru.occupation.setText(rs.getString("r_occupation"));
                 uru.religion.setText(rs.getString("r_religion"));
 
-                // Populate the JComboBox and set the selected item
-                uru.populateHouseholdComboBox(uru.household);
-
-                String hName = rs.getString("h_name");
-                uru.household.setSelectedItem(hName);
+          
+         
 
                 Window window = SwingUtilities.getWindowAncestor(viewPanel1);
                 window.dispose();
@@ -2642,7 +2634,7 @@ public class User_Purok extends javax.swing.JFrame {
 
                 id1.setText(rs.getString("r_id"));
                 fullname1.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
-                address1.setText(rs.getString("r_address"));
+                address2.setText(rs.getString("r_address"));
                 dob1.setText(rs.getString("r_dob"));
                 age1.setText(rs.getString("r_age"));
                 status1.setText(rs.getString("r_civilstatus"));
