@@ -14,6 +14,8 @@ public class StatusCellRenderer extends DefaultTableCellRenderer {
                                                    boolean isSelected, boolean hasFocus, int row, int column) {
         Component cellComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
+        setHorizontalAlignment(JLabel.CENTER);
+        
         if (value != null) {
             String status = value.toString();
             if ("Active".equalsIgnoreCase(status)) {

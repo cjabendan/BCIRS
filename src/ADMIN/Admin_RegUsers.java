@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import config.PanelPrinter;
 import config.Session;
 import config.dbConnector;
+import enhancer.CenterCellRenderer;
 import enhancer.CustomHeaderRenderer;
 import enhancer.NoBorderDialog;
 import enhancer.StatusCellRenderer;
@@ -59,7 +60,10 @@ DefaultListModel listModel = new DefaultListModel();
    public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT u_id, u_fname, u_lname, u_type, u_status FROM tbl_user WHERE u_status IN ('Active', 'Pending')";
+       String query = "SELECT u_id, u_fname, u_lname, u_type, u_status " +
+               "FROM tbl_user " +
+               "WHERE u_status IN ('Active', 'Pending') " +
+               "ORDER BY u_id DESC ";
         ResultSet rs = dbc.getData(query);
         userTbl.setModel(DbUtils.resultSetToTableModel(rs));
         
@@ -79,11 +83,14 @@ DefaultListModel listModel = new DefaultListModel();
         tc4.setHeaderValue("Status");
         
         // Apply the custom renderer to the status column
+        CenterCellRenderer centerRenderer = new CenterCellRenderer();
+        for (int i = 0; i < tcm.getColumnCount(); i++) {
+            tcm.getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
         tc4.setCellRenderer(new StatusCellRenderer());
         th.setDefaultRenderer(new CustomHeaderRenderer());
-
-        
-        
+            
         rs.close();
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
@@ -1121,11 +1128,8 @@ DefaultListModel listModel = new DefaultListModel();
              if (rs.next()) {
            
               String imagePath = rs.getString("u_image");
-
               ImageIcon originalIcon = new ImageIcon(imagePath);
-              
               ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
-
               image.setIcon(resizedIcon);
 
               id.setText(rs.getString("u_id"));
