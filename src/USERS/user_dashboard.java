@@ -9,6 +9,7 @@ import bcirs.login_form;
 import config.RoundPanel;
 import config.Session;
 import config.dbConnector;
+import enhancer.CenterCellRenderer;
 import enhancer.CustomHeaderRenderer;
 import java.awt.Color;
 import java.sql.PreparedStatement;
@@ -57,7 +58,7 @@ public class user_dashboard extends javax.swing.JFrame {
       public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+        String query = "SELECT r.r_id, r.r_fname, r.r_lname, "
                      + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                      + "r.r_sex, h.h_name "
                      + "FROM tbl_residents r "
@@ -77,12 +78,18 @@ public class user_dashboard extends javax.swing.JFrame {
         TableColumn tc5 = tcm.getColumn(5);
 
         tc0.setHeaderValue("ID");
-        tc1.setHeaderValue("Last Name");
-        tc2.setHeaderValue("First Name");
+        tc1.setHeaderValue("First Name");
+        tc2.setHeaderValue("Last Name");
         tc3.setHeaderValue("Age");
         tc4.setHeaderValue("Sex");
         tc5.setHeaderValue("Household");
 
+        
+        CenterCellRenderer centerRenderer = new CenterCellRenderer();
+        for (int i = 0; i < tcm.getColumnCount(); i++) {
+            tcm.getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
 
@@ -90,7 +97,7 @@ public class user_dashboard extends javax.swing.JFrame {
     } catch (SQLException ex) {
         System.out.println("Errors: " + ex.getMessage());
     }
-      }
+}
      
      
      
@@ -138,7 +145,6 @@ public class user_dashboard extends javax.swing.JFrame {
         userTbl = new javax.swing.JTable();
         jLabel29 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -560,8 +566,7 @@ public class user_dashboard extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(userTbl);
       
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 600, 280));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 920, 280));
 
         jLabel29.setBackground(new java.awt.Color(27, 57, 77));
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -579,11 +584,7 @@ public class user_dashboard extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 110, 30));
-
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Building-rafiki (1) (1).png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, 280, 300));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 160, 110, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(190, 60, 950, 490);
@@ -886,7 +887,6 @@ public class user_dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;

@@ -873,7 +873,7 @@ DefaultListModel listModel = new DefaultListModel();
         jButton2.setBackground(new java.awt.Color(244, 67, 54));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText(" Archived Users");
+        jButton2.setText(" ARCHIVED  USERS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -884,7 +884,8 @@ DefaultListModel listModel = new DefaultListModel();
         jButton3.setBackground(new java.awt.Color(0, 102, 255));
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText(" Add Users");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add.png"))); // NOI18N
+        jButton3.setText(" ADD USER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -1306,13 +1307,8 @@ DefaultListModel listModel = new DefaultListModel();
                     ru.remove.setEnabled(false);
                 }
                 
-                
             }
             
-                             
-            Object[] options = {};
-            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
-            dialog.setVisible(true);
             
         } catch (SQLException ex) {
             System.out.println("Errors: " + ex.getMessage());

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2024 at 10:14 AM
+-- Generation Time: Nov 29, 2024 at 12:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -102,7 +102,95 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (1394, '2024-11-26 17:11:15', 'IMPORT_NEW_RESIDENT_BATCH', 1022, 'Added 50 new residents.'),
 (1395, '2024-11-26 17:13:47', 'LOGOUT', 1022, 'User logged out'),
 (1396, '2024-11-26 17:13:55', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
-(1397, '2024-11-26 17:14:09', 'LOGOUT', 1021, 'User logged out');
+(1397, '2024-11-26 17:14:09', 'LOGOUT', 1021, 'User logged out'),
+(1398, '2024-11-27 12:16:06', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1399, '2024-11-27 12:18:21', 'LOGOUT', 1022, 'User logged out'),
+(1400, '2024-11-28 21:24:43', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1401, '2024-11-28 21:27:46', 'LOGOUT', 1022, 'User logged out'),
+(1402, '2024-11-28 21:38:53', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1403, '2024-11-28 21:39:21', 'LOGOUT', 1022, 'User logged out'),
+(1404, '2024-11-28 21:47:23', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1405, '2024-11-28 21:47:40', 'LOGOUT', 1022, 'User logged out'),
+(1406, '2024-11-28 21:49:37', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1407, '2024-11-28 21:50:28', 'LOGOUT', 1022, 'User logged out'),
+(1408, '2024-11-28 21:56:17', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1409, '2024-11-28 21:56:35', 'LOGOUT', 1022, 'User logged out'),
+(1410, '2024-11-28 21:57:05', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1411, '2024-11-28 21:57:11', 'LOGOUT', 1022, 'User logged out'),
+(1412, '2024-11-28 21:58:11', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1413, '2024-11-28 21:58:38', 'LOGOUT', 1022, 'User logged out'),
+(1414, '2024-11-28 21:59:22', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1415, '2024-11-28 21:59:40', 'LOGOUT', 1022, 'User logged out'),
+(1416, '2024-11-28 21:59:54', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1417, '2024-11-28 22:00:07', 'LOGOUT', 1022, 'User logged out'),
+(1418, '2024-11-28 22:00:51', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1419, '2024-11-28 22:01:11', 'LOGOUT', 1022, 'User logged out'),
+(1420, '2024-11-28 22:14:37', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1421, '2024-11-28 22:14:52', 'LOGOUT', 1022, 'User logged out'),
+(1422, '2024-11-28 22:15:32', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1423, '2024-11-28 22:16:35', 'LOGOUT', 1022, 'User logged out'),
+(1424, '2024-11-28 22:17:25', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1425, '2024-11-28 22:17:57', 'LOGOUT', 1021, 'User logged out'),
+(1426, '2024-11-28 22:20:06', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1427, '2024-11-28 22:20:54', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1428, '2024-11-28 22:21:11', 'LOGOUT', 1021, 'User logged out'),
+(1429, '2024-11-28 22:21:49', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1430, '2024-11-28 22:22:13', 'LOGOUT', 1021, 'User logged out'),
+(1431, '2024-11-28 22:22:57', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1432, '2024-11-28 22:23:47', 'LOGOUT', 1021, 'User logged out'),
+(1433, '2024-11-28 22:29:11', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1434, '2024-11-28 22:29:35', 'RESIDENT ARCHIVED', 1022, 'Resident ID: 2865 data is archived by user.'),
+(1435, '2024-11-28 22:29:44', 'USER_UNARCHIVED', 1022, 'User: 2865 data is unarchived by admin'),
+(1436, '2024-11-28 22:29:52', 'RESIDENT ARCHIVED', 1022, 'Resident ID: 2866 data is archived by user.'),
+(1437, '2024-11-28 22:30:18', 'LOGOUT', 1022, 'User logged out'),
+(1438, '2024-11-28 22:42:47', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1439, '2024-11-28 22:43:01', 'LOGOUT', 1021, 'User logged out'),
+(1440, '2024-11-28 22:43:09', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1441, '2024-11-28 22:44:04', 'LOGOUT', 1022, 'User logged out'),
+(1442, '2024-11-28 22:45:53', 'LOGOUT', 1021, 'User logged out'),
+(1443, '2024-11-28 22:46:02', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1444, '2024-11-28 22:50:55', 'LOGIN_FAILURE', 1022, 'Invalid username or password'),
+(1445, '2024-11-28 22:51:00', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1446, '2024-11-28 22:51:20', 'LOGOUT', 1022, 'User logged out'),
+(1447, '2024-11-28 22:51:46', 'LOGIN_FAILURE', 1022, 'Invalid username or password'),
+(1448, '2024-11-28 22:51:53', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1449, '2024-11-28 22:52:07', 'LOGOUT', 1022, 'User logged out'),
+(1450, '2024-11-28 22:52:36', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1451, '2024-11-28 22:53:05', 'LOGOUT', 1022, 'User logged out'),
+(1452, '2024-11-28 22:53:33', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1453, '2024-11-28 22:53:54', 'LOGOUT', 1022, 'User logged out'),
+(1454, '2024-11-28 22:54:56', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1455, '2024-11-28 22:55:03', 'USER_UNARCHIVED', 1022, 'User: 2866 data is unarchived by admin'),
+(1456, '2024-11-28 22:55:06', 'LOGOUT', 1022, 'User logged out'),
+(1457, '2024-11-28 22:59:34', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1458, '2024-11-28 22:59:42', 'RESIDENT ARCHIVED', 1022, 'Resident ID: 2866 data is archived by user.'),
+(1459, '2024-11-28 23:02:42', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1460, '2024-11-28 23:02:54', 'LOGOUT', 1022, 'User logged out'),
+(1461, '2024-11-28 23:03:02', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1462, '2024-11-28 23:03:09', 'USER_ARCHIVED', 1021, 'User: 1022 data is archived by admin'),
+(1463, '2024-11-28 23:03:31', 'USER_UNARCHIVED', 1021, 'User: 1022 data is unarchived by admin'),
+(1464, '2024-11-28 23:03:45', 'USER_DATA_UPDATE', 1021, 'User ID: 1022 data is updated by admin'),
+(1465, '2024-11-28 23:04:12', 'LOGOUT', 1021, 'User logged out'),
+(1466, '2024-11-28 23:04:18', 'LOGOUT', 1022, 'User logged out'),
+(1467, '2024-11-28 23:17:37', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1468, '2024-11-28 23:17:44', 'USER_UNARCHIVED', 1022, 'User: 2866 data is unarchived by admin'),
+(1469, '2024-11-28 23:18:02', 'LOGOUT', 1022, 'User logged out'),
+(1470, '2024-11-28 23:19:36', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1471, '2024-11-28 23:21:40', 'NEW_INCIDENT_REPORT', 1022, 'New incident reported. Incident ID: 4'),
+(1472, '2024-11-28 23:26:12', 'LOGOUT', 1022, 'User logged out'),
+(1473, '2024-11-28 23:26:22', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1474, '2024-11-28 23:26:29', 'LOGOUT', 1022, 'User logged out'),
+(1475, '2024-11-28 23:29:32', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1476, '2024-11-28 23:30:03', 'LOGOUT', 1022, 'User logged out'),
+(1477, '2024-11-28 23:30:14', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1478, '2024-11-28 23:30:51', 'LOGOUT', 1022, 'User logged out'),
+(1479, '2024-11-29 07:12:06', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1480, '2024-11-29 07:13:36', 'LOGOUT', 1021, 'User logged out'),
+(1481, '2024-11-29 07:13:48', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1482, '2024-11-29 07:15:10', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2674 data is updated by user: 1022.'),
+(1483, '2024-11-29 07:15:33', 'LOGOUT', 1022, 'User logged out'),
+(1484, '2024-11-29 07:29:43', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1485, '2024-11-29 07:30:22', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2763 data is updated by user: 1022.');
 
 -- --------------------------------------------------------
 
@@ -152,7 +240,8 @@ CREATE TABLE `tbl_reports` (
 --
 
 INSERT INTO `tbl_reports` (`inc_id`, `inc_type`, `inc_date_time`, `inc_loc`, `inc_involvedpersons`, `inc_narrative`, `inc_reported_by`, `inc_received_by`, `inc_status`) VALUES
-(3, 'Car Theft', 'Febuarary 10, 2024 at  2:30 AM', 'Main St. Of the Earth', 'John Doe, Jane Smith', 'Report of theft from a parked vehicle.', 'Officer Lee', 'Christian', 'Closed');
+(3, 'Car Theft', 'Febuarary 10, 2024 at  2:30 AM', 'Main St. Of the Earth', 'John Doe, Jane Smith', 'Report of theft from a parked vehicle.', 'Officer Lee', 'Christian', 'Closed'),
+(4, 'House Thief', 'November 28, 2024 at 11:20pm', 'Pob. Ward II, Minglanilla, Cebu', 'Sample data', 'Sample Data', 'Christian Abendan', 'Officer Lee', 'Open');
 
 -- --------------------------------------------------------
 
@@ -338,7 +427,7 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (2671, 'Rivera', 'Elena', 'Silva', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-06', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2672, 'Ramos', 'Jorge', 'Aguilar', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-07', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2673, 'Perez', 'Ana', 'Garcia', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-08', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
-(2674, 'Aquino', 'Carmen', 'Vargas', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-09', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
+(2674, 'Aquino', 'Carmen', 'Vargas', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '1984-12-05', 'Married', 'Student', 'Catholic', 4, '', 'Active'),
 (2675, 'Ramos', 'Jose', 'Torres', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-10', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2676, 'Santos', 'Miguel', 'Guzman', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-11', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2677, 'Martinez', 'Juan', 'Pascual', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2003-12-12', 'Married', 'Student', 'Catholic', 4, 'src/u_default/blank_pfp.jpg', 'Active'),
@@ -427,7 +516,7 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (2760, 'Rodriguez', 'Sofia', 'Ortega', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-03-04', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2761, 'Morales', 'Maria', 'Guzman', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-03-05', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2762, 'Torres', 'Fernando', 'Ortega', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-03-06', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
-(2763, 'Garcia', 'Luz', 'Navarro', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-03-07', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
+(2763, 'Garcia', 'Luz', 'Navarro', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '2004-03-07', 'Married', 'Student', 'Catholic', 5, '', 'Active'),
 (2764, 'Garcia', 'Miguel', 'Guzman', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-03-08', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2765, 'Garcia', 'Jorge', 'Velasquez', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-03-09', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2766, 'Diaz', 'Victoria', 'Domingo', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '2004-03-10', 'Married', 'Student', 'Catholic', 5, 'src/u_default/blank_pfp.jpg', 'Active'),
@@ -630,7 +719,7 @@ ALTER TABLE `tbl_household`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1398;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1486;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`
@@ -642,7 +731,7 @@ ALTER TABLE `tbl_purok`
 -- AUTO_INCREMENT for table `tbl_reports`
 --
 ALTER TABLE `tbl_reports`
-  MODIFY `inc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `inc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_residents`

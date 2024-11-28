@@ -1107,7 +1107,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private void yesBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTActionPerformed
 
         dbConnector dbc = new dbConnector();
-        String stats = "Archive";
+        String stats = "Archived";
 
        Session sess = Session.getInstance();
         

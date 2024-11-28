@@ -44,6 +44,7 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -52,6 +53,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -87,8 +89,9 @@ public class User_Purok extends javax.swing.JFrame {
          roundUPanel6();
          displayData();
          purokCount();
-        list.setModel(listModel);
-        searchField.setBorder(new EmptyBorder(0, 10, 0, 0));
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+         new LineBorder(Color.GRAY), // Optional: if you want a line border
+         BorderFactory.createEmptyBorder(0, 10, 0, 0) ));
          DefaultTableModel model = (DefaultTableModel) userTbl.getModel();
         hname.setBorder(new EmptyBorder(0,10,0,0));
         address.setBorder(new EmptyBorder(0,10,0,0));
@@ -109,7 +112,7 @@ public class User_Purok extends javax.swing.JFrame {
     public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+        String query = "SELECT r.r_id, r.r_fname, r.r_lname, "
                      + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                      + "r.r_sex, h.h_name "
                      + "FROM tbl_residents r "
@@ -129,12 +132,18 @@ public class User_Purok extends javax.swing.JFrame {
         TableColumn tc5 = tcm.getColumn(5);
 
         tc0.setHeaderValue("ID");
-        tc1.setHeaderValue("Last Name");
-        tc2.setHeaderValue("First Name");
+        tc1.setHeaderValue("First Name");
+        tc2.setHeaderValue("Last Name");
         tc3.setHeaderValue("Age");
         tc4.setHeaderValue("Sex");
         tc5.setHeaderValue("Household");
 
+        
+        CenterCellRenderer centerRenderer = new CenterCellRenderer();
+        for (int i = 0; i < tcm.getColumnCount(); i++) {
+            tcm.getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
 
@@ -150,7 +159,7 @@ public class User_Purok extends javax.swing.JFrame {
 
     try {
         // Base query with conditional purok filter
-        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+        String query = "SELECT r.r_id, r.r_fname, r.r_lname, "
                      + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                      + "r.r_sex, h.h_name "
                      + "FROM tbl_residents r "
@@ -186,12 +195,18 @@ public class User_Purok extends javax.swing.JFrame {
         TableColumn tc5 = tcm.getColumn(5);
 
         tc0.setHeaderValue("ID");
-        tc1.setHeaderValue("Last Name");
-        tc2.setHeaderValue("First Name");
+        tc1.setHeaderValue("First Name");
+        tc2.setHeaderValue("Last Name");
         tc3.setHeaderValue("Age");
         tc4.setHeaderValue("Sex");
         tc5.setHeaderValue("Household");
 
+        
+        CenterCellRenderer centerRenderer = new CenterCellRenderer();
+        for (int i = 0; i < tcm.getColumnCount(); i++) {
+            tcm.getColumn(i).setCellRenderer(centerRenderer);
+        }
+        
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
         
@@ -680,11 +695,6 @@ public class User_Purok extends javax.swing.JFrame {
         ipilC = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        searchField = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        list = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
         purokData = new javax.swing.JLabel();
@@ -703,6 +713,9 @@ public class User_Purok extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        searchField = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         sa = new javax.swing.JLabel();
         cancel6 = new javax.swing.JButton();
 
@@ -1726,53 +1739,6 @@ public class User_Purok extends javax.swing.JFrame {
 
         jPanel2.add(ipil, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 125, 130));
 
-        jPanel3.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        searchField.setHighlighter(null);
-        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                searchFieldMousePressed(evt);
-            }
-        });
-        searchField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFieldActionPerformed(evt);
-            }
-        });
-        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFieldKeyReleased(evt);
-            }
-        });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 280, 30));
-
-        jLabel14.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-search.png"))); // NOI18N
-        jLabel14.setText(" Search resident");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
-
-        list.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        list.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        list.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listMouseClicked(evt);
-            }
-        });
-        jLayeredPane1.add(list);
-        list.setBounds(0, 0, 0, 0);
-
-        jPanel3.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 280, 270));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, 305, 360));
-
         userTbl.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         userTbl.setGridColor(new java.awt.Color(136, 136, 136));
         userTbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1784,13 +1750,14 @@ public class User_Purok extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(userTbl);
-       
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 640, 320));
+        
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 960, 310));
 
         purokData.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         purokData.setForeground(new java.awt.Color(27, 55, 77));
-        purokData.setText("All Residents Data");
-        jPanel2.add(purokData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 50));
+        purokData.setText("All Residents");
+        jPanel2.add(purokData, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 60));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 51));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
@@ -1801,18 +1768,19 @@ public class User_Purok extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 110, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 110, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 102, 255));
         jButton3.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add.png"))); // NOI18N
         jButton3.setText(" ADD");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 110, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 110, 30));
 
         tugas.setBackground(new java.awt.Color(27, 57, 77));
         tugas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1910,7 +1878,46 @@ public class User_Purok extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 110, 30));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 150, 110, 30));
+
+        searchField.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        searchField.setForeground(new java.awt.Color(204, 204, 204));
+        searchField.setText(" Search resident....");
+        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchField.setHighlighter(null);
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldFocusLost(evt);
+            }
+        });
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchFieldMousePressed(evt);
+            }
+        });
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel2.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 260, 30));
+
+        jPanel3.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search_1.png"))); // NOI18N
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 150, -1, 30));
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(190, 50, 980, 510);
@@ -2262,32 +2269,58 @@ public class User_Purok extends javax.swing.JFrame {
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
 
-        listModel.removeAllElements();
+        try {
+        dbConnector dbc = new dbConnector();
+        String searchText = searchField.getText().trim();
+        String query;
 
-        if (!searchField.getText().isEmpty()) {
-            list.setSize(280, 270);
-
-            dbConnector dbc = new dbConnector();
-
-            try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?"
-                + "AND (r_status = 'Active')")){
-
-            String name = searchField.getText();
-            pst.setString(1, "%" + name + "%");
-            ResultSet rs = pst.executeQuery();
-
-            while (rs.next()) {
-                String fullName = rs.getString("r_lname") + ", " + rs.getString("r_fname") + ", " + rs.getString("r_mname");
-                listModel.addElement(fullName);
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Errors: " + ex.getMessage());
+        if (searchText.isEmpty()) {
+            query = "SELECT r.r_id, r.r_fname, r.r_lname, "
+                  + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                  + "r.r_sex, h.h_name "
+                  + "FROM tbl_residents r "
+                  + "JOIN tbl_household h ON r.h_id = h.h_id "
+                  + "WHERE r.r_status = 'Active' "
+                  + "ORDER BY r.r_id DESC";
+            displayData();
+       } else {
+            query = "SELECT r.r_id, r.r_fname, r.r_lname, "
+                  + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                  + "r.r_sex, h.h_name "
+                  + "FROM tbl_residents r "
+                  + "JOIN tbl_household h ON r.h_id = h.h_id "
+                  + "WHERE r.r_status = 'Active' "
+                  + "AND (r.r_lname LIKE '%" + searchText + "%' "
+                  + "OR r.r_fname LIKE '%" + searchText + "%' "
+                  + "OR r.r_id LIKE '%" + searchText + "%') "
+                  + "ORDER BY r.r_id DESC";
+            
+            ResultSet rs = dbc.getData(query);
+            userTbl.setModel(DbUtils.resultSetToTableModel(rs));
         }
 
-        } else {
-            list.setSize(200, 0);
+        // Set table headers
+        JTableHeader th = userTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+
+        tcm.getColumn(0).setHeaderValue("ID");
+        tcm.getColumn(1).setHeaderValue("First Name");
+        tcm.getColumn(2).setHeaderValue("Last Name");
+        tcm.getColumn(3).setHeaderValue("Age");
+        tcm.getColumn(4).setHeaderValue("Sex");
+        tcm.getColumn(5).setHeaderValue("Household");
+
+        CenterCellRenderer centerRenderer = new CenterCellRenderer();
+        for (int i = 0; i < tcm.getColumnCount(); i++) {
+            tcm.getColumn(i).setCellRenderer(centerRenderer);
         }
+        
+        th.setDefaultRenderer(new CustomHeaderRenderer());
+        th.repaint();
+
+    } catch (SQLException ex) {
+        System.out.println("Errors: " + ex.getMessage());
+    }
 
     }//GEN-LAST:event_searchFieldKeyReleased
 
@@ -2425,85 +2458,8 @@ public class User_Purok extends javax.swing.JFrame {
 
     }//GEN-LAST:event_pdfActionPerformed
 
-    private void cancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancel1MouseClicked
-
-    private void cancel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancel1MouseEntered
-
-    private void cancel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cancel1MouseExited
-
-    private void cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel1ActionPerformed
-        Window window = SwingUtilities.getWindowAncestor(viewPanel1);
-        window.dispose();
-    }//GEN-LAST:event_cancel1ActionPerformed
 
 
-
-
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
-
-        dbConnector dbc = new dbConnector();
-        String rid = id1.getText();
-        
-        try{
-
-            String query = "SELECT r.*, h.h_name, p.p_name, "
-            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
-            + "FROM tbl_residents r "
-            + "JOIN tbl_household h ON r.h_id = h.h_id "
-            + "JOIN tbl_purok p ON h.p_id = p.p_id "
-            + "WHERE r.r_id = ?";
-
-            PreparedStatement pst = dbc.connect.prepareStatement(query);
-            pst.setString(1, rid);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                String imagePath = rs.getString("r_image");
-                ImageIcon originalIcon = new ImageIcon(imagePath);
-                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
-
-                User_Residents_Update uru = new User_Residents_Update();
-
-                uru.image.setIcon(resizedIcon);
-
-                uru.id.setText(rs.getString("r_id"));
-                uru.ln.setText(rs.getString("r_lname"));
-                uru.fn.setText(rs.getString("r_fname"));
-                uru.mn.setText(rs.getString("r_mname"));
-                uru.address.setText(rs.getString("r_address"));
-
-                java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
-                uru.dob.setDate(date);
-                uru.house.setText(rs.getString("h_name"));
-                uru.status.setSelectedItem(rs.getString("r_civilstatus"));
-                uru.sex.setSelectedItem(rs.getString("r_sex"));
-                uru.occupation.setText(rs.getString("r_occupation"));
-                uru.religion.setText(rs.getString("r_religion"));
-
-          
-         
-
-                Window window = SwingUtilities.getWindowAncestor(viewPanel1);
-                window.dispose();
-                uru.setVisible(true);
-                this.dispose();
-            }
-
-            rs.close();
-            pst.close();
-
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        } catch (ParseException ex) {
-            Logger.getLogger(User_Residents_Update.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_editActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
      Session sess = Session.getInstance();
@@ -2595,74 +2551,6 @@ public class User_Purok extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
-            String fullName = list.getSelectedValue();
-
-        if (fullName == null || fullName.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No name selected. Please select a name from the list.");
-            return;
-        }
-
-        String[] nameParts = fullName.split(",\\s*");
-
-        if (nameParts.length != 3) {
-            JOptionPane.showMessageDialog(null, "Invalid name format. The name should be in 'Lastname, Firstname, Middlename' format.");
-            return;
-        }
-
-        String lastName = nameParts[0].trim();
-        String firstName = nameParts[1].trim();
-        String middleName = nameParts[2].trim();
-
-        System.out.println("First Name: " + firstName);
-        System.out.println("Middle Name: " + middleName);
-        System.out.println("Last Name: " + lastName);
-
-        dbConnector dbc = new dbConnector();
-
-        String query = "SELECT r.*, h.h_name, p.p_name, "
-        + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
-        + "FROM tbl_residents r "
-        + "LEFT JOIN tbl_household h ON r.h_id = h.h_id "
-        + "JOIN tbl_purok p ON h.p_id = p.p_id "
-        + "WHERE r_fname = ? AND r_mname = ? AND r_lname = ?";
-
-        try (PreparedStatement pst = dbc.connect.prepareStatement(query)) {
-            pst.setString(1, firstName);
-            pst.setString(2, middleName);
-            pst.setString(3, lastName);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                String imagePath = rs.getString("r_image");
-                ImageIcon originalIcon = new ImageIcon(imagePath);
-                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
-                image1.setIcon(resizedIcon);
-
-                id1.setText(rs.getString("r_id"));
-                fullname1.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
-                address2.setText(rs.getString("r_address"));
-                dob1.setText(rs.getString("r_dob"));
-                age1.setText(rs.getString("r_age"));
-                status1.setText(rs.getString("r_civilstatus"));
-                sex1.setText(rs.getString("r_sex"));
-                ocu1.setText(rs.getString("r_occupation"));
-                reg1.setText(rs.getString("r_religion"));
-                household1.setText(rs.getString("h_name"));
-                purok1.setText(rs.getString("p_name"));
-            }
-
-            Object[] options = {};
-            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel1);
-            dialog.setVisible(true);
-
-            rs.close();
-            pst.close();
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_listMouseClicked
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         User_Residents_Add as = new User_Residents_Add();
         as.setVisible(true);
@@ -2746,10 +2634,98 @@ public class User_Purok extends javax.swing.JFrame {
     private void cancel6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel6ActionPerformed
 
         purokData.setText("All Residents Data");
-        
+        searchField.setText(" Search resident....");
         displayData();
         
     }//GEN-LAST:event_cancel6ActionPerformed
+
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+         if (searchField.getText().equals("")){
+            searchField.setText(" Search resident....");
+            searchField.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_searchFieldFocusLost
+
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+          if (searchField.getText().equals(" Search resident....")){
+            searchField.setText("");
+            searchField.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_searchFieldFocusGained
+
+    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+
+        dbConnector dbc = new dbConnector();
+        String rid = id1.getText();
+
+        try{
+
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, rid);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+
+                User_Residents_Update uru = new User_Residents_Update();
+
+                uru.image.setIcon(resizedIcon);
+
+                uru.id.setText(rs.getString("r_id"));
+                uru.ln.setText(rs.getString("r_lname"));
+                uru.fn.setText(rs.getString("r_fname"));
+                uru.mn.setText(rs.getString("r_mname"));
+                uru.address.setText(rs.getString("r_address"));
+
+                java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
+                uru.dob.setDate(date);
+                uru.house.setText(rs.getString("h_name"));
+                uru.status.setSelectedItem(rs.getString("r_civilstatus"));
+                uru.sex.setSelectedItem(rs.getString("r_sex"));
+                uru.occupation.setText(rs.getString("r_occupation"));
+                uru.religion.setText(rs.getString("r_religion"));
+
+                Window window = SwingUtilities.getWindowAncestor(viewPanel1);
+                window.dispose();
+                uru.setVisible(true);
+                this.dispose();
+            }
+
+            rs.close();
+            pst.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(User_Residents_Update.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editActionPerformed
+
+    private void cancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel1ActionPerformed
+        Window window = SwingUtilities.getWindowAncestor(viewPanel1);
+        window.dispose();
+    }//GEN-LAST:event_cancel1ActionPerformed
+
+    private void cancel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel1MouseExited
+
+    private void cancel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel1MouseEntered
+
+    private void cancel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel1MouseClicked
 
      public void logEvent(int userId, String event, String description) {
    
@@ -2867,7 +2843,6 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -2908,8 +2883,8 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
@@ -2921,7 +2896,6 @@ public class User_Purok extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> list;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;

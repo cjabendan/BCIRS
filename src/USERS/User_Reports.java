@@ -10,6 +10,7 @@ import bcirs.login_form;
 import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
+import enhancer.CenterCellRenderer;
 import enhancer.CustomHeaderRenderer;
 import enhancer.NoBorderDialog;
 import java.awt.Color;
@@ -19,11 +20,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -45,6 +48,9 @@ public class User_Reports extends javax.swing.JFrame {
         initComponents(); 
         displayData();
         DefaultTableModel model = (DefaultTableModel) repTbl.getModel();
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+        new LineBorder(Color.GRAY), // Optional: if you want a line border
+        BorderFactory.createEmptyBorder(0, 10, 0, 0) ));
     }
 
     Color darktxt = new Color(27,57,77);
@@ -64,43 +70,41 @@ public class User_Reports extends javax.swing.JFrame {
 
         ResultSet rs = dbc.getData(query);
 
-        // Set the ResultSet to the table model
-        repTbl.setModel(DbUtils.resultSetToTableModel(rs));
 
-        // Access table header to modify column names
+        repTbl.setModel(DbUtils.resultSetToTableModel(rs));
+        
         JTableHeader th = repTbl.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         
-        // Add headers for each column
+       
         TableColumn tc0 = tcm.getColumn(0);
         TableColumn tc1 = tcm.getColumn(1);
         TableColumn tc2 = tcm.getColumn(2);
         TableColumn tc3 = tcm.getColumn(3);
         TableColumn tc4 = tcm.getColumn(4);
 
-        // Set custom column headers
+      
         tc0.setHeaderValue("Incident ID");
         tc1.setHeaderValue("Report Type");
         tc2.setHeaderValue("Incident Date & Time");
         tc3.setHeaderValue("Reported By");
         tc4.setHeaderValue("Status");
 
-        // Apply custom header renderer if needed (optional)
+      
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
 
-        // Center the content in each column
+       
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-        tc0.setCellRenderer(centerRenderer);  // Center Incident ID
-        tc1.setCellRenderer(centerRenderer);  // Center Report Type
-        tc2.setCellRenderer(centerRenderer);  // Center Incident Date & Time
-        tc3.setCellRenderer(centerRenderer);  // Center Reported By
-        tc4.setCellRenderer(new StatusCellRenderer());  // Custom renderer for Status column
+        tc0.setCellRenderer(centerRenderer);  
+        tc1.setCellRenderer(centerRenderer);  
+        tc2.setCellRenderer(centerRenderer); 
+        tc3.setCellRenderer(centerRenderer);  
+        tc4.setCellRenderer(new StatusCellRenderer()); 
 
-        
         repTbl.removeColumn(tc0);
-        // Close ResultSet after use
+       
         rs.close();
     } catch (SQLException ex) {
         System.out.println("Error: " + ex.getMessage());
@@ -172,7 +176,10 @@ public class User_Reports extends javax.swing.JFrame {
         repTbl = new javax.swing.JTable();
         add = new javax.swing.JButton();
         arc = new javax.swing.JButton();
-        sa1 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        sa3 = new javax.swing.JLabel();
         sa2 = new javax.swing.JLabel();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -571,7 +578,7 @@ public class User_Reports extends javax.swing.JFrame {
         jScrollPane3.setViewportView(repTbl);
      
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 900, 400));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 900, 410));
 
         add.setBackground(new java.awt.Color(0, 145, 234));
         add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
@@ -582,23 +589,62 @@ public class User_Reports extends javax.swing.JFrame {
                 addActionPerformed(evt);
             }
         });
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 145, 35));
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 130, 30));
 
         arc.setBackground(new java.awt.Color(244, 67, 54));
         arc.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         arc.setForeground(new java.awt.Color(255, 255, 255));
-        arc.setText("ARCHIVED INCIDENTS");
+        arc.setText("ARCHIVED");
         arc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 arcActionPerformed(evt);
             }
         });
-        jPanel3.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, -1, 35));
+        jPanel3.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 100, 30));
 
-        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
-        sa1.setForeground(new java.awt.Color(27, 55, 77));
-        sa1.setText("INCIDENT REPORT FILING");
-        jPanel3.add(sa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 290, 70));
+        searchField.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        searchField.setForeground(new java.awt.Color(204, 204, 204));
+        searchField.setText(" Search incident....");
+        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchField.setHighlighter(null);
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldFocusLost(evt);
+            }
+        });
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchFieldMousePressed(evt);
+            }
+        });
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 250, 30));
+
+        jPanel2.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search_1.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 20, -1, -1));
+
+        sa3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        sa3.setForeground(new java.awt.Color(27, 55, 77));
+        sa3.setText("INCIDENT REPORT FILING");
+        jPanel3.add(sa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 60));
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(200, 50, 940, 490);
@@ -909,6 +955,95 @@ public class User_Reports extends javax.swing.JFrame {
 
     }//GEN-LAST:event_viewActionPerformed
 
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        if (searchField.getText().equals(" Search incident....")){
+            searchField.setText("");
+            searchField.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_searchFieldFocusGained
+
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+        if (searchField.getText().equals("")){
+            searchField.setText(" Search incident....");
+            searchField.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_searchFieldFocusLost
+
+    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
+
+    }//GEN-LAST:event_searchFieldMousePressed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+
+        try {
+            dbConnector dbc = new dbConnector();
+            String searchText = searchField.getText().trim();
+            String query;
+
+            if (searchText.isEmpty()) {
+                query = "SELECT inc_id, inc_type, inc_date_time, inc_reported_by, inc_status "  
+                + "FROM tbl_reports "
+                + "WHERE inc_status = 'Open' "
+                + "ORDER BY inc_id DESC";
+                
+                displayData();
+
+            } else {
+                query = "SELECT inc_id, inc_type, inc_date_time, inc_reported_by, inc_status " 
+                + "FROM tbl_reports "
+                + "WHERE inc_status = 'Open' "
+                + "AND (inc_type LIKE '%" + searchText + "%' "
+                + "OR inc_id LIKE '%" + searchText + "%') "
+                + "ORDER BY inc_id DESC";
+
+                ResultSet rs = dbc.getData(query);
+                repTbl.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+
+            // Set table headers
+           
+        JTableHeader th = repTbl.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+
+       
+        TableColumn tc0 = tcm.getColumn(0);
+        TableColumn tc1 = tcm.getColumn(1);
+        TableColumn tc2 = tcm.getColumn(2);
+        TableColumn tc3 = tcm.getColumn(3);
+        TableColumn tc4 = tcm.getColumn(4);
+
+      
+        tc0.setHeaderValue("Incident ID");
+        tc1.setHeaderValue("Report Type");
+        tc2.setHeaderValue("Incident Date & Time");
+        tc3.setHeaderValue("Reported By");
+        tc4.setHeaderValue("Status");
+
+      
+        th.setDefaultRenderer(new CustomHeaderRenderer());
+        th.repaint();
+
+       
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        tc0.setCellRenderer(centerRenderer);  
+        tc1.setCellRenderer(centerRenderer);  
+        tc2.setCellRenderer(centerRenderer); 
+        tc3.setCellRenderer(centerRenderer);  
+        tc4.setCellRenderer(new StatusCellRenderer()); 
+
+        repTbl.removeColumn(tc0);
+      
+
+        } catch (SQLException ex) {
+            System.out.println("Errors: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_searchFieldKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -1019,8 +1154,10 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1032,8 +1169,9 @@ public class User_Reports extends javax.swing.JFrame {
     private javax.swing.JPanel purokPane;
     private javax.swing.JTable repTbl;
     private javax.swing.JPanel reportsPane;
-    private javax.swing.JLabel sa1;
     private javax.swing.JLabel sa2;
+    private javax.swing.JLabel sa3;
+    private javax.swing.JTextField searchField;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
     private javax.swing.JMenuItem view;

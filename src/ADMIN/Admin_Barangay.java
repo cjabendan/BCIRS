@@ -15,6 +15,7 @@ import config.PanelPrinter;
 import config.RoundPanel;
 import config.Session;
 import config.dbConnector;
+import enhancer.CenterCellRenderer;
 import enhancer.CustomHeaderRenderer;
 import enhancer.NoBorderDialog;
 import java.awt.Color;
@@ -34,6 +35,7 @@ import java.util.Locale;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -41,6 +43,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -62,8 +65,9 @@ public class Admin_Barangay extends javax.swing.JFrame {
         barangayPanel();
         countDis();
         displayData();
-        list.setModel(listModel);
-        searchField.setBorder(new EmptyBorder(0, 10, 0, 0));
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+        new LineBorder(Color.GRAY), // Optional: if you want a line border
+        BorderFactory.createEmptyBorder(0, 10, 0, 0) ));
         resname.setBorder(new EmptyBorder(0, 10, 0, 0));
         purpose.setBorder(new EmptyBorder(0, 10, 0, 0));
     }
@@ -143,6 +147,12 @@ public class Admin_Barangay extends javax.swing.JFrame {
         tc3.setHeaderValue("Age");
         tc4.setHeaderValue("Sex");
         tc5.setHeaderValue("Household");
+        
+           CenterCellRenderer centerRenderer = new CenterCellRenderer();
+            for (int i = 0; i < tcm.getColumnCount(); i++) {
+                tcm.getColumn(i).setCellRenderer(centerRenderer);
+            }
+
 
         th.setDefaultRenderer(new CustomHeaderRenderer());
         th.repaint();
@@ -441,12 +451,10 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         userTbl = new javax.swing.JTable();
-        jPanel6 = new javax.swing.JPanel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        list = new javax.swing.JList<>();
-        searchField = new javax.swing.JTextField();
-        jLabel32 = new javax.swing.JLabel();
         sa1 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -1207,9 +1215,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
         populationCount.setFont(new java.awt.Font("SansSerif", 1, 40)); // NOI18N
         populationCount.setForeground(new java.awt.Color(255, 255, 255));
         populationCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        populationCount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/user (1)_1.png"))); // NOI18N
         populationCount.setText(" 0");
-        barangayPanel.add(populationCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 160, 80));
+        barangayPanel.add(populationCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 160, 90));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -1428,28 +1435,27 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(200, 240, 650, 300);
+        jScrollPane1.setBounds(200, 240, 940, 300);
 
-        jPanel6.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        sa1.setForeground(new java.awt.Color(27, 55, 77));
+        sa1.setText("All Residents");
+        jPanel1.add(sa1);
+        sa1.setBounds(200, 180, 120, 60);
 
-        list.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 14)); // NOI18N
-        list.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                listMousePressed(evt);
-            }
-        });
-        jLayeredPane1.add(list);
-        list.setBounds(0, 0, 0, 0);
-
-        jPanel6.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 260, 210));
-
-        searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchField.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        searchField.setForeground(new java.awt.Color(204, 204, 204));
+        searchField.setText(" Search resident....");
         searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         searchField.setHighlighter(null);
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldFocusLost(evt);
+            }
+        });
         searchField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searchFieldMousePressed(evt);
@@ -1465,22 +1471,18 @@ public class Admin_Barangay extends javax.swing.JFrame {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel6.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 260, 30));
+        jPanel1.add(searchField);
+        searchField.setBounds(830, 200, 310, 30);
 
-        jLabel32.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-search.png"))); // NOI18N
-        jLabel32.setText(" Search resident");
-        jPanel6.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 40));
+        jPanel2.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.add(jPanel6);
-        jPanel6.setBounds(860, 240, 280, 300);
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search_1.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
-        sa1.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        sa1.setForeground(new java.awt.Color(27, 55, 77));
-        sa1.setText("All Residents Data");
-        jPanel1.add(sa1);
-        sa1.setBounds(200, 180, 170, 60);
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(794, 200, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1987,79 +1989,19 @@ public class Admin_Barangay extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_resnameActionPerformed
 
-    private void listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMouseClicked
-
-    }//GEN-LAST:event_listMouseClicked
-
-    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
-
-        String fullName = list.getSelectedValue();
-
-        if (fullName == null || fullName.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No name selected. Please select a name from the list.");
-            return;
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        if (searchField.getText().equals(" Search resident....")){
+            searchField.setText("");
+            searchField.setForeground(new Color(51,51,51));
         }
+    }//GEN-LAST:event_searchFieldFocusGained
 
-        String[] nameParts = fullName.split(",\\s*");
-
-        if (nameParts.length != 3) {
-            JOptionPane.showMessageDialog(null, "Invalid name format. The name should be in 'Lastname, Firstname, Middlename' format.");
-            return;
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+        if (searchField.getText().equals("")){
+            searchField.setText(" Search resident....");
+            searchField.setForeground(new Color(51,51,51));
         }
-
-        String lastName = nameParts[0].trim();
-        String firstName = nameParts[1].trim();
-        String middleName = nameParts[2].trim();
-
-        System.out.println("First Name: " + firstName);
-        System.out.println("Middle Name: " + middleName);
-        System.out.println("Last Name: " + lastName);
-
-        dbConnector dbc = new dbConnector();
-
-        String query = "SELECT r.*, h.h_name, p.p_name, "
-        + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
-        + "FROM tbl_residents r "
-        + "LEFT JOIN tbl_household h ON r.h_id = h.h_id "
-        + "JOIN tbl_purok p ON h.p_id = p.p_id "
-        + "WHERE r_fname = ? AND r_mname = ? AND r_lname = ?";
-
-        try (PreparedStatement pst = dbc.connect.prepareStatement(query)) {
-            pst.setString(1, firstName);
-            pst.setString(2, middleName);
-            pst.setString(3, lastName);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                String imagePath = rs.getString("r_image");
-                ImageIcon originalIcon = new ImageIcon(imagePath);
-                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
-                image.setIcon(resizedIcon);
-
-                id.setText(rs.getString("r_id"));
-                fullname.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
-                resname.setText(rs.getString("r_lname") + " " + rs.getString("r_fname") + " " + rs.getString("r_mname"));
-                address.setText(rs.getString("r_address"));
-                dob.setText(rs.getString("r_dob"));
-                age.setText(rs.getString("r_age"));
-                status.setText(rs.getString("r_civilstatus"));
-                sex.setText(rs.getString("r_sex"));
-                ocu.setText(rs.getString("r_occupation"));
-                reg.setText(rs.getString("r_religion"));
-                household.setText(rs.getString("h_name"));
-                purok.setText(rs.getString("p_name"));
-            }
-
-            Object[] options = {};
-            NoBorderDialog dialog = new NoBorderDialog(null, viewPanel);
-            dialog.setVisible(true);
-
-            rs.close();
-            pst.close();
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-    }//GEN-LAST:event_listMousePressed
+    }//GEN-LAST:event_searchFieldFocusLost
 
     private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
 
@@ -2071,30 +2013,58 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
     private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
 
-        listModel.removeAllElements();
-
-        if (!searchField.getText().isEmpty()) {
-            list.setSize(260, 210);
-
+        try {
             dbConnector dbc = new dbConnector();
+            String searchText = searchField.getText().trim();
+            String query;
 
-            try (PreparedStatement pst = dbc.connect.prepareStatement("SELECT r_lname, r_fname, r_mname FROM tbl_residents WHERE CONCAT(r_lname, ' ', r_fname, ' ', r_mname) LIKE ?"
-                + "AND (r_status = 'Active')")){
-            String name = searchField.getText();
-            pst.setString(1, "%" + name + "%");
-            ResultSet rs = pst.executeQuery();
+            if (searchText.isEmpty()) {
+                query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, h.h_name "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "WHERE r.r_status = 'Active' "
+                + "ORDER BY r.r_id DESC";
+                displayData();
 
-            while (rs.next()) {
-                String fullName = rs.getString("r_lname") + ", " + rs.getString("r_fname") + ", " + rs.getString("r_mname");
-                listModel.addElement(fullName);
+            } else {
+                query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, h.h_name "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "WHERE r.r_status = 'Active' "
+                + "AND (r.r_lname LIKE '%" + searchText + "%' "
+                + "OR r.r_fname LIKE '%" + searchText + "%' "
+                + "OR r.r_id LIKE '%" + searchText + "%') "
+                + "ORDER BY r.r_id DESC";
+
+                ResultSet rs = dbc.getData(query);
+                userTbl.setModel(DbUtils.resultSetToTableModel(rs));
             }
+
+            // Set table headers
+            JTableHeader th = userTbl.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+
+            tcm.getColumn(0).setHeaderValue("ID");
+            tcm.getColumn(1).setHeaderValue("Last Name");
+            tcm.getColumn(2).setHeaderValue("First Name");
+            tcm.getColumn(3).setHeaderValue("Age");
+            tcm.getColumn(4).setHeaderValue("Sex");
+            tcm.getColumn(5).setHeaderValue("Household");
+
+            CenterCellRenderer centerRenderer = new CenterCellRenderer();
+            for (int i = 0; i < tcm.getColumnCount(); i++) {
+                tcm.getColumn(i).setCellRenderer(centerRenderer);
+            }
+
+            th.setDefaultRenderer(new CustomHeaderRenderer());
+            th.repaint();
 
         } catch (SQLException ex) {
             System.out.println("Errors: " + ex.getMessage());
-        }
-
-        } else {
-            list.setSize(200, 0);
         }
     }//GEN-LAST:event_searchFieldKeyReleased
 
@@ -2221,7 +2191,6 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -2233,18 +2202,17 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> list;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JPanel logs;
