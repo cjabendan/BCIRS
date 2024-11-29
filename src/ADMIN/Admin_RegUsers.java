@@ -873,7 +873,8 @@ DefaultListModel listModel = new DefaultListModel();
         jButton2.setBackground(new java.awt.Color(244, 67, 54));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText(" ARCHIVED  USERS");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box_1.png"))); // NOI18N
+        jButton2.setText(" ARCHIVES");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -910,7 +911,7 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/users_F.png")));
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(200, 60, 650, 480);
+        jScrollPane1.setBounds(200, 60, 660, 480);
 
         jPanel3.setBackground(new java.awt.Color(27, 55, 77));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

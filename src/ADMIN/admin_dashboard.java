@@ -1044,7 +1044,7 @@ public class admin_dashboard extends javax.swing.JFrame {
         jLabel36.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/trash.png"))); // NOI18N
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box_1.png"))); // NOI18N
         jLabel36.setText(" ARCHIVED USER");
         jLabel36.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(255, 255, 255)));
 

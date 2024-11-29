@@ -1750,8 +1750,7 @@ public class User_Purok extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(userTbl);
-        
-
+     
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 960, 310));
 
         purokData.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -1762,7 +1761,8 @@ public class User_Purok extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 153, 51));
         jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("IMPORT");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cloud-upload-alt_1.png"))); // NOI18N
+        jButton2.setText(" IMPORT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1872,6 +1872,7 @@ public class User_Purok extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(244, 67, 54));
         jButton4.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box_1.png"))); // NOI18N
         jButton4.setText(" ARCHIVED ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

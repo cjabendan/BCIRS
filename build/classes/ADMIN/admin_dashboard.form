@@ -1453,7 +1453,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Icons/trash.png"/>
+                      <Image iconType="3" name="/Icons/box_1.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value=" ARCHIVED USER"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

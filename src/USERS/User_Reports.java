@@ -583,24 +583,26 @@ public class User_Reports extends javax.swing.JFrame {
         add.setBackground(new java.awt.Color(0, 145, 234));
         add.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         add.setForeground(new java.awt.Color(255, 255, 255));
-        add.setText("ADD INCIDENT");
+        add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add.png"))); // NOI18N
+        add.setText(" ADD INCIDENT");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 130, 30));
+        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 140, 30));
 
         arc.setBackground(new java.awt.Color(244, 67, 54));
         arc.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
         arc.setForeground(new java.awt.Color(255, 255, 255));
-        arc.setText("ARCHIVED");
+        arc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/box_1.png"))); // NOI18N
+        arc.setText(" ARCHIVED");
         arc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 arcActionPerformed(evt);
             }
         });
-        jPanel3.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 100, 30));
+        jPanel3.add(arc, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 120, 30));
 
         searchField.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         searchField.setForeground(new java.awt.Color(204, 204, 204));
@@ -630,7 +632,7 @@ public class User_Reports extends javax.swing.JFrame {
                 searchFieldKeyReleased(evt);
             }
         });
-        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 250, 30));
+        jPanel3.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 250, 30));
 
         jPanel2.setBackground(new java.awt.Color(27, 57, 77));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -639,7 +641,7 @@ public class User_Reports extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search_1.png"))); // NOI18N
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 20, -1, -1));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 20, -1, -1));
 
         sa3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         sa3.setForeground(new java.awt.Color(27, 55, 77));
