@@ -630,12 +630,7 @@ public class User_Security_Code extends javax.swing.JFrame {
                     String code = pH.hashPassword(sc.getText());
                     dbc.updateData("UPDATE tbl_user SET u_code = '" + code + "' WHERE u_id = '" + sess.getUid() + "'");
                     
-                    
-                    
-                    
-                    
-                    
-                    Admin_Settings as = new Admin_Settings();
+                    User_Settings as = new User_Settings();
                     as.setVisible(true);
                     this.dispose();
                 }

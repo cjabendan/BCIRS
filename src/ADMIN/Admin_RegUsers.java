@@ -1196,7 +1196,6 @@ DefaultListModel listModel = new DefaultListModel();
                 
                 if(rs.getString("u_image").isEmpty()){
                     ru.addProfile.setText(" Add profile");
-                    ru.remove.setEnabled(false);
                 }
             }
                  
@@ -1305,7 +1304,6 @@ DefaultListModel listModel = new DefaultListModel();
                 
                 if(rs.getString("u_image").isEmpty()){
                     ru.addProfile.setText(" Add profile");
-                    ru.remove.setEnabled(false);
                 }
                 
             }

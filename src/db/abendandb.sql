@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 02:10 AM
+-- Generation Time: Nov 29, 2024 at 06:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `tbl_barangay` (
 --
 
 INSERT INTO `tbl_barangay` (`b_id`, `b_name`, `b_location`, `b_population`) VALUES
-(1001, 'Pob. Ward II', 'Minglanilla, Cebu', 8);
+(1001, 'Pob. Ward II', 'Minglanilla, Cebu', 9);
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,67 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (1497, '2024-11-29 09:04:00', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
 (1498, '2024-11-29 09:04:09', 'LOGOUT', 1022, 'User logged out'),
 (1499, '2024-11-29 09:07:55', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
-(1500, '2024-11-29 09:08:53', 'LOGOUT', 1021, 'User logged out');
+(1500, '2024-11-29 09:08:53', 'LOGOUT', 1021, 'User logged out'),
+(1501, '2024-11-29 10:12:01', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1502, '2024-11-29 10:12:17', 'LOGOUT', 1021, 'User logged out'),
+(1503, '2024-11-29 10:12:30', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1504, '2024-11-29 10:13:19', 'LOGOUT', 1022, 'User logged out'),
+(1505, '2024-11-29 10:13:41', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1506, '2024-11-29 10:16:20', 'RESIDENT_DOCUMENT_DOWNLOAD', 1021, 'Resident ID: 2864 document is downloaded by user.'),
+(1507, '2024-11-29 10:16:45', 'LOGOUT', 1021, 'User logged out'),
+(1508, '2024-11-29 12:28:57', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1509, '2024-11-29 12:30:43', 'USER_DATA_UPDATE', 1021, 'User ID: 1021 data is updated by admin'),
+(1510, '2024-11-29 12:30:57', 'LOGOUT', 1021, 'User logged out'),
+(1511, '2024-11-29 12:31:23', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1512, '2024-11-29 12:32:51', 'USER_DATA_UPDATE', 1021, 'User ID: 1022 data is updated by admin'),
+(1513, '2024-11-29 12:33:00', 'USER_DATA_UPDATE', 1021, 'User ID: 1021 data is updated by admin'),
+(1514, '2024-11-29 12:33:03', 'LOGOUT', 1021, 'User logged out'),
+(1515, '2024-11-29 12:34:01', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1516, '2024-11-29 12:34:21', 'LOGOUT', 1021, 'User logged out'),
+(1517, '2024-11-29 12:37:16', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1518, '2024-11-29 12:37:47', 'USER_DATA_UPDATE', 1021, 'User ID: 1021 data is updated by admin'),
+(1519, '2024-11-29 12:39:47', 'LOGOUT', 1021, 'User logged out'),
+(1520, '2024-11-29 12:40:21', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1521, '2024-11-29 12:41:45', 'USER_DATA_UPDATE', 1021, 'User ID: 1022 data is updated by admin'),
+(1522, '2024-11-29 12:47:33', 'LOGOUT', 1021, 'User logged out'),
+(1523, '2024-11-29 12:47:47', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1524, '2024-11-29 12:48:44', 'ADMIN_USER_REGISTRATION', 1021, 'New user registered. User ID: 1023'),
+(1525, '2024-11-29 12:49:38', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1526, '2024-11-29 12:50:58', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1527, '2024-11-29 12:51:23', 'LOGOUT', 1021, 'User logged out'),
+(1528, '2024-11-29 13:01:04', 'LOGIN_SUCCESS', 1023, 'User logged in successfully'),
+(1529, '2024-11-29 13:01:59', 'LOGOUT', 1023, 'User logged out'),
+(1530, '2024-11-29 13:04:12', 'LOGIN_SUCCESS', 1023, 'User logged in successfully'),
+(1531, '2024-11-29 13:04:54', 'LOGOUT', 1023, 'User logged out'),
+(1532, '2024-11-29 13:05:01', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1533, '2024-11-29 13:05:24', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1534, '2024-11-29 13:07:49', 'LOGOUT', 1021, 'User logged out'),
+(1535, '2024-11-29 13:18:20', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1536, '2024-11-29 13:19:10', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1537, '2024-11-29 13:19:45', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1538, '2024-11-29 13:20:13', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1539, '2024-11-29 13:20:36', 'LOGOUT', 1021, 'User logged out'),
+(1540, '2024-11-29 13:22:14', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1541, '2024-11-29 13:24:13', 'LOGOUT', 1021, 'User logged out'),
+(1542, '2024-11-29 13:25:37', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1543, '2024-11-29 13:26:11', 'LOGOUT', 1021, 'User logged out'),
+(1544, '2024-11-29 13:27:33', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1545, '2024-11-29 13:28:00', 'LOGOUT', 1021, 'User logged out'),
+(1546, '2024-11-29 13:28:14', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1547, '2024-11-29 13:28:37', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1548, '2024-11-29 13:29:17', 'LOGOUT', 1022, 'User logged out'),
+(1549, '2024-11-29 13:37:35', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1550, '2024-11-29 13:38:34', 'LOGOUT', 1021, 'User logged out'),
+(1551, '2024-11-29 13:42:16', 'LOGIN_FAILURE', 1022, 'Invalid username or password'),
+(1552, '2024-11-29 13:42:21', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1553, '2024-11-29 13:43:10', 'LOGOUT', 1022, 'User logged out'),
+(1554, '2024-11-29 13:43:18', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1555, '2024-11-29 13:43:58', 'LOGOUT', 1021, 'User logged out'),
+(1556, '2024-11-29 13:44:06', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1557, '2024-11-29 13:45:44', 'ADDED NEW RESIDENT', 1022, 'Resident ID: 2867 is added by user: 1022.'),
+(1558, '2024-11-29 13:46:53', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2867 data is updated by user: 1022.'),
+(1559, '2024-11-29 13:49:43', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2867 data is updated by user: 1022.'),
+(1560, '2024-11-29 13:50:21', 'LOGOUT', 1022, 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -635,7 +695,8 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (2863, 'Reyes', 'Ana', 'Torres', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '2004-06-15', 'Single', 'Student', 'Catholic', 7, '', 'Active'),
 (2864, 'Morales', 'Juan', 'Domingo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-16', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2865, 'Morales', 'Angel', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '1997-02-07', 'Married', 'Sales Clerk', 'Catholic', 7, '', 'Active'),
-(2866, 'Morales', 'Raymod', 'Degamo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-18', 'Single', 'Worker', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active');
+(2866, 'Morales', 'Raymod', 'Degamo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-18', 'Single', 'Worker', 'Catholic', 7, 'src/r_images/user_pfp.png', 'Active'),
+(2867, 'Plameran', 'John Bert', 'Decena', 'Tungkil, Minglanilla, Cebu', 'Male', '0001-11-29', 'Married', 'Adonis Dancer', 'Iglesia ni Chris Brown', 13, 'src/r_images/johnbert_pfp.png', 'Active');
 
 -- --------------------------------------------------------
 
@@ -662,7 +723,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pass`, `u_type`, `u_status`, `u_image`, `u_code`) VALUES
 (1021, 'Christian James', 'Abendan', 'admin@gmail.com', 'admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_default/blank_pfp.jpg', ''),
-(1022, 'Emman', 'Bas', 'user@gmail.com', 'user', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', '');
+(1022, 'Emman', 'Bas', 'user@gmail.com', 'user', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/emman_pfp.png', ''),
+(1023, 'Shane', 'Hermando', 'user1@gmail.com', 'user1', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/brgy_sec.png', '');
 
 --
 -- Indexes for dumped tables
@@ -734,7 +796,7 @@ ALTER TABLE `tbl_household`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1501;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1561;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`
@@ -752,13 +814,13 @@ ALTER TABLE `tbl_reports`
 -- AUTO_INCREMENT for table `tbl_residents`
 --
 ALTER TABLE `tbl_residents`
-  MODIFY `r_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2867;
+  MODIFY `r_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2868;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1023;
+  MODIFY `u_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1024;
 
 --
 -- Constraints for dumped tables

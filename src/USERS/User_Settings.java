@@ -624,9 +624,39 @@ public class User_Settings extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        User_Settings_Account asa = new User_Settings_Account();
+        
+      Session sess = Session.getInstance();
+        
+      sessUsn.setText("@"+sess.getUsername());
+      int id = sess.getUid();
+          
+      try{
+         dbConnector dbc = new dbConnector();
+         ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
+           
+         if(rs.next()){
+         User_Settings_Account asa = new User_Settings_Account();
+         asa.fn.setText(rs.getString("u_fname"));
+         asa.ln.setText(rs.getString("u_lname"));
+         asa.usn.setText(rs.getString("u_usn"));
+         asa.mail.setText(rs.getString("u_email"));
+         asa.image.setIcon(ResizeImage(rs.getString("u_image"), null, image));
+         asa.oldpath = rs.getString("u_image");
+         asa.path = rs.getString("u_image");
+         asa.destination = rs.getString("u_image");
+       
         asa.setVisible(true);
         this.dispose();
+        
+           }
+           
+            rs.close();
+           
+           }catch(SQLException ex){
+                 System.out.println(""+ex);
+         
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

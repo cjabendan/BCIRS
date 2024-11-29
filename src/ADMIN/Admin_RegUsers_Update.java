@@ -129,28 +129,41 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
     return image;
 }
     
-   public void imageUpdater(String existingFilePath, String newFilePath){
-        File existingFile = new File(existingFilePath);
-        if (existingFile.exists()) {
-            String parentDirectory = existingFile.getParent();
-            File newFile = new File(newFilePath);
-            String newFileName = newFile.getName();
-            File updatedFile = new File(parentDirectory, newFileName);
-            existingFile.delete();
-            try {
-                Files.copy(newFile.toPath(), updatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("Image updated successfully.");
-            } catch (IOException e) {
-                System.out.println("Error occurred while updating the image: "+e);
-            }
+  public void imageUpdater(String existingFilePath, String newFilePath) {
+    File existingFile = new File(existingFilePath); // Path of the currently used image
+    File newFile = new File(newFilePath); // Path of the new image
+    String destinationFolder = "src/u_images/";
+    File destinationFile = new File(destinationFolder, newFile.getName()); // Final destination for the new image
+
+    try {
+        // Ensure the u_images folder exists
+        File destinationDir = new File(destinationFolder);
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs();
+        }
+
+        // Check if existingFile is from u_default
+        if (existingFile.getPath().contains("u_default")) {
+            // Do not delete; simply copy the new file to u_images
+            Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("New image added successfully to u_images.");
         } else {
-            try{
-                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
-            }catch(IOException e){
-                System.out.println("Error on update!");
+            // For files in u_images, replace the existing image
+            if (existingFile.exists()) {
+                Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                existingFile.delete(); // Clean up the old image if necessary
+                System.out.println("Image updated successfully in u_images.");
+            } else {
+                // If no file exists, simply copy the new one
+                Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Image added to u_images.");
             }
         }
-   }
+    } catch (IOException e) {
+        System.out.println("Error while updating the image: " + e.getMessage());
+    }
+}
+
   
           public boolean updateCheck(){
         
@@ -254,7 +267,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
-        remove = new javax.swing.JButton();
         addProfile = new javax.swing.JButton();
         a6 = new javax.swing.JLabel();
         a5 = new javax.swing.JLabel();
@@ -983,23 +995,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 170, 170));
 
-        remove.setBackground(new java.awt.Color(27, 57, 77));
-        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeMouseExited(evt);
-            }
-        });
-        remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
-            }
-        });
-        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 30, 30));
-
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
@@ -1009,7 +1004,7 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
                 addProfileActionPerformed(evt);
             }
         });
-        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 130, 30));
+        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 170, 30));
 
         a6.setForeground(new java.awt.Color(255, 0, 0));
         a6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -1365,14 +1360,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lnActionPerformed
 
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        remove.setEnabled(false);
-        addProfile.setText(" Add profile");
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_removeActionPerformed
-
     private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
 
         JFileChooser fileChooser = new JFileChooser();
@@ -1390,7 +1377,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
                 }else{
                     image.setIcon(ResizeImage(path, null, image));
                     addProfile.setText(" Edit Profile");
-                    remove.setEnabled(true);
                 }
             } catch (Exception ex) {
                 System.out.println("File Error!");
@@ -1398,14 +1384,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_addProfileActionPerformed
-
-    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
-        remove.setBackground(Red);       
-    }//GEN-LAST:event_removeMouseEntered
-
-    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
-        remove.setBackground(MainC);   
-    }//GEN-LAST:event_removeMouseExited
 
     private void logoffMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoffMouseEntered
         // TODO add your handling code here:
@@ -1656,7 +1634,6 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
     public javax.swing.JTextField mail;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
-    public javax.swing.JButton remove;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
     public javax.swing.JComboBox<String> st;

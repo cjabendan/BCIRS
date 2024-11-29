@@ -115,28 +115,40 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
     return image;
 }
     
-   public void imageUpdater(String existingFilePath, String newFilePath){
-        File existingFile = new File(existingFilePath);
-        if (existingFile.exists()) {
-            String parentDirectory = existingFile.getParent();
-            File newFile = new File(newFilePath);
-            String newFileName = newFile.getName();
-            File updatedFile = new File(parentDirectory, newFileName);
-            existingFile.delete();
-            try {
-                Files.copy(newFile.toPath(), updatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                System.out.println("Image updated successfully.");
-            } catch (IOException e) {
-                System.out.println("Error occurred while updating the image: "+e);
-            }
+  public void imageUpdater(String existingFilePath, String newFilePath) {
+    File existingFile = new File(existingFilePath); // Path of the currently used image
+    File newFile = new File(newFilePath); // Path of the new image
+    String destinationFolder = "src/u_images/";
+    File destinationFile = new File(destinationFolder, newFile.getName()); // Final destination for the new image
+
+    try {
+        // Ensure the u_images folder exists
+        File destinationDir = new File(destinationFolder);
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs();
+        }
+
+        // Check if existingFile is from u_default
+        if (existingFile.getPath().contains("u_default")) {
+            // Do not delete; simply copy the new file to u_images
+            Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("New image added successfully to u_images.");
         } else {
-            try{
-                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
-            }catch(IOException e){
-                System.out.println("Error on update!");
+            // For files in u_images, replace the existing image
+            if (existingFile.exists()) {
+                Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                existingFile.delete(); // Clean up the old image if necessary
+                System.out.println("Image updated successfully in u_images.");
+            } else {
+                // If no file exists, simply copy the new one
+                Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Image added to u_images.");
             }
         }
-   }
+    } catch (IOException e) {
+        System.out.println("Error while updating the image: " + e.getMessage());
+    }
+}
    
    public boolean updateCheck(){
         
@@ -214,8 +226,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        remove = new javax.swing.JButton();
-        addProfile = new javax.swing.JButton();
         fn = new javax.swing.JTextField();
         usn = new javax.swing.JTextField();
         mail = new javax.swing.JTextField();
@@ -224,10 +234,11 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        image = new javax.swing.JLabel();
         update = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        image = new javax.swing.JLabel();
+        addProfile = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         confirmDel.setBackground(new java.awt.Color(255, 255, 255));
@@ -507,34 +518,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        remove.setBackground(new java.awt.Color(27, 57, 77));
-        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeMouseExited(evt);
-            }
-        });
-        remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
-            }
-        });
-        jPanel5.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 30, 30));
-
-        addProfile.setBackground(new java.awt.Color(255, 255, 255));
-        addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
-        addProfile.setText(" Edit Profile");
-        addProfile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addProfileActionPerformed(evt);
-            }
-        });
-        jPanel5.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 130, 30));
-
         fn.setBackground(new java.awt.Color(245, 246, 248));
         fn.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         fn.setForeground(new java.awt.Color(100, 115, 122));
@@ -599,14 +582,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         jLabel13.setText("First Name");
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 32, -1, 30));
 
-        jPanel7.setBackground(new java.awt.Color(245, 246, 248));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
-        jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
-
-        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 170, 170));
-
         update.setBackground(new java.awt.Color(27, 55, 77));
         update.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         update.setForeground(new java.awt.Color(255, 255, 255));
@@ -638,6 +613,25 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
             }
         });
         jPanel5.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 100, 30));
+
+        jPanel7.setBackground(new java.awt.Color(245, 246, 248));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        image.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        jPanel7.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 170));
+
+        jPanel5.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 170, 170));
+
+        addProfile.setBackground(new java.awt.Color(255, 255, 255));
+        addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
+        addProfile.setText(" Edit Profile");
+        addProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProfileActionPerformed(evt);
+            }
+        });
+        jPanel5.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 170, 30));
 
         jPanel1.add(jPanel5);
         jPanel5.setBounds(210, 140, 910, 310);
@@ -688,6 +682,7 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
            ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+sess.getUid()+"'");
            
            if(rs.next()){
+               /*
                
                fn.setText(rs.getString("u_fname"));
                ln.setText(rs.getString("u_lname"));
@@ -698,7 +693,7 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
                path = rs.getString("u_image");
                destination = rs.getString("u_image");
                
-               
+               */
                 String code = rs.getString("u_code");
                 if(code.equals("")){
                     dot.setText("•");
@@ -788,47 +783,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         ads.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
-
-    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
-        remove.setBackground(Red);
-    }//GEN-LAST:event_removeMouseEntered
-
-    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
-        remove.setBackground(MainC);
-    }//GEN-LAST:event_removeMouseExited
-
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        remove.setEnabled(false);
-        addProfile.setText(" Add profile");
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_removeActionPerformed
-
-    private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
-
-        JFileChooser fileChooser = new JFileChooser();
-        int returnValue = fileChooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            try {
-                selectedFile = fileChooser.getSelectedFile();
-                destination = "src/u_images/" + selectedFile.getName();
-                path  = selectedFile.getAbsolutePath();
-
-                if(FileExistenceChecker(path) == 1){
-                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
-                    destination = "";
-                    path="";
-                }else{
-                    image.setIcon(ResizeImage(path, null, image));
-                    addProfile.setText(" Edit Profile");
-                    remove.setEnabled(true);
-                }
-            } catch (Exception ex) {
-                System.out.println("File Error!");
-            }
-        }
-    }//GEN-LAST:event_addProfileActionPerformed
 
     private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
         // TODO add your handling code here:
@@ -982,6 +936,30 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
         window.dispose();
     }//GEN-LAST:event_cancelBTActionPerformed
 
+    private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
+
+        JFileChooser fileChooser = new JFileChooser();
+        int returnValue = fileChooser.showOpenDialog(null);
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            try {
+                selectedFile = fileChooser.getSelectedFile();
+                destination = "src/u_images/" + selectedFile.getName();
+                path  = selectedFile.getAbsolutePath();
+
+                if(FileExistenceChecker(path) == 1){
+                    JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
+                    destination = "";
+                    path="";
+                }else{
+                    image.setIcon(ResizeImage(path, null, image));
+                    addProfile.setText(" Edit Profile");
+                }
+            } catch (Exception ex) {
+                System.out.println("File Error!");
+            }
+        }
+    }//GEN-LAST:event_addProfileActionPerformed
+
     
         public void logEvent(int userId, String event, String description) {
    
@@ -1092,7 +1070,6 @@ public class Admin_Settings_Account extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     public javax.swing.JTextField ln;
     public javax.swing.JTextField mail;
-    public javax.swing.JButton remove;
     private javax.swing.JPanel secPane;
     public javax.swing.JLabel sessUsn;
     public javax.swing.JButton update;

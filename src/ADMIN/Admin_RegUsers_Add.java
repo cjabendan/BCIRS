@@ -1234,22 +1234,6 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_lnActionPerformed
 
-    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
-        remove.setBackground(Red);
-    }//GEN-LAST:event_removeMouseEntered
-
-    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
-        remove.setBackground(MainC);
-    }//GEN-LAST:event_removeMouseExited
-
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        remove.setEnabled(false);
-        addProfile.setText(" Add profile");
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_removeActionPerformed
-
     private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
 
         JFileChooser fileChooser = new JFileChooser();
@@ -1362,6 +1346,22 @@ import javax.swing.border.EmptyBorder;
         show.setVisible(false);
         ps.setEchoChar('*');
     }//GEN-LAST:event_showMouseClicked
+
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        remove.setEnabled(false);
+        addProfile.setText(" Add profile");
+        image.setIcon(null);
+        destination = "";
+        path = "";
+    }//GEN-LAST:event_removeActionPerformed
+
+    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
+        remove.setBackground(MainC);
+    }//GEN-LAST:event_removeMouseExited
+
+    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
+        remove.setBackground(Red);
+    }//GEN-LAST:event_removeMouseEntered
 
       public void logEvent(int userId, String event, String description) {
    
@@ -1593,7 +1593,7 @@ import javax.swing.border.EmptyBorder;
     private javax.swing.JPasswordField ps;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
-    public javax.swing.JButton remove;
+    private javax.swing.JButton remove;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
     private javax.swing.JLabel show;

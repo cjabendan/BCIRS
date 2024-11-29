@@ -610,7 +610,7 @@ public class User_Security_Password extends javax.swing.JFrame {
                     String npass = pH.hashPassword(nps.getText());
                     dbc.updateData("UPDATE tbl_user SET u_pass = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
                     JOptionPane.showMessageDialog(null, "Password changed successfully!");
-                    Admin_Settings as = new Admin_Settings();
+                    User_Settings as = new User_Settings();
                     as.setVisible(true);
                     this.dispose();
                 }
