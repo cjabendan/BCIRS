@@ -122,7 +122,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
    public void displayData() {
     try {
         dbConnector dbc = new dbConnector();
-        String query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+        String query = "SELECT r.r_id, r.r_fname, r.r_lname, "
                      + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                      + "r.r_sex, h.h_name "
                      + "FROM tbl_residents r "
@@ -142,8 +142,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
         TableColumn tc5 = tcm.getColumn(5);
 
         tc0.setHeaderValue("ID");
-        tc1.setHeaderValue("Last Name");
-        tc2.setHeaderValue("First Name");
+        tc1.setHeaderValue("First Name");
+        tc2.setHeaderValue("Last Name");
         tc3.setHeaderValue("Age");
         tc4.setHeaderValue("Sex");
         tc5.setHeaderValue("Household");
@@ -2019,7 +2019,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
             String query;
 
             if (searchText.isEmpty()) {
-                query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                query = "SELECT r.r_id, r.r_fname, r.r_lname, "
                 + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                 + "r.r_sex, h.h_name "
                 + "FROM tbl_residents r "
@@ -2029,7 +2029,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
                 displayData();
 
             } else {
-                query = "SELECT r.r_id, r.r_lname, r.r_fname, "
+                query = "SELECT r.r_id, r.r_fname, r.r_lname, "
                 + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
                 + "r.r_sex, h.h_name "
                 + "FROM tbl_residents r "
@@ -2049,8 +2049,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
             TableColumnModel tcm = th.getColumnModel();
 
             tcm.getColumn(0).setHeaderValue("ID");
-            tcm.getColumn(1).setHeaderValue("Last Name");
-            tcm.getColumn(2).setHeaderValue("First Name");
+            tcm.getColumn(1).setHeaderValue("First Name");
+            tcm.getColumn(2).setHeaderValue("Last Name");
             tcm.getColumn(3).setHeaderValue("Age");
             tcm.getColumn(4).setHeaderValue("Sex");
             tcm.getColumn(5).setHeaderValue("Household");

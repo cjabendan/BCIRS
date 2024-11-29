@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 12:34 AM
+-- Generation Time: Nov 29, 2024 at 02:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -190,7 +190,22 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (1482, '2024-11-29 07:15:10', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2674 data is updated by user: 1022.'),
 (1483, '2024-11-29 07:15:33', 'LOGOUT', 1022, 'User logged out'),
 (1484, '2024-11-29 07:29:43', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
-(1485, '2024-11-29 07:30:22', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2763 data is updated by user: 1022.');
+(1485, '2024-11-29 07:30:22', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2763 data is updated by user: 1022.'),
+(1486, '2024-11-29 08:57:54', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1487, '2024-11-29 08:58:32', 'LOGOUT', 1021, 'User logged out'),
+(1488, '2024-11-29 08:58:42', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1489, '2024-11-29 08:59:46', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2865 data is updated by user: 1022.'),
+(1490, '2024-11-29 09:00:08', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2863 data is updated by user: 1022.'),
+(1491, '2024-11-29 09:01:52', 'UPDATE_INCIDENT_REPORT', 1022, 'Incident updated. Incident ID: 4'),
+(1492, '2024-11-29 09:02:49', 'LOGOUT', 1022, 'User logged out'),
+(1493, '2024-11-29 09:02:58', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1494, '2024-11-29 09:03:10', 'USER_DATA_UPDATE', 1021, 'User ID: 1021 data is updated by admin'),
+(1495, '2024-11-29 09:03:43', 'USER_DATA_UPDATE', 1021, 'User ID: 1022 data is updated by admin'),
+(1496, '2024-11-29 09:03:46', 'LOGOUT', 1021, 'User logged out'),
+(1497, '2024-11-29 09:04:00', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1498, '2024-11-29 09:04:09', 'LOGOUT', 1022, 'User logged out'),
+(1499, '2024-11-29 09:07:55', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1500, '2024-11-29 09:08:53', 'LOGOUT', 1021, 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -241,7 +256,7 @@ CREATE TABLE `tbl_reports` (
 
 INSERT INTO `tbl_reports` (`inc_id`, `inc_type`, `inc_date_time`, `inc_loc`, `inc_involvedpersons`, `inc_narrative`, `inc_reported_by`, `inc_received_by`, `inc_status`) VALUES
 (3, 'Car Theft', 'Febuarary 10, 2024 at  2:30 AM', 'Main St. Of the Earth', 'John Doe, Jane Smith', 'Report of theft from a parked vehicle.', 'Officer Lee', 'Christian', 'Closed'),
-(4, 'House Thief', 'November 28, 2024 at 11:20pm', 'Pob. Ward II, Minglanilla, Cebu', 'Sample data', 'Sample Data', 'Christian Abendan', 'Officer Lee', 'Open');
+(4, 'House Thief', 'November 28, 2024 at 11:20pm', 'Pob. Ward II, Minglanilla, Cebu', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Christian Abendan', 'Officer Lee', 'Open');
 
 -- --------------------------------------------------------
 
@@ -617,9 +632,9 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (2860, 'Cruz', 'Luz', 'Ortega', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-12', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2861, 'Flores', 'Jose', 'Vargas', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-13', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2862, 'Santos', 'Juan', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-14', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
-(2863, 'Reyes', 'Ana', 'Torres', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-15', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
+(2863, 'Reyes', 'Ana', 'Torres', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '2004-06-15', 'Single', 'Student', 'Catholic', 7, '', 'Active'),
 (2864, 'Morales', 'Juan', 'Domingo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-16', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
-(2865, 'Morales', 'Angel', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-17', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
+(2865, 'Morales', 'Angel', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '1997-02-07', 'Married', 'Sales Clerk', 'Catholic', 7, '', 'Active'),
 (2866, 'Morales', 'Raymod', 'Degamo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-18', 'Single', 'Worker', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active');
 
 -- --------------------------------------------------------
@@ -646,8 +661,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pass`, `u_type`, `u_status`, `u_image`, `u_code`) VALUES
-(1021, 'Christian James', 'Abendan', 'chrisbend2004@gmail.com', 'cjabendan', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_default/blank_pfp.jpg', ''),
-(1022, 'Emman', 'Bas', 'wais@gmail.com', 'wais.', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', '');
+(1021, 'Christian James', 'Abendan', 'admin@gmail.com', 'admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_default/blank_pfp.jpg', ''),
+(1022, 'Emman', 'Bas', 'user@gmail.com', 'user', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_default/blank_pfp.jpg', '');
 
 --
 -- Indexes for dumped tables
@@ -719,7 +734,7 @@ ALTER TABLE `tbl_household`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1486;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1501;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`
