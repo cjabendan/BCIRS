@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 06:50 AM
+-- Generation Time: Nov 30, 2024 at 12:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -265,7 +265,47 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (1557, '2024-11-29 13:45:44', 'ADDED NEW RESIDENT', 1022, 'Resident ID: 2867 is added by user: 1022.'),
 (1558, '2024-11-29 13:46:53', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2867 data is updated by user: 1022.'),
 (1559, '2024-11-29 13:49:43', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2867 data is updated by user: 1022.'),
-(1560, '2024-11-29 13:50:21', 'LOGOUT', 1022, 'User logged out');
+(1560, '2024-11-29 13:50:21', 'LOGOUT', 1022, 'User logged out'),
+(1561, '2024-11-30 08:48:22', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1562, '2024-11-30 08:50:13', 'RESIDENT ARCHIVED', 1022, 'Resident ID: 2867 data is archived by user.'),
+(1563, '2024-11-30 08:50:43', 'LOGOUT', 1022, 'User logged out'),
+(1564, '2024-11-30 08:50:51', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1565, '2024-11-30 08:55:50', 'LOGOUT', 1021, 'User logged out'),
+(1566, '2024-11-30 08:58:28', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1567, '2024-11-30 08:59:51', 'LOGOUT', 1021, 'User logged out'),
+(1568, '2024-11-30 09:00:04', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1569, '2024-11-30 09:00:18', 'LOGOUT', 1022, 'User logged out'),
+(1570, '2024-11-30 12:29:35', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1571, '2024-11-30 12:32:45', 'LOGOUT', 1021, 'User logged out'),
+(1572, '2024-11-30 12:32:59', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1573, '2024-11-30 12:33:17', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1574, '2024-11-30 12:33:23', 'LOGOUT', 1022, 'User logged out'),
+(1575, '2024-11-30 12:37:48', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1576, '2024-11-30 12:38:16', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1577, '2024-11-30 14:11:56', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1578, '2024-11-30 14:12:52', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1579, '2024-11-30 14:12:59', 'LOGOUT', 1022, 'User logged out'),
+(1580, '2024-11-30 14:18:33', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1581, '2024-11-30 14:18:54', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1582, '2024-11-30 14:19:26', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1583, '2024-11-30 14:19:36', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1584, '2024-11-30 14:20:03', 'LOGOUT', 1022, 'User logged out'),
+(1585, '2024-11-30 14:24:27', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1586, '2024-11-30 14:25:00', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1587, '2024-11-30 14:25:09', 'LOGOUT', 1022, 'User logged out'),
+(1588, '2024-11-30 14:27:10', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1589, '2024-11-30 14:27:19', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1590, '2024-11-30 14:27:29', 'LOGOUT', 1022, 'User logged out'),
+(1591, '2024-11-30 14:31:50', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1592, '2024-11-30 14:31:58', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1593, '2024-11-30 14:32:02', 'LOGOUT', 1022, 'User logged out'),
+(1594, '2024-11-30 14:37:37', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1595, '2024-11-30 14:38:13', 'LOGOUT', 1022, 'User logged out'),
+(1596, '2024-11-30 19:22:19', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1597, '2024-11-30 19:22:30', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1598, '2024-11-30 19:23:05', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1599, '2024-11-30 19:23:16', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
+(1600, '2024-11-30 19:23:22', 'LOGOUT', 1022, 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -692,11 +732,11 @@ INSERT INTO `tbl_residents` (`r_id`, `r_lname`, `r_fname`, `r_mname`, `r_address
 (2860, 'Cruz', 'Luz', 'Ortega', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-12', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2861, 'Flores', 'Jose', 'Vargas', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-13', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2862, 'Santos', 'Juan', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-14', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
-(2863, 'Reyes', 'Ana', 'Torres', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '2004-06-15', 'Single', 'Student', 'Catholic', 7, '', 'Active'),
+(2863, 'Reyes', 'Ana', 'Torres', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '2004-06-15', 'Single', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
 (2864, 'Morales', 'Juan', 'Domingo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-16', 'Married', 'Student', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
-(2865, 'Morales', 'Angel', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '1997-02-07', 'Married', 'Sales Clerk', 'Catholic', 7, '', 'Active'),
-(2866, 'Morales', 'Raymod', 'Degamo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '2004-06-18', 'Single', 'Worker', 'Catholic', 7, 'src/r_images/user_pfp.png', 'Active'),
-(2867, 'Plameran', 'John Bert', 'Decena', 'Tungkil, Minglanilla, Cebu', 'Male', '0001-11-29', 'Married', 'Adonis Dancer', 'Iglesia ni Chris Brown', 13, 'src/r_images/johnbert_pfp.png', 'Active');
+(2865, 'Morales', 'Angel', 'Padilla', 'Pob. Ward II, Minglanilla, Cebu', 'Female', '1997-02-07', 'Married', 'Sales Clerk', 'Catholic', 7, 'src/u_default/blank_pfp.jpg', 'Active'),
+(2866, 'Morales', 'Raymod', 'Degamo', 'Pob. Ward II, Minglanilla, Cebu', 'Male', '1998-09-07', 'Single', 'Worker', 'Catholic', 7, 'src/r_images/resident_pfp.png', 'Active'),
+(2867, 'Plameran', 'John Bert', 'Decena', 'Tungkil, Minglanilla, Cebu', 'Male', '0001-11-29', 'Married', 'Adonis Dancer', 'Iglesia ni Chris Brown', 13, 'src/r_images/johnbert_pfp.png', 'Archived');
 
 -- --------------------------------------------------------
 
@@ -722,7 +762,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pass`, `u_type`, `u_status`, `u_image`, `u_code`) VALUES
-(1021, 'Christian James', 'Abendan', 'admin@gmail.com', 'admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_default/blank_pfp.jpg', ''),
+(1021, 'Christian James', 'Abendan', 'admin@gmail.com', 'admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_images/admin_pfp.png', ''),
 (1022, 'Emman', 'Bas', 'user@gmail.com', 'user', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/emman_pfp.png', ''),
 (1023, 'Shane', 'Hermando', 'user1@gmail.com', 'user1', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/brgy_sec.png', '');
 
@@ -796,7 +836,7 @@ ALTER TABLE `tbl_household`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1561;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1601;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`

@@ -164,10 +164,9 @@ public class Admin_RegUsers_Update extends javax.swing.JFrame {
     }
 }
 
-  
-          public boolean updateCheck(){
+  public boolean updateCheck(){
         
-        dbConnector dbc = new dbConnector();
+       dbConnector dbc = new dbConnector();
         
         try{
             

@@ -91,7 +91,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
                        "(SELECT COUNT(*) FROM tbl_household) AS total_household_count, " +
                        "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Male' AND r_status = 'Active') AS total_male, " +
                        "(SELECT COUNT(*) FROM tbl_residents WHERE r_sex = 'Female' AND r_status = 'Active') AS total_female, " +
-                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archive') AS total_archived, " + // Added missing comma
+                       "(SELECT COUNT(*) FROM tbl_residents WHERE r_status = 'Archived') AS total_archived, " + // Added missing comma
                        "(SELECT COUNT(*) FROM tbl_reports WHERE inc_status = 'Open') AS total_reps";
 
         ResultSet rs = dbc.getData(query);
@@ -1334,7 +1334,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         reps.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         reps.setForeground(new java.awt.Color(27, 57, 77));
         reps.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/member-list.png"))); // NOI18N
+        reps.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/newspaper (1).png"))); // NOI18N
         reps.setText(" 0");
         housePanel4.add(reps, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 160, 30));
 

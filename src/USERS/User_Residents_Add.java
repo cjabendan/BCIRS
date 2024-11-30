@@ -167,7 +167,6 @@ import javax.swing.border.EmptyBorder;
         jLabel7 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         image = new javax.swing.JLabel();
-        remove = new javax.swing.JButton();
         addProfile = new javax.swing.JButton();
         a5 = new javax.swing.JLabel();
         a6 = new javax.swing.JLabel();
@@ -436,23 +435,6 @@ import javax.swing.border.EmptyBorder;
 
         jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 190, 190));
 
-        remove.setBackground(new java.awt.Color(27, 57, 77));
-        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeMouseExited(evt);
-            }
-        });
-        remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
-            }
-        });
-        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 30, 30));
-
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
@@ -462,7 +444,7 @@ import javax.swing.border.EmptyBorder;
                 addProfileActionPerformed(evt);
             }
         });
-        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 130, 30));
+        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 180, 30));
 
         a5.setForeground(new java.awt.Color(255, 0, 0));
         a5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -877,22 +859,6 @@ import javax.swing.border.EmptyBorder;
         // TODO add your handling code here:
     }//GEN-LAST:event_sexActionPerformed
 
-    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
-        remove.setBackground(Red);
-    }//GEN-LAST:event_removeMouseEntered
-
-    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
-        remove.setBackground(MainC);
-    }//GEN-LAST:event_removeMouseExited
-
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        remove.setEnabled(false);
-        addProfile.setText(" Add profile");
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_removeActionPerformed
-
     private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
 
         JFileChooser fileChooser = new JFileChooser();
@@ -910,7 +876,6 @@ import javax.swing.border.EmptyBorder;
                 }else{
                     image.setIcon(ResizeImage(path, null, image));
                     addProfile.setText(" Edit Profile");
-                    remove.setEnabled(true);
                 }
             } catch (Exception ex) {
                 System.out.println("File Error!");
@@ -1158,7 +1123,6 @@ import javax.swing.border.EmptyBorder;
     public javax.swing.JTextField occupation;
     public javax.swing.JComboBox<String> purok1;
     public javax.swing.JTextField religion;
-    public javax.swing.JButton remove;
     public javax.swing.JComboBox<String> sex;
     public javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables

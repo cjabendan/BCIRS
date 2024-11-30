@@ -70,12 +70,7 @@ import javax.swing.border.EmptyBorder;
     Color Panecolor = new Color(242,242,242);
     Color PaneNcolor = new Color(255,255,255);
     
-    
- //  public String destination = "";
-  // File selectedFile;
-  // public String path;
- //  public String oldpath;
-
+   
 public String destination = "";
 public String path = "";
 public String oldpath = "";
@@ -113,26 +108,40 @@ public ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
 
 public void imageUpdater(String existingFilePath, String newFilePath) {
     File existingFile = new File(existingFilePath);
-    if (existingFile.exists()) {
-        String parentDirectory = existingFile.getParent();
-        File newFile = new File(newFilePath);
-        String newFileName = newFile.getName();
-        File updatedFile = new File(parentDirectory, newFileName);
-        existingFile.delete();
-        try {
-            Files.copy(newFile.toPath(), updatedFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("Image updated successfully.");
-        } catch (IOException e) {
-            System.out.println("Error occurred while updating the image: " + e);
+    File newFile = new File(newFilePath);
+
+    // Ensure the new image is always stored in r_images
+    String destinationFolder = "src/r_images/";
+    File destinationFile = new File(destinationFolder, newFile.getName());
+
+    try {
+        // Create r_images folder if it doesn't exist
+        File destinationDir = new File(destinationFolder);
+        if (!destinationDir.exists()) {
+            destinationDir.mkdirs();
         }
-    } else {
-        try {
-            Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            System.out.println("Error on update!");
+
+        // If the existing file is from u_default, don't delete it
+        if (existingFile.getPath().contains("u_default")) {
+            Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("New image added successfully to r_images.");
+        } else {
+            // If the existing file is already in r_images, replace it
+            if (existingFile.exists()) {
+                Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                existingFile.delete(); // Delete the old image in r_images
+                System.out.println("Image updated successfully in r_images.");
+            } else {
+                // If no existing file, copy the new one to r_images
+                Files.copy(newFile.toPath(), destinationFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Image added to r_images.");
+            }
         }
+    } catch (IOException e) {
+        System.out.println("Error while updating the image: " + e.getMessage());
     }
 }
+
  
     public void populateHouseholdComboBox(JComboBox<String> householdComboBox) {
         try {
@@ -206,7 +215,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         jPanel3 = new javax.swing.JPanel();
         Add = new javax.swing.JButton();
         delete = new javax.swing.JButton();
-        remove = new javax.swing.JButton();
         addProfile = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
@@ -577,23 +585,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         });
         jPanel3.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 470, 30, 33));
 
-        remove.setBackground(new java.awt.Color(27, 57, 77));
-        remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/circle-xmark.png"))); // NOI18N
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeMouseExited(evt);
-            }
-        });
-        remove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeActionPerformed(evt);
-            }
-        });
-        jPanel3.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 30, 30));
-
         addProfile.setBackground(new java.awt.Color(255, 255, 255));
         addProfile.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         addProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add-image (1).png"))); // NOI18N
@@ -603,7 +594,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 addProfileActionPerformed(evt);
             }
         });
-        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 130, 30));
+        jPanel3.add(addProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 170, 30));
 
         jLabel19.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(27, 57, 77));
@@ -838,7 +829,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         status.setBackground(new java.awt.Color(245, 246, 248));
         status.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
         status.setForeground(new java.awt.Color(100, 115, 122));
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Select", "Single", "Married", "Widowed", "Separated" }));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "Single", "Married", "Widowed", "Separated" }));
         status.setBorder(null);
         status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -988,35 +979,60 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
             a9.setText("*");
         }
     } else {
+        
+      try {
         dbConnector dbc = new dbConnector();
+        String query = "SELECT r_image FROM tbl_residents WHERE r_id = '" + id.getText() + "'";
+        ResultSet rs = dbc.getData(query);
 
-        String imagePathToUpdate = (destination == null || destination.isEmpty()) ? oldpath : destination;
+        if (rs.next()) {
+            oldpath = rs.getString("r_image");
+            System.out.println("Old path set to: " + oldpath);
+        } else {
+            System.out.println("No record found for the given resident ID.");
+        }
 
-        dbc.updateData("UPDATE tbl_residents SET "
-            + "r_lname = '" + ln.getText() + "', "
-            + "r_fname = '" + fn.getText() + "', "
-            + "r_mname = '" + mn.getText() + "', "
-            + "r_address = '" + address.getText() + "', "
-            + "r_sex = '" + sex.getSelectedItem() + "', "
-            + "r_dob = '" + new SimpleDateFormat("yyyy-MM-dd").format(dob.getDate()) + "', "
-            + "r_civilstatus = '" + status.getSelectedItem() + "', "
-            + "r_occupation = '" + occupation.getText() + "', "
-            + "r_religion = '" + religion.getText() + "', "
-            + "h_id = (SELECT h_id FROM tbl_household WHERE h_name = '" + house.getText() + "'), "
-            + "r_image = '" + imagePathToUpdate + "' "
-            + "WHERE r_id = '" + id.getText() + "'");
-
-
-            if (!(oldpath.equals(path))) {
+        rs.close();
+    } catch (SQLException ex) {
+        System.out.println("Error: " + ex.getMessage());
+    }  
+        
+        
+      if (destination.isEmpty()) {
+            destination = oldpath; 
+        } else {
+           
+            if (!oldpath.equals(path)) {
                 imageUpdater(oldpath, path);
             }
+        }
+         
+         dbConnector dbc = new dbConnector();
+         dbc.updateData("UPDATE tbl_residents SET "
+             + "r_lname = '" + ln.getText() + "', "
+             + "r_fname = '" + fn.getText() + "', "
+             + "r_mname = '" + mn.getText() + "', "
+             + "r_address = '" + address.getText() + "', "
+             + "r_sex = '" + sex.getSelectedItem() + "', "
+             + "r_dob = '" + new SimpleDateFormat("yyyy-MM-dd").format(dob.getDate()) + "', "
+             + "r_civilstatus = '" + status.getSelectedItem() + "', "
+             + "r_occupation = '" + occupation.getText() + "', "
+             + "r_religion = '" + religion.getText() + "', "
+             + "h_id = (SELECT h_id FROM tbl_household WHERE h_name = '" + house.getText() + "'), "
+             + "r_image = '" + destination + "' "
+             + "WHERE r_id = '" + id.getText() + "'");
 
-        logEvent(userID, "EDITED RESIDENT DATA", "Resident ID: " +  id.getText() + " data is updated by user: "+userID+".");
+        
+         logEvent(userID, "EDITED RESIDENT DATA", "Resident ID: " + id.getText() + " data is updated by user: " + userID + ".");
 
-        JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
-        User_Purok ru = new User_Purok();
-        ru.setVisible(true);
-        this.dispose();
+        
+         JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
+
+        
+         User_Purok ru = new User_Purok();
+         ru.setVisible(true);
+         this.dispose();
+
     }
 
     }//GEN-LAST:event_AddActionPerformed
@@ -1042,22 +1058,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
 
     }//GEN-LAST:event_deleteActionPerformed
 
-    private void removeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseEntered
-        remove.setBackground(Red);
-    }//GEN-LAST:event_removeMouseEntered
-
-    private void removeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeMouseExited
-        remove.setBackground(MainC);
-    }//GEN-LAST:event_removeMouseExited
-
-    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        remove.setEnabled(false);
-        addProfile.setText(" Add profile");
-        image.setIcon(null);
-        destination = "";
-        path = "";
-    }//GEN-LAST:event_removeActionPerformed
-
     private void addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProfileActionPerformed
 
         JFileChooser fileChooser = new JFileChooser();
@@ -1075,7 +1075,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
                 }else{
                     image.setIcon(ResizeImage(path, null, image));
                     addProfile.setText(" Edit Profile");
-                    remove.setEnabled(true);
                 }
             } catch (Exception ex) {
                 System.out.println("File Error!");
@@ -1516,8 +1515,8 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     private javax.swing.JPanel houseAdd;
     private javax.swing.JPanel houseAdd1;
     public javax.swing.JComboBox<String> household;
-    private javax.swing.JLabel hs;
-    private javax.swing.JLabel hs1;
+    public javax.swing.JLabel hs;
+    public javax.swing.JLabel hs1;
     public javax.swing.JLabel hs2;
     public javax.swing.JLabel hs3;
     public javax.swing.JLabel hs4;
@@ -1561,7 +1560,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
     public javax.swing.JTextField occupation;
     public javax.swing.JComboBox<String> purok1;
     public javax.swing.JTextField religion;
-    public javax.swing.JButton remove;
     public javax.swing.JComboBox<String> sex;
     public javax.swing.JComboBox<String> status;
     private javax.swing.JButton yesBT;
