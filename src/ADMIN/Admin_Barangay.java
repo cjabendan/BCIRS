@@ -2328,7 +2328,9 @@ if (dl.getSelectedIndex() == 0 || nameField.getText().isEmpty()) {
         document.open();
 
         PdfPTable pdfPTable = new PdfPTable(9); // Adjusted to 9 columns (removed Actions column)
-
+pdfPTable.setWidthPercentage(100); // Make table width span the entire page
+pdfPTable.setSpacingBefore(10f);
+pdfPTable.setSpacingAfter(10f);
          Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
     PdfPCell cell;
     
