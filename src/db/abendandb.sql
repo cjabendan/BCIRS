@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2024 at 12:24 PM
+-- Generation Time: Dec 06, 2024 at 05:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -305,7 +305,84 @@ INSERT INTO `tbl_logs` (`l_id`, `l_timestamp`, `l_event`, `u_id`, `l_description
 (1597, '2024-11-30 19:22:30', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
 (1598, '2024-11-30 19:23:05', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
 (1599, '2024-11-30 19:23:16', 'EDITED RESIDENT DATA', 1022, 'Resident ID: 2866 data is updated by user: 1022.'),
-(1600, '2024-11-30 19:23:22', 'LOGOUT', 1022, 'User logged out');
+(1600, '2024-11-30 19:23:22', 'LOGOUT', 1022, 'User logged out'),
+(1601, '2024-12-01 09:22:09', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1602, '2024-12-01 09:22:35', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1603, '2024-12-01 09:22:53', 'LOGOUT', 1021, 'User logged out'),
+(1604, '2024-12-02 09:55:18', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1605, '2024-12-02 09:56:01', 'LOGOUT', 1021, 'User logged out'),
+(1606, '2024-12-02 09:56:10', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1607, '2024-12-02 10:01:28', 'LOGOUT', 1022, 'User logged out'),
+(1608, '2024-12-04 19:12:49', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1609, '2024-12-04 19:13:08', 'LOGOUT', 1021, 'User logged out'),
+(1610, '2024-12-04 19:13:15', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1611, '2024-12-04 19:13:32', 'LOGOUT', 1022, 'User logged out'),
+(1612, '2024-12-04 19:13:45', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1613, '2024-12-04 19:14:48', 'LOGOUT', 1023, 'User logged out'),
+(1614, '2024-12-04 19:14:57', 'LOGIN_SUCCESS', 1021, 'Admin logged in successfully'),
+(1615, '2024-12-04 19:15:48', 'USER_DATA_UPDATE', 1021, 'User ID: 1023 data is updated by admin'),
+(1616, '2024-12-04 19:15:52', 'LOGOUT', 1021, 'User logged out'),
+(1617, '2024-12-04 19:15:58', 'LOGIN_SUCCESS', 1022, 'User logged in successfully'),
+(1618, '2024-12-04 19:16:06', 'LOGOUT', 1022, 'User logged out'),
+(1619, '2024-12-06 11:31:24', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1620, '2024-12-06 11:31:44', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Resident ID: Id number document is downloaded by user.'),
+(1621, '2024-12-06 11:32:21', 'LOGOUT', 1023, 'User logged out'),
+(1622, '2024-12-06 11:37:17', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1623, '2024-12-06 11:37:29', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: All Residents is downloaded by user.'),
+(1624, '2024-12-06 11:41:53', 'LOGOUT', 1023, 'User logged out'),
+(1625, '2024-12-06 11:42:06', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1626, '2024-12-06 11:47:31', 'LOGOUT', 1023, 'User logged out'),
+(1627, '2024-12-06 11:48:10', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1628, '2024-12-06 11:48:34', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tambis Residents is downloaded by user.'),
+(1629, '2024-12-06 11:49:05', 'LOGOUT', 1023, 'User logged out'),
+(1630, '2024-12-06 11:53:00', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1631, '2024-12-06 11:53:14', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tambis Residents is downloaded by user.'),
+(1632, '2024-12-06 11:53:41', 'LOGOUT', 1023, 'User logged out'),
+(1633, '2024-12-06 11:57:16', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1634, '2024-12-06 11:57:28', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Guyabano Residents is downloaded by user.'),
+(1635, '2024-12-06 11:59:10', 'LOGOUT', 1023, 'User logged out'),
+(1636, '2024-12-06 11:59:18', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1637, '2024-12-06 11:59:27', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: All Residents is downloaded by user.'),
+(1638, '2024-12-06 12:00:48', 'LOGOUT', 1023, 'User logged out'),
+(1639, '2024-12-06 12:00:59', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1640, '2024-12-06 12:01:09', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tambis Residents is downloaded by user.'),
+(1641, '2024-12-06 12:02:03', 'LOGOUT', 1023, 'User logged out'),
+(1642, '2024-12-06 12:02:14', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1643, '2024-12-06 12:02:25', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Lubi Residents is downloaded by user.'),
+(1644, '2024-12-06 12:02:53', 'LOGOUT', 1023, 'User logged out'),
+(1645, '2024-12-06 12:03:03', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1646, '2024-12-06 12:03:15', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tugas Residents is downloaded by user.'),
+(1647, '2024-12-06 12:03:18', 'LOGOUT', 1023, 'User logged out'),
+(1648, '2024-12-06 12:04:59', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1649, '2024-12-06 12:05:06', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tambis Residents is downloaded by user.'),
+(1650, '2024-12-06 12:05:25', 'LOGOUT', 1023, 'User logged out'),
+(1651, '2024-12-06 12:05:54', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1652, '2024-12-06 12:06:01', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tambis Residents is downloaded by user.'),
+(1653, '2024-12-06 12:06:38', 'LOGOUT', 1023, 'User logged out'),
+(1654, '2024-12-06 12:06:49', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1655, '2024-12-06 12:08:20', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Tambis Residents is downloaded by user.'),
+(1656, '2024-12-06 12:08:21', 'LOGOUT', 1023, 'User logged out'),
+(1657, '2024-12-06 12:08:33', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1658, '2024-12-06 12:08:39', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Mahogany Residents is downloaded by user.'),
+(1659, '2024-12-06 12:09:33', 'LOGOUT', 1023, 'User logged out'),
+(1660, '2024-12-06 12:10:27', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1661, '2024-12-06 12:10:33', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: All Residents is downloaded by user.'),
+(1662, '2024-12-06 12:11:11', 'LOGOUT', 1023, 'User logged out'),
+(1663, '2024-12-06 12:11:28', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1664, '2024-12-06 12:11:34', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: Mahogany Residents is downloaded by user.'),
+(1665, '2024-12-06 12:12:10', 'LOGOUT', 1023, 'User logged out'),
+(1666, '2024-12-06 12:13:02', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1667, '2024-12-06 12:13:12', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: All Residents is downloaded by user.'),
+(1668, '2024-12-06 12:13:45', 'LOGOUT', 1023, 'User logged out'),
+(1669, '2024-12-06 12:16:02', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1670, '2024-12-06 12:16:10', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Data: All Residents is downloaded by user.'),
+(1671, '2024-12-06 12:16:56', 'LOGOUT', 1023, 'User logged out'),
+(1672, '2024-12-06 12:17:06', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1673, '2024-12-06 12:17:24', 'RESIDENT_DOCUMENT_DOWNLOAD', 1023, 'Resident ID: 2866 document is downloaded by user.'),
+(1674, '2024-12-06 12:17:30', 'LOGOUT', 1023, 'User logged out'),
+(1675, '2024-12-06 12:17:38', 'LOGIN_SUCCESS', 1023, 'Admin logged in successfully'),
+(1676, '2024-12-06 12:17:51', 'EXPORT_USER_DATA', 1023, 'Admin exported User: 1023 data.'),
+(1677, '2024-12-06 12:18:10', 'LOGOUT', 1023, 'User logged out');
 
 -- --------------------------------------------------------
 
@@ -762,9 +839,9 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_usn`, `u_pass`, `u_type`, `u_status`, `u_image`, `u_code`) VALUES
-(1021, 'Christian James', 'Abendan', 'admin@gmail.com', 'admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_images/admin_pfp.png', ''),
+(1021, 'Christian James', 'Abendan', 'Main@gmail.com', 'Main', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_images/admin_pfp.png', ''),
 (1022, 'Emman', 'Bas', 'user@gmail.com', 'user', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/emman_pfp.png', ''),
-(1023, 'Shane', 'Hermando', 'user1@gmail.com', 'user1', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'User', 'Active', 'src/u_images/brgy_sec.png', '');
+(1023, 'Shane', 'Hermando', 'admin@gmail.com', 'admin', 'fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe', 'Admin', 'Active', 'src/u_images/brgy_sec.png', '');
 
 --
 -- Indexes for dumped tables
@@ -836,7 +913,7 @@ ALTER TABLE `tbl_household`
 -- AUTO_INCREMENT for table `tbl_logs`
 --
 ALTER TABLE `tbl_logs`
-  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1601;
+  MODIFY `l_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1678;
 
 --
 -- AUTO_INCREMENT for table `tbl_purok`

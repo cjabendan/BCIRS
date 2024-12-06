@@ -11,6 +11,14 @@ import certs.Bgy_Indigency;
 import certs.Bgy_Residency;
 import certs.Bgy_Senior;
 import certs.Bgy_Solo_parent;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import config.PanelPrinter;
 import config.RoundPanel;
 import config.Session;
@@ -22,6 +30,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Window;
 import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -393,6 +402,18 @@ public class Admin_Barangay extends javax.swing.JFrame {
         a1 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         resname = new javax.swing.JTextField();
+        download = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        cancel3 = new javax.swing.JButton();
+        print2 = new javax.swing.JButton();
+        dl = new javax.swing.JComboBox<>();
+        a3 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        a4 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        nameField = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -455,6 +476,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
         searchField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         view.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         view.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eye (1).png"))); // NOI18N
@@ -753,6 +775,90 @@ public class Admin_Barangay extends javax.swing.JFrame {
             }
         });
         gendoc.add(resname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 320, 30));
+
+        download.setBackground(new java.awt.Color(255, 255, 255));
+        download.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
+        download.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        download.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 380, 10));
+
+        jPanel11.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel42.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel42.setText("Download Residents Data");
+        jPanel11.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 50));
+
+        cancel3.setBackground(new java.awt.Color(255, 0, 0));
+        cancel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        cancel3.setForeground(new java.awt.Color(255, 255, 255));
+        cancel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cross-small.png"))); // NOI18N
+        cancel3.setBorder(null);
+        cancel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cancel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cancel3MouseExited(evt);
+            }
+        });
+        cancel3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel3ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(cancel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 30, 30));
+
+        download.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 50));
+
+        print2.setBackground(new java.awt.Color(27, 57, 77));
+        print2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        print2.setForeground(new java.awt.Color(255, 255, 255));
+        print2.setText("GENERATE");
+        print2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                print2ActionPerformed(evt);
+            }
+        });
+        download.add(print2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 110, 30));
+
+        dl.setBackground(new java.awt.Color(245, 246, 248));
+        dl.setFont(new java.awt.Font("Yu Gothic UI", 0, 10)); // NOI18N
+        dl.setForeground(new java.awt.Color(27, 57, 77));
+        dl.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please select", "All Residents", "Tambis Residents", "Mahogany Residents", "Guyabano Residents", "Ipil-ipil Residents", "Minsinitas Residents", "Tugas Residents", "Lubi Residents" }));
+        dl.setBorder(null);
+        dl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlActionPerformed(evt);
+            }
+        });
+        download.add(dl, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 190, 30));
+
+        a3.setForeground(new java.awt.Color(255, 0, 0));
+        a3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a3.setText("*");
+        download.add(a3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 30, 30));
+
+        jLabel43.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel43.setText("Select data to download");
+        download.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 150, 30));
+
+        a4.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        a4.setForeground(new java.awt.Color(255, 0, 0));
+        a4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        a4.setText("*");
+        download.add(a4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 200, 20));
+
+        jLabel32.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(27, 57, 77));
+        jLabel32.setText("File name:");
+        download.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 70, 20));
+        download.add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 320, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -1472,7 +1578,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
             }
         });
         jPanel1.add(searchField);
-        searchField.setBounds(830, 200, 310, 30);
+        searchField.setBounds(710, 200, 310, 30);
 
         jPanel2.setBackground(new java.awt.Color(27, 57, 77));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1482,7 +1588,19 @@ public class Admin_Barangay extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(794, 200, 30, 30);
+        jPanel2.setBounds(674, 200, 30, 30);
+
+        jButton2.setBackground(new java.awt.Color(0, 153, 51));
+        jButton2.setFont(new java.awt.Font("SansSerif", 1, 11)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("DOWNLOAD");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(1030, 200, 110, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2068,6 +2186,206 @@ public class Admin_Barangay extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_searchFieldKeyReleased
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
+        Object[] options = {};
+        NoBorderDialog dialog = new NoBorderDialog(null, download);
+        dialog.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cancel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel3MouseClicked
+
+    private void cancel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel3MouseEntered
+
+    private void cancel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancel3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancel3MouseExited
+
+    private void cancel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancel3ActionPerformed
+       Window window = SwingUtilities.getWindowAncestor(download);
+        window.dispose();
+    }//GEN-LAST:event_cancel3ActionPerformed
+
+    private void print2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_print2ActionPerformed
+  
+        Session sess = Session.getInstance();
+        
+int userID = sess.getUid();
+        
+a3.setText("");
+a4.setText("");
+
+if (dl.getSelectedIndex() == 0 || nameField.getText().isEmpty()) {
+    a3.setText("*");
+    a4.setText("*");
+    JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+} else {
+    String name = nameField.getText() + ".pdf";
+    String location = System.getProperty("user.home") + "/Documents/";
+    
+    try {
+        dbConnector dbc = new dbConnector();
+
+        String selectedCategory = dl.getSelectedItem().toString(); // Assume a dropdown
+        String query;
+
+        switch (selectedCategory) {
+            case "All Residents":
+                query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                        + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                        + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                        + "FROM tbl_residents r "
+                        + "JOIN tbl_household h ON r.h_id = h.h_id "
+                        + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                        + "WHERE r.r_status != 'Archived' "
+                        + "ORDER BY r.r_lname ASC";  
+                break;
+             case "Tambis Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Tambis' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+    case "Mahogany Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Mahogany' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+    case "Guyabano Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Guyabano' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+    case "Ipil-ipil Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r.civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Ipil-ipil' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+    case "Minsinitas Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Minsinitas' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+    case "Tugas Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Tugas' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+    case "Lubi Residents":
+        query = "SELECT r.r_id, r.r_fname, r.r_mname, r.r_lname, "
+                + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age, "
+                + "r.r_sex, r.r_civilstatus, r.r_occupation, p.p_name AS r_purok "
+                + "FROM tbl_residents r "
+                + "JOIN tbl_household h ON r.h_id = h.h_id "
+                + "JOIN tbl_purok p ON h.p_id = p.p_id "
+                + "WHERE p.p_name = 'Lubi' AND r.r_status != 'Archived' "
+                + "ORDER BY r.r_lname ASC";
+        break;
+            default:
+                JOptionPane.showMessageDialog(null, "Invalid selection!");
+                return;
+        }
+
+        ResultSet resultSet = dbc.getData(query);
+
+        com.itextpdf.text.Document document = new com.itextpdf.text.Document(PageSize.A5.rotate());
+        PdfWriter.getInstance(document, new FileOutputStream(location + name));
+        document.open();
+
+        PdfPTable pdfPTable = new PdfPTable(9); // Adjusted to 9 columns (removed Actions column)
+
+         Font headerFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
+    PdfPCell cell;
+    
+    // Add table headers with design improvements
+    String[] headers = {"ID", "FIRST", "MIDDLE", "LAST", "AGE", "SEX", "CS", "OCC.", "Purok"};
+    
+    float[] columnWidths = {15f, 20f, 20f, 20f, 15f, 15f, 20f, 20f, 20f}; // Adjust these values to fit the columns properly
+pdfPTable.setWidths(columnWidths); 
+
+// Loop through each header and set cell properties
+for (String header : headers) {
+    cell = new PdfPCell(new Phrase(header, headerFont));
+    cell.setBackgroundColor(BaseColor.DARK_GRAY);  // Set background color for headers
+    cell.setHorizontalAlignment(Element.ALIGN_CENTER); // Center align the text
+    cell.setVerticalAlignment(Element.ALIGN_MIDDLE); // Vertically center the text
+    cell.setPadding(20f); // Set padding for header to fit better
+    cell.setNoWrap(true); // Disable text wrapping for the header
+    pdfPTable.addCell(cell);
+}
+    
+        // Populate table with data from ResultSet
+        while (resultSet.next()) {
+            pdfPTable.addCell(resultSet.getString("r_id"));
+            pdfPTable.addCell(resultSet.getString("r_fname"));
+            pdfPTable.addCell(resultSet.getString("r_mname"));
+            pdfPTable.addCell(resultSet.getString("r_lname"));
+            pdfPTable.addCell(resultSet.getString("r_age"));
+            pdfPTable.addCell(resultSet.getString("r_sex"));
+            pdfPTable.addCell(resultSet.getString("r_civilstatus"));
+            pdfPTable.addCell(resultSet.getString("r_occupation"));
+            pdfPTable.addCell(resultSet.getString("r_purok"));
+        }
+
+        // Add the table to the document
+        document.add(pdfPTable);
+        document.close();
+        
+        JOptionPane.showMessageDialog(null, "Download Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+       
+        Window window = SwingUtilities.getWindowAncestor(download);
+        window.dispose();
+        
+        // Log the event
+        logEvent(userID, "RESIDENT_DOCUMENT_DOWNLOAD", "Data: " + selectedCategory + " is downloaded by user.");
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+        
+    }//GEN-LAST:event_print2ActionPerformed
+
+    private void dlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlActionPerformed
+
       public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -2137,6 +2455,8 @@ public class Admin_Barangay extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel a1;
     private javax.swing.JLabel a2;
+    private javax.swing.JLabel a3;
+    private javax.swing.JLabel a4;
     private javax.swing.JLabel address;
     private javax.swing.JPanel adm_header;
     private javax.swing.JPanel adm_nav;
@@ -2145,11 +2465,14 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JPanel barangayPanel;
     public javax.swing.JButton cancel1;
     public javax.swing.JButton cancel2;
+    public javax.swing.JButton cancel3;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
+    public javax.swing.JComboBox<String> dl;
     private javax.swing.JLabel dob;
     public javax.swing.JComboBox<String> docs;
     private javax.swing.JLabel dot;
+    private javax.swing.JPanel download;
     private javax.swing.JLabel fem;
     private javax.swing.JLabel fem1;
     private javax.swing.JLabel fem3;
@@ -2168,6 +2491,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel id;
     public javax.swing.JLabel image;
     private javax.swing.JPanel imagePanel;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -2191,6 +2515,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -2200,12 +2525,16 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2218,11 +2547,13 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JPanel logs;
     private javax.swing.JPanel logsPane;
     private javax.swing.JLabel male;
+    private javax.swing.JTextField nameField;
     private javax.swing.JLabel ocu;
     private javax.swing.JPopupMenu popUp;
     private javax.swing.JLabel populationCount;
     private javax.swing.JButton print;
     private javax.swing.JButton print1;
+    private javax.swing.JButton print2;
     private javax.swing.JLabel purok;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
