@@ -2463,93 +2463,98 @@ public class User_Purok extends javax.swing.JFrame {
 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     Session sess = Session.getInstance();
-    int userID = sess.getUid();
+ 
+        Session sess = Session.getInstance();
+int userID = sess.getUid();
 
-    int result = fileChooser.showOpenDialog(null);
-    if (result == JFileChooser.APPROVE_OPTION) {
-        selectedFile = fileChooser.getSelectedFile();
+int result = fileChooser.showOpenDialog(null);
+if (result == JFileChooser.APPROVE_OPTION) {
+    selectedFile = fileChooser.getSelectedFile();
 
-        dbConnector dbc = new dbConnector();
-        try {
-            workbook = new XSSFWorkbook(selectedFile);
-            Sheet sheet = workbook.getSheetAt(0);
-            int newResidentsCount = 0;
+    dbConnector dbc = new dbConnector();
+    try {
+    workbook = new XSSFWorkbook(selectedFile);
+    Sheet sheet = workbook.getSheetAt(0);
+    int newResidentsCount = 0;
 
-            // Prepared statement for batch insert
-            try (PreparedStatement pst = dbc.connect.prepareStatement(
-                    "INSERT INTO tbl_residents(r_lname, r_fname, r_mname, r_address, r_sex, r_dob, "
-                    + "r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-                    Statement.RETURN_GENERATED_KEYS)) {
+    // Prepare statement for batch insert
+    try (PreparedStatement pst = dbc.connect.prepareStatement(
+            "INSERT INTO tbl_residents(r_lname, r_fname, r_mname, r_address, r_sex, r_dob, "
+            + "r_civilstatus, r_occupation, r_religion, h_id, r_image, r_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            Statement.RETURN_GENERATED_KEYS)) {
 
-                Iterator<Row> iterator = sheet.iterator();
-                if (iterator.hasNext()) {
-                    iterator.next(); // Skip header row if any
-                }
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                int batchSize = 50; // Batch size of 50 residents
-
-                while (iterator.hasNext()) {
-                    Row row = iterator.next();
-
-                    // Set prepared statement values
-                    pst.setString(1, row.getCell(0).getStringCellValue()); // Last name
-                    pst.setString(2, row.getCell(1).getStringCellValue()); // First name
-                    pst.setString(3, row.getCell(2).getStringCellValue()); // Middle name
-                    pst.setString(4, row.getCell(3).getStringCellValue()); // Address
-                    pst.setString(5, row.getCell(4).getStringCellValue()); // Sex
-
-                    java.util.Date date = row.getCell(5).getDateCellValue(); // Date of birth
-                    String formattedDate = dateFormat.format(date);
-                    pst.setString(6, formattedDate);
-
-                    pst.setString(7, row.getCell(6).getStringCellValue()); // Civil Status
-                    pst.setString(8, row.getCell(7).getStringCellValue()); // Occupation
-                    pst.setString(9, row.getCell(8).getStringCellValue()); // Religion
-                    pst.setDouble(10, row.getCell(9).getNumericCellValue()); // h_id
-                    pst.setString(11, "src/u_default/blank_pfp.jpg"); // Default image
-                    pst.setString(12, "Active"); // Status
-
-                    pst.addBatch(); // Add to batch
-
-                    // Execute the batch when it reaches the specified batch size
-                    if (++newResidentsCount % batchSize == 0) {
-                        pst.executeBatch(); // Execute the batch
-                        System.out.println("Batch of 50 residents added to the database.");
-                        
-                        // Log the batch insert action (for each 50 residents)
-                        logEvent(userID, "IMPORT_NEW_RESIDENT_BATCH", "Added 50 new residents.");
-                    }
-                }
-
-                // Execute any remaining records in the batch
-                if (newResidentsCount % batchSize != 0) {
-                    pst.executeBatch(); 
-                    System.out.println("Final batch of remaining residents added to the database.");
-                    
-                    // Log the final batch action
-                    logEvent(userID, "IMPORT_NEW_RESIDENT_BATCH", "Added the remaining " + (newResidentsCount % batchSize) + " residents.");
-                }
-
-                // Update the barangay population
-                String updateQuery = "UPDATE tbl_barangay SET b_population = b_population + ? WHERE b_id = ?";
-                try (PreparedStatement updatePst = dbc.connect.prepareStatement(updateQuery)) {
-                    updatePst.setInt(1, newResidentsCount);
-                    updatePst.setInt(2, 1001); // Assuming 1001 is the Barangay ID
-                    updatePst.executeUpdate();
-                }
-
-                JOptionPane.showMessageDialog(null, "Successfully Imported!");
-                displayData();
-            } catch (Exception e) {
-                System.out.println("Error during batch insert: " + e.getMessage());
-            }
-        } catch (IOException | InvalidFormatException e) {
-            System.out.println("Error reading Excel file: " + e.getMessage());
+        Iterator<Row> iterator = sheet.iterator();
+        if (iterator.hasNext()) {
+            iterator.next(); // Skip header row if any
         }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        int batchSize = 50; // Batch size of 50 residents
+
+        while (iterator.hasNext()) {
+            Row row = iterator.next();
+
+            // Check for null values in the row before proceeding
+            if (row.getCell(0) == null || row.getCell(1) == null || row.getCell(2) == null) {
+                System.out.println("Encountered null data in row: " + row.getRowNum());
+                continue; // Skip this row or handle the error
+            }
+
+            // Set prepared statement values
+            pst.setString(1, row.getCell(0).getStringCellValue()); // Last name
+            pst.setString(2, row.getCell(1).getStringCellValue()); // First name
+            pst.setString(3, row.getCell(2).getStringCellValue()); // Middle name
+            pst.setString(4, row.getCell(3).getStringCellValue()); // Address
+            pst.setString(5, row.getCell(4).getStringCellValue()); // Sex
+
+            java.util.Date date = row.getCell(5).getDateCellValue(); // Date of birth
+            String formattedDate = dateFormat.format(date);
+            pst.setString(6, formattedDate);
+
+            pst.setString(7, row.getCell(6).getStringCellValue()); // Civil Status
+            pst.setString(8, row.getCell(7).getStringCellValue()); // Occupation
+            pst.setString(9, row.getCell(8).getStringCellValue()); // Religion
+            pst.setDouble(10, row.getCell(9).getNumericCellValue()); // h_id
+            pst.setString(11, "src/u_default/blank_pfp.jpg"); // Default image
+            pst.setString(12, "Active"); // Status
+
+            pst.addBatch(); // Add to batch
+
+            // Execute the batch when it reaches the specified batch size
+            if (++newResidentsCount % batchSize == 0) {
+                pst.executeBatch(); // Execute the batch
+                System.out.println("Batch of 50 residents added to the database.");
+                logEvent(userID, "IMPORT_NEW_RESIDENT_BATCH", "Added 50 new residents.");
+            }
+        }
+
+        // Final batch execution (if any remaining residents)
+        pst.executeBatch();
+        System.out.println("Batch of remaining residents added to the database.");
+        logEvent(userID, "IMPORT_NEW_RESIDENT_BATCH", "Added remaining residents.");
+
+        // Show success message
+        JOptionPane.showMessageDialog(null, "Successfully Imported!");
+        purokCount(); 
+        displayData();
+
+        // Update the barangay population
+        String updateQuery = "UPDATE tbl_barangay SET b_population = b_population + ? WHERE b_id = ?";
+        try (PreparedStatement updatePst = dbc.connect.prepareStatement(updateQuery)) {
+            updatePst.setInt(1, newResidentsCount);
+            updatePst.setInt(2, 1001); // Assuming 1001 is the Barangay ID
+            updatePst.executeUpdate();
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace(); // Print stack trace for better debugging
     }
-    
+} catch (IOException | InvalidFormatException e) {
+    e.printStackTrace(); // Print stack trace for better debugging
+}
+
+
+}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2637,6 +2642,7 @@ public class User_Purok extends javax.swing.JFrame {
         purokData.setText("All Residents Data");
         searchField.setText(" Search resident....");
         displayData();
+         purokCount();
         
     }//GEN-LAST:event_cancel6ActionPerformed
 
