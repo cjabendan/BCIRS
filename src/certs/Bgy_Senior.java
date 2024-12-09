@@ -100,7 +100,6 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         lable = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -108,7 +107,6 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         lable1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         lable2 = new javax.swing.JLabel();
@@ -139,6 +137,8 @@ public class Bgy_Senior extends javax.swing.JFrame {
         lable3 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,9 +161,6 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("born on,");
         page.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 40, -1));
-
-        jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 570, 260, 20));
 
         lable.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         lable.setText("Cebu.");
@@ -196,11 +193,6 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         page.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 430, 20));
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Punong Barangay");
-        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, 260, 30));
-
         lable1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable1.setText("TO WHOM IT MAY CONCERN;");
         page.add(lable1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
@@ -208,7 +200,7 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("By the authority of the Punong Barangay:");
-        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 260, 40));
+        page.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 180, 50));
 
         lable2.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable2.setText("(SENIOR CITIZEN)");
@@ -340,6 +332,14 @@ public class Bgy_Senior extends javax.swing.JFrame {
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Disclaimer: This document is prefilled for convenience purposes and is not considered official without the");
         page.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 450, 40));
+
+        jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 260, 20));
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Punong Barangay");
+        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 580, 260, 30));
 
         jPanel1.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 530, 630));
 

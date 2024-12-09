@@ -1496,11 +1496,11 @@
                   <Color blue="4d" green="39" red="1b" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Time"/>
+                <Property name="text" type="java.lang.String" value="03:18:18 PM"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="810" y="170" width="140" height="40"/>
+                  <AbsoluteConstraints x="830" y="170" width="120" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -1573,11 +1573,11 @@
                   <Color blue="4d" green="39" red="1b" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Date"/>
+                <Property name="text" type="java.lang.String" value="December 08,2024"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="570" y="170" width="240" height="40"/>
+                  <AbsoluteConstraints x="610" y="170" width="240" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>

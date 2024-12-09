@@ -857,7 +857,6 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
 
         house.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         house.setForeground(new java.awt.Color(100, 115, 122));
-        house.setText("jLabel1");
         jPanel2.add(house, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 240, 35));
 
         jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 270, 35));

@@ -14,6 +14,7 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
+import enhancer.GradientPanel;
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,8 +43,10 @@ public class login_form extends javax.swing.JFrame {
         initComponents();
         user.setBorder(new EmptyBorder(0,10,0,0));
         pass.setBorder(new EmptyBorder(0,10,0,0));
+       
     }
     
+     
 
     Color Red = new Color(255,0,0);
     Color Hover = new Color(0,102,255);
@@ -177,7 +180,7 @@ public class login_form extends javax.swing.JFrame {
         user = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        ex = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
@@ -258,10 +261,10 @@ public class login_form extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 120, 580, 60);
 
-        jPanel2.setBackground(new java.awt.Color(27, 55, 77));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 151, -1, -1));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 272, -1, -1));
+        ex.setBackground(new java.awt.Color(27, 55, 77));
+        ex.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ex.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 151, -1, -1));
+        ex.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 272, -1, -1));
 
         cancel.setBackground(new java.awt.Color(27, 55, 77));
         cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -283,14 +286,14 @@ public class login_form extends javax.swing.JFrame {
                 cancelActionPerformed(evt);
             }
         });
-        jPanel2.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 30, 30));
+        ex.add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 30, 30));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo__1_-removebg-preview (1).png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 560));
+        ex.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 560));
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(580, 0, 590, 560);
+        jPanel1.add(ex);
+        ex.setBounds(580, 0, 590, 560);
 
         forgotps.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         forgotps.setForeground(new java.awt.Color(27, 55, 77));
@@ -563,6 +566,7 @@ public class login_form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton cancel;
+    private javax.swing.JPanel ex;
     private javax.swing.JLabel forgotps;
     private javax.swing.JLabel hide;
     private javax.swing.JButton jButton1;
@@ -575,7 +579,6 @@ public class login_form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nousn;
     private javax.swing.JPasswordField pass;
     private javax.swing.JLabel reg;

@@ -154,7 +154,7 @@ public class Bgy_Residency extends javax.swing.JFrame {
         page.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 120, -1));
 
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, 260, 20));
+        page.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 560, 260, 20));
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo/Untitled design (1).png"))); // NOI18N
@@ -186,7 +186,7 @@ public class Bgy_Residency extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Punong Barangay");
-        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 580, 260, 50));
+        page.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 260, 50));
 
         lable1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
         lable1.setText("TO WHOM IT MAY CONCERN;");

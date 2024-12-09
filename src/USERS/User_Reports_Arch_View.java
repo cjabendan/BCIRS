@@ -557,6 +557,10 @@ import javax.swing.border.EmptyBorder;
         
           logEvent(userID, "INCIDENT_REPORT_DOWNLOAD", "Incident Report ID: "+id.getText()+" is downloaded by user.");
                
+           
+       JOptionPane.showMessageDialog(null, "Download Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+          
     }//GEN-LAST:event_PRINTActionPerformed
 
      public void logEvent(int userId, String event, String description) {

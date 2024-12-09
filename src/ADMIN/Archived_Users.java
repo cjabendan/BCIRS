@@ -177,7 +177,6 @@ DefaultListModel listModel = new DefaultListModel();
         jLabel18 = new javax.swing.JLabel();
         pdf = new javax.swing.JButton();
         a1 = new javax.swing.JLabel();
-        excel = new javax.swing.JButton();
         confirm = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         ACCOUNT_NAME = new javax.swing.JLabel();
@@ -398,25 +397,13 @@ DefaultListModel listModel = new DefaultListModel();
                 pdfActionPerformed(evt);
             }
         });
-        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 110, 30));
+        exportData.add(pdf, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 110, 30));
 
         a1.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         a1.setForeground(new java.awt.Color(255, 0, 0));
         a1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         a1.setText("*");
         exportData.add(a1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 190, 20));
-
-        excel.setBackground(new java.awt.Color(38, 154, 56));
-        excel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        excel.setForeground(new java.awt.Color(255, 255, 255));
-        excel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/file-pdf.png"))); // NOI18N
-        excel.setText(" EXCEL");
-        excel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excelActionPerformed(evt);
-            }
-        });
-        exportData.add(excel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 110, 30));
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
         confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -734,6 +721,8 @@ DefaultListModel listModel = new DefaultListModel();
                 
              }
              
+           JOptionPane.showMessageDialog(null, "Download Successful!", "Success", JOptionPane.INFORMATION_MESSAGE); 
+             
             Window window = SwingUtilities.getWindowAncestor(viewPanel);
             window.dispose();
          
@@ -792,10 +781,6 @@ DefaultListModel listModel = new DefaultListModel();
         }
     }//GEN-LAST:event_userTblMousePressed
 
-    private void excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_excelActionPerformed
-
     private void pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pdfActionPerformed
 
   Session sess = Session.getInstance();
@@ -839,9 +824,12 @@ DefaultListModel listModel = new DefaultListModel();
         document.add(pdfPTable);
         document.close();
 
-        Window window = SwingUtilities.getWindowAncestor(exportData);
-        window.dispose();
-        JOptionPane.showMessageDialog(null, "Successfully Generated");
+     
+       
+         JOptionPane.showMessageDialog(null, "Download Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+         Window window = SwingUtilities.getWindowAncestor(exportData);
+         window.dispose();
         nameField.setText("");
 
         int userID = sess.getUid();
@@ -1098,7 +1086,6 @@ DefaultListModel listModel = new DefaultListModel();
     private javax.swing.JPanel confirm;
     public javax.swing.JLabel d;
     public javax.swing.JLabel d1;
-    private javax.swing.JButton excel;
     private javax.swing.JButton export;
     private javax.swing.JPanel exportData;
     private javax.swing.JLabel fullname;

@@ -32,6 +32,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -359,27 +360,31 @@ public class User_Purok extends javax.swing.JFrame {
         ResultSet rs5 = dbc.getData(queryMinsinitas);
         ResultSet rs6 = dbc.getData(queryTugas);
         ResultSet rs7 = dbc.getData(queryLubi);
+        
+        DecimalFormat formatter = new DecimalFormat("#,###");
 
+            // Set text fields with formatted values
+          
         if (rs1.next()) {
-            tambisC.setText(" " + rs1.getInt("ttl_tC"));
+            tambisC.setText(formatter.format(rs1.getInt("ttl_tC")));
         }
         if (rs2.next()) {
-            mahoganyC.setText(" " + rs2.getInt("ttl_mC"));
+            mahoganyC.setText(formatter.format(rs2.getInt("ttl_mC")));
         }
         if (rs3.next()) {
-            guyabanoC.setText(" " + rs3.getInt("ttl_gC"));
+            guyabanoC.setText(formatter.format(rs3.getInt("ttl_gC")));
         }
         if (rs4.next()) {
-            ipilC.setText(" " + rs4.getInt("ttl_iC"));
+            ipilC.setText(formatter.format(rs4.getInt("ttl_iC")));
         }
         if (rs5.next()) {
-            minsiC.setText(" " + rs5.getInt("ttl_minC"));
+            minsiC.setText(formatter.format(rs5.getInt("ttl_minC")));
         }
         if (rs6.next()) {
-            tugasC.setText(" " + rs6.getInt("ttl_tugC"));
+            tugasC.setText(formatter.format(rs6.getInt("ttl_tugC")));
         }
         if (rs7.next()) {
-            lubiC.setText(" " + rs7.getInt("ttl_lubC"));
+            lubiC.setText(formatter.format(rs7.getInt("ttl_lubC")));
         }
 
         // Close all ResultSets
@@ -866,7 +871,7 @@ public class User_Purok extends javax.swing.JFrame {
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
         viewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
         viewPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        viewPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 550, 10));
+        viewPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 550, 10));
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(27, 57, 77));
@@ -1750,7 +1755,8 @@ public class User_Purok extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(userTbl);
-     
+       
+
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 960, 310));
 
         purokData.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N

@@ -1085,8 +1085,8 @@ public class admin_dashboard extends javax.swing.JFrame {
         time.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         time.setForeground(new java.awt.Color(27, 57, 77));
         time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        time.setText("Time");
-        jPanel2.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 140, 40));
+        time.setText("03:18:18 PM");
+        jPanel2.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, 120, 40));
 
         logsTbl.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         logsTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -1114,8 +1114,8 @@ public class admin_dashboard extends javax.swing.JFrame {
         date.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         date.setForeground(new java.awt.Color(27, 57, 77));
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        date.setText("Date");
-        jPanel2.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 170, 240, 40));
+        date.setText("December 08,2024");
+        jPanel2.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 240, 40));
 
         archivePanel.setBackground(new java.awt.Color(40, 82, 115));
 

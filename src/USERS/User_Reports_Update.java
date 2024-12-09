@@ -302,7 +302,7 @@ import javax.swing.table.TableModel;
                 UpdateActionPerformed(evt);
             }
         });
-        jPanel6.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 140, 33));
+        jPanel6.add(Update, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 140, 33));
 
         jLabel8.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));

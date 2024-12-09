@@ -1431,6 +1431,8 @@ DefaultListModel listModel = new DefaultListModel();
                 
              }
              
+           JOptionPane.showMessageDialog(null, "Download Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+             
             Window window = SwingUtilities.getWindowAncestor(viewPanel);
             window.dispose();
          

@@ -149,7 +149,7 @@ public class Reports_Temp extends javax.swing.JFrame {
         date.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
         date.setForeground(new java.awt.Color(27, 55, 77));
         date.setText("November 09, 2024 at Poblacion Ward II, MInglanilla Cebu");
-        jPanel3.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 350, 20));
+        jPanel3.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 350, 20));
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 55, 77));
@@ -161,9 +161,9 @@ public class Reports_Temp extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         i_t1.setText("jLabel1");
-        jPanel2.add(i_t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 450, 30));
+        jPanel2.add(i_t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 420, 30));
 
-        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 470, -1));
+        jPanel3.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 440, -1));
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(27, 55, 77));
@@ -175,9 +175,9 @@ public class Reports_Temp extends javax.swing.JFrame {
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         i_dt1.setText("jLabel1");
-        jPanel7.add(i_dt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 450, 30));
+        jPanel7.add(i_dt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 420, 30));
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 470, -1));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 440, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -185,9 +185,9 @@ public class Reports_Temp extends javax.swing.JFrame {
 
         i_n1.setText("jLabel1");
         i_n1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel5.add(i_n1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, 50));
+        jPanel5.add(i_n1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 420, 50));
 
-        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 470, 70));
+        jPanel3.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 440, 70));
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(27, 55, 77));
@@ -199,9 +199,9 @@ public class Reports_Temp extends javax.swing.JFrame {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         i_rt1.setText("jLabel1");
-        jPanel6.add(i_rt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 30));
+        jPanel6.add(i_rt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 190, 30));
 
-        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 220, 30));
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 210, 30));
 
         jLabel10.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 510, 10));
@@ -216,9 +216,9 @@ public class Reports_Temp extends javax.swing.JFrame {
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         i_l1.setText("jLabel1");
-        jPanel8.add(i_l1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 450, 30));
+        jPanel8.add(i_l1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 410, 30));
 
-        jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 470, 30));
+        jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 440, 30));
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(27, 55, 77));
@@ -246,12 +246,12 @@ public class Reports_Temp extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 55, 77));
         jLabel11.setText("REPORTED TO");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 150, 40));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 150, 40));
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(27, 55, 77));
         jLabel12.setText("Issued on this");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 80, 20));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 80, 20));
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(27, 55, 77));
@@ -263,11 +263,11 @@ public class Reports_Temp extends javax.swing.JFrame {
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         i_p1.setText("jLabel1");
-        jPanel9.add(i_p1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 450, 30));
+        jPanel9.add(i_p1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 420, 30));
 
-        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 470, 30));
+        jPanel3.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 440, 30));
 
-        page.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 510, 550));
+        page.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 470, 550));
 
         jPanel1.add(page, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 530, 630));
 

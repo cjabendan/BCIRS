@@ -590,7 +590,9 @@ import javax.swing.border.EmptyBorder;
     
         PanelPrinter pPrint = new PanelPrinter(ru.page);
         pPrint.printPanel();
-        
+         
+        JOptionPane.showMessageDialog(null, "Download Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
           logEvent(userID, "INCIDENT_REPORT_DOWNLOAD", "Incident Report ID: "+id.getText()+" is downloaded by user.");
     }//GEN-LAST:event_PRINTActionPerformed
 
