@@ -277,7 +277,7 @@ public class forgotpass_code extends javax.swing.JFrame {
     private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
         hide1.setVisible(true);
         show1.setVisible(false);
-        sc.setEchoChar('*');
+        sc.setEchoChar('\u25CF');
     }//GEN-LAST:event_show1MouseClicked
 
     /**

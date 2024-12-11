@@ -281,7 +281,7 @@ public class resetPass extends javax.swing.JFrame {
     private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
         hide1.setVisible(true);
         show1.setVisible(false);
-        nps.setEchoChar('*');
+        nps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show1MouseClicked
 
     private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
@@ -293,7 +293,7 @@ public class resetPass extends javax.swing.JFrame {
     private void show2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show2MouseClicked
         hide2.setVisible(true);
         show2.setVisible(false);
-        cnps.setEchoChar('*');
+        cnps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show2MouseClicked
 
       public void logEvent(String userId, String event, String description) {

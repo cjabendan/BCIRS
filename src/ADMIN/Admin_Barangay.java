@@ -375,6 +375,7 @@ public class Admin_Barangay extends javax.swing.JFrame {
 
         popUp = new javax.swing.JPopupMenu();
         view = new javax.swing.JMenuItem();
+        editItem = new javax.swing.JMenuItem();
         viewPanel = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -518,6 +519,16 @@ public class Admin_Barangay extends javax.swing.JFrame {
             }
         });
         popUp.add(view);
+
+        editItem.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        editItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/pen-circle (1).png"))); // NOI18N
+        editItem.setText(" Edit Data");
+        editItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editItemActionPerformed(evt);
+            }
+        });
+        popUp.add(editItem);
 
         viewPanel.setBackground(new java.awt.Color(255, 255, 255));
         viewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(27, 57, 77)));
@@ -2558,6 +2569,60 @@ public class Admin_Barangay extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dl1ActionPerformed
 
+    private void editItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItemActionPerformed
+
+        try {
+            String rid = userTbl.getValueAt(userTbl.getSelectedRow(), 0).toString();
+
+            dbConnector dbc = new dbConnector();
+            String query = "SELECT r.*, h.h_name, p.p_name, "
+            + "YEAR(CURDATE()) - YEAR(r.r_dob) - (DATE_FORMAT(CURDATE(), '%m%d') < DATE_FORMAT(r.r_dob, '%m%d')) AS r_age "
+            + "FROM tbl_residents r "
+            + "JOIN tbl_household h ON r.h_id = h.h_id "
+            + "JOIN tbl_purok p ON h.p_id = p.p_id "
+            + "WHERE r.r_id = ?";
+
+            PreparedStatement pst = dbc.connect.prepareStatement(query);
+            pst.setString(1, rid);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String imagePath = rs.getString("r_image");
+                ImageIcon originalIcon = new ImageIcon(imagePath);
+                ImageIcon resizedIcon = resizeImage(originalIcon, 170, 170);
+
+                Admin_Residents_Update uru = new Admin_Residents_Update();
+
+                uru.image.setIcon(resizedIcon);
+
+                uru.id.setText(rs.getString("r_id"));
+                uru.ln.setText(rs.getString("r_lname"));
+                uru.fn.setText(rs.getString("r_fname"));
+                uru.mn.setText(rs.getString("r_mname"));
+                uru.address.setText(rs.getString("r_address"));
+                uru.ACCOUNT_NAME.setText(rs.getString("r_fname") + " " + rs.getString("r_lname"));
+                java.util.Date date = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("r_dob"));
+                uru.dob.setDate(date);
+                uru.house.setText(rs.getString("h_name"));
+                uru.status.setSelectedItem(rs.getString("r_civilstatus"));
+                uru.sex.setSelectedItem(rs.getString("r_sex"));
+                uru.occupation.setText(rs.getString("r_occupation"));
+                uru.religion.setText(rs.getString("r_religion"));
+
+                uru.setVisible(true);
+                this.dispose();
+            }
+
+            rs.close();
+            pst.close();
+
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(Admin_Residents_Update.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_editItemActionPerformed
+
       public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -2639,17 +2704,18 @@ public class Admin_Barangay extends javax.swing.JFrame {
     private javax.swing.JPanel barangayPanel;
     public javax.swing.JButton cancel1;
     public javax.swing.JButton cancel2;
-    private javax.swing.JButton cancel3;
+    public javax.swing.JButton cancel3;
     public javax.swing.JButton cancel4;
     private javax.swing.JPanel dashC;
     private javax.swing.JPanel dashPane;
-    private javax.swing.JComboBox<String> dl;
+    public javax.swing.JComboBox<String> dl;
     public javax.swing.JComboBox<String> dl1;
     private javax.swing.JLabel dob;
     public javax.swing.JComboBox<String> docs;
     private javax.swing.JLabel dot;
     private javax.swing.JPanel download;
     private javax.swing.JPanel download1;
+    private javax.swing.JMenuItem editItem;
     private javax.swing.JLabel fem;
     private javax.swing.JLabel fem1;
     private javax.swing.JLabel fem3;

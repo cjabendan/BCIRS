@@ -43,6 +43,7 @@ public class login_form extends javax.swing.JFrame {
         initComponents();
         user.setBorder(new EmptyBorder(0,10,0,0));
         pass.setBorder(new EmptyBorder(0,10,0,0));
+        
        
     }
     
@@ -535,7 +536,7 @@ public class login_form extends javax.swing.JFrame {
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
         hide.setVisible(true);
         show.setVisible(false);
-        pass.setEchoChar('*');
+        pass.setEchoChar('\u25CF');
     }//GEN-LAST:event_showMouseClicked
 
     /**

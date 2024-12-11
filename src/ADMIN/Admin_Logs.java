@@ -14,8 +14,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -34,6 +36,9 @@ public class Admin_Logs extends javax.swing.JFrame {
     public Admin_Logs() {
         initComponents();
         displayData();
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+        new LineBorder(Color.GRAY), // Optional: if you want a line border
+        BorderFactory.createEmptyBorder(0, 10, 0, 0) ));
     }
   
     Color Panecolor = new Color(242,242,242);
@@ -111,6 +116,7 @@ public class Admin_Logs extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         cancel = new javax.swing.JButton();
         des = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         adm_nav = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -136,6 +142,9 @@ public class Admin_Logs extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         adm_header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         logsTbl = new javax.swing.JTable();
 
@@ -156,48 +165,48 @@ public class Admin_Logs extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(27, 57, 77));
         jLabel4.setText("Time:");
-        viewPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 80, 20));
+        viewPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 80, 20));
         viewPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 440, 10));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(27, 57, 77));
         jLabel10.setText("User:");
-        viewPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 60, 20));
+        viewPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 60, 20));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(27, 57, 77));
         jLabel11.setText("Event:");
-        viewPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 70, 20));
+        viewPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 70, 20));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(27, 57, 77));
         jLabel12.setText("Description:");
-        viewPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 100, 20));
+        viewPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 100, 20));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(27, 57, 77));
         jLabel13.setText("Log ID:");
-        viewPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 50, 20));
+        viewPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 50, 20));
 
         id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         id.setForeground(new java.awt.Color(27, 57, 77));
         id.setText("Id number");
-        viewPanel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 90, 20));
+        viewPanel.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, 20));
 
         uid.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         uid.setForeground(new java.awt.Color(27, 57, 77));
         uid.setText("User ID:");
-        viewPanel.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 170, 20));
+        viewPanel.add(uid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 170, 20));
 
         event.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         event.setForeground(new java.awt.Color(27, 57, 77));
         event.setText("User ID:");
-        viewPanel.add(event, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 310, 20));
+        viewPanel.add(event, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 310, 20));
 
         time.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         time.setForeground(new java.awt.Color(27, 57, 77));
         time.setText("User ID:");
-        viewPanel.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 310, 20));
+        viewPanel.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 310, 20));
 
         jPanel5.setBackground(new java.awt.Color(27, 57, 77));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -236,7 +245,9 @@ public class Admin_Logs extends javax.swing.JFrame {
         des.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         des.setForeground(new java.awt.Color(27, 57, 77));
         des.setText("User ID:");
-        viewPanel.add(des, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 300, 30));
+        viewPanel.add(des, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 370, 40));
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -687,8 +698,47 @@ public class Admin_Logs extends javax.swing.JFrame {
         jLabel1.setText("System Logs");
         adm_header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 60));
 
+        jPanel3.setBackground(new java.awt.Color(27, 57, 77));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/search_1.png"))); // NOI18N
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, 30));
+
+        adm_header.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 20, 30, 30));
+
+        searchField.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        searchField.setForeground(new java.awt.Color(204, 204, 204));
+        searchField.setText(" Search log....");
+        searchField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        searchField.setHighlighter(null);
+        searchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchFieldFocusLost(evt);
+            }
+        });
+        searchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searchFieldMousePressed(evt);
+            }
+        });
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        searchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFieldKeyReleased(evt);
+            }
+        });
+        adm_header.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 270, 30));
+
         jPanel1.add(adm_header);
-        adm_header.setBounds(180, 0, 730, 60);
+        adm_header.setBounds(180, 0, 970, 60);
 
         logsTbl.setFont(new java.awt.Font("Yu Gothic UI", 1, 12)); // NOI18N
         logsTbl.setGridColor(new java.awt.Color(136, 136, 136));
@@ -1038,6 +1088,83 @@ public class Admin_Logs extends javax.swing.JFrame {
         window.dispose();
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
+        if (searchField.getText().equals(" Search log....")){
+            searchField.setText("");
+            searchField.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_searchFieldFocusGained
+
+    private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
+        if (searchField.getText().equals("")){
+            searchField.setText(" Search log....");
+            searchField.setForeground(new Color(51,51,51));
+        }
+    }//GEN-LAST:event_searchFieldFocusLost
+
+    private void searchFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchFieldMousePressed
+
+    }//GEN-LAST:event_searchFieldMousePressed
+
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    private void searchFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFieldKeyReleased
+
+try {
+    dbConnector dbc = new dbConnector();
+    String searchText = searchField.getText().trim();
+    String query;
+
+    if (searchText.isEmpty()) {
+        // Display all logs if search text is empty
+        query = "SELECT l.l_id, CONCAT(u.u_id, ' - ', u.u_type) AS user_info, l.l_event, l.l_timestamp " +
+                "FROM tbl_logs l " +
+                "JOIN tbl_user u ON l.u_id = u.u_id " +
+                "ORDER BY l.l_timestamp DESC";
+        displayData();
+    } else {
+        // Filter logs based on search text
+        query = "SELECT l.l_id, CONCAT(u.u_id, ' - ', u.u_type) AS user_info, l.l_event, l.l_timestamp " +
+                "FROM tbl_logs l " +
+                "JOIN tbl_user u ON l.u_id = u.u_id " +
+                "WHERE l.l_event LIKE '%" + searchText + "%' " +
+                "OR l.l_description LIKE '%" + searchText + "%' " +
+                "OR u.u_id LIKE '%" + searchText + "%' " +
+                "ORDER BY l.l_timestamp DESC";
+
+        ResultSet rs = dbc.getData(query);
+        logsTbl.setModel(DbUtils.resultSetToTableModel(rs));
+    }
+
+    // Set table headers dynamically
+    JTableHeader th = logsTbl.getTableHeader();
+    TableColumnModel tcm = th.getColumnModel();
+    String[] headers = {"Log ID", "User", "EVENT", "TIME"};
+
+    for (int i = 0; i < tcm.getColumnCount(); i++) {
+        tcm.getColumn(i).setHeaderValue(headers[i]);
+    }
+
+    th.setDefaultRenderer(new CustomHeaderRenderer());
+
+    CenterCellRenderer centerRenderer = new CenterCellRenderer();
+    for (int i = 0; i < tcm.getColumnCount(); i++) {
+        tcm.getColumn(i).setCellRenderer(centerRenderer);
+    }
+
+    // Optionally remove the "Log ID" column if not needed
+    if (tcm.getColumnCount() > 0) {
+        logsTbl.removeColumn(tcm.getColumn(0));
+    }
+
+} catch (SQLException ex) {
+    System.out.println("Errors: " + ex.getMessage());
+}
+
+    }//GEN-LAST:event_searchFieldKeyReleased
+
       public void logEvent(int userId, String event, String description) {
    
         dbConnector dbc = new dbConnector();
@@ -1122,11 +1249,14 @@ public class Admin_Logs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel logoff;
     private javax.swing.JPanel logoffbg;
     private javax.swing.JLabel logout;
@@ -1136,6 +1266,7 @@ public class Admin_Logs extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popUp;
     private javax.swing.JPanel purokC;
     private javax.swing.JPanel purokPane;
+    private javax.swing.JTextField searchField;
     private javax.swing.JPanel settingsBg;
     private javax.swing.JPanel settingsPane;
     private javax.swing.JLabel time;

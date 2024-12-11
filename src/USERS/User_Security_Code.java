@@ -603,6 +603,9 @@ public class User_Security_Code extends javax.swing.JFrame {
 
         dbConnector dbc = new dbConnector();
         Session sess = Session.getInstance();
+        
+       int userID = sess.getUid();
+       
         PasswordHasher pH = new PasswordHasher();
 
         try {
@@ -629,6 +632,10 @@ public class User_Security_Code extends javax.swing.JFrame {
                 } else {
                     String code = pH.hashPassword(sc.getText());
                     dbc.updateData("UPDATE tbl_user SET u_code = '" + code + "' WHERE u_id = '" + sess.getUid() + "'");
+                    
+                   JOptionPane.showMessageDialog(null, "Security code added successfully!");
+                    
+                   logEvent(userID, "USER_ADDED_CODE", "User ID: "+userID+" added security code:  "+ sc.getText()+".");
                     
                     User_Settings as = new User_Settings();
                     as.setVisible(true);
@@ -697,7 +704,7 @@ public class User_Security_Code extends javax.swing.JFrame {
     private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
         hide1.setVisible(true);
         show1.setVisible(false);
-        sc.setEchoChar('*');
+        sc.setEchoChar('\u25CF');
     }//GEN-LAST:event_show1MouseClicked
 
     private void hideMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hideMousePressed
@@ -709,7 +716,7 @@ public class User_Security_Code extends javax.swing.JFrame {
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
         hide.setVisible(true);
         show.setVisible(false);
-        cps.setEchoChar('*');
+        cps.setEchoChar('\u25CF');
     }//GEN-LAST:event_showMouseClicked
 
     /**

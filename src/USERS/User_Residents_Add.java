@@ -357,7 +357,7 @@ import javax.swing.border.EmptyBorder;
         d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         d.setForeground(new java.awt.Color(204, 204, 204));
         d.setText("Resident's purok address will be automatically set for every household. ");
-        jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 50));
+        jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 370, 50));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));

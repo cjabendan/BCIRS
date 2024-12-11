@@ -761,6 +761,8 @@ public class User_Settings_Account extends javax.swing.JFrame {
         
         Session sess = Session.getInstance(); 
         
+        int userID = sess.getUid();
+        
         if(fn.getText().isEmpty() || ln.getText().isEmpty() || mail.getText().isEmpty() 
                 || usn.getText().isEmpty())
         {
@@ -795,6 +797,9 @@ public class User_Settings_Account extends javax.swing.JFrame {
         }
         
             JOptionPane.showMessageDialog(null, "Data Updated Successfully!");
+            
+            logEvent(userID, "ADMIN_DATA_UPDATE", "Admin ID: "+userID+" data is updated.");
+            
             User_Settings as = new User_Settings();
             as.setVisible(true);
             this.dispose();
@@ -916,9 +921,9 @@ public class User_Settings_Account extends javax.swing.JFrame {
             if (rowsAffected > 0) {
                 Window window = SwingUtilities.getWindowAncestor(confirmDel);
                 window.dispose();
-                JOptionPane.showMessageDialog(null, "User data archived.");
+                  JOptionPane.showMessageDialog(null, "Account disabled!");
 
-                logEvent(userID, "USER ACCOUNT DELETED", "USER ID: "+userID+" has deleted their account.");
+                logEvent(userID, "USER_ACCOUNT_ARCHIVED", "User ID: "+userID+" has deleted their account.");
 
                 login_form u = new login_form();
                 u.setVisible(true);

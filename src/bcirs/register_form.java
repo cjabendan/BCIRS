@@ -591,7 +591,7 @@ public class register_form extends javax.swing.JFrame {
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
         hide.setVisible(true);
         show.setVisible(false);
-        ps.setEchoChar('*');
+        ps.setEchoChar('\u25CF');
     }//GEN-LAST:event_showMouseClicked
 
     private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
@@ -603,7 +603,7 @@ public class register_form extends javax.swing.JFrame {
     private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
         hide1.setVisible(true);
         show1.setVisible(false);
-        cps.setEchoChar('*');
+        cps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show1MouseClicked
 
     /**

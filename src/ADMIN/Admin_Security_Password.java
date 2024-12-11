@@ -577,6 +577,8 @@ public class Admin_Security_Password extends javax.swing.JFrame {
 
         dbConnector dbc = new dbConnector();
         Session sess = Session.getInstance();
+        
+        int adminID = sess.getUid();
         PasswordHasher pH = new PasswordHasher();
 
         try {
@@ -612,6 +614,10 @@ public class Admin_Security_Password extends javax.swing.JFrame {
                     String npass = pH.hashPassword(nps.getText());
                     dbc.updateData("UPDATE tbl_user SET u_pass = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
                     JOptionPane.showMessageDialog(null, "Password changed successfully!");
+                    
+                           
+                   logEvent(adminID, "ADMIN_PASSWORD_UPDATE", "Admin ID: "+adminID+" password is changed.");
+                   
                     Admin_Settings as = new Admin_Settings();
                     as.setVisible(true);
                     this.dispose();
@@ -643,7 +649,7 @@ public class Admin_Security_Password extends javax.swing.JFrame {
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
         hide.setVisible(true);
         show.setVisible(false);
-        cps.setEchoChar('*');
+        cps.setEchoChar('\u25CF');
     }//GEN-LAST:event_showMouseClicked
 
     private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
@@ -655,7 +661,7 @@ public class Admin_Security_Password extends javax.swing.JFrame {
     private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
         hide1.setVisible(true);
         show1.setVisible(false);
-        nps.setEchoChar('*');
+        nps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show1MouseClicked
 
     private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
@@ -667,7 +673,7 @@ public class Admin_Security_Password extends javax.swing.JFrame {
     private void show2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show2MouseClicked
         hide2.setVisible(true);
         show2.setVisible(false);
-        cnps.setEchoChar('*');
+        cnps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show2MouseClicked
 
     

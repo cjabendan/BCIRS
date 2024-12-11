@@ -11,8 +11,11 @@ import config.PasswordHasher;
 import config.Session;
 import config.dbConnector;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
@@ -575,6 +578,9 @@ public class User_Security_Password extends javax.swing.JFrame {
 
         dbConnector dbc = new dbConnector();
         Session sess = Session.getInstance();
+        
+         int userID = sess.getUid();
+         
         PasswordHasher pH = new PasswordHasher();
 
         try {
@@ -610,6 +616,10 @@ public class User_Security_Password extends javax.swing.JFrame {
                     String npass = pH.hashPassword(nps.getText());
                     dbc.updateData("UPDATE tbl_user SET u_pass = '" + npass + "' WHERE u_id = '" + sess.getUid() + "'");
                     JOptionPane.showMessageDialog(null, "Password changed successfully!");
+                    
+                   logEvent(userID, "ADMIN_PASSWORD_UPDATE", "User ID: "+userID+" password is changed.");
+                   
+                    
                     User_Settings as = new User_Settings();
                     as.setVisible(true);
                     this.dispose();
@@ -641,7 +651,7 @@ public class User_Security_Password extends javax.swing.JFrame {
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
         hide.setVisible(true);
         show.setVisible(false);
-        cps.setEchoChar('*');
+        cps.setEchoChar('\u25CF');
     }//GEN-LAST:event_showMouseClicked
 
     private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
@@ -653,7 +663,7 @@ public class User_Security_Password extends javax.swing.JFrame {
     private void show1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MouseClicked
         hide1.setVisible(true);
         show1.setVisible(false);
-        nps.setEchoChar('*');
+        nps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show1MouseClicked
 
     private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
@@ -665,9 +675,33 @@ public class User_Security_Password extends javax.swing.JFrame {
     private void show2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show2MouseClicked
         hide2.setVisible(true);
         show2.setVisible(false);
-        cnps.setEchoChar('*');
+        cnps.setEchoChar('\u25CF');
     }//GEN-LAST:event_show2MouseClicked
 
+     public void logEvent(int userId, String event, String description) {
+   
+        dbConnector dbc = new dbConnector();
+        PreparedStatement pstmt = null;
+        
+    try {
+     
+
+        String sql = "INSERT INTO tbl_logs (l_timestamp, l_event, u_id, l_description) VALUES (?, ?, ?, ?)";
+        pstmt = dbc.connect.prepareStatement(sql);
+        pstmt.setTimestamp(1, new Timestamp(new Date().getTime()));
+        pstmt.setString(2, event);
+        pstmt.setInt(3, userId);
+        pstmt.setString(4, description);
+
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        System.out.println("errors");
+    }
+}
+    
+    
     /**
      * @param args the command line arguments
      */

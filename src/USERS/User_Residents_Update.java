@@ -627,7 +627,7 @@ public void imageUpdater(String existingFilePath, String newFilePath) {
         d.setFont(new java.awt.Font("Yu Gothic UI", 0, 11)); // NOI18N
         d.setForeground(new java.awt.Color(204, 204, 204));
         d.setText("Resident's purok address will be automatically set for every household. ");
-        jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 360, 50));
+        jPanel6.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 380, 50));
 
         cancel.setBackground(new java.awt.Color(27, 55, 77));
         cancel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N

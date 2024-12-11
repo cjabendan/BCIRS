@@ -9,9 +9,13 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
@@ -59,30 +63,40 @@ public class PrintUserDets extends javax.swing.JFrame {
     }
     
     
-    public ImageIcon resizeImage(ImageIcon originalIcon, int targetWidth, int targetHeight) {
-        Image originalImage = originalIcon.getImage();
-
-        // Calculate the appropriate height based on the aspect ratio
-        int newHeight = getHeightFromWidth(originalImage, targetWidth);
-
-        // Create a new BufferedImage with the desired dimensions
-        BufferedImage resizedImage = new BufferedImage(targetWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-
-        // Get the graphics context of the resized image
-        resizedImage.createGraphics().drawImage(originalImage, 0, 0, targetWidth, newHeight, null);
-
-        // Convert the resized BufferedImage back to an ImageIcon
-        return new ImageIcon(resizedImage);
-}
-
-// Function to calculate height from width maintaining aspect ratio
-    public int getHeightFromWidth(Image image, int desiredWidth) {
-        int originalWidth = image.getWidth(null);
-        int originalHeight = image.getHeight(null);
-
-        return (int) ((double) desiredWidth / originalWidth * originalHeight);
+   public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+        try {
+           
+            File imageFile = new File(imagePath);
+            BufferedImage image = ImageIO.read(imageFile);
+            
+            int originalWidth = image.getWidth();
+            int originalHeight = image.getHeight();
+            
+            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
+            
+            return newHeight;
+        } catch (IOException ex) {
+            System.out.println("No image found!");
+        }
+        
+        return -1;
     }
-    
+   
+   public  ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = null;
+        if(ImagePath !=null){
+            MyImage = new ImageIcon(ImagePath);
+        }else{
+            MyImage = new ImageIcon(pic);
+        }
+        
+    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+}
     
     
     /**
