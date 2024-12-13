@@ -1118,14 +1118,14 @@ try {
     String query;
 
     if (searchText.isEmpty()) {
-        // Display all logs if search text is empty
+        // If the search field is empty, display all logs (similar to displayData)
         query = "SELECT l.l_id, CONCAT(u.u_id, ' - ', u.u_type) AS user_info, l.l_event, l.l_timestamp " +
                 "FROM tbl_logs l " +
                 "JOIN tbl_user u ON l.u_id = u.u_id " +
                 "ORDER BY l.l_timestamp DESC";
         displayData();
     } else {
-        // Filter logs based on search text
+        // If there is a search text, filter the logs based on the input
         query = "SELECT l.l_id, CONCAT(u.u_id, ' - ', u.u_type) AS user_info, l.l_event, l.l_timestamp " +
                 "FROM tbl_logs l " +
                 "JOIN tbl_user u ON l.u_id = u.u_id " +
@@ -1138,14 +1138,19 @@ try {
         logsTbl.setModel(DbUtils.resultSetToTableModel(rs));
     }
 
-    // Set table headers dynamically
+    // Set table headers
     JTableHeader th = logsTbl.getTableHeader();
     TableColumnModel tcm = th.getColumnModel();
-    String[] headers = {"Log ID", "User", "EVENT", "TIME"};
 
-    for (int i = 0; i < tcm.getColumnCount(); i++) {
-        tcm.getColumn(i).setHeaderValue(headers[i]);
-    }
+    TableColumn tc0 = tcm.getColumn(0);
+    TableColumn tc1 = tcm.getColumn(1);
+    TableColumn tc2 = tcm.getColumn(2);
+    TableColumn tc3 = tcm.getColumn(3);
+
+    tc0.setHeaderValue("Log ID");
+    tc1.setHeaderValue("User");
+    tc2.setHeaderValue("EVENT");
+    tc3.setHeaderValue("TIME");
 
     th.setDefaultRenderer(new CustomHeaderRenderer());
 
@@ -1154,14 +1159,13 @@ try {
         tcm.getColumn(i).setCellRenderer(centerRenderer);
     }
 
-    // Optionally remove the "Log ID" column if not needed
-    if (tcm.getColumnCount() > 0) {
-        logsTbl.removeColumn(tcm.getColumn(0));
-    }
+    // Optionally remove the Log ID column from view if not needed
+    logsTbl.removeColumn(tc0);
 
 } catch (SQLException ex) {
     System.out.println("Errors: " + ex.getMessage());
 }
+
 
     }//GEN-LAST:event_searchFieldKeyReleased
 
