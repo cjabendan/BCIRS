@@ -90,5 +90,11 @@ PurokLink is a school project focusing on CRUD (Create, Read, Update, Delete) op
 
 ---
 
-Thank you for choosing PurokLink for your Barangay Data Management needs!
+## Contact
+
+For inquiries, please contact:
+
+Developer: Christian James A. Abendan
+
+Email: chrisbend2004@gmail.com
 
